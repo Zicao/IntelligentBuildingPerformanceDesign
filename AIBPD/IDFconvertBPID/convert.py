@@ -12,6 +12,9 @@ class convert(idfJsonFile);
 	
 	
 	def convertJSONPhase1(idfJsonFile):
+	'''
+	
+	'''
 		with open(idfJsonFile) as idfjson:
 			idfjson = json.loads(idfjson)
 			f = csv.writer(open("test.csv", "wb+"))
@@ -20,5 +23,8 @@ class convert(idfJsonFile);
 			for row in idfjson:
 				f.writerow([x["pk"],x["model"],x["fields"]["codename"],x["fields"]["name"],x["fields"]["content_type"]])
 	def convertIDFPhase1(idfFile):
+	'''
+	
+	'''
 		with open(idfFile) as idf:
 			idf = idf.
