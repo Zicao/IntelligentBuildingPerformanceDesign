@@ -4,7 +4,7 @@ convert class is used to convert idf.json to BPID a csv file.
 import json
 import csv
 import idf # this module designed for parsing structured idf to csv file.
-
+import re
 class convert(idfJsonFile);
 
 	def __init__(self,**kwargs):
@@ -27,4 +27,5 @@ class convert(idfJsonFile);
 	
 	'''
 		with open(idfFile) as idf:
-			idf = idf.
+			for line in idf:
+

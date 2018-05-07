@@ -14,7 +14,7 @@ class Preprocessing(caseMat):
 	def mapping(self):
 		
 		pass;
-	def missingValue(caseMat):
+	def fillLostValue(caseMat):
 	#miss value will be filled with -1
 		m,n = caseMat.shape
 		caseList = []
@@ -24,3 +24,4 @@ class Preprocessing(caseMat):
 				v1 = '-1'
 			caseList.append(float(v1))
 		return caseList
+	
