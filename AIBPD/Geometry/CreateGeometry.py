@@ -81,31 +81,27 @@ if __name__=="__main__":
 	dwg = ezdxf.readfile("../../resources/QiangongF12010.dxf")
 	msp = dwg.modelspace()
 	recognizeObjects=recognize.Recognize()
-	dwg2 = ezdxf.new('R2010')  # create a new DXF R2010 drawing, official DXF version name: 'AC1024'
-	msp2 = dwg2.modelspace()
 	dwg3 = ezdxf.new('R2010')  # create a new DXF R2010 drawing, official DXF version name: 'AC1024'
 	msp3 = dwg3.modelspace()
-	dwg4 = ezdxf.new('R2010')  # create a new DXF R2010 drawing, official DXF version name: 'AC1024'
-	msp4 = dwg4.modelspace()
-	lines=[]
+	for e in msp:
+		if e.dxftype() == 'TEXT':
+			print(e.dxf.text)
+		elif e.dxftype()=='MTEXT':
+			print(e.get_text())
+	'''lines=[]
 	lines=recognizeObjects.convertLWPolylinesIntoLines(msp,lines)
-	ExWindowLines, otherLines,otherLines1=recognizeObjects.recognizeExteriorWindowFromPoints(lines)
-	for windowLines in ExWindowLines:
+	exWindowLists,otherLineLists,otherLineLists1=recognizeObjects.recognizeExteriorWindowFromPoints(lines)
+	i=0
+	for windowLines in exWindowLists:
 		for line in windowLines:
-			msp2.add_line(line.p1,line.p2)
-	dwg2.saveas('../../resources/line8.dxf')
-	for line in otherLines:
-		msp3.add_line(line.p1,line.p2)
-	dwg3.saveas('../../resources/line9.dxf')
-	for line in otherLines1:
-		msp4.add_line(line.p1,line.p2)
-	dwg4.saveas('../../resources/line10.dxf')
+			msp3.add_line((line.p1X,line.p1Y),(line.p2X,line.p2Y))
 
-
-	'''
+	
+	xMax,xMin,yMax,yMin,xAvrg,yAvrg=recognizeObjects.getLinesAtributes(msp)
 	xSmallExWall, xBigExWall, ySmallExWall, yBigExWall = recognizeObjects.sortExternalWall(xMax,xMin,yMax,yMin,msp)
 	p0,p1 = drawExWall(xSmallExWall, xBigExWall, ySmallExWall, yBigExWall, msp3)
 	line = msp.query('LWPOLYLINE')
 	pillarPlinesList = recognizeObjects.recognizeLWPolylinePillar(line,xMax,xMin,yMax,yMin)
 	drawPillars(pillarPlinesList, msp3)
-'''
+	dwg3.saveas('../../resources/linenew'+str(i)+'.dxf')
+	'''
