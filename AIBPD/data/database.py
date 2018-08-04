@@ -4,7 +4,7 @@
 import pandas as pd
 import re
 import os
-from IntelligentBuildingPerformanceDesign.AIBPD.data.preprocessing import Preprocessing
+from IntelligentBuildingPerformanceDesign.AIBPD.data.preprocessing import PreprocessingCBECS
 
 class Database():
 	"""docstring for Database"""
@@ -25,7 +25,7 @@ class Database():
 		for i in self.databaseList:
 			if re.search(databaseName,i):
 				print("Load sucessfully")
-				return self.loadDatabase(self.databasePath+i+'.csv')
+				return self.loadDatabaseCBECS(self.databasePath+i+'.csv')
 		print("Error with find datbase.\n","Available databases include", self.databaseList)
 
 	def addNewDatabase(self,databaseName):
@@ -37,11 +37,10 @@ class Database():
 			self.databaseList.append(databaseName)
 
 
-	def loadDatabase(self,databaseName):
+	def loadDatabaseCBECS(self,databaseName):
 		dataDataFrame=pd.DataFrame(pd.read_csv(databaseName,header=0))
-		preprocessDF=Preprocessing(dataDataFrame)
-		preprocessDF.fillValue()
-		return preprocessDF.dataDF
+		preprocessDF=PreprocessingCBECS(dataDataFrame)
+		return dataDataFrame
 
 	def existDatabaseList(self):
 		print("Available databases include",self.databaseList)

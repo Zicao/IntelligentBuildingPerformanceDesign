@@ -9,12 +9,12 @@ from IntelligentBuildingPerformanceDesign.AIBPD.data.building import Building
 
 class Similarity():
 	
-	similarityAttributes=['ID','principleActivity','climateZone','buildingArea',\
+	buildingAttr4BN4CL=['ID','principleActivity','climateZone','buildingArea',\
 							'yearOfConstruction','buildingShape',\
 							'CDD65','COOLP','MAINCL','MAINHT',\
 				             'wallConstruction', 'WWR','peoplePerArea',\
 				             'ELHTBTU','NGHTBTU','DHHTBTU','FKHTBTU',\
-				             'ELCLBTU','NGCLBTU','DHCLBTU','FKCLBTU']
+				             'ELCLBTU','NGCLBTU','DHCLBTU','FKCLBTU','EUICooling','HECS']
 	def __init__(self):
 		pass
 	def similarityEuclidian(self, proposedDict, sampleDict, weight={'climateZone':3,
@@ -68,15 +68,13 @@ class Similarity():
 			if re.search(i,'buildingArea yearOfConstruction WWR peoplePerArea',re.I):
 				diffPercentage=abs(proposedDict[i]-sampleDict[i])/proposedDict[i]
 				similarValue+=self.calculateValue(diffPercentage,weight[i])**2
-				
 		return similarValue
-
 
 	def calculateValue(self,difPercentage, maxValue):
 		simValue = maxValue*(1-difPercentage)
 		return simValue
 
-	def kSimilarBuildings(self,prpsedBlding4SmlarAnalysis,databaseDF,K=300):
+	def kSimilarBuildings(self, proposedBuilding, databaseDF, K=300):
 		'''
 		return K most similar building
 		Args:
@@ -86,10 +84,12 @@ class Similarity():
 		Return:
 			A list of indices of these K buildings
 		'''
+		prpsedBlding4SmlarAnalysis=proposedBuilding.blding4SimilarityAnalysis()
 		EuclidianDistance=[]
 		m,n=databaseDF.shape
 		keys=prpsedBlding4SmlarAnalysis.keys()
 		
+
 		for i in range(m):
 			sampleBlding={}
 			for key in keys:
@@ -101,12 +101,12 @@ class Similarity():
 
 		similarBuildingsDict={}
 
-		for i in self.similarityAttributes:
+		for i in self.buildingAttr4BN4CL:
 			similarBuildingsDict[i]=[]
 
 		for i in range(m):
 			if i in indices[0:K]:
-				for item in self.similarityAttributes:
+				for item in self.buildingAttr4BN4CL:
 					similarBuildingsDict[item].append(databaseDF[item].loc[i])
 		similarBuildingsDF=pd.DataFrame(similarBuildingsDict)
 		return similarBuildingsDF

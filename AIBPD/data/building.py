@@ -130,7 +130,6 @@ class Building():
 		'MAINHT':2, #main heating system
 		'EUICooling':1000000,#cooling energy per square meter
 		'HECS':1, #high energy efficient cooling system? ,1: yes, 2: no.
-		
 		}
 	#
 	def __init__(self):

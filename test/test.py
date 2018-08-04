@@ -1,7 +1,6 @@
 
 
 #define the building
-#
 
 from IntelligentBuildingPerformanceDesign.AIBPD.data.database import Database
 from IntelligentBuildingPerformanceDesign.AIBPD.data.building import Building
@@ -12,15 +11,18 @@ database=Database()
 CBECS2012DF=database.select('CBECS2012')
 
 proposedBuilding=Building()
-proposedBuildingDict={'climateZone':3,   'principleActivity':2,
+proposedBuildingDict={'climateZone':1,   'principleActivity':1,
 					'buildingArea': 100000, 'yearOfConstruction':1930,
 					'buildingShape':2,      'wallConstruction':2,
-					'WWR': 2,             'numPeople': 6}
+					'WWR': 2,             'numPeople': 6,
+					'COOLLOAD':11,'CDD65':1,'COOLP':1}
 proposedBuilding.defineBuilding(proposedBuildingDict)
 
 #get the attributes used to calculate similarity
-prpsedBlding4SmlarAnalysis=proposedBuilding.blding4SimilarityAnalysis()
 similarity=Similarity()
-similarBuildingsDF=similarity.kSimilarBuildings(prpsedBlding4SmlarAnalysis,CBECS2012DF,300)
+similarBuildingsDF=similarity.kSimilarBuildings(proposedBuilding,CBECS2012DF,300)
+print(similarBuildingsDF)
+#Use Bayesian Network Classifier to select cooling system for the proposed building.
 BN4CLSection=BN4CL()
 BN4CLSection.fit(similarBuildingsDF)
+BN4CLSection.predict(proposedBuilding)

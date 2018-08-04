@@ -8,7 +8,7 @@ class BN4CL():
 	def __init__(self):
 		pass
 
-	def predict(self, proposedBuilding):
+	def predict(self, building):
 		'''
 		Predict the most-likely high performance cooling system for the proposed building.
 		Args:
@@ -16,7 +16,17 @@ class BN4CL():
 		Example:
 			proposedBuilding=[[1,11,1,None,2,1,1]] #(climateZone,COOLLOAD,principleActivity,MAINCl,CDD65,COOLP,HECS)
 		'''
-		predictionResult=self.BN4CLfitted.predict(proposedBuilding)
+		proposedBuilding=building.buildingAttributes
+		proposedBuildingList=[]
+		proposedBuildingList.append(proposedBuilding['climateZone'])
+		proposedBuildingList.append(proposedBuilding['COOLLOAD'])
+		proposedBuildingList.append(proposedBuilding['principleActivity'])
+		proposedBuildingList.append(None)
+		proposedBuildingList.append(proposedBuilding['CDD65'])
+		proposedBuildingList.append(proposedBuilding['COOLP'])
+		proposedBuildingList.append(proposedBuilding['HECS'])
+
+		predictionResult=self.BN4CLfitted.predict([proposedBuildingList])
 		print("The most-likely high performance cooling system for the proposed building is",predictionResult[0][3])
 	
 	def probability(self,buildingAttributesList):
@@ -35,7 +45,8 @@ class BN4CL():
 		'''
 		Calculate the distribution of different attributes, for example climateZone, pricipleActivity...
 		Args:
-			dataDF, a pandas DataFrame object based on which calculate the distribution.
+			similarBldDF, a pandas DataFrame object includes a group of building similar to the proposed 
+				building.
 		'''
 		m,n=similarBldDF.shape
 		climateZoneList=[]
@@ -45,7 +56,7 @@ class BN4CL():
 		mainclList=[]
 
 		#mapping the principleActivityN into 2 category
-		similarBldDF['principleActivityN']=np.where(similarBldDF['principleActivity']==2.0, 1, 0)
+		similarBldDF['principleActivityN']=np.where(similarBldDF['principleActivity']==1, 1, 0)
 
 		for i in range(m):
 			if similarBldDF['climateZone'].loc[i]==1.0:
@@ -140,7 +151,7 @@ class BN4CL():
 					MAINCLCPTMat[j02,4]+=1
 	#MAINCLCPTList is used to calculate the conditional table
 		MAINCLCPTMat[:,4]=MAINCLCPTMat[:,4]/m
-		nonZeroPTable(MAINCLCPTMat)
+		self.nonZeroPTable(MAINCLCPTMat)
 		MAINCLCPTList=MAINCLCPTMat.tolist()
 
 		HECSCPT=[]
@@ -162,7 +173,7 @@ class BN4CL():
 				HECSCPTMat[j12,5]==int(similarBldDF['HECS'].loc[j11]):
 					HECSCPTMat[j12,6]+=1
 		HECSCPTMat[:,6]=HECSCPTMat[:,6]/m
-		nonZeroPTable(HECSCPTMat)
+		self.nonZeroPTable(HECSCPTMat)
 		HECSCPTList = HECSCPTMat.tolist()
 	    
 		print("BN for Main cooling equipment","climateZoneDictN",climateZoneDictN,"COOLLOADDictN",COOLLOADDict,"principleActivityNDictN",principleActivityNDictN)
@@ -176,10 +187,11 @@ class BN4CL():
 		climate zone, Design cooling load and principle building activity are parents attributes of main cooling equipment.
 		Census division, main cooling equipment, cooling degree days, percentage of building cooled are four parent attribute of high efficient building
 		Attributes:
-			similarBldDF, train the Bayesian Network classifier.
+			similarBldDF, a pandas DataFrame object includes a group of building similar to the proposed 
+				building.This object is used to train the Bayesian Network classifier.
 
 		'''
-		climateZoneDictN,COOLLOADDictN,principleActivityNDictN,MAINCLCPTList,MAINCLDictN,CDD65NDictN,COOLPNDictN,HECSCPTList=self.attributeDistribution(similarBldDF)
+		climateZoneDict,COOLLOADDict,principleActivityNDict,MAINCLCPTList,MAINCLDict,CDD65NDict,COOLPNDict,HECSCPTList=self.attributeDistribution(similarBldDF)
 
 		climateZone=pm.DiscreteDistribution(climateZoneDict)
 		designCoolingLoad=pm.DiscreteDistribution(COOLLOADDict)
@@ -223,8 +235,31 @@ class BN4CL():
 		self.BN4CLfitted=modelMCE
 
 	def dictRatio(self,dict1,m):
+		'''
+		adjust the value into decimal between [0,1]
+		Args:
+			dict1, a dict object.
+		Examples:
+			COOLLOADDictN={7: 2, 8: 25, 9: 45, 10: 42, 11: 58, 12: 80, 13: 28}
+			m=2+25+45+42+58+80+28=280
+			COOLLOADDictN=dictRatio(COOLLOADDictN)
+			Now, COOLLOADDictN={7:0.00714,8: 0.08865, 9: 0.16071, 10: 0.1500, 11: 0.20714, \
+								12: 0.2857, 13: 0.1000}
+		'''
 		dictKeys=list(dict1.keys())
 		newdict={}
 		for i in dictKeys:
 			newdict[int(i)]=dict1[i]/m
 		return newdict
+
+	def nonZeroPTable(self, PTableMat):
+		'''
+		Bayesian Network classifier requires that the arguments should not be zero or none.
+		To solve this problem, I use a small number 0.000000001 replacing 0
+		Args:
+			PTableMat, a matrix np object. 
+		'''
+		m,n=PTableMat.shape
+		for i in range(m):
+			if PTableMat[i,-1]==0:
+				PTableMat[i,-1]=0.000000001
