@@ -9,7 +9,7 @@ import ezdxf
 import time
 import sys
 import os
-
+import re
 
 from IntelligentBuildingPerformanceDesign.utility.line import Line
 class __RecognizeBaseclass():
@@ -294,6 +294,20 @@ class Recognize(__RecognizeBaseclass):
 			i+=1
 
 
+	
+	def recognizeAtrium(self,msp):
+		'''
+		recognize atriums in the dxf file.
+		Args:
+			msp, the ezdxf modelplace objects which contains all the data
+		'''
+class RecognizeExWall():
+	'''
+	Recognize the outlines of a building plan.
+	'''
+	def __init__():
+		pass
+
 	def recognizeExteriorWindowFromPoints(self, lines):
 		'''
 		this function recognize windows from  lines that are sympy Line objects transformed
@@ -389,10 +403,25 @@ class Recognize(__RecognizeBaseclass):
 					#print("len(exWindowLine)",len(exWindowLine))
 					exWindowLists.append(exWindowLine)
 		return exWindowLists
-	def recognizeAtrium(self,msp):
+
+	def exWallFromAxis(self, mspLines):
 		'''
-		recognize atriums in the dxf file.
+		regonize exterior outlines of the building plan from the axis.
 		Args:
-			msp, the ezdxf modelplace objects which contains all the data
+			mspLines, model space lines
 		'''
-		
+		axisLines=[]
+		#get lines whose layers names contain "axis"
+		for line in mspLines:
+			if re.search('axis',line.layer.name,re.I) or \
+				re.search('轴线'.encode('uft8'),line.layer.name.encode('utf8')):
+				axisLines.append(line)
+		outmostAxisLines=[]
+		#filtrate outmost axis
+		for line in axisLines:
+			
+		del axisLines
+
+
+
+

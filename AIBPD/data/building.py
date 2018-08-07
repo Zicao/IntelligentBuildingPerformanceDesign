@@ -4,7 +4,7 @@
 '''
 class Building():
 
-	buildingAttributes={
+	building={
 		'ID': 1,
 		'name':'zhongdaHall',
 		'city':'Nanjing',
@@ -19,7 +19,12 @@ class Building():
 			#'Heilongjiang, Jilin, Liangning, Neimenggu'=6
 		'yearOfConstruction':1930,
 		'renovationYear':1980,
-		'climateZone': 3, #Very cold=1, cold=2, SummerHotWinterCold=3, SummerHotWinterWarm=4, Warm=5,
+		'climateZone': 3, 
+			#Very cold=1, 
+			#cold=2, 
+			#SummerHotWinterCold=3, 
+			#SummerHotWinterWarm=4, 
+			#Warm=5,
 		'CDD65':1500,
 		'buildingArea': 10000,	#unit:m2
 		'numFloorAbove':4,	#unit:-
@@ -125,7 +130,7 @@ class Building():
 		'condensorType':1,
 			#'1' = 'coolingTower'
 			#'2' = 'Air cooled'
-		'COOLP':90, #cooling percentage
+		'COOLP':1, #cooling percentage
 		'MAINCL':2, #main cooling system
 		'MAINHT':2, #main heating system
 		'EUICooling':1000000,#cooling energy per square meter
@@ -141,21 +146,21 @@ class Building():
 		'''
 		pass
 
-	def showAllBuildingAttributes(self):
+	def showAllbuilding(self):
 		pass
 
-	def defineBuilding(self,buildingAttributesDict):
+	def defineBuilding(self,buildingDict):
 		#define the proposed building
 		'''
 		Args:
-			buildingAttributesDict: used to define the proposed building
+			buildingDict: used to define the proposed building
 		Return:
-			self.buildingAttributes
+			self.building
 		'''
-		proposedDict=buildingAttributesDict.keys()
+		proposedDict=buildingDict.keys()
 		for i in proposedDict:
-			self.buildingAttributes[i]=buildingAttributesDict[i]
-		return self.buildingAttributes
+			self.building[i]=buildingDict[i]
+		return self.building
 
 	def blding4SimilarityAnalysis(self):
 		'''
@@ -168,14 +173,14 @@ class Building():
 		'''
 
 		bldingDict={}
-		bldingDict['climateZone']=self.buildingAttributes['climateZone']
-		bldingDict['principleActivity']=self.buildingAttributes['principleActivity']
-		bldingDict['buildingArea']=self.buildingAttributes['buildingArea']
-		bldingDict['yearOfConstruction']=self.buildingAttributes['yearOfConstruction']
-		bldingDict['buildingShape']=self.buildingAttributes['buildingShape']
-		bldingDict['wallConstruction']=self.buildingAttributes['wallConstruction']
-		bldingDict['WWR']=self.buildingAttributes['WWR']
-		bldingDict['peoplePerArea']=self.buildingAttributes['peoplePerArea']
+		bldingDict['climateZone']=self.building['climateZone']
+		bldingDict['principleActivity']=self.building['principleActivity']
+		bldingDict['buildingArea']=self.building['buildingArea']
+		bldingDict['yearOfConstruction']=self.building['yearOfConstruction']
+		bldingDict['buildingShape']=self.building['buildingShape']
+		bldingDict['wallConstruction']=self.building['wallConstruction']
+		bldingDict['WWR']=self.building['WWR']
+		bldingDict['peoplePerArea']=self.building['peoplePerArea']
 		return bldingDict
 
 

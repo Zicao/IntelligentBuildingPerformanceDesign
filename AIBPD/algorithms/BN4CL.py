@@ -16,7 +16,7 @@ class BN4CL():
 		Example:
 			proposedBuilding=[[1,11,1,None,2,1,1]] #(climateZone,COOLLOAD,principleActivity,MAINCl,CDD65,COOLP,HECS)
 		'''
-		proposedBuilding=building.buildingAttributes
+		proposedBuilding=building.building
 		proposedBuildingList=[]
 		proposedBuildingList.append(proposedBuilding['climateZone'])
 		proposedBuildingList.append(proposedBuilding['COOLLOAD'])
@@ -29,13 +29,13 @@ class BN4CL():
 		predictionResult=self.BN4CLfitted.predict([proposedBuildingList])
 		print("The most-likely high performance cooling system for the proposed building is",predictionResult[0][3])
 	
-	def probability(self,buildingAttributesList):
+	def probability(self,buildingList):
 		'''
 		Predict 
 		Args:
-			buildingAttributesList, two dimensional list object
+			buildingList, two dimensional list object
 		Example:
-			buildingAttributesList=[[1,11,1,3.0,0,1,1],[1,11,1,2.0,0,1,1],[1,11,1,1.0,0,1,1]]
+			buildingList=[[1,11,1,3.0,0,1,1],[1,11,1,2.0,0,1,1],[1,11,1,1.0,0,1,1]]
 		'''
 		probabilityofCLSystems=self.BN4CLfitted.probability(probabilityList)
 		print(probabilityofCLSystems)
@@ -49,40 +49,21 @@ class BN4CL():
 				building.
 		'''
 		m,n=similarBldDF.shape
-		climateZoneList=[]
-		coolpList=[]
 		coolLoadList=[]
-		cdd65nList=[]
-		mainclList=[]
 
 		#mapping the principleActivityN into 2 category
 		similarBldDF['principleActivityN']=np.where(similarBldDF['principleActivity']==1, 1, 0)
+		equalSizeBin2=[0,1]
+		equalSizeBin4=[1,2,3,4]
+		equalSizeBin5=[1,2,3,4,5]
+		similarBldDF['climateZoneN']=pd.cut(similarBldDF['climateZone'],[-1,0,1,2,3,5,7],labels=[1,2,3,4,5,6])
+		similarBldDF['CDD65N']=pd.qcut(similarBldDF['CDD65'],5,labels=equalSizeBin5)
+		similarBldDF['COOLPN']=pd.cut(similarBldDF['COOLP'],[0,90,100],labels=equalSizeBin2)
+		similarBldDF['MAINCLN']=similarBldDF['MAINCL']
+		similarBldDF['MAINCLN'][np.abs(similarBldDF['MAINCLN'])<1]=0
+		similarBldDF['MAINCLN'][np.abs(similarBldDF['MAINCLN'])>3]=4
 
 		for i in range(m):
-			if similarBldDF['climateZone'].loc[i]==1.0:
-				climateZoneList.append(1)
-			elif similarBldDF['climateZone'].loc[i]==2.0:
-				climateZoneList.append(2)
-			elif similarBldDF['climateZone'].loc[i]==3.0:
-				climateZoneList.append(3)    
-			else:
-				climateZoneList.append(0)
-			if similarBldDF['CDD65'].loc[i]<=600:
-				cdd65nList.append(0)
-			elif similarBldDF['CDD65'].loc[i]<=900:
-				cdd65nList.append(1)
-			elif similarBldDF['CDD65'].loc[i]<=1200:
-				cdd65nList.append(2)
-			elif similarBldDF['CDD65'].loc[i]<=1500:
-				cdd65nList.append(3)
-			else:
-				cdd65nList.append(4)
-
-			if similarBldDF['COOLP'].loc[i]<=90.0:
-				coolpList.append(0)
-			else:
-				coolpList.append(1)
-
 			if similarBldDF['climateZone'].loc[i]==1:
 				coolingload=similarBldDF['buildingArea'].loc[i]*0.8
 				coolLoadList.append(int(math.log(coolingload)))
@@ -92,33 +73,17 @@ class BN4CL():
 			elif similarBldDF['climateZone'].loc[i]==3:
 				coolingload=similarBldDF['buildingArea'].loc[i]*1.2
 				coolLoadList.append(int(math.log(coolingload)))
-	            
-			if similarBldDF['MAINCL'].loc[i]==1:
-				mainclList.append(1)
-			elif similarBldDF['MAINCL'].loc[i]==2:
-				mainclList.append(2)
-			elif similarBldDF['MAINCL'].loc[i]==3:
-				mainclList.append(3)
-			else:
-				mainclList.append(4)
-
-		similarBldDF['CDD65N']=pd.Series(cdd65nList)
-		similarBldDF['COOLPN']=pd.Series(coolpList)
 		similarBldDF['COOLLOAD']=pd.Series(coolLoadList)
-		similarBldDF['MAINCLN']=pd.Series(mainclList)
-		similarBldDF['climateZoneN']=pd.Series(climateZoneList)
 
-		del cdd65nList
-		del coolpList
 		del coolLoadList
-		del mainclList
-		del climateZoneList
+		
 		climateZoneNDict=similarBldDF.groupby('climateZoneN').count()['ID'].to_dict()
 		COOLPNDict=similarBldDF.groupby('COOLPN').count()['ID'].to_dict()
 		CDD65NDict=similarBldDF.groupby('CDD65N').count()['ID'].to_dict()
 		COOLLOADDict=similarBldDF.groupby('COOLLOAD').count()['ID'].to_dict()
 		MAINCLDict=similarBldDF.groupby('MAINCLN').count()['ID'].to_dict()
 		principleActivityNDict=similarBldDF.groupby('principleActivityN').count()['ID'].to_dict()
+
 		MAINCLDist=similarBldDF.groupby('MAINCL').count()['ID'].to_dict()
 		MAINHTDist=similarBldDF.groupby('MAINHT').count()['ID'].to_dict()
 	    
@@ -130,6 +95,7 @@ class BN4CL():
 		COOLPNDictN=self.dictRatio(COOLPNDict,m)
 		COOLLOADDictN=self.dictRatio(COOLLOADDict,m)
 		MAINCLDictN=self.dictRatio(MAINCLDict,m)
+		
 		MAINHTDistN=self.dictRatio(MAINHTDist,m)
 		MAINCLDistN=self.dictRatio(MAINCLDist,m)
 
@@ -263,3 +229,5 @@ class BN4CL():
 		for i in range(m):
 			if PTableMat[i,-1]==0:
 				PTableMat[i,-1]=0.000000001
+if __name__ == '__main_':
+	pass

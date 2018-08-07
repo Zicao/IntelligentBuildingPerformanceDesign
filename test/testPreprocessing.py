@@ -8,7 +8,7 @@ from IntelligentBuildingPerformanceDesign.AIBPD.algorithms.similarityAnalysis im
 from IntelligentBuildingPerformanceDesign.AIBPD.algorithms.BN4CL import BN4CL
 #select database. enbodded data base including CBECS2012.
 database=Database()
-CBECS2012DF=database.select('CBECS2012')
+BEEMRDF=database.select('BEEMR')
 
 proposedBuilding=Building()
 proposedBuildingDict={'climateZone':1,   'principleActivity':1,
@@ -17,13 +17,4 @@ proposedBuildingDict={'climateZone':1,   'principleActivity':1,
 					'WWR': 2,             'numPeople': 6,
 					'COOLLOAD':11,'CDD65':1,'COOLP':0}
 proposedBuilding.defineBuilding(proposedBuildingDict)
-
-#get the attributes used to calculate similarity
-similarity=Similarity()
-similarBuildingsDF=similarity.kSimilarBuildings(proposedBuilding,CBECS2012DF,300)
-print(similarBuildingsDF)
-#Use Bayesian Network Classifier to select cooling system for the proposed building.
-BN4CLSection=BN4CL()
-BN4CLSection.fit(similarBuildingsDF)
-print(proposedBuilding.building)
-BN4CLSection.predict(proposedBuilding)
+print(BEEMRDF)

@@ -3,10 +3,14 @@ This class is used to pre-processing data for different goals, for example simil
 '''
 import numpy as np
 import pandas as pd
+from IntelligentBuildingPerformanceDesign.AIBPD.data.building import Building
 class Preprocessing():
-
+	m=0
+	n=0
 	def __init__(self,dataDF):
-		pass
+		self.m,self.n = dataDF.shape
+		self.checkKeywords(dataDF,Building)
+		self.fillValue(dataDF)
 
 	def cleaning(self,dataDF):
 		
@@ -14,6 +18,7 @@ class Preprocessing():
 	def mapping(self,dataDF):
 		
 		pass;
+
 	def fillValue(self,dataDF):
 		'''
 		fill none with Value 0
@@ -21,6 +26,27 @@ class Preprocessing():
 			post processed dataDF object
 		'''
 		dataDF.fillna(0, inplace=True)
+	def deleteDuplicated(self,dataDF):
+		'''
+		Delete duplicated objects in the database()
+		Args:
+			dataDF, a DataFrame object that contain all the data of the database.
+		'''
+		dataDF=dataDF.drop_duplicates()
+
+	def checkKeywords(self,dataDF,Building):
+		'''
+		Check whether the names of attributes coincide names defined in Building class, i.e. Building.building.keys()
+		Args:
+			dataDF, a DataFrame object that contain all the data of the database.
+			building, a Building object.
+		'''
+		buildingAttribute=Building.building.keys()
+		if buildingAttribute:
+			for i in dataDF.columns:
+				if i not in buildingAttribute:
+					print('Please check name of',i,'which does not coincide attributes in your database')
+
 
 class PreprocessingCBECS(Preprocessing):
 
@@ -67,6 +93,26 @@ class PreprocessingCBECS(Preprocessing):
 		dataDF['HECS']=pd.Series(hpcsList)
 		del hpcsList
 
+class PreprocessingBEEMR(Preprocessing):
+	'''
+	Customized preprocess for BEEM.
+	'''
+	def __init__(self, dataDF):
+		self.m,self.n = dataDF.shape
+		self.fillValue(dataDF)
+		self.checkKeywords(dataDF,Building)
+
+	def replaceImproperdata(self, dataDF):
+		'''
+		
+		'''
+		try:
+			dataDF.replace(-999, np.nan)
+		except:
+			pass
 
 if __name__ == '__main__':
-	pass
+	frame = pd.DataFrame({'climateZone': range(7), 'b': range(7, 0, -1),\
+	 'c': ['one', 'one', 'one', 'two', 'two', 'two', 'two'],'d': [0, 1, 2, 0, 1, 2, 3]})
+
+	Preprocessing1=Preprocessing(frame)
