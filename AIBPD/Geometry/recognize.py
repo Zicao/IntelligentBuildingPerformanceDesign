@@ -1,7 +1,7 @@
 '''
 Purpose: recognize different objects in dxf files, such as external walls, pillars, 
 Created: 04-05-2018
-Copyright (C): TIAN ZHICHAO
+Copyright (C): TIAN ZHICHAO, tzchao123@qq.com.
 '''
 #from sympy import Line, Point
 import math
@@ -183,61 +183,6 @@ class Recognize(__RecognizeBaseclass):
 		yBigExWall = self.exWallConstraint(bigYLines, widthLimited = 600)
 		return xSmallExWall, xBigExWall, ySmallExWall, yBigExWall
 
-	def recognizePillar(self, lineList,xMax,xMin,yMax,yMin):
-		'''
-		regognize pillars in the dxf files.
-		Args:
-			lineList, a 2D list of Line objects which are transformed from ezdxf LWPolyline.
-		each lineList object contains lines transformed from a LWPolyline or Polyline
-		'''
-		i=0
-		
-		pillarsLines = [] # a 2D list of object used to store lines that form a pillar
-
-		for linesPerPolyline in lineList:
-			n=len(linesPerPolyline)
-			if n<=3:
-				next
-			else:
-				#judge whether these lines in linesPerPolyline are vertical to each other
-				i=0
-				j=[]
-				while i<n-1:
-					if linesPerPolyline[i].isVertical(linesPerPolyline[i+1]):
-						#the lines in sequence of rectangle pillars are vertical to each other
-						isTrue0=self.outerContourConstraint(linesPerPolyline[i].x,linesPerPolyline[i].y,xMax,xMin,yMax,yMin)
-						#judge whether the pillar are near the external wall or not.
-						isTrue1=self.outerContourConstraint(linesPerPolyline[i+1].x,linesPerPolyline[i+1].y,xMax,xMin,yMax,yMin)
-						#judge whether the pillar are near the outer contour constraint or not.
-						if isTrue0 and isTrue1:
-							j.append(1)
-					else:
-						j.append(0)
-					i+=1
-				if not 0 in j:
-					pillarsLines.append(linesPerPolyline)
-		return pillarsLines
-
-	def recognizeStairs(self,msp):
-		'''
-		recognize the Stairs in the msp files. Once recognize one stair save it into a new
-		file and record the main ordinates.
-		
-		'''
-		pass
-
-	def reconizeExteriorWindowFromLWPolylines(self, msp):
-		'''
-		recognize all the exterior windows, same object into list.
-
-		Args:
-			msp, the modelspace of the dxf file.
-
-		'''
-		exWindowLists = []
-		
-		return exWindowLists
-
 	def getMaxMinLength(self, lineList):
 		'''
 		get the max and min length of lines in lineList
@@ -295,12 +240,7 @@ class Recognize(__RecognizeBaseclass):
 
 
 	
-	def recognizeAtrium(self,msp):
-		'''
-		recognize atriums in the dxf file.
-		Args:
-			msp, the ezdxf modelplace objects which contains all the data
-		'''
+	
 class RecognizeExWall():
 	'''
 	Recognize the outlines of a building plan.
@@ -421,7 +361,122 @@ class RecognizeExWall():
 		for line in axisLines:
 			
 		del axisLines
+class RecognizeAxis(Recognize):
+	'''
+	recognize all the axis in the dxf file.
+	'''
+	def __init__(self):
+		pass
+	def ByLayerName(self):
+		'''
+		recognize axis by their name. Their layer name may contain "axis, or 轴线 etc"
+		Args:	
+		
+		'''
+		pass
+	def ByLength(self):
+		'''
+		Axis belong to the longest axis.
+		'''
+		pass
+class RecognizeDoor(Recognize):
+	'''
+	recognize all the doors in the dxf file.
+	'''
+	def __init__(self):
+		pass
 
+	def ByShape(self):
+		'''
+		Recognize doors by their shape. For example, a door may looks like a quadrant.
+		'''
+		pass
+class RecognizePillar(Recognize):
+	'''
+	Recognize all the pillars in the dxf file
+	'''
+	def __init__(self):
+		pass
 
+	def ByShape(self):
+		pass
 
+	def recognizePillar(self, lineList,xMax,xMin,yMax,yMin):
+		'''
+		regognize pillars in the dxf files.
+		Args:
+			lineList, a 2D list of Line objects which are transformed from ezdxf LWPolyline.
+		each lineList object contains lines transformed from a LWPolyline or Polyline
+		'''
+		i=0
+		
+		pillarsLines = [] # a 2D list of object used to store lines that form a pillar
 
+		for linesPerPolyline in lineList:
+			n=len(linesPerPolyline)
+			if n<=3:
+				next
+			else:
+				#judge whether these lines in linesPerPolyline are vertical to each other
+				i=0
+				j=[]
+				while i<n-1:
+					if linesPerPolyline[i].isVertical(linesPerPolyline[i+1]):
+						#the lines in sequence of rectangle pillars are vertical to each other
+						isTrue0=self.outerContourConstraint(linesPerPolyline[i].x,linesPerPolyline[i].y,xMax,xMin,yMax,yMin)
+						#judge whether the pillar are near the external wall or not.
+						isTrue1=self.outerContourConstraint(linesPerPolyline[i+1].x,linesPerPolyline[i+1].y,xMax,xMin,yMax,yMin)
+						#judge whether the pillar are near the outer contour constraint or not.
+						if isTrue0 and isTrue1:
+							j.append(1)
+					else:
+						j.append(0)
+					i+=1
+				if not 0 in j:
+					pillarsLines.append(linesPerPolyline)
+		return pillarsLines
+
+class RecognizeExWin(Recognize):
+	'''
+
+	'''
+	def __init__(self):
+		pass
+	def FromLWPolylines(self, msp):
+		'''
+		recognize all the exterior windows, same object into list.
+
+		Args:
+			msp, the modelspace of the dxf file.
+
+		'''
+		exWindowLists = []
+		
+		return exWindowLists
+class RecognizeStair(Recognize):
+	'''
+	Recognize all the stairs in the dxf file.
+	'''
+	def __init__(self):
+		pass
+
+	def ByShape(self,msp):
+		'''
+		recognize the Stairs in the msp files. Once recognize one stair save it into a new
+		file and record the main ordinates.
+		
+		'''
+		pass
+class RecognizeAtrium(self):
+	'''
+	Recognize all the atrium
+	'''
+	def __init__(self):
+		pass
+
+	def recognizeAtrium(self,msp):
+		'''
+		recognize atriums in the dxf file.
+		Args:
+			msp, the ezdxf modelplace objects which contains all the data
+		'''

@@ -123,7 +123,6 @@ class Building():
 			#'9' = 'CAV'
 			#'10' = 'VAV'
 			#11 = 'PIU'
-
 		'CWPumpType':1,
 			#'1' = 'constant'
 			#'2' = 'variable speed'
@@ -135,6 +134,7 @@ class Building():
 		'MAINHT':2, #main heating system
 		'EUICooling':1000000,#cooling energy per square meter
 		'HECS':1, #high energy efficient cooling system? ,1: yes, 2: no.
+		
 		}
 	#
 	def __init__(self):

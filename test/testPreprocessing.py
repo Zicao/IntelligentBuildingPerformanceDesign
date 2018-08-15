@@ -18,3 +18,4 @@ proposedBuildingDict={'climateZone':1,   'principleActivity':1,
 					'COOLLOAD':11,'CDD65':1,'COOLP':0}
 proposedBuilding.defineBuilding(proposedBuildingDict)
 print(BEEMRDF)
+''''''
