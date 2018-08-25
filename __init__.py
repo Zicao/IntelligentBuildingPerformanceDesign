@@ -1,6 +1,8 @@
+# encoding: utf-8
 '''
 
 '''
+
 import sys
 import os
 #if (sys.version_info[0] == 2) and (sys.version_info[1] < 6):
@@ -14,8 +16,8 @@ print(parentUrl)
 sys.path.append(parentUrl)
 
 
-from IntelligentBuildingPerformanceDesign.utility import *
-from IntelligentBuildingPerformanceDesign.AIBPD import *
+#from IntelligentBuildingPerformanceDesign.utility import *
+#from IntelligentBuildingPerformanceDesign.AIBPD import *
 
 del sys
 del os

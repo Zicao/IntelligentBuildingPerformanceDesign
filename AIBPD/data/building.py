@@ -28,7 +28,7 @@ class Building():
 		'CDD65':1500,
 		'buildingArea': 10000,	#unit:m2
 		'numFloorAbove':4,	#unit:-
-		'numFloorUnderground':1,	#unit:-
+		'numFloorBelow':1,	#unit:-
 		'buildingShape':2,
 			#01' = 'Square'，正方形
 			#'02' = 'Wide rectangle',宽方形
@@ -62,6 +62,9 @@ class Building():
 		'exWinHTCNorth':2.1,
 		'exWinHTCWest':2.1,
 		'exWinHTCEast':2.1,
+		'exWinAirtightness':6,
+		'exDoorAirtightness':3,
+		
 		'SC':0.41,
 		'SCSouth':0.41,
 		'SCNorth':0.41,

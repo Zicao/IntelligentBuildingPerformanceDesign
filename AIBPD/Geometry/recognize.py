@@ -237,10 +237,13 @@ class Recognize(__RecognizeBaseclass):
 				bigGroup[i]=groupElement[0:30]
 				bigGroup.insert(i,groupElement[30:])
 			i+=1
+	def byLayerName(self, msp):
+		'''
+		delete columns, stairs, text etc.
+		'''
+		for i in msp:
+			if re.search(i.dxf.layer.name,'column轴stair楼梯axis轴线EquipmentTEXT'):
 
-
-	
-	
 class RecognizeExWall():
 	'''
 	Recognize the outlines of a building plan.
@@ -367,14 +370,14 @@ class RecognizeAxis(Recognize):
 	'''
 	def __init__(self):
 		pass
-	def ByLayerName(self):
+	def byLayerName(self):
 		'''
 		recognize axis by their name. Their layer name may contain "axis, or 轴线 etc"
 		Args:	
 		
 		'''
 		pass
-	def ByLength(self):
+	def byLength(self):
 		'''
 		Axis belong to the longest axis.
 		'''
@@ -386,7 +389,7 @@ class RecognizeDoor(Recognize):
 	def __init__(self):
 		pass
 
-	def ByShape(self):
+	def byShape(self):
 		'''
 		Recognize doors by their shape. For example, a door may looks like a quadrant.
 		'''
@@ -398,7 +401,7 @@ class RecognizePillar(Recognize):
 	def __init__(self):
 		pass
 
-	def ByShape(self):
+	def byShape(self):
 		pass
 
 	def recognizePillar(self, lineList,xMax,xMin,yMax,yMin):
@@ -442,7 +445,7 @@ class RecognizeExWin(Recognize):
 	'''
 	def __init__(self):
 		pass
-	def FromLWPolylines(self, msp):
+	def fromLWPolylines(self, msp):
 		'''
 		recognize all the exterior windows, same object into list.
 
@@ -460,13 +463,21 @@ class RecognizeStair(Recognize):
 	def __init__(self):
 		pass
 
-	def ByShape(self,msp):
+	def byShape(self,msp):
 		'''
 		recognize the Stairs in the msp files. Once recognize one stair save it into a new
 		file and record the main ordinates.
 		
 		'''
 		pass
+
+	def byLayerName(self,msp):
+		'''
+		
+		'''
+
+
+
 class RecognizeAtrium(self):
 	'''
 	Recognize all the atrium
