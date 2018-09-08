@@ -1,12 +1,13 @@
-'''
-This class is used to pre-processing data for different goals, for example similarity analysis
-'''
+
 import numpy as np
 import pandas as pd
 
 from IntelligentBuildingPerformanceDesign.AIBPD.data.building import Building
 from sklearn.preprocessing import Imputer
 class Preprocessing():
+	'''
+	This class is used to pre-processing data for different goals, for example similarity analysis
+	'''
 	m=0
 	n=0
 	def __init__(self,dataDF):
@@ -80,6 +81,10 @@ class Preprocessing():
 				hpcsList.append(0)
 		dataDF[isHEName]=pd.Series(hpcsList)
 		del hpcsList
+	def addweatherData(self,dataDF):
+		'''
+		
+		'''
 
 class PreprocessingCBECS(Preprocessing):
 
