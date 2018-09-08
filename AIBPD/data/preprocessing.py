@@ -3,7 +3,9 @@ This class is used to pre-processing data for different goals, for example simil
 '''
 import numpy as np
 import pandas as pd
+
 from IntelligentBuildingPerformanceDesign.AIBPD.data.building import Building
+from sklearn.preprocessing import Imputer
 class Preprocessing():
 	m=0
 	n=0
@@ -47,6 +49,37 @@ class Preprocessing():
 				if i not in buildingAttribute:
 					print('Please check name of',i,'which does not coincide attributes in your database')
 
+	def getHP(self, dataDF, energyType=0):
+		'''
+		Judge whether a building are high performance or not.
+		Args:
+			dataDF:
+			energyType: different energy consumption items, such annual energy usage intensive(EUI).
+						0= 'EUI', => 'HEEB'= high energy efficient building
+						1='EUIHeating' => 'HEHS'= high efficient heating system
+						2='EUICooling' => 'HECS' = high efficient cooling system
+						3='designHeatingLoad' => 'HEE4H' = high efficient envelop system for heating.
+						4='designCoolingLoad' => 'HEE4C' = high efficient envelop system for cooling.
+		'''
+		
+		try:
+			energyTypeDict={0:'EUI',1:'EUIHeating',2:'EUICooling',3:'designHeatingLoad',4:'designCoolingLoad'}
+			highEfficientType={'EUI': 'HEEB','EUIHeating': 'HEHS','EUICooling': 'HECS','designHeatingLoad':'HEE4H','designCoolingLoad':'HEE4C'}
+			energyName=energyTypeDict[energyType]
+			isHEName=highEfficientType[energyName]
+		except:
+			energyName='EUI'
+			isHEName='HEEB'
+		top3=dataDF[energyType].sort_values().iloc[int(0.03*self.m)]
+		top23=dataDF[energyType].sort_values().iloc[int(0.23*self.m)]
+		hpcsList=[]
+		for i in range(self.m):
+			if dataDF[energyType].loc[i]<=top23 and dataDF[energyType].loc[i]>=top3:
+				hpcsList.append(1)
+			else:
+				hpcsList.append(0)
+		dataDF[isHEName]=pd.Series(hpcsList)
+		del hpcsList
 
 class PreprocessingCBECS(Preprocessing):
 
@@ -82,16 +115,7 @@ class PreprocessingCBECS(Preprocessing):
 		Args:
 			dataDF, the source data based on which the EUIHeating is calculated.	
 		'''
-		top3=dataDF['EUICooling'].sort_values().iloc[int(0.03*self.m)]
-		top23=dataDF['EUICooling'].sort_values().iloc[int(0.23*self.m)]
-		hpcsList=[]
-		for i in range(self.m):
-			if dataDF['EUICooling'].loc[i]<=top23 and dataDF['EUICooling'].loc[i]>=top3:
-				hpcsList.append(1)
-			else:
-				hpcsList.append(0)
-		dataDF['HECS']=pd.Series(hpcsList)
-		del hpcsList
+		self.getHP(dataDF, energyType=2)
 
 class PreprocessingBEEMR(Preprocessing):
 	'''
@@ -111,8 +135,29 @@ class PreprocessingBEEMR(Preprocessing):
 		except:
 			pass
 
+	def dataCleaningWithDecisionTree(self,BEEMRArray):
+
+		'''
+		Predict missing data using decision tree classifier.
+		'''
+		pass
+
+	def fillValueWithImputer(self,dataDF):
+		'''
+		impute missing value by sklearn.preprocessing.Imputer
+		'''
+		imputer = Imputer()
+		BEEMRArray=dataDF.values
+		transformed_BEEMRArray = imputer.fit_transform(BEEMRArray)
+		return transformed_BEEMRArray
+		
+	def fillValueWithMedian(self, dataDF):
+		'''
+		impute NaN value with median
+		'''
+		pass
+
+
 if __name__ == '__main__':
 	frame = pd.DataFrame({'climateZone': range(7), 'b': range(7, 0, -1),\
 	 'c': ['one', 'one', 'one', 'two', 'two', 'two', 'two'],'d': [0, 1, 2, 0, 1, 2, 3]})
-
-	Preprocessing1=Preprocessing(frame)

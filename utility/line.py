@@ -11,13 +11,11 @@ class Line():
 	theta=0.0
 	length=0.0
 	midpoint=Point((0,0))
-	p1=Point() #end point1
-	p2=Point() #end point2
 	a=0.0
 	b=0.0
 	c=1.0
 	__name__='Line'
-	def __init__(self, p1=(0,0), p2=(0,1),endPoint1=None,endPoint2=None,a=None,b=None,c=None):
+	def __init__(self, p1, p2,endPoint1=None,endPoint2=None,a=None,b=None,c=None):
 		'''
 		Args:
 			p1 and p2 are two Point object defined in point.py
@@ -46,20 +44,45 @@ class Line():
 			self.theta=math.atan(abs((self.p2Y-self.p1Y)/(self.p2X-self.p1X)))
 
 		pointMatrix=np.mat(([[self.p1X,self.p1Y],[self.p2X,self.p2Y]]))
+
 		if not a:
 			if np.linalg.det(pointMatrix)==0:
-				self.c=0.0
-				self.b=1
-				if self.p1X!=0:
-					self.a=-self.p1Y/self.p1X
-				elif self.p2X!=0:
-					self.a=self.p2Y/self.p2X
-				else:
-					self.a=0
+				if self.p1X==self.p2X and self.p1X!=0:
+					self.a=1.0/self.p1X
+					self.b=0.0
+				elif self.p1X==self.p2X and self.p1X==0:
+					self.a=1.0
+					self.b=0.0
+					self.c=0.0
+				elif self.p1Y==self.p2Y and self.p1Y!=0:
+					self.a=0.0
+					self.b=1.0/self.p1Y
+				elif self.p1Y==self.p2Y and self.p1Y==0:
+					self.a=0.0
+					self.b=1.0
+					self.c=0.0
+				elif self.p1X==0 and self.p1Y==0:
+					self.c=0.0
+					if self.p2X!=0:
+						a=-self.p2Y/self.p2X
+						self.b=1.0
+					else:
+						self.a=1.0
+						self.b=0
+				elif self.p2X==0 and self.p2Y==0:
+					self.c==0.0
+					if self.p1X!=0:
+						a=-self.p1y/self.p1X
+						self.b=1.0
+					else:
+						self.a=1.0
+						self.b=0
+
 			else:
-				self.c=1
+				self.c=1.0
 				self.a=(pointMatrix.I*np.mat([[1],[1]]))[0,0]
 				self.b=(pointMatrix.I*np.mat([[1],[1]]))[1,0]
+			print('a',self.a,'b',self.b,'c',self.c)
 		else:
 			self.a=a
 			if b:
@@ -244,6 +267,8 @@ if __name__=="__main__":
 	line1=Line((0,0),(1,1))
 	line2=Line((0.1,0.1),(0,1))
 	line3=Line((0,10),(1,11))
+	line4=Line((0,10),(2,12))
+
 
 	slope1=line1.slope()
 	slope2=line2.slope()
@@ -251,6 +276,8 @@ if __name__=="__main__":
 	print("Is line1 and line2 parallel?",line1.isAlmostParallel(line2,0.2))
 	interPoint=line3.interactedPointofTwoLines(line1)
 	print('interactedPoint',interPoint.x,interPoint.y)
-	print(line1.a,line1.b)
 
+	print('a b of line1',line1.a,line1.b)
+	print('midpoint of line1',line1.midpoint.x,line1.midpoint.y)
+	print('exetend line',line1.interactedPointofTwoLines(line4).x,line1.interactedPointofTwoLines(line4).y)
 	line4=Line()

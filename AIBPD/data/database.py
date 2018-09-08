@@ -2,14 +2,16 @@
 # Copyright (c) 2013-2018, Zhichao Tian <tzchao123@qq.com> 
 '''
 import pandas as pd
+import numpy as np
+import csv
 import re
 import os
 from IntelligentBuildingPerformanceDesign.AIBPD.data.preprocessing import PreprocessingCBECS, PreprocessingBEEMR
-
+from IntelligentBuildingPerformanceDesign.__init__ import currentUrl
 class Database():
 	"""docstring for Database"""
 	databaseList=['CBECS2012','BEEMR']
-	databasePath='H:\Codes\IntelligentBuildingPerformanceDesign\\resources\\'
+	databasePath=currentUrl+'\\resources\\'
 	def __init__(self):
 		super(Database, self).__init__()
 
@@ -26,7 +28,7 @@ class Database():
 		elif re.search(databaseName,'BEEMR'):
 			print("Load successfully")
 			self.databasePath=self.databasePath+'BEEMR.csv'
-			return self.loadDatabaseBEEM(self.databasePath+'BEEMR.csv')
+			return self.loadBEEM2DF(self.databasePath+'BEEMR.csv')
 		else:
 			print("Error with find datbase.\n","Available databases include", self.databaseList)
 
@@ -49,7 +51,7 @@ class Database():
 		preprocessDF=PreprocessingCBECS(dataDF)
 		return dataDF
 
-	def loadDatabaseBEEM(self,databaseName):
+	def loadBEEMR2DF(self):
 		'''
 		Load database using pandas DataFrame object.
 		Args:
@@ -57,9 +59,18 @@ class Database():
 		Return:
 			dataDF, pandas DataFrame object
 		'''
-		dataDF=pd.read_csv(databaseName,header=0,encoding='utf8')
-		preprocessDF=PreprocessingBEEMR(dataDF)
-		return dataDF
+		databaseName=self.databasePath+'BEEMR.csv'
+		BEEMRDF=pd.read_csv(databaseName,header=0,encoding='utf8')
+		preprocessDF=PreprocessingBEEMR(BEEMRDF)
+		return preprocessDF
+
+	def loadBEEMR2Array(self):
+		'''
+		load database and save it into numpy array file
+		'''
+		databaseName=self.databasePath+'BEEMR.csv'
+		BEEMRDF=self.loadBEEMR2DF()
+		return BEEMRDF.values
 
 	def existDatabaseList(self):
 		print("Available databases include",self.databaseList)
@@ -70,14 +81,14 @@ class Database():
 		Args:
 			oneBuilding, a Building object.
 		'''
-		
+		pass
 
 
 		
 if __name__ == '__main__':
 	database=Database()
-	CBECS2012DF=database.select('CBECS2012')
-	print(type(CBECS2012DF))
+	BEEMRData=database.loadBEEMR2Array()
+	print(BEEMRData)
 
 
 

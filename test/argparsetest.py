@@ -1,11 +1,12 @@
-import argparse
+import numpy as np
+x=np.array([0,1])
+y=np.array([0,1])
+A = np.vstack([x, np.ones(len(x))]).T
+m, c = np.linalg.lstsq(A, y)[0]
+print(m, c)
 
-parser = argparse.ArgumentParser(description='Process some integers.')
-parser.add_argument('integers', metavar='N', type=int, nargs='+',
-                    help='an integer for the accumulator')
-parser.add_argument('--sum', dest='accumulate', action='store_const',
-                    const=sum, default=max,
-                    help='sum the integers (default: find the max)')
-
-args = parser.parse_args()
-print(args.accumulate(args.integers))
+import matplotlib.pyplot as plt
+plt.plot(x, y, 'o', label='Original data', markersize=10)
+plt.plot(x, m*x + c, 'r', label='Fitted line')
+plt.legend()
+plt.show()

@@ -1,4 +1,3 @@
-#proposedBuilding
 '''
 # Copyright (c) 2013-2018, Zhichao Tian <tzchao123@qq.com> 
 '''
@@ -41,6 +40,9 @@ class Building():
 			#'09' = '"L" shaped'
 			#'10' = '"+" or cross shaped'
 			#'11' = 'Other shape'
+		'residential':1,
+			#'1': Yes
+			#'0': No
 		'principleActivity':2,      
 			#'01' = 'Vacant','02' = 'Office','04' = 'Laboratory',
 			#'05' = 'Nonrefrigerated warehouse'
@@ -136,7 +138,11 @@ class Building():
 		'MAINCL':2, #main cooling system
 		'MAINHT':2, #main heating system
 		'EUICooling':1000000,#cooling energy per square meter
+		'HEEB':1,#high energy efficient building? 1: yes, 2: no.
+		'HEHS':1,#high energy efficient heating system? 1: yes, 2: no.
 		'HECS':1, #high energy efficient cooling system? ,1: yes, 2: no.
+		'HEE4H':1, #high efficient envelop system for heating? 1: yes, 2:no
+		'HEE4C':1, #high efficient envelop system for cooling? 1: yes, 2:no
 		
 		}
 	#
