@@ -6,7 +6,7 @@ import numpy as np
 import csv
 import re
 import os
-from IntelligentBuildingPerformanceDesign.AIBPD.data.preprocessing import PreprocessingCBECS, PreprocessingBEEMR
+from IntelligentBuildingPerformanceDesign.AIBPD.data.preprocessing import PreprocessingCBECS, PreprocessingBEEMR, PreprocessingNYC
 from IntelligentBuildingPerformanceDesign.__init__ import currentUrl
 class Database():
 	"""docstring for Database"""
@@ -14,6 +14,7 @@ class Database():
 	databasePath=currentUrl+'\\resources\\'
 	def __init__(self):
 		super(Database, self).__init__()
+		#self.select(databaseName)
 
 	def select(self,databaseName):
 		'''
@@ -23,14 +24,22 @@ class Database():
 			databaseName, database name
 		'''
 		if re.search(databaseName,'CBECS2012'):
-			print("Load successfully")
+			print("Load CBECS2012 successfully")
 			return self.loadDatabaseCBECS(self.databasePath+'CBECS2012.csv')
 		elif re.search(databaseName,'BEEMR'):
-			print("Load successfully")
-			self.databasePath=self.databasePath+'BEEMR.csv'
+			print("Load BEEMR successfully")
 			return self.loadBEEM2DF(self.databasePath+'BEEMR.csv')
+		elif re.search(databaseName,'nyc_benchmarking_disclosure_data_reported_in_2017'):
+			return self.loadNYC2DF(self.databasePath+'nyc_benchmarking_disclosure_data_reported_in_2017.csv')
 		else:
 			print("Error with find datbase.\n","Available databases include", self.databaseList)
+	def loadNYC2DF(self,path):
+		'''
+
+		'''
+		dataDF=pd.read_csv(path,header=0)
+		preprocessDF=PreprocessingNYC(dataDF)
+		return dataDF
 
 	def addNewDatabase(self,databaseName):
 		absolutePath=databasePath+databaseName
@@ -48,7 +57,6 @@ class Database():
 			databaseName, the name of the database.
 		'''
 		dataDF=pd.read_csv(databaseName,header=0)
-		preprocessDF=PreprocessingCBECS(dataDF)
 		return dataDF
 
 	def loadBEEMR2DF(self):
@@ -87,10 +95,16 @@ class Database():
 		
 if __name__ == '__main__':
 	database=Database()
-	BEEMRData=database.loadBEEMR2Array()
-	print(BEEMRData)
-
-
-
-
-		
+	CBECS_DF=database.select('CBECS2012')
+	Preproc=PreprocessingCBECS()
+	CBECS_DF=Preproc.forHEHSClf(CBECS_DF)
+	print(CBECS_DF)
+	HP=CBECS_DF[CBECS_DF['HEHS']==1.0]
+	MP=CBECS_DF[CBECS_DF['HEHS']==2.0]
+	LP=CBECS_DF[CBECS_DF['HEHS']==3.0]
+	print(HP['EUIHeating'].mean(),HP['EUIHeating'].std())
+	print(MP['EUIHeating'].mean(),MP['EUIHeating'].std())
+	print(LP['EUIHeating'].mean(),LP['EUIHeating'].std())
+	HP[['HDD65Category']].hist(bins=100,density=False)
+	MP[['HDD65Category']].hist(bins=100,density=False)
+	LP[['HDD65Category']].hist(bins=100,density=False)

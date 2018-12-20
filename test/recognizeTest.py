@@ -16,12 +16,7 @@ def draw_min_rect_circle(img, cnts):  # conts = contours
         min_rect = cv2.minAreaRect(cnt)  # min_area_rectangle
         min_rect = np.int0(cv2.boxPoints(min_rect))
         cv2.drawContours(img, [min_rect], 0, (0, 255, 0), 2)  # green
-
-        '''(x, y), radius = cv2.minEnclosingCircle(cnt)
-        center, radius = (int(x), int(y)), int(radius)  # center and radius of minimum enclosing circle
-        img = cv2.circle(img, center, radius, (0, 0, 255), 2)  # red'''
     return img
-
 
 def draw_approx_hull_polygon(img, cnts):
     #img = np.copy(img)

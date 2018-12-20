@@ -18,6 +18,7 @@ class Building():
 			#'Heilongjiang, Jilin, Liangning, Neimenggu'=6
 		'yearOfConstruction':1930,
 		'renovationYear':1980,
+
 		'climateZone': 3, 
 			#Very cold=1, 
 			#cold=2, 
@@ -25,9 +26,16 @@ class Building():
 			#SummerHotWinterWarm=4, 
 			#Warm=5,
 		'CDD65':1500,
+		'heatingDB':-5.5,
+		'coolingDB':35.0,
+		'coolingMCWB':28.5,
+		'CDD18':190,
+		'HDD5':260,
 		'buildingArea': 10000,	#unit:m2
+		'conditionedRatio':0.9, #
 		'numFloorAbove':4,	#unit:-
 		'numFloorBelow':1,	#unit:-
+		'buildingHeightAbove':15,
 		'buildingShape':2,
 			#01' = 'Square'，正方形
 			#'02' = 'Wide rectangle',宽方形
@@ -43,7 +51,7 @@ class Building():
 		'residential':1,
 			#'1': Yes
 			#'0': No
-		'principleActivity':2,      
+		'principleActivity1':2,      
 			#'01' = 'Vacant','02' = 'Office','04' = 'Laboratory',
 			#'05' = 'Nonrefrigerated warehouse'
 			#'06' = 'Food sales','07' = 'Public order and safety',
@@ -54,32 +62,68 @@ class Building():
 			#'23' = 'Strip shopping mall','24' = 'Enclosed mall',
 			#'25' = 'Retail other than mall'
 			#'26' = 'Service','91' = 'Other'
+		'percentagePA1':50,
+		'principleActivity2':2,
+		'percentagePA2':20,
+		'principleActivity3':3,
+		'percentagePA3':10,
+			#the percentage of space of principle activity 3.
+		'otherConditionedPrincipleActivity':4,
+		'percentageOtherConditoned':10,
+		'percentageOtherUnconditioned':10,
+
 		'WWR':0.2,
 		'WWRSouth':0.2,
 		'WWRNorth':0.4,
 		'WWRWest':0.01,
 		'WWREast':0.02,
+		'exWinTpye':1,
+			#1: double glazing glass.
+			#2: triple glazing glass
+			#3: single layer glazing.
+		'exWinConstuction':{},
+			#layer by layer construction
+		'exWinSHGC':0.2,
 		'exWinHTC':2.1,
+
 		'exWinHTCSouth':2.1,
 		'exWinHTCNorth':2.1,
 		'exWinHTCWest':2.1,
 		'exWinHTCEast':2.1,
 		'exWinAirtightness':6,
 		'exDoorAirtightness':3,
-		
+		'percentageOpenableExWin':50,
+		'exWinFrame':1,
+			#1 wood
+			#
+		'exWinFrameHTC':0.3,
+		'shadingType':1,
+		'percentageWindowWithShading':50,
+		'adjustableShading':1,
+			#1 Yes.
+			#2 No.
 		'SC':0.41,
 		'SCSouth':0.41,
 		'SCNorth':0.41,
 		'SCWest':0.41,
 		'SCEast':0.41,
+
+		'roofType':1,
+			#1:flat roof
+			#2:sloping roof
 		'roofHTC':0.6,
-		'roofConstruction':1,
+		'roofConstruction':{},
 			#
 			#
 			#
 			#
 			#
-		'wallConstruction':1,
+		'exWallType':1,
+			#1:brick with insulation.
+			#2:lightconcrete brick with insulation.
+			#3:hollow black.
+
+		'exWallConstruction':{},
 			#'brick no insultion' = '1'
 			#'light concrete brick wall with insulation' = '2'
 			#'brick wall with insulation' = '3'
@@ -88,7 +132,8 @@ class Building():
 		'exWallHTC':0.8,
 		'overHeadFloorHTC':1.2,
 		'floorHTC':2.0,
-		'exWinAirTightness':6,
+
+		
 		'peoplePerArea':0.2,
 		'numPeople':1500,
 		'lightingType':1,

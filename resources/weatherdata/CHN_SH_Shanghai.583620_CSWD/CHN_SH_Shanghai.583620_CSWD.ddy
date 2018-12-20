@@ -1,0 +1,2311 @@
+ ! The following Location and Design Day data are produced as possible from the indicated data source.
+ ! Wind Speeds follow the indicated design conditions rather than traditional values (6.7 m/s heating, 3.35 m/s cooling)
+ ! No special attempts at re-creating or determining missing data parts (e.g. Wind speed or direction)
+ ! are done.  Therefore, you should look at the data and fill in any incorrect values as you desire.
+ 
+ ! SizingPeriod:DesignDay and other objects are formatted to meet criteria of EnergyPlus V7.1 and later
+ 
+ ! Some users have indicated that they would like the actual day of week from the weather file to be
+ ! used as the start day of week for a RunPeriod even though this is relatively meaningless for
+ ! TMY data files as future months will not use their start days of week (simulations need to show
+ ! continuity in day of week presentation).
+ 
+ ! In an effort to accomodate, the following RunPeriod object is included:
+ ! Note JAN 1, 2005 is a Saturday
+ 
+ RunPeriod,
+ Weather Data,    ! Name
+   1,             ! Begin Month
+   1,             ! Begin Day of Month
+   12,            ! End Month
+   31,            ! End Day of Month
+ Saturday,      ! Day of Week for Start Day
+   No,            ! Use Weather File Holidays and Special Days
+   No,            ! Use Weather File Daylight Saving Period
+  Yes,            ! Apply Weekend Holiday Rule
+  Yes,            ! Use Weather File Rain Indicators
+  Yes;            ! Use Weather File Snow Indicators
+ 
+ Site:Location,
+  Shanghai_Shanghai_CHN Design_Conditions,     !- Location Name
+      31.40,     !- Latitude {N+ S-}
+     121.45,     !- Longitude {W- E+}
+       8.00,     !- Time Zone Relative to GMT {GMT+/-}
+       5.50;     !- Elevation {m}
+  
+ ! The following Sizing Period objects for Extreme and Typical conditions are calculated
+ ! from the extreme (if any) and typical conditions on the weather source data.
+ ! The actual weeks that will be used will exist on the weather file.
+  
+ SizingPeriod:WeatherFileConditionType,
+   Summer Extreme,
+   SummerExtreme,
+   SummerDesignDay,
+   Yes,                !- Use Weather File Daylight Saving Period
+   Yes;                !- Use Weather File Rain and Snow Indicators
+ SizingPeriod:WeatherFileConditionType,
+   Summer Typical,
+   SummerTypical,
+   Monday,
+   Yes,                !- Use Weather File Daylight Saving Period
+   Yes;                !- Use Weather File Rain and Snow Indicators
+ SizingPeriod:WeatherFileConditionType,
+   Winter Extreme,
+   WinterExtreme,
+   WinterDesignDay,
+   Yes,                !- Use Weather File Daylight Saving Period
+   Yes;                !- Use Weather File Rain and Snow Indicators
+ SizingPeriod:WeatherFileConditionType,
+   Winter Typical,
+   WinterTypical,
+   Monday,
+   Yes,                !- Use Weather File Daylight Saving Period
+   Yes;                !- Use Weather File Rain and Snow Indicators
+ SizingPeriod:WeatherFileConditionType,
+   Autumn Typical,
+   AutumnTypical,
+   Monday,
+   Yes,                !- Use Weather File Daylight Saving Period
+   Yes;                !- Use Weather File Rain and Snow Indicators
+ SizingPeriod:WeatherFileConditionType,
+   Spring Typical,
+   SpringTypical,
+   Monday,
+   Yes,                !- Use Weather File Daylight Saving Period
+   Yes;                !- Use Weather File Rain and Snow Indicators
+ 
+
+
+ ! Site:Precipitation. RoofIrrigation and Schedule:File objects for rainfall
+ ! No rainfall on source file
+ ! Objects provided, but commented out, for user convenience.
+ ! Site:Precipitation,  
+ !   ScheduleAndDesignLevel,  !- Precipitation Model Type
+ !   ,  !- Design Level for Total Annual Preciptation
+ !   Rainfall Data from User,    !- Precipitation Rates Schedule Name
+ !   ;  !- Average Total Annual Precipitation
+ 
+ ! RoofIrrigation,  
+ !   Schedule,  !- Irridation Model Type
+ !   Rainfall Data from User,    !- Precipitation Rates Schedule Name
+ !   ;  !- Irrigation Maximum Saturation Threshold (default used)
+ 
+ ! Schedule:File, 
+ !   Rainfall Data from User,  !- Name
+ !   ,                       !- Schedule Type Limits Name
+ !   CHN_SH_Shanghai.583620_CSWD.rain,    !- File Name
+ !   1,                       !- Column Number
+ !   1,                       !- Rows to Skip at Top
+ !   8760;    !- Number of Hours of Data
+ 
+ !  WMO=583620 Time Zone= GMT+8.0 Code=CHN: (GMT+08:00) Beijing, Chongqing, Hong Kong, Urumqi
+ !  Data Source="2017 ASHRAE Handbook -- Fundamentals - Chapter 14 Climatic Design Information"
+
+ 
+ ! ======================= Annual Design Conditions SizingPeriod:DesignDay ======================
+ ! The following annual design conditions are reproduced from the climate data shown above.
+ ! Heating - 99%, 99.6%; Cooling - .4%, 1%, 2% for several humidity, etc conditions
+ !
+ ! Shanghai_Shanghai_CHN Extreme Annual Wind Speeds, 1%=7.5m/s, 2.5%=6.6m/s, 5%=6m/s
+ ! Shanghai_Shanghai_CHN Extreme Annual Temperatures, Max Drybulb=37C Min Drybulb=1.2C
+  
+ ! Shanghai_Shanghai_CHN ASHRAE Climate Zone=3A
+  
+ ! Shanghai_Shanghai_CHN Annual Heating Design Conditions Wind Speed=2.7m/s Wind Dir=270
+ ! Coldest Month=JAN
+ ! Shanghai_Shanghai_CHN Annual Heating 99.6%, MaxDB=-2.1C
+ SizingPeriod:DesignDay,
+  Shanghai Ann Htg 99.6% Condns DB,     !- Name
+          1,      !- Month
+         21,      !- Day of Month
+  WinterDesignDay,!- Day Type
+       -2.1,      !- Maximum Dry-Bulb Temperature {C}
+        0.0,      !- Daily Dry-Bulb Temperature Range {C}
+ DefaultMultipliers, !- Dry-Bulb Temperature Range Modifier Type
+           ,      !- Dry-Bulb Temperature Range Modifier Day Schedule Name
+    Wetbulb,      !- Humidity Condition Type
+       -2.1,      !- Wetbulb at Maximum Dry-Bulb {C}
+           ,      !- Humidity Indicating Day Schedule Name
+           ,      !- Humidity Ratio at Maximum Dry-Bulb {kgWater/kgDryAir}
+           ,      !- Enthalpy at Maximum Dry-Bulb {J/kg}
+           ,      !- Daily Wet-Bulb Temperature Range {deltaC}
+    101259.,      !- Barometric Pressure {Pa}
+        2.7,      !- Wind Speed {m/s} design conditions vs. traditional 6.71 m/s (15 mph)
+        270,      !- Wind Direction {Degrees; N=0, S=180}
+         No,      !- Rain {Yes/No}
+         No,      !- Snow on ground {Yes/No}
+         No,      !- Daylight Savings Time Indicator
+  ASHRAEClearSky, !- Solar Model Indicator
+           ,      !- Beam Solar Day Schedule Name
+           ,      !- Diffuse Solar Day Schedule Name
+           ,      !- ASHRAE Clear Sky Optical Depth for Beam Irradiance (taub)
+           ,      !- ASHRAE Clear Sky Optical Depth for Diffuse Irradiance (taud)
+       0.00;      !- Clearness {0.0 to 1.1}
+ 
+ ! Shanghai_Shanghai_CHN Annual Heating 99%, MaxDB=-0.7C
+ SizingPeriod:DesignDay,
+  Shanghai Ann Htg 99% Condns DB,     !- Name
+          1,      !- Month
+         21,      !- Day of Month
+  WinterDesignDay,!- Day Type
+       -0.7,      !- Maximum Dry-Bulb Temperature {C}
+        0.0,      !- Daily Dry-Bulb Temperature Range {C}
+ DefaultMultipliers, !- Dry-Bulb Temperature Range Modifier Type
+           ,      !- Dry-Bulb Temperature Range Modifier Day Schedule Name
+    Wetbulb,      !- Humidity Condition Type
+       -0.7,      !- Wetbulb at Maximum Dry-Bulb {C}
+           ,      !- Humidity Indicating Day Schedule Name
+           ,      !- Humidity Ratio at Maximum Dry-Bulb {kgWater/kgDryAir}
+           ,      !- Enthalpy at Maximum Dry-Bulb {J/kg}
+           ,      !- Daily Wet-Bulb Temperature Range {deltaC}
+    101259.,      !- Barometric Pressure {Pa}
+        2.7,      !- Wind Speed {m/s} design conditions vs. traditional 6.71 m/s (15 mph)
+        270,      !- Wind Direction {Degrees; N=0, S=180}
+         No,      !- Rain {Yes/No}
+         No,      !- Snow on ground {Yes/No}
+         No,      !- Daylight Savings Time Indicator
+  ASHRAEClearSky, !- Solar Model Indicator
+           ,      !- Beam Solar Day Schedule Name
+           ,      !- Diffuse Solar Day Schedule Name
+           ,      !- ASHRAE Clear Sky Optical Depth for Beam Irradiance (taub)
+           ,      !- ASHRAE Clear Sky Optical Depth for Diffuse Irradiance (taud)
+       0.00;      !- Clearness {0.0 to 1.1}
+ 
+ ! Shanghai_Shanghai_CHN Annual Humidification 99.6% Design Conditions DP=>MCDB, DP=-12.1C
+ SizingPeriod:DesignDay,
+  Shanghai Ann Hum_n 99.6% Condns DP=>MCDB,     !- Name
+          1,      !- Month
+         21,      !- Day of Month
+  WinterDesignDay,!- Day Type
+        1.6,      !- Maximum Dry-Bulb Temperature {C}
+        0.0,      !- Daily Dry-Bulb Temperature Range {C}
+ DefaultMultipliers, !- Dry-Bulb Temperature Range Modifier Type
+           ,      !- Dry-Bulb Temperature Range Modifier Day Schedule Name
+    Dewpoint,     !- Humidity Condition Type
+      -12.1,      !- Dewpoint at Maximum Dry-Bulb {C}
+           ,      !- Humidity Indicating Day Schedule Name
+           ,      !- Humidity Ratio at Maximum Dry-Bulb {kgWater/kgDryAir}
+           ,      !- Enthalpy at Maximum Dry-Bulb {J/kg}
+           ,      !- Daily Wet-Bulb Temperature Range {deltaC}
+    101259.,      !- Barometric Pressure {Pa}
+        2.7,      !- Wind Speed {m/s} design conditions vs. traditional 6.71 m/s (15 mph)
+        270,      !- Wind Direction {Degrees; N=0, S=180}
+         No,      !- Rain {Yes/No}
+         No,      !- Snow on ground {Yes/No}
+         No,      !- Daylight Savings Time Indicator
+  ASHRAEClearSky, !- Solar Model Indicator
+           ,      !- Beam Solar Day Schedule Name
+           ,      !- Diffuse Solar Day Schedule Name
+           ,      !- ASHRAE Clear Sky Optical Depth for Beam Irradiance (taub)
+           ,      !- ASHRAE Clear Sky Optical Depth for Diffuse Irradiance (taud)
+       0.00;      !- Clearness {0.0 to 1.1}
+ 
+ ! Shanghai_Shanghai_CHN Annual Humidification 99% Design Conditions DP=>MCDB, DP=-9.7C
+ SizingPeriod:DesignDay,
+  Shanghai Ann Hum_n 99% Condns DP=>MCDB,     !- Name
+          1,      !- Month
+         21,      !- Day of Month
+  WinterDesignDay,!- Day Type
+        2.2,      !- Maximum Dry-Bulb Temperature {C}
+        0.0,      !- Daily Dry-Bulb Temperature Range {C}
+ DefaultMultipliers, !- Dry-Bulb Temperature Range Modifier Type
+           ,      !- Dry-Bulb Temperature Range Modifier Day Schedule Name
+    Dewpoint,     !- Humidity Condition Type
+       -9.7,      !- Dewpoint at Maximum Dry-Bulb {C}
+           ,      !- Humidity Indicating Day Schedule Name
+           ,      !- Humidity Ratio at Maximum Dry-Bulb {kgWater/kgDryAir}
+           ,      !- Enthalpy at Maximum Dry-Bulb {J/kg}
+           ,      !- Daily Wet-Bulb Temperature Range {deltaC}
+    101259.,      !- Barometric Pressure {Pa}
+        2.7,      !- Wind Speed {m/s} design conditions vs. traditional 6.71 m/s (15 mph)
+        270,      !- Wind Direction {Degrees; N=0, S=180}
+         No,      !- Rain {Yes/No}
+         No,      !- Snow on ground {Yes/No}
+         No,      !- Daylight Savings Time Indicator
+  ASHRAEClearSky, !- Solar Model Indicator
+           ,      !- Beam Solar Day Schedule Name
+           ,      !- Diffuse Solar Day Schedule Name
+           ,      !- ASHRAE Clear Sky Optical Depth for Beam Irradiance (taub)
+           ,      !- ASHRAE Clear Sky Optical Depth for Diffuse Irradiance (taud)
+       0.00;      !- Clearness {0.0 to 1.1}
+ 
+ ! Shanghai_Shanghai_CHN Annual Heating Wind 99.6% Design Conditions WS=>MCDB, WS=7.7m/s
+ SizingPeriod:DesignDay,
+  Shanghai Ann Htg Wind 99.6% Condns WS=>MCDB,     !- Name
+          1,      !- Month
+         21,      !- Day of Month
+  WinterDesignDay,!- Day Type
+        4.8,      !- Maximum Dry-Bulb Temperature {C}
+        0.0,      !- Daily Dry-Bulb Temperature Range {C}
+ DefaultMultipliers, !- Dry-Bulb Temperature Range Modifier Type
+           ,      !- Dry-Bulb Temperature Range Modifier Day Schedule Name
+    Wetbulb,      !- Humidity Condition Type
+        4.8,      !- Wetbulb at Maximum Dry-Bulb {C}
+           ,      !- Humidity Indicating Day Schedule Name
+           ,      !- Humidity Ratio at Maximum Dry-Bulb {kgWater/kgDryAir}
+           ,      !- Enthalpy at Maximum Dry-Bulb {J/kg}
+           ,      !- Daily Wet-Bulb Temperature Range {deltaC}
+    101259.,      !- Barometric Pressure {Pa}
+        7.7,      !- Wind Speed {m/s} design conditions vs. traditional 6.71 m/s (15 mph)
+        270,      !- Wind Direction {Degrees; N=0, S=180}
+         No,      !- Rain {Yes/No}
+         No,      !- Snow on ground {Yes/No}
+         No,      !- Daylight Savings Time Indicator
+  ASHRAEClearSky, !- Solar Model Indicator
+           ,      !- Beam Solar Day Schedule Name
+           ,      !- Diffuse Solar Day Schedule Name
+           ,      !- ASHRAE Clear Sky Optical Depth for Beam Irradiance (taub)
+           ,      !- ASHRAE Clear Sky Optical Depth for Diffuse Irradiance (taud)
+       0.00;      !- Clearness {0.0 to 1.1}
+ 
+ ! Shanghai_Shanghai_CHN Annual Heating Wind 99% Design Conditions WS=>MCDB, WS=7.1m/s
+ SizingPeriod:DesignDay,
+  Shanghai Ann Htg Wind 99% Condns WS=>MCDB,     !- Name
+          1,      !- Month
+         21,      !- Day of Month
+  WinterDesignDay,!- Day Type
+        4.5,      !- Maximum Dry-Bulb Temperature {C}
+        0.0,      !- Daily Dry-Bulb Temperature Range {C}
+ DefaultMultipliers, !- Dry-Bulb Temperature Range Modifier Type
+           ,      !- Dry-Bulb Temperature Range Modifier Day Schedule Name
+    Wetbulb,      !- Humidity Condition Type
+        4.5,      !- Wetbulb at Maximum Dry-Bulb {C}
+           ,      !- Humidity Indicating Day Schedule Name
+           ,      !- Humidity Ratio at Maximum Dry-Bulb {kgWater/kgDryAir}
+           ,      !- Enthalpy at Maximum Dry-Bulb {J/kg}
+           ,      !- Daily Wet-Bulb Temperature Range {deltaC}
+    101259.,      !- Barometric Pressure {Pa}
+        7.1,      !- Wind Speed {m/s} design conditions vs. traditional 6.71 m/s (15 mph)
+        270,      !- Wind Direction {Degrees; N=0, S=180}
+         No,      !- Rain {Yes/No}
+         No,      !- Snow on ground {Yes/No}
+         No,      !- Daylight Savings Time Indicator
+  ASHRAEClearSky, !- Solar Model Indicator
+           ,      !- Beam Solar Day Schedule Name
+           ,      !- Diffuse Solar Day Schedule Name
+           ,      !- ASHRAE Clear Sky Optical Depth for Beam Irradiance (taub)
+           ,      !- ASHRAE Clear Sky Optical Depth for Diffuse Irradiance (taud)
+       0.00;      !- Clearness {0.0 to 1.1}
+ 
+ ! Shanghai Annual Cooling Design Conditions Wind Speed=3.6m/s Wind Dir=250
+ ! Hottest Month=JUL
+ ! Shanghai_Shanghai_CHN Annual Cooling (DB=>MWB) .4%, MaxDB=35.3C MWB=26.6C
+ SizingPeriod:DesignDay,
+  Shanghai Ann Clg .4% Condns DB=>MWB,     !- Name
+          7,      !- Month
+         21,      !- Day of Month
+  SummerDesignDay,!- Day Type
+       35.3,      !- Maximum Dry-Bulb Temperature {C}
+        5.7,      !- Daily Dry-Bulb Temperature Range {C}
+ DefaultMultipliers, !- Dry-Bulb Temperature Range Modifier Type
+           ,      !- Dry-Bulb Temperature Range Modifier Day Schedule Name
+    Wetbulb,      !- Humidity Condition Type
+       26.6,      !- Wetbulb at Maximum Dry-Bulb {C}
+           ,      !- Humidity Indicating Day Schedule Name
+           ,      !- Humidity Ratio at Maximum Dry-Bulb {kgWater/kgDryAir}
+           ,      !- Enthalpy at Maximum Dry-Bulb {J/kg}
+           ,      !- Daily Wet-Bulb Temperature Range {deltaC}
+    101259.,      !- Barometric Pressure {Pa}
+        3.6,      !- Wind Speed {m/s} design conditions vs. traditional 3.35 m/s (7mph)
+        250,      !- Wind Direction {Degrees; N=0, S=180}
+         No,      !- Rain {Yes/No}
+         No,      !- Snow on ground {Yes/No}
+         No,      !- Daylight Savings Time Indicator
+       ASHRAETau, !- Solar Model Indicator
+           ,      !- Beam Solar Day Schedule Name
+           ,      !- Diffuse Solar Day Schedule Name
+      0.689,      !- ASHRAE Clear Sky Optical Depth for Beam Irradiance (taub)
+      1.714;      !- ASHRAE Clear Sky Optical Depth for Diffuse Irradiance (taud)
+ 
+ ! Shanghai_Shanghai_CHN Annual Cooling (DB=>MWB) 1%, MaxDB=34C MWB=26.5C
+ SizingPeriod:DesignDay,
+  Shanghai Ann Clg 1% Condns DB=>MWB,     !- Name
+          7,      !- Month
+         21,      !- Day of Month
+  SummerDesignDay,!- Day Type
+         34,      !- Maximum Dry-Bulb Temperature {C}
+        5.7,      !- Daily Dry-Bulb Temperature Range {C}
+ DefaultMultipliers, !- Dry-Bulb Temperature Range Modifier Type
+           ,      !- Dry-Bulb Temperature Range Modifier Day Schedule Name
+    Wetbulb,      !- Humidity Condition Type
+       26.5,      !- Wetbulb at Maximum Dry-Bulb {C}
+           ,      !- Humidity Indicating Day Schedule Name
+           ,      !- Humidity Ratio at Maximum Dry-Bulb {kgWater/kgDryAir}
+           ,      !- Enthalpy at Maximum Dry-Bulb {J/kg}
+           ,      !- Daily Wet-Bulb Temperature Range {deltaC}
+    101259.,      !- Barometric Pressure {Pa}
+        3.6,      !- Wind Speed {m/s} design conditions vs. traditional 3.35 m/s (7mph)
+        250,      !- Wind Direction {Degrees; N=0, S=180}
+         No,      !- Rain {Yes/No}
+         No,      !- Snow on ground {Yes/No}
+         No,      !- Daylight Savings Time Indicator
+       ASHRAETau, !- Solar Model Indicator
+           ,      !- Beam Solar Day Schedule Name
+           ,      !- Diffuse Solar Day Schedule Name
+      0.689,      !- ASHRAE Clear Sky Optical Depth for Beam Irradiance (taub)
+      1.714;      !- ASHRAE Clear Sky Optical Depth for Diffuse Irradiance (taud)
+ 
+ ! Shanghai_Shanghai_CHN Annual Cooling (DB=>MWB) 2%, MaxDB=32.8C MWB=26.2C
+ SizingPeriod:DesignDay,
+  Shanghai Ann Clg 2% Condns DB=>MWB,     !- Name
+          7,      !- Month
+         21,      !- Day of Month
+  SummerDesignDay,!- Day Type
+       32.8,      !- Maximum Dry-Bulb Temperature {C}
+        5.7,      !- Daily Dry-Bulb Temperature Range {C}
+ DefaultMultipliers, !- Dry-Bulb Temperature Range Modifier Type
+           ,      !- Dry-Bulb Temperature Range Modifier Day Schedule Name
+    Wetbulb,      !- Humidity Condition Type
+       26.2,      !- Wetbulb at Maximum Dry-Bulb {C}
+           ,      !- Humidity Indicating Day Schedule Name
+           ,      !- Humidity Ratio at Maximum Dry-Bulb {kgWater/kgDryAir}
+           ,      !- Enthalpy at Maximum Dry-Bulb {J/kg}
+           ,      !- Daily Wet-Bulb Temperature Range {deltaC}
+    101259.,      !- Barometric Pressure {Pa}
+        3.6,      !- Wind Speed {m/s} design conditions vs. traditional 3.35 m/s (7mph)
+        250,      !- Wind Direction {Degrees; N=0, S=180}
+         No,      !- Rain {Yes/No}
+         No,      !- Snow on ground {Yes/No}
+         No,      !- Daylight Savings Time Indicator
+       ASHRAETau, !- Solar Model Indicator
+           ,      !- Beam Solar Day Schedule Name
+           ,      !- Diffuse Solar Day Schedule Name
+      0.689,      !- ASHRAE Clear Sky Optical Depth for Beam Irradiance (taub)
+      1.714;      !- ASHRAE Clear Sky Optical Depth for Diffuse Irradiance (taud)
+ 
+ ! Shanghai_Shanghai_CHN Annual Cooling (WB=>MDB) .4%, MDB=32.4C WB=27.8C
+ SizingPeriod:DesignDay,
+  Shanghai Ann Clg .4% Condns WB=>MDB,     !- Name
+          7,      !- Month
+         21,      !- Day of Month
+  SummerDesignDay,!- Day Type
+       32.4,      !- Maximum Dry-Bulb Temperature {C}
+        5.7,      !- Daily Dry-Bulb Temperature Range {C}
+ DefaultMultipliers, !- Dry-Bulb Temperature Range Modifier Type
+           ,      !- Dry-Bulb Temperature Range Modifier Day Schedule Name
+    Wetbulb,      !- Humidity Condition Type
+       27.8,      !- Wetbulb at Maximum Dry-Bulb {C}
+           ,      !- Humidity Indicating Day Schedule Name
+           ,      !- Humidity Ratio at Maximum Dry-Bulb {kgWater/kgDryAir}
+           ,      !- Enthalpy at Maximum Dry-Bulb {J/kg}
+           ,      !- Daily Wet-Bulb Temperature Range {deltaC}
+    101259.,      !- Barometric Pressure {Pa}
+        3.6,      !- Wind Speed {m/s} design conditions vs. traditional 3.35 m/s (7mph)
+        250,      !- Wind Direction {Degrees; N=0, S=180}
+         No,      !- Rain {Yes/No}
+         No,      !- Snow on ground {Yes/No}
+         No,      !- Daylight Savings Time Indicator
+       ASHRAETau, !- Solar Model Indicator
+           ,      !- Beam Solar Day Schedule Name
+           ,      !- Diffuse Solar Day Schedule Name
+      0.689,      !- ASHRAE Clear Sky Optical Depth for Beam Irradiance (taub)
+      1.714;      !- ASHRAE Clear Sky Optical Depth for Diffuse Irradiance (taud)
+ 
+ ! Shanghai_Shanghai_CHN Annual Cooling (WB=>MDB) 1%, MDB=31.6C WB=27.3C
+ SizingPeriod:DesignDay,
+  Shanghai Ann Clg 1% Condns WB=>MDB,     !- Name
+          7,      !- Month
+         21,      !- Day of Month
+  SummerDesignDay,!- Day Type
+       31.6,      !- Maximum Dry-Bulb Temperature {C}
+        5.7,      !- Daily Dry-Bulb Temperature Range {C}
+ DefaultMultipliers, !- Dry-Bulb Temperature Range Modifier Type
+           ,      !- Dry-Bulb Temperature Range Modifier Day Schedule Name
+    Wetbulb,      !- Humidity Condition Type
+       27.3,      !- Wetbulb at Maximum Dry-Bulb {C}
+           ,      !- Humidity Indicating Day Schedule Name
+           ,      !- Humidity Ratio at Maximum Dry-Bulb {kgWater/kgDryAir}
+           ,      !- Enthalpy at Maximum Dry-Bulb {J/kg}
+           ,      !- Daily Wet-Bulb Temperature Range {deltaC}
+    101259.,      !- Barometric Pressure {Pa}
+        3.6,      !- Wind Speed {m/s} design conditions vs. traditional 3.35 m/s (7mph)
+        250,      !- Wind Direction {Degrees; N=0, S=180}
+         No,      !- Rain {Yes/No}
+         No,      !- Snow on ground {Yes/No}
+         No,      !- Daylight Savings Time Indicator
+       ASHRAETau, !- Solar Model Indicator
+           ,      !- Beam Solar Day Schedule Name
+           ,      !- Diffuse Solar Day Schedule Name
+      0.689,      !- ASHRAE Clear Sky Optical Depth for Beam Irradiance (taub)
+      1.714;      !- ASHRAE Clear Sky Optical Depth for Diffuse Irradiance (taud)
+ 
+ ! Shanghai_Shanghai_CHN Annual Cooling (WB=>MDB) 2%, MDB=31C WB=26.9C
+ SizingPeriod:DesignDay,
+  Shanghai Ann Clg 2% Condns WB=>MDB,     !- Name
+          7,      !- Month
+         21,      !- Day of Month
+  SummerDesignDay,!- Day Type
+         31,      !- Maximum Dry-Bulb Temperature {C}
+        5.7,      !- Daily Dry-Bulb Temperature Range {C}
+ DefaultMultipliers, !- Dry-Bulb Temperature Range Modifier Type
+           ,      !- Dry-Bulb Temperature Range Modifier Day Schedule Name
+    Wetbulb,      !- Humidity Condition Type
+       26.9,      !- Wetbulb at Maximum Dry-Bulb {C}
+           ,      !- Humidity Indicating Day Schedule Name
+           ,      !- Humidity Ratio at Maximum Dry-Bulb {kgWater/kgDryAir}
+           ,      !- Enthalpy at Maximum Dry-Bulb {J/kg}
+           ,      !- Daily Wet-Bulb Temperature Range {deltaC}
+    101259.,      !- Barometric Pressure {Pa}
+        3.6,      !- Wind Speed {m/s} design conditions vs. traditional 3.35 m/s (7mph)
+        250,      !- Wind Direction {Degrees; N=0, S=180}
+         No,      !- Rain {Yes/No}
+         No,      !- Snow on ground {Yes/No}
+         No,      !- Daylight Savings Time Indicator
+       ASHRAETau, !- Solar Model Indicator
+           ,      !- Beam Solar Day Schedule Name
+           ,      !- Diffuse Solar Day Schedule Name
+      0.689,      !- ASHRAE Clear Sky Optical Depth for Beam Irradiance (taub)
+      1.714;      !- ASHRAE Clear Sky Optical Depth for Diffuse Irradiance (taud)
+ 
+ ! Shanghai_Shanghai_CHN Annual Cooling (DP=>MDB) .4%, MDB=30.4C DP=26.6C HR=0.0222
+ SizingPeriod:DesignDay,
+  Shanghai Ann Clg .4% Condns DP=>MDB,     !- Name
+          7,      !- Month
+         21,      !- Day of Month
+  SummerDesignDay,!- Day Type
+       30.4,      !- Maximum Dry-Bulb Temperature {C}
+        5.7,      !- Daily Dry-Bulb Temperature Range {C}
+ DefaultMultipliers, !- Dry-Bulb Temperature Range Modifier Type
+           ,      !- Dry-Bulb Temperature Range Modifier Day Schedule Name
+    Dewpoint,     !- Humidity Condition Type
+       26.6,      !- Dewpoint at Maximum Dry-Bulb {C}
+           ,      !- Humidity Indicating Day Schedule Name
+           ,      !- Humidity Ratio at Maximum Dry-Bulb {kgWater/kgDryAir}
+           ,      !- Enthalpy at Maximum Dry-Bulb {J/kg}
+           ,      !- Daily Wet-Bulb Temperature Range {deltaC}
+    101259.,      !- Barometric Pressure {Pa}
+        3.6,      !- Wind Speed {m/s} design conditions vs. traditional 3.35 m/s (7mph)
+        250,      !- Wind Direction {Degrees; N=0, S=180}
+         No,      !- Rain {Yes/No}
+         No,      !- Snow on ground {Yes/No}
+         No,      !- Daylight Savings Time Indicator
+       ASHRAETau, !- Solar Model Indicator
+           ,      !- Beam Solar Day Schedule Name
+           ,      !- Diffuse Solar Day Schedule Name
+      0.689,      !- ASHRAE Clear Sky Optical Depth for Beam Irradiance (taub)
+      1.714;      !- ASHRAE Clear Sky Optical Depth for Diffuse Irradiance (taud)
+ 
+ ! Shanghai_Shanghai_CHN Annual Cooling (DP=>MDB) 1%, MDB=29.8C DP=26.2C HR=0.0216
+ SizingPeriod:DesignDay,
+  Shanghai Ann Clg 1% Condns DP=>MDB,     !- Name
+          7,      !- Month
+         21,      !- Day of Month
+  SummerDesignDay,!- Day Type
+       29.8,      !- Maximum Dry-Bulb Temperature {C}
+        5.7,      !- Daily Dry-Bulb Temperature Range {C}
+ DefaultMultipliers, !- Dry-Bulb Temperature Range Modifier Type
+           ,      !- Dry-Bulb Temperature Range Modifier Day Schedule Name
+    Dewpoint,     !- Humidity Condition Type
+       26.2,      !- Dewpoint at Maximum Dry-Bulb {C}
+           ,      !- Humidity Indicating Day Schedule Name
+           ,      !- Humidity Ratio at Maximum Dry-Bulb {kgWater/kgDryAir}
+           ,      !- Enthalpy at Maximum Dry-Bulb {J/kg}
+           ,      !- Daily Wet-Bulb Temperature Range {deltaC}
+    101259.,      !- Barometric Pressure {Pa}
+        3.6,      !- Wind Speed {m/s} design conditions vs. traditional 3.35 m/s (7mph)
+        250,      !- Wind Direction {Degrees; N=0, S=180}
+         No,      !- Rain {Yes/No}
+         No,      !- Snow on ground {Yes/No}
+         No,      !- Daylight Savings Time Indicator
+       ASHRAETau, !- Solar Model Indicator
+           ,      !- Beam Solar Day Schedule Name
+           ,      !- Diffuse Solar Day Schedule Name
+      0.689,      !- ASHRAE Clear Sky Optical Depth for Beam Irradiance (taub)
+      1.714;      !- ASHRAE Clear Sky Optical Depth for Diffuse Irradiance (taud)
+ 
+ ! Shanghai_Shanghai_CHN Annual Cooling (DP=>MDB) 2%, MDB=29.5C DP=25.7C HR=0.0210
+ SizingPeriod:DesignDay,
+  Shanghai Ann Clg 2% Condns DP=>MDB,     !- Name
+          7,      !- Month
+         21,      !- Day of Month
+  SummerDesignDay,!- Day Type
+       29.5,      !- Maximum Dry-Bulb Temperature {C}
+        5.7,      !- Daily Dry-Bulb Temperature Range {C}
+ DefaultMultipliers, !- Dry-Bulb Temperature Range Modifier Type
+           ,      !- Dry-Bulb Temperature Range Modifier Day Schedule Name
+    Dewpoint,     !- Humidity Condition Type
+       25.7,      !- Dewpoint at Maximum Dry-Bulb {C}
+           ,      !- Humidity Indicating Day Schedule Name
+           ,      !- Humidity Ratio at Maximum Dry-Bulb {kgWater/kgDryAir}
+           ,      !- Enthalpy at Maximum Dry-Bulb {J/kg}
+           ,      !- Daily Wet-Bulb Temperature Range {deltaC}
+    101259.,      !- Barometric Pressure {Pa}
+        3.6,      !- Wind Speed {m/s} design conditions vs. traditional 3.35 m/s (7mph)
+        250,      !- Wind Direction {Degrees; N=0, S=180}
+         No,      !- Rain {Yes/No}
+         No,      !- Snow on ground {Yes/No}
+         No,      !- Daylight Savings Time Indicator
+       ASHRAETau, !- Solar Model Indicator
+           ,      !- Beam Solar Day Schedule Name
+           ,      !- Diffuse Solar Day Schedule Name
+      0.689,      !- ASHRAE Clear Sky Optical Depth for Beam Irradiance (taub)
+      1.714;      !- ASHRAE Clear Sky Optical Depth for Diffuse Irradiance (taud)
+ 
+ ! Shanghai_Shanghai_CHN Annual Cooling (Enthalpy=>MDB) .4%, MDB=32.6C Enthalpy=89100.0J/kg
+ SizingPeriod:DesignDay,
+  Shanghai Ann Clg .4% Condns Enth=>MDB,     !- Name
+          7,      !- Month
+         21,      !- Day of Month
+  SummerDesignDay,!- Day Type
+       32.6,      !- Maximum Dry-Bulb Temperature {C}
+        5.7,      !- Daily Dry-Bulb Temperature Range {C}
+ DefaultMultipliers, !- Dry-Bulb Temperature Range Modifier Type
+           ,      !- Dry-Bulb Temperature Range Modifier Day Schedule Name
+   Enthalpy,      !- Humidity Condition Type
+           ,      !- Wetbulb or Dewpoint at Maximum Dry-Bulb
+           ,      !- Humidity Indicating Day Schedule Name
+           ,      !- Humidity Ratio at Maximum Dry-Bulb {kgWater/kgDryAir}
+    89100.0,      !- Enthalpy at Maximum Dry-Bulb {J/kg}
+           ,      !- Daily Wet-Bulb Temperature Range {deltaC}
+    101259.,      !- Barometric Pressure {Pa}
+        3.6,      !- Wind Speed {m/s} design conditions vs. traditional 3.35 m/s (7mph)
+        250,      !- Wind Direction {Degrees; N=0, S=180}
+         No,      !- Rain {Yes/No}
+         No,      !- Snow on ground {Yes/No}
+         No,      !- Daylight Savings Time Indicator
+       ASHRAETau, !- Solar Model Indicator
+           ,      !- Beam Solar Day Schedule Name
+           ,      !- Diffuse Solar Day Schedule Name
+      0.689,      !- ASHRAE Clear Sky Optical Depth for Beam Irradiance (taub)
+      1.714;      !- ASHRAE Clear Sky Optical Depth for Diffuse Irradiance (taud)
+ 
+ ! Shanghai_Shanghai_CHN Annual Cooling (Enthalpy=>MDB) 1%, MDB=31.9C Enthalpy=86700.0J/kg
+ SizingPeriod:DesignDay,
+  Shanghai Ann Clg 1% Condns Enth=>MDB,     !- Name
+          7,      !- Month
+         21,      !- Day of Month
+  SummerDesignDay,!- Day Type
+       31.9,      !- Maximum Dry-Bulb Temperature {C}
+        5.7,      !- Daily Dry-Bulb Temperature Range {C}
+ DefaultMultipliers, !- Dry-Bulb Temperature Range Modifier Type
+           ,      !- Dry-Bulb Temperature Range Modifier Day Schedule Name
+   Enthalpy,      !- Humidity Condition Type
+           ,      !- Wetbulb or Dewpoint at Maximum Dry-Bulb
+           ,      !- Humidity Indicating Day Schedule Name
+           ,      !- Humidity Ratio at Maximum Dry-Bulb {kgWater/kgDryAir}
+    86700.0,      !- Enthalpy at Maximum Dry-Bulb {J/kg}
+           ,      !- Daily Wet-Bulb Temperature Range {deltaC}
+    101259.,      !- Barometric Pressure {Pa}
+        3.6,      !- Wind Speed {m/s} design conditions vs. traditional 3.35 m/s (7mph)
+        250,      !- Wind Direction {Degrees; N=0, S=180}
+         No,      !- Rain {Yes/No}
+         No,      !- Snow on ground {Yes/No}
+         No,      !- Daylight Savings Time Indicator
+       ASHRAETau, !- Solar Model Indicator
+           ,      !- Beam Solar Day Schedule Name
+           ,      !- Diffuse Solar Day Schedule Name
+      0.689,      !- ASHRAE Clear Sky Optical Depth for Beam Irradiance (taub)
+      1.714;      !- ASHRAE Clear Sky Optical Depth for Diffuse Irradiance (taud)
+ 
+ ! Shanghai_Shanghai_CHN Annual Cooling (Enthalpy=>MDB) 2%, MDB=31.1C Enthalpy=84700.0J/kg
+ SizingPeriod:DesignDay,
+  Shanghai Ann Clg 2% Condns Enth=>MDB,     !- Name
+          7,      !- Month
+         21,      !- Day of Month
+  SummerDesignDay,!- Day Type
+       31.1,      !- Maximum Dry-Bulb Temperature {C}
+        5.7,      !- Daily Dry-Bulb Temperature Range {C}
+ DefaultMultipliers, !- Dry-Bulb Temperature Range Modifier Type
+           ,      !- Dry-Bulb Temperature Range Modifier Day Schedule Name
+   Enthalpy,      !- Humidity Condition Type
+           ,      !- Wetbulb or Dewpoint at Maximum Dry-Bulb
+           ,      !- Humidity Indicating Day Schedule Name
+           ,      !- Humidity Ratio at Maximum Dry-Bulb {kgWater/kgDryAir}
+    84700.0,      !- Enthalpy at Maximum Dry-Bulb {J/kg}
+           ,      !- Daily Wet-Bulb Temperature Range {deltaC}
+    101259.,      !- Barometric Pressure {Pa}
+        3.6,      !- Wind Speed {m/s} design conditions vs. traditional 3.35 m/s (7mph)
+        250,      !- Wind Direction {Degrees; N=0, S=180}
+         No,      !- Rain {Yes/No}
+         No,      !- Snow on ground {Yes/No}
+         No,      !- Daylight Savings Time Indicator
+       ASHRAETau, !- Solar Model Indicator
+           ,      !- Beam Solar Day Schedule Name
+           ,      !- Diffuse Solar Day Schedule Name
+      0.689,      !- ASHRAE Clear Sky Optical Depth for Beam Irradiance (taub)
+      1.714;      !- ASHRAE Clear Sky Optical Depth for Diffuse Irradiance (taud)
+ 
+ ! ======================= Monthly Design Conditions SizingPeriod:DesignDay ======================
+ ! The following monthly design conditions are reproduced from the climate data shown above.
+ ! Each 12 months are shown for: 2% Drybulb, 2% Wetbulb, 5% Drybulb, .4% Drybulb, .4% Wetbulb
+ !
+ ! Shanghai_Shanghai_CHN January (DB=>MCWB) .4%, MaxDB=17.3C MWB=13.4C taub=0.59 taud=1.678
+ SizingPeriod:DesignDay,
+  Shanghai January .4% Condns DB=>MCWB,     !- Name
+          1,      !- Month
+         21,      !- Day of Month
+  SummerDesignDay,!- Day Type
+       17.3,      !- Maximum Dry-Bulb Temperature {C}
+        5.4,      !- Daily Dry-Bulb Temperature Range {C}
+ DefaultMultipliers, !- Dry-Bulb Temperature Range Modifier Type
+           ,      !- Dry-Bulb Temperature Range Modifier Day Schedule Name
+    Wetbulb,      !- Humidity Condition Type
+       13.4,      !- Wetbulb at Maximum Dry-Bulb {C}
+           ,      !- Humidity Indicating Day Schedule Name
+           ,      !- Humidity Ratio at Maximum Dry-Bulb {kgWater/kgDryAir}
+           ,      !- Enthalpy at Maximum Dry-Bulb {J/kg}
+           ,      !- Daily Wet-Bulb Temperature Range {deltaC}
+    101259.,      !- Barometric Pressure {Pa}
+        2.9,      !- Wind Speed {m/s} design conditions vs. traditional 3.35 m/s (7mph)
+        250,      !- Wind Direction {Degrees; N=0, S=180}
+         No,      !- Rain {Yes/No}
+         No,      !- Snow on ground {Yes/No}
+         No,      !- Daylight Savings Time Indicator
+       ASHRAETau, !- Solar Model Indicator
+           ,      !- Beam Solar Day Schedule Name
+           ,      !- Diffuse Solar Day Schedule Name
+       0.59,      !- ASHRAE Clear Sky Optical Depth for Beam Irradiance (taub)
+      1.678;      !- ASHRAE Clear Sky Optical Depth for Diffuse Irradiance (taud)
+ 
+ ! Shanghai_Shanghai_CHN February (DB=>MCWB) .4%, MaxDB=21.1C MWB=14.4C taub=0.631 taud=1.625
+ SizingPeriod:DesignDay,
+  Shanghai February .4% Condns DB=>MCWB,     !- Name
+          2,      !- Month
+         21,      !- Day of Month
+  SummerDesignDay,!- Day Type
+       21.1,      !- Maximum Dry-Bulb Temperature {C}
+        5.4,      !- Daily Dry-Bulb Temperature Range {C}
+ DefaultMultipliers, !- Dry-Bulb Temperature Range Modifier Type
+           ,      !- Dry-Bulb Temperature Range Modifier Day Schedule Name
+    Wetbulb,      !- Humidity Condition Type
+       14.4,      !- Wetbulb at Maximum Dry-Bulb {C}
+           ,      !- Humidity Indicating Day Schedule Name
+           ,      !- Humidity Ratio at Maximum Dry-Bulb {kgWater/kgDryAir}
+           ,      !- Enthalpy at Maximum Dry-Bulb {J/kg}
+           ,      !- Daily Wet-Bulb Temperature Range {deltaC}
+    101259.,      !- Barometric Pressure {Pa}
+        3.1,      !- Wind Speed {m/s} design conditions vs. traditional 3.35 m/s (7mph)
+        250,      !- Wind Direction {Degrees; N=0, S=180}
+         No,      !- Rain {Yes/No}
+         No,      !- Snow on ground {Yes/No}
+         No,      !- Daylight Savings Time Indicator
+       ASHRAETau, !- Solar Model Indicator
+           ,      !- Beam Solar Day Schedule Name
+           ,      !- Diffuse Solar Day Schedule Name
+      0.631,      !- ASHRAE Clear Sky Optical Depth for Beam Irradiance (taub)
+      1.625;      !- ASHRAE Clear Sky Optical Depth for Diffuse Irradiance (taud)
+ 
+ ! Shanghai_Shanghai_CHN March (DB=>MCWB) .4%, MaxDB=24.1C MWB=15.1C taub=0.664 taud=1.588
+ SizingPeriod:DesignDay,
+  Shanghai March .4% Condns DB=>MCWB,     !- Name
+          3,      !- Month
+         21,      !- Day of Month
+  SummerDesignDay,!- Day Type
+       24.1,      !- Maximum Dry-Bulb Temperature {C}
+        6.3,      !- Daily Dry-Bulb Temperature Range {C}
+ DefaultMultipliers, !- Dry-Bulb Temperature Range Modifier Type
+           ,      !- Dry-Bulb Temperature Range Modifier Day Schedule Name
+    Wetbulb,      !- Humidity Condition Type
+       15.1,      !- Wetbulb at Maximum Dry-Bulb {C}
+           ,      !- Humidity Indicating Day Schedule Name
+           ,      !- Humidity Ratio at Maximum Dry-Bulb {kgWater/kgDryAir}
+           ,      !- Enthalpy at Maximum Dry-Bulb {J/kg}
+           ,      !- Daily Wet-Bulb Temperature Range {deltaC}
+    101259.,      !- Barometric Pressure {Pa}
+        3.2,      !- Wind Speed {m/s} design conditions vs. traditional 3.35 m/s (7mph)
+        250,      !- Wind Direction {Degrees; N=0, S=180}
+         No,      !- Rain {Yes/No}
+         No,      !- Snow on ground {Yes/No}
+         No,      !- Daylight Savings Time Indicator
+       ASHRAETau, !- Solar Model Indicator
+           ,      !- Beam Solar Day Schedule Name
+           ,      !- Diffuse Solar Day Schedule Name
+      0.664,      !- ASHRAE Clear Sky Optical Depth for Beam Irradiance (taub)
+      1.588;      !- ASHRAE Clear Sky Optical Depth for Diffuse Irradiance (taud)
+ 
+ ! Shanghai_Shanghai_CHN April (DB=>MCWB) .4%, MaxDB=29.5C MWB=20.2C taub=0.671 taud=1.629
+ SizingPeriod:DesignDay,
+  Shanghai April .4% Condns DB=>MCWB,     !- Name
+          4,      !- Month
+         21,      !- Day of Month
+  SummerDesignDay,!- Day Type
+       29.5,      !- Maximum Dry-Bulb Temperature {C}
+          7,      !- Daily Dry-Bulb Temperature Range {C}
+ DefaultMultipliers, !- Dry-Bulb Temperature Range Modifier Type
+           ,      !- Dry-Bulb Temperature Range Modifier Day Schedule Name
+    Wetbulb,      !- Humidity Condition Type
+       20.2,      !- Wetbulb at Maximum Dry-Bulb {C}
+           ,      !- Humidity Indicating Day Schedule Name
+           ,      !- Humidity Ratio at Maximum Dry-Bulb {kgWater/kgDryAir}
+           ,      !- Enthalpy at Maximum Dry-Bulb {J/kg}
+           ,      !- Daily Wet-Bulb Temperature Range {deltaC}
+    101259.,      !- Barometric Pressure {Pa}
+        3.2,      !- Wind Speed {m/s} design conditions vs. traditional 3.35 m/s (7mph)
+        250,      !- Wind Direction {Degrees; N=0, S=180}
+         No,      !- Rain {Yes/No}
+         No,      !- Snow on ground {Yes/No}
+         No,      !- Daylight Savings Time Indicator
+       ASHRAETau, !- Solar Model Indicator
+           ,      !- Beam Solar Day Schedule Name
+           ,      !- Diffuse Solar Day Schedule Name
+      0.671,      !- ASHRAE Clear Sky Optical Depth for Beam Irradiance (taub)
+      1.629;      !- ASHRAE Clear Sky Optical Depth for Diffuse Irradiance (taud)
+ 
+ ! Shanghai_Shanghai_CHN May (DB=>MCWB) .4%, MaxDB=31.9C MWB=19.7C taub=0.657 taud=1.695
+ SizingPeriod:DesignDay,
+  Shanghai May .4% Condns DB=>MCWB,     !- Name
+          5,      !- Month
+         21,      !- Day of Month
+  SummerDesignDay,!- Day Type
+       31.9,      !- Maximum Dry-Bulb Temperature {C}
+        6.7,      !- Daily Dry-Bulb Temperature Range {C}
+ DefaultMultipliers, !- Dry-Bulb Temperature Range Modifier Type
+           ,      !- Dry-Bulb Temperature Range Modifier Day Schedule Name
+    Wetbulb,      !- Humidity Condition Type
+       19.7,      !- Wetbulb at Maximum Dry-Bulb {C}
+           ,      !- Humidity Indicating Day Schedule Name
+           ,      !- Humidity Ratio at Maximum Dry-Bulb {kgWater/kgDryAir}
+           ,      !- Enthalpy at Maximum Dry-Bulb {J/kg}
+           ,      !- Daily Wet-Bulb Temperature Range {deltaC}
+    101259.,      !- Barometric Pressure {Pa}
+        3.2,      !- Wind Speed {m/s} design conditions vs. traditional 3.35 m/s (7mph)
+        250,      !- Wind Direction {Degrees; N=0, S=180}
+         No,      !- Rain {Yes/No}
+         No,      !- Snow on ground {Yes/No}
+         No,      !- Daylight Savings Time Indicator
+       ASHRAETau, !- Solar Model Indicator
+           ,      !- Beam Solar Day Schedule Name
+           ,      !- Diffuse Solar Day Schedule Name
+      0.657,      !- ASHRAE Clear Sky Optical Depth for Beam Irradiance (taub)
+      1.695;      !- ASHRAE Clear Sky Optical Depth for Diffuse Irradiance (taud)
+ 
+ ! Shanghai_Shanghai_CHN June (DB=>MCWB) .4%, MaxDB=35C MWB=26C taub=0.715 taud=1.627
+ SizingPeriod:DesignDay,
+  Shanghai June .4% Condns DB=>MCWB,     !- Name
+          6,      !- Month
+         21,      !- Day of Month
+  SummerDesignDay,!- Day Type
+         35,      !- Maximum Dry-Bulb Temperature {C}
+        5.2,      !- Daily Dry-Bulb Temperature Range {C}
+ DefaultMultipliers, !- Dry-Bulb Temperature Range Modifier Type
+           ,      !- Dry-Bulb Temperature Range Modifier Day Schedule Name
+    Wetbulb,      !- Humidity Condition Type
+         26,      !- Wetbulb at Maximum Dry-Bulb {C}
+           ,      !- Humidity Indicating Day Schedule Name
+           ,      !- Humidity Ratio at Maximum Dry-Bulb {kgWater/kgDryAir}
+           ,      !- Enthalpy at Maximum Dry-Bulb {J/kg}
+           ,      !- Daily Wet-Bulb Temperature Range {deltaC}
+    101259.,      !- Barometric Pressure {Pa}
+          3,      !- Wind Speed {m/s} design conditions vs. traditional 3.35 m/s (7mph)
+        250,      !- Wind Direction {Degrees; N=0, S=180}
+         No,      !- Rain {Yes/No}
+         No,      !- Snow on ground {Yes/No}
+         No,      !- Daylight Savings Time Indicator
+       ASHRAETau, !- Solar Model Indicator
+           ,      !- Beam Solar Day Schedule Name
+           ,      !- Diffuse Solar Day Schedule Name
+      0.715,      !- ASHRAE Clear Sky Optical Depth for Beam Irradiance (taub)
+      1.627;      !- ASHRAE Clear Sky Optical Depth for Diffuse Irradiance (taud)
+ 
+ ! Shanghai_Shanghai_CHN July (DB=>MCWB) .4%, MaxDB=37.1C MWB=26.2C taub=0.689 taud=1.714
+ SizingPeriod:DesignDay,
+  Shanghai July .4% Condns DB=>MCWB,     !- Name
+          7,      !- Month
+         21,      !- Day of Month
+  SummerDesignDay,!- Day Type
+       37.1,      !- Maximum Dry-Bulb Temperature {C}
+        5.7,      !- Daily Dry-Bulb Temperature Range {C}
+ DefaultMultipliers, !- Dry-Bulb Temperature Range Modifier Type
+           ,      !- Dry-Bulb Temperature Range Modifier Day Schedule Name
+    Wetbulb,      !- Humidity Condition Type
+       26.2,      !- Wetbulb at Maximum Dry-Bulb {C}
+           ,      !- Humidity Indicating Day Schedule Name
+           ,      !- Humidity Ratio at Maximum Dry-Bulb {kgWater/kgDryAir}
+           ,      !- Enthalpy at Maximum Dry-Bulb {J/kg}
+           ,      !- Daily Wet-Bulb Temperature Range {deltaC}
+    101259.,      !- Barometric Pressure {Pa}
+        3.2,      !- Wind Speed {m/s} design conditions vs. traditional 3.35 m/s (7mph)
+        250,      !- Wind Direction {Degrees; N=0, S=180}
+         No,      !- Rain {Yes/No}
+         No,      !- Snow on ground {Yes/No}
+         No,      !- Daylight Savings Time Indicator
+       ASHRAETau, !- Solar Model Indicator
+           ,      !- Beam Solar Day Schedule Name
+           ,      !- Diffuse Solar Day Schedule Name
+      0.689,      !- ASHRAE Clear Sky Optical Depth for Beam Irradiance (taub)
+      1.714;      !- ASHRAE Clear Sky Optical Depth for Diffuse Irradiance (taud)
+ 
+ ! Shanghai_Shanghai_CHN August (DB=>MCWB) .4%, MaxDB=36.8C MWB=26.7C taub=0.653 taud=1.77
+ SizingPeriod:DesignDay,
+  Shanghai August .4% Condns DB=>MCWB,     !- Name
+          8,      !- Month
+         21,      !- Day of Month
+  SummerDesignDay,!- Day Type
+       36.8,      !- Maximum Dry-Bulb Temperature {C}
+        4.9,      !- Daily Dry-Bulb Temperature Range {C}
+ DefaultMultipliers, !- Dry-Bulb Temperature Range Modifier Type
+           ,      !- Dry-Bulb Temperature Range Modifier Day Schedule Name
+    Wetbulb,      !- Humidity Condition Type
+       26.7,      !- Wetbulb at Maximum Dry-Bulb {C}
+           ,      !- Humidity Indicating Day Schedule Name
+           ,      !- Humidity Ratio at Maximum Dry-Bulb {kgWater/kgDryAir}
+           ,      !- Enthalpy at Maximum Dry-Bulb {J/kg}
+           ,      !- Daily Wet-Bulb Temperature Range {deltaC}
+    101259.,      !- Barometric Pressure {Pa}
+        3.4,      !- Wind Speed {m/s} design conditions vs. traditional 3.35 m/s (7mph)
+        250,      !- Wind Direction {Degrees; N=0, S=180}
+         No,      !- Rain {Yes/No}
+         No,      !- Snow on ground {Yes/No}
+         No,      !- Daylight Savings Time Indicator
+       ASHRAETau, !- Solar Model Indicator
+           ,      !- Beam Solar Day Schedule Name
+           ,      !- Diffuse Solar Day Schedule Name
+      0.653,      !- ASHRAE Clear Sky Optical Depth for Beam Irradiance (taub)
+       1.77;      !- ASHRAE Clear Sky Optical Depth for Diffuse Irradiance (taud)
+ 
+ ! Shanghai_Shanghai_CHN September (DB=>MCWB) .4%, MaxDB=34C MWB=26C taub=0.601 taud=1.847
+ SizingPeriod:DesignDay,
+  Shanghai September .4% Condns DB=>MCWB,     !- Name
+          9,      !- Month
+         21,      !- Day of Month
+  SummerDesignDay,!- Day Type
+         34,      !- Maximum Dry-Bulb Temperature {C}
+        4.7,      !- Daily Dry-Bulb Temperature Range {C}
+ DefaultMultipliers, !- Dry-Bulb Temperature Range Modifier Type
+           ,      !- Dry-Bulb Temperature Range Modifier Day Schedule Name
+    Wetbulb,      !- Humidity Condition Type
+         26,      !- Wetbulb at Maximum Dry-Bulb {C}
+           ,      !- Humidity Indicating Day Schedule Name
+           ,      !- Humidity Ratio at Maximum Dry-Bulb {kgWater/kgDryAir}
+           ,      !- Enthalpy at Maximum Dry-Bulb {J/kg}
+           ,      !- Daily Wet-Bulb Temperature Range {deltaC}
+    101259.,      !- Barometric Pressure {Pa}
+        3.3,      !- Wind Speed {m/s} design conditions vs. traditional 3.35 m/s (7mph)
+        250,      !- Wind Direction {Degrees; N=0, S=180}
+         No,      !- Rain {Yes/No}
+         No,      !- Snow on ground {Yes/No}
+         No,      !- Daylight Savings Time Indicator
+       ASHRAETau, !- Solar Model Indicator
+           ,      !- Beam Solar Day Schedule Name
+           ,      !- Diffuse Solar Day Schedule Name
+      0.601,      !- ASHRAE Clear Sky Optical Depth for Beam Irradiance (taub)
+      1.847;      !- ASHRAE Clear Sky Optical Depth for Diffuse Irradiance (taud)
+ 
+ ! Shanghai_Shanghai_CHN October (DB=>MCWB) .4%, MaxDB=28C MWB=22.1C taub=0.602 taud=1.76
+ SizingPeriod:DesignDay,
+  Shanghai October .4% Condns DB=>MCWB,     !- Name
+         10,      !- Month
+         21,      !- Day of Month
+  SummerDesignDay,!- Day Type
+         28,      !- Maximum Dry-Bulb Temperature {C}
+        5.4,      !- Daily Dry-Bulb Temperature Range {C}
+ DefaultMultipliers, !- Dry-Bulb Temperature Range Modifier Type
+           ,      !- Dry-Bulb Temperature Range Modifier Day Schedule Name
+    Wetbulb,      !- Humidity Condition Type
+       22.1,      !- Wetbulb at Maximum Dry-Bulb {C}
+           ,      !- Humidity Indicating Day Schedule Name
+           ,      !- Humidity Ratio at Maximum Dry-Bulb {kgWater/kgDryAir}
+           ,      !- Enthalpy at Maximum Dry-Bulb {J/kg}
+           ,      !- Daily Wet-Bulb Temperature Range {deltaC}
+    101259.,      !- Barometric Pressure {Pa}
+        2.9,      !- Wind Speed {m/s} design conditions vs. traditional 3.35 m/s (7mph)
+        250,      !- Wind Direction {Degrees; N=0, S=180}
+         No,      !- Rain {Yes/No}
+         No,      !- Snow on ground {Yes/No}
+         No,      !- Daylight Savings Time Indicator
+       ASHRAETau, !- Solar Model Indicator
+           ,      !- Beam Solar Day Schedule Name
+           ,      !- Diffuse Solar Day Schedule Name
+      0.602,      !- ASHRAE Clear Sky Optical Depth for Beam Irradiance (taub)
+       1.76;      !- ASHRAE Clear Sky Optical Depth for Diffuse Irradiance (taud)
+ 
+ ! Shanghai_Shanghai_CHN November (DB=>MCWB) .4%, MaxDB=24.6C MWB=18.8C taub=0.614 taud=1.689
+ SizingPeriod:DesignDay,
+  Shanghai November .4% Condns DB=>MCWB,     !- Name
+         11,      !- Month
+         21,      !- Day of Month
+  SummerDesignDay,!- Day Type
+       24.6,      !- Maximum Dry-Bulb Temperature {C}
+          6,      !- Daily Dry-Bulb Temperature Range {C}
+ DefaultMultipliers, !- Dry-Bulb Temperature Range Modifier Type
+           ,      !- Dry-Bulb Temperature Range Modifier Day Schedule Name
+    Wetbulb,      !- Humidity Condition Type
+       18.8,      !- Wetbulb at Maximum Dry-Bulb {C}
+           ,      !- Humidity Indicating Day Schedule Name
+           ,      !- Humidity Ratio at Maximum Dry-Bulb {kgWater/kgDryAir}
+           ,      !- Enthalpy at Maximum Dry-Bulb {J/kg}
+           ,      !- Daily Wet-Bulb Temperature Range {deltaC}
+    101259.,      !- Barometric Pressure {Pa}
+        2.8,      !- Wind Speed {m/s} design conditions vs. traditional 3.35 m/s (7mph)
+        250,      !- Wind Direction {Degrees; N=0, S=180}
+         No,      !- Rain {Yes/No}
+         No,      !- Snow on ground {Yes/No}
+         No,      !- Daylight Savings Time Indicator
+       ASHRAETau, !- Solar Model Indicator
+           ,      !- Beam Solar Day Schedule Name
+           ,      !- Diffuse Solar Day Schedule Name
+      0.614,      !- ASHRAE Clear Sky Optical Depth for Beam Irradiance (taub)
+      1.689;      !- ASHRAE Clear Sky Optical Depth for Diffuse Irradiance (taud)
+ 
+ ! Shanghai_Shanghai_CHN December (DB=>MCWB) .4%, MaxDB=17.9C MWB=13.7C taub=0.584 taud=1.703
+ SizingPeriod:DesignDay,
+  Shanghai December .4% Condns DB=>MCWB,     !- Name
+         12,      !- Month
+         21,      !- Day of Month
+  SummerDesignDay,!- Day Type
+       17.9,      !- Maximum Dry-Bulb Temperature {C}
+        5.8,      !- Daily Dry-Bulb Temperature Range {C}
+ DefaultMultipliers, !- Dry-Bulb Temperature Range Modifier Type
+           ,      !- Dry-Bulb Temperature Range Modifier Day Schedule Name
+    Wetbulb,      !- Humidity Condition Type
+       13.7,      !- Wetbulb at Maximum Dry-Bulb {C}
+           ,      !- Humidity Indicating Day Schedule Name
+           ,      !- Humidity Ratio at Maximum Dry-Bulb {kgWater/kgDryAir}
+           ,      !- Enthalpy at Maximum Dry-Bulb {J/kg}
+           ,      !- Daily Wet-Bulb Temperature Range {deltaC}
+    101259.,      !- Barometric Pressure {Pa}
+        2.9,      !- Wind Speed {m/s} design conditions vs. traditional 3.35 m/s (7mph)
+        250,      !- Wind Direction {Degrees; N=0, S=180}
+         No,      !- Rain {Yes/No}
+         No,      !- Snow on ground {Yes/No}
+         No,      !- Daylight Savings Time Indicator
+       ASHRAETau, !- Solar Model Indicator
+           ,      !- Beam Solar Day Schedule Name
+           ,      !- Diffuse Solar Day Schedule Name
+      0.584,      !- ASHRAE Clear Sky Optical Depth for Beam Irradiance (taub)
+      1.703;      !- ASHRAE Clear Sky Optical Depth for Diffuse Irradiance (taud)
+ 
+ ! Shanghai_Shanghai_CHN January (DB=>MCWB) 2%, MaxDB=13.3C MWB=10.1C taub=0.59 taud=1.678
+ SizingPeriod:DesignDay,
+  Shanghai January 2% Condns DB=>MCWB,     !- Name
+          1,      !- Month
+         21,      !- Day of Month
+  SummerDesignDay,!- Day Type
+       13.3,      !- Maximum Dry-Bulb Temperature {C}
+        5.4,      !- Daily Dry-Bulb Temperature Range {C}
+ DefaultMultipliers, !- Dry-Bulb Temperature Range Modifier Type
+           ,      !- Dry-Bulb Temperature Range Modifier Day Schedule Name
+    Wetbulb,      !- Humidity Condition Type
+       10.1,      !- Wetbulb at Maximum Dry-Bulb {C}
+           ,      !- Humidity Indicating Day Schedule Name
+           ,      !- Humidity Ratio at Maximum Dry-Bulb {kgWater/kgDryAir}
+           ,      !- Enthalpy at Maximum Dry-Bulb {J/kg}
+           ,      !- Daily Wet-Bulb Temperature Range {deltaC}
+    101259.,      !- Barometric Pressure {Pa}
+        2.9,      !- Wind Speed {m/s} design conditions vs. traditional 3.35 m/s (7mph)
+        250,      !- Wind Direction {Degrees; N=0, S=180}
+         No,      !- Rain {Yes/No}
+         No,      !- Snow on ground {Yes/No}
+         No,      !- Daylight Savings Time Indicator
+       ASHRAETau, !- Solar Model Indicator
+           ,      !- Beam Solar Day Schedule Name
+           ,      !- Diffuse Solar Day Schedule Name
+       0.59,      !- ASHRAE Clear Sky Optical Depth for Beam Irradiance (taub)
+      1.678;      !- ASHRAE Clear Sky Optical Depth for Diffuse Irradiance (taud)
+ 
+ ! Shanghai_Shanghai_CHN February (DB=>MCWB) 2%, MaxDB=16.7C MWB=12.5C taub=0.631 taud=1.625
+ SizingPeriod:DesignDay,
+  Shanghai February 2% Condns DB=>MCWB,     !- Name
+          2,      !- Month
+         21,      !- Day of Month
+  SummerDesignDay,!- Day Type
+       16.7,      !- Maximum Dry-Bulb Temperature {C}
+        5.4,      !- Daily Dry-Bulb Temperature Range {C}
+ DefaultMultipliers, !- Dry-Bulb Temperature Range Modifier Type
+           ,      !- Dry-Bulb Temperature Range Modifier Day Schedule Name
+    Wetbulb,      !- Humidity Condition Type
+       12.5,      !- Wetbulb at Maximum Dry-Bulb {C}
+           ,      !- Humidity Indicating Day Schedule Name
+           ,      !- Humidity Ratio at Maximum Dry-Bulb {kgWater/kgDryAir}
+           ,      !- Enthalpy at Maximum Dry-Bulb {J/kg}
+           ,      !- Daily Wet-Bulb Temperature Range {deltaC}
+    101259.,      !- Barometric Pressure {Pa}
+        3.1,      !- Wind Speed {m/s} design conditions vs. traditional 3.35 m/s (7mph)
+        250,      !- Wind Direction {Degrees; N=0, S=180}
+         No,      !- Rain {Yes/No}
+         No,      !- Snow on ground {Yes/No}
+         No,      !- Daylight Savings Time Indicator
+       ASHRAETau, !- Solar Model Indicator
+           ,      !- Beam Solar Day Schedule Name
+           ,      !- Diffuse Solar Day Schedule Name
+      0.631,      !- ASHRAE Clear Sky Optical Depth for Beam Irradiance (taub)
+      1.625;      !- ASHRAE Clear Sky Optical Depth for Diffuse Irradiance (taud)
+ 
+ ! Shanghai_Shanghai_CHN March (DB=>MCWB) 2%, MaxDB=20.7C MWB=13.7C taub=0.664 taud=1.588
+ SizingPeriod:DesignDay,
+  Shanghai March 2% Condns DB=>MCWB,     !- Name
+          3,      !- Month
+         21,      !- Day of Month
+  SummerDesignDay,!- Day Type
+       20.7,      !- Maximum Dry-Bulb Temperature {C}
+        6.3,      !- Daily Dry-Bulb Temperature Range {C}
+ DefaultMultipliers, !- Dry-Bulb Temperature Range Modifier Type
+           ,      !- Dry-Bulb Temperature Range Modifier Day Schedule Name
+    Wetbulb,      !- Humidity Condition Type
+       13.7,      !- Wetbulb at Maximum Dry-Bulb {C}
+           ,      !- Humidity Indicating Day Schedule Name
+           ,      !- Humidity Ratio at Maximum Dry-Bulb {kgWater/kgDryAir}
+           ,      !- Enthalpy at Maximum Dry-Bulb {J/kg}
+           ,      !- Daily Wet-Bulb Temperature Range {deltaC}
+    101259.,      !- Barometric Pressure {Pa}
+        3.2,      !- Wind Speed {m/s} design conditions vs. traditional 3.35 m/s (7mph)
+        250,      !- Wind Direction {Degrees; N=0, S=180}
+         No,      !- Rain {Yes/No}
+         No,      !- Snow on ground {Yes/No}
+         No,      !- Daylight Savings Time Indicator
+       ASHRAETau, !- Solar Model Indicator
+           ,      !- Beam Solar Day Schedule Name
+           ,      !- Diffuse Solar Day Schedule Name
+      0.664,      !- ASHRAE Clear Sky Optical Depth for Beam Irradiance (taub)
+      1.588;      !- ASHRAE Clear Sky Optical Depth for Diffuse Irradiance (taud)
+ 
+ ! Shanghai_Shanghai_CHN April (DB=>MCWB) 2%, MaxDB=26C MWB=18.4C taub=0.671 taud=1.629
+ SizingPeriod:DesignDay,
+  Shanghai April 2% Condns DB=>MCWB,     !- Name
+          4,      !- Month
+         21,      !- Day of Month
+  SummerDesignDay,!- Day Type
+         26,      !- Maximum Dry-Bulb Temperature {C}
+          7,      !- Daily Dry-Bulb Temperature Range {C}
+ DefaultMultipliers, !- Dry-Bulb Temperature Range Modifier Type
+           ,      !- Dry-Bulb Temperature Range Modifier Day Schedule Name
+    Wetbulb,      !- Humidity Condition Type
+       18.4,      !- Wetbulb at Maximum Dry-Bulb {C}
+           ,      !- Humidity Indicating Day Schedule Name
+           ,      !- Humidity Ratio at Maximum Dry-Bulb {kgWater/kgDryAir}
+           ,      !- Enthalpy at Maximum Dry-Bulb {J/kg}
+           ,      !- Daily Wet-Bulb Temperature Range {deltaC}
+    101259.,      !- Barometric Pressure {Pa}
+        3.2,      !- Wind Speed {m/s} design conditions vs. traditional 3.35 m/s (7mph)
+        250,      !- Wind Direction {Degrees; N=0, S=180}
+         No,      !- Rain {Yes/No}
+         No,      !- Snow on ground {Yes/No}
+         No,      !- Daylight Savings Time Indicator
+       ASHRAETau, !- Solar Model Indicator
+           ,      !- Beam Solar Day Schedule Name
+           ,      !- Diffuse Solar Day Schedule Name
+      0.671,      !- ASHRAE Clear Sky Optical Depth for Beam Irradiance (taub)
+      1.629;      !- ASHRAE Clear Sky Optical Depth for Diffuse Irradiance (taud)
+ 
+ ! Shanghai_Shanghai_CHN May (DB=>MCWB) 2%, MaxDB=29.6C MWB=19.9C taub=0.657 taud=1.695
+ SizingPeriod:DesignDay,
+  Shanghai May 2% Condns DB=>MCWB,     !- Name
+          5,      !- Month
+         21,      !- Day of Month
+  SummerDesignDay,!- Day Type
+       29.6,      !- Maximum Dry-Bulb Temperature {C}
+        6.7,      !- Daily Dry-Bulb Temperature Range {C}
+ DefaultMultipliers, !- Dry-Bulb Temperature Range Modifier Type
+           ,      !- Dry-Bulb Temperature Range Modifier Day Schedule Name
+    Wetbulb,      !- Humidity Condition Type
+       19.9,      !- Wetbulb at Maximum Dry-Bulb {C}
+           ,      !- Humidity Indicating Day Schedule Name
+           ,      !- Humidity Ratio at Maximum Dry-Bulb {kgWater/kgDryAir}
+           ,      !- Enthalpy at Maximum Dry-Bulb {J/kg}
+           ,      !- Daily Wet-Bulb Temperature Range {deltaC}
+    101259.,      !- Barometric Pressure {Pa}
+        3.2,      !- Wind Speed {m/s} design conditions vs. traditional 3.35 m/s (7mph)
+        250,      !- Wind Direction {Degrees; N=0, S=180}
+         No,      !- Rain {Yes/No}
+         No,      !- Snow on ground {Yes/No}
+         No,      !- Daylight Savings Time Indicator
+       ASHRAETau, !- Solar Model Indicator
+           ,      !- Beam Solar Day Schedule Name
+           ,      !- Diffuse Solar Day Schedule Name
+      0.657,      !- ASHRAE Clear Sky Optical Depth for Beam Irradiance (taub)
+      1.695;      !- ASHRAE Clear Sky Optical Depth for Diffuse Irradiance (taud)
+ 
+ ! Shanghai_Shanghai_CHN June (DB=>MCWB) 2%, MaxDB=32.7C MWB=25.4C taub=0.715 taud=1.627
+ SizingPeriod:DesignDay,
+  Shanghai June 2% Condns DB=>MCWB,     !- Name
+          6,      !- Month
+         21,      !- Day of Month
+  SummerDesignDay,!- Day Type
+       32.7,      !- Maximum Dry-Bulb Temperature {C}
+        5.2,      !- Daily Dry-Bulb Temperature Range {C}
+ DefaultMultipliers, !- Dry-Bulb Temperature Range Modifier Type
+           ,      !- Dry-Bulb Temperature Range Modifier Day Schedule Name
+    Wetbulb,      !- Humidity Condition Type
+       25.4,      !- Wetbulb at Maximum Dry-Bulb {C}
+           ,      !- Humidity Indicating Day Schedule Name
+           ,      !- Humidity Ratio at Maximum Dry-Bulb {kgWater/kgDryAir}
+           ,      !- Enthalpy at Maximum Dry-Bulb {J/kg}
+           ,      !- Daily Wet-Bulb Temperature Range {deltaC}
+    101259.,      !- Barometric Pressure {Pa}
+          3,      !- Wind Speed {m/s} design conditions vs. traditional 3.35 m/s (7mph)
+        250,      !- Wind Direction {Degrees; N=0, S=180}
+         No,      !- Rain {Yes/No}
+         No,      !- Snow on ground {Yes/No}
+         No,      !- Daylight Savings Time Indicator
+       ASHRAETau, !- Solar Model Indicator
+           ,      !- Beam Solar Day Schedule Name
+           ,      !- Diffuse Solar Day Schedule Name
+      0.715,      !- ASHRAE Clear Sky Optical Depth for Beam Irradiance (taub)
+      1.627;      !- ASHRAE Clear Sky Optical Depth for Diffuse Irradiance (taud)
+ 
+ ! Shanghai_Shanghai_CHN July (DB=>MCWB) 2%, MaxDB=35.7C MWB=26.5C taub=0.689 taud=1.714
+ SizingPeriod:DesignDay,
+  Shanghai July 2% Condns DB=>MCWB,     !- Name
+          7,      !- Month
+         21,      !- Day of Month
+  SummerDesignDay,!- Day Type
+       35.7,      !- Maximum Dry-Bulb Temperature {C}
+        5.7,      !- Daily Dry-Bulb Temperature Range {C}
+ DefaultMultipliers, !- Dry-Bulb Temperature Range Modifier Type
+           ,      !- Dry-Bulb Temperature Range Modifier Day Schedule Name
+    Wetbulb,      !- Humidity Condition Type
+       26.5,      !- Wetbulb at Maximum Dry-Bulb {C}
+           ,      !- Humidity Indicating Day Schedule Name
+           ,      !- Humidity Ratio at Maximum Dry-Bulb {kgWater/kgDryAir}
+           ,      !- Enthalpy at Maximum Dry-Bulb {J/kg}
+           ,      !- Daily Wet-Bulb Temperature Range {deltaC}
+    101259.,      !- Barometric Pressure {Pa}
+        3.2,      !- Wind Speed {m/s} design conditions vs. traditional 3.35 m/s (7mph)
+        250,      !- Wind Direction {Degrees; N=0, S=180}
+         No,      !- Rain {Yes/No}
+         No,      !- Snow on ground {Yes/No}
+         No,      !- Daylight Savings Time Indicator
+       ASHRAETau, !- Solar Model Indicator
+           ,      !- Beam Solar Day Schedule Name
+           ,      !- Diffuse Solar Day Schedule Name
+      0.689,      !- ASHRAE Clear Sky Optical Depth for Beam Irradiance (taub)
+      1.714;      !- ASHRAE Clear Sky Optical Depth for Diffuse Irradiance (taud)
+ 
+ ! Shanghai_Shanghai_CHN August (DB=>MCWB) 2%, MaxDB=34.9C MWB=26.7C taub=0.653 taud=1.77
+ SizingPeriod:DesignDay,
+  Shanghai August 2% Condns DB=>MCWB,     !- Name
+          8,      !- Month
+         21,      !- Day of Month
+  SummerDesignDay,!- Day Type
+       34.9,      !- Maximum Dry-Bulb Temperature {C}
+        4.9,      !- Daily Dry-Bulb Temperature Range {C}
+ DefaultMultipliers, !- Dry-Bulb Temperature Range Modifier Type
+           ,      !- Dry-Bulb Temperature Range Modifier Day Schedule Name
+    Wetbulb,      !- Humidity Condition Type
+       26.7,      !- Wetbulb at Maximum Dry-Bulb {C}
+           ,      !- Humidity Indicating Day Schedule Name
+           ,      !- Humidity Ratio at Maximum Dry-Bulb {kgWater/kgDryAir}
+           ,      !- Enthalpy at Maximum Dry-Bulb {J/kg}
+           ,      !- Daily Wet-Bulb Temperature Range {deltaC}
+    101259.,      !- Barometric Pressure {Pa}
+        3.4,      !- Wind Speed {m/s} design conditions vs. traditional 3.35 m/s (7mph)
+        250,      !- Wind Direction {Degrees; N=0, S=180}
+         No,      !- Rain {Yes/No}
+         No,      !- Snow on ground {Yes/No}
+         No,      !- Daylight Savings Time Indicator
+       ASHRAETau, !- Solar Model Indicator
+           ,      !- Beam Solar Day Schedule Name
+           ,      !- Diffuse Solar Day Schedule Name
+      0.653,      !- ASHRAE Clear Sky Optical Depth for Beam Irradiance (taub)
+       1.77;      !- ASHRAE Clear Sky Optical Depth for Diffuse Irradiance (taud)
+ 
+ ! Shanghai_Shanghai_CHN September (DB=>MCWB) 2%, MaxDB=31.6C MWB=25.8C taub=0.601 taud=1.847
+ SizingPeriod:DesignDay,
+  Shanghai September 2% Condns DB=>MCWB,     !- Name
+          9,      !- Month
+         21,      !- Day of Month
+  SummerDesignDay,!- Day Type
+       31.6,      !- Maximum Dry-Bulb Temperature {C}
+        4.7,      !- Daily Dry-Bulb Temperature Range {C}
+ DefaultMultipliers, !- Dry-Bulb Temperature Range Modifier Type
+           ,      !- Dry-Bulb Temperature Range Modifier Day Schedule Name
+    Wetbulb,      !- Humidity Condition Type
+       25.8,      !- Wetbulb at Maximum Dry-Bulb {C}
+           ,      !- Humidity Indicating Day Schedule Name
+           ,      !- Humidity Ratio at Maximum Dry-Bulb {kgWater/kgDryAir}
+           ,      !- Enthalpy at Maximum Dry-Bulb {J/kg}
+           ,      !- Daily Wet-Bulb Temperature Range {deltaC}
+    101259.,      !- Barometric Pressure {Pa}
+        3.3,      !- Wind Speed {m/s} design conditions vs. traditional 3.35 m/s (7mph)
+        250,      !- Wind Direction {Degrees; N=0, S=180}
+         No,      !- Rain {Yes/No}
+         No,      !- Snow on ground {Yes/No}
+         No,      !- Daylight Savings Time Indicator
+       ASHRAETau, !- Solar Model Indicator
+           ,      !- Beam Solar Day Schedule Name
+           ,      !- Diffuse Solar Day Schedule Name
+      0.601,      !- ASHRAE Clear Sky Optical Depth for Beam Irradiance (taub)
+      1.847;      !- ASHRAE Clear Sky Optical Depth for Diffuse Irradiance (taud)
+ 
+ ! Shanghai_Shanghai_CHN October (DB=>MCWB) 2%, MaxDB=26.1C MWB=20.5C taub=0.602 taud=1.76
+ SizingPeriod:DesignDay,
+  Shanghai October 2% Condns DB=>MCWB,     !- Name
+         10,      !- Month
+         21,      !- Day of Month
+  SummerDesignDay,!- Day Type
+       26.1,      !- Maximum Dry-Bulb Temperature {C}
+        5.4,      !- Daily Dry-Bulb Temperature Range {C}
+ DefaultMultipliers, !- Dry-Bulb Temperature Range Modifier Type
+           ,      !- Dry-Bulb Temperature Range Modifier Day Schedule Name
+    Wetbulb,      !- Humidity Condition Type
+       20.5,      !- Wetbulb at Maximum Dry-Bulb {C}
+           ,      !- Humidity Indicating Day Schedule Name
+           ,      !- Humidity Ratio at Maximum Dry-Bulb {kgWater/kgDryAir}
+           ,      !- Enthalpy at Maximum Dry-Bulb {J/kg}
+           ,      !- Daily Wet-Bulb Temperature Range {deltaC}
+    101259.,      !- Barometric Pressure {Pa}
+        2.9,      !- Wind Speed {m/s} design conditions vs. traditional 3.35 m/s (7mph)
+        250,      !- Wind Direction {Degrees; N=0, S=180}
+         No,      !- Rain {Yes/No}
+         No,      !- Snow on ground {Yes/No}
+         No,      !- Daylight Savings Time Indicator
+       ASHRAETau, !- Solar Model Indicator
+           ,      !- Beam Solar Day Schedule Name
+           ,      !- Diffuse Solar Day Schedule Name
+      0.602,      !- ASHRAE Clear Sky Optical Depth for Beam Irradiance (taub)
+       1.76;      !- ASHRAE Clear Sky Optical Depth for Diffuse Irradiance (taud)
+ 
+ ! Shanghai_Shanghai_CHN November (DB=>MCWB) 2%, MaxDB=22.2C MWB=18.1C taub=0.614 taud=1.689
+ SizingPeriod:DesignDay,
+  Shanghai November 2% Condns DB=>MCWB,     !- Name
+         11,      !- Month
+         21,      !- Day of Month
+  SummerDesignDay,!- Day Type
+       22.2,      !- Maximum Dry-Bulb Temperature {C}
+          6,      !- Daily Dry-Bulb Temperature Range {C}
+ DefaultMultipliers, !- Dry-Bulb Temperature Range Modifier Type
+           ,      !- Dry-Bulb Temperature Range Modifier Day Schedule Name
+    Wetbulb,      !- Humidity Condition Type
+       18.1,      !- Wetbulb at Maximum Dry-Bulb {C}
+           ,      !- Humidity Indicating Day Schedule Name
+           ,      !- Humidity Ratio at Maximum Dry-Bulb {kgWater/kgDryAir}
+           ,      !- Enthalpy at Maximum Dry-Bulb {J/kg}
+           ,      !- Daily Wet-Bulb Temperature Range {deltaC}
+    101259.,      !- Barometric Pressure {Pa}
+        2.8,      !- Wind Speed {m/s} design conditions vs. traditional 3.35 m/s (7mph)
+        250,      !- Wind Direction {Degrees; N=0, S=180}
+         No,      !- Rain {Yes/No}
+         No,      !- Snow on ground {Yes/No}
+         No,      !- Daylight Savings Time Indicator
+       ASHRAETau, !- Solar Model Indicator
+           ,      !- Beam Solar Day Schedule Name
+           ,      !- Diffuse Solar Day Schedule Name
+      0.614,      !- ASHRAE Clear Sky Optical Depth for Beam Irradiance (taub)
+      1.689;      !- ASHRAE Clear Sky Optical Depth for Diffuse Irradiance (taud)
+ 
+ ! Shanghai_Shanghai_CHN December (DB=>MCWB) 2%, MaxDB=15.7C MWB=12.4C taub=0.584 taud=1.703
+ SizingPeriod:DesignDay,
+  Shanghai December 2% Condns DB=>MCWB,     !- Name
+         12,      !- Month
+         21,      !- Day of Month
+  SummerDesignDay,!- Day Type
+       15.7,      !- Maximum Dry-Bulb Temperature {C}
+        5.8,      !- Daily Dry-Bulb Temperature Range {C}
+ DefaultMultipliers, !- Dry-Bulb Temperature Range Modifier Type
+           ,      !- Dry-Bulb Temperature Range Modifier Day Schedule Name
+    Wetbulb,      !- Humidity Condition Type
+       12.4,      !- Wetbulb at Maximum Dry-Bulb {C}
+           ,      !- Humidity Indicating Day Schedule Name
+           ,      !- Humidity Ratio at Maximum Dry-Bulb {kgWater/kgDryAir}
+           ,      !- Enthalpy at Maximum Dry-Bulb {J/kg}
+           ,      !- Daily Wet-Bulb Temperature Range {deltaC}
+    101259.,      !- Barometric Pressure {Pa}
+        2.9,      !- Wind Speed {m/s} design conditions vs. traditional 3.35 m/s (7mph)
+        250,      !- Wind Direction {Degrees; N=0, S=180}
+         No,      !- Rain {Yes/No}
+         No,      !- Snow on ground {Yes/No}
+         No,      !- Daylight Savings Time Indicator
+       ASHRAETau, !- Solar Model Indicator
+           ,      !- Beam Solar Day Schedule Name
+           ,      !- Diffuse Solar Day Schedule Name
+      0.584,      !- ASHRAE Clear Sky Optical Depth for Beam Irradiance (taub)
+      1.703;      !- ASHRAE Clear Sky Optical Depth for Diffuse Irradiance (taud)
+ 
+ ! Shanghai_Shanghai_CHN January (WB=>MCDB) .4%, DB=16.3C WB=14C taub=0.59 taud=1.678
+ SizingPeriod:DesignDay,
+  Shanghai January .4% Condns WB=>MCDB,     !- Name
+          1,      !- Month
+         21,      !- Day of Month
+  SummerDesignDay,!- Day Type
+       16.3,      !- Maximum Dry-Bulb Temperature {C}
+        5.4,      !- Daily Dry-Bulb Temperature Range {C}
+ DefaultMultipliers, !- Dry-Bulb Temperature Range Modifier Type
+           ,      !- Dry-Bulb Temperature Range Modifier Day Schedule Name
+    Wetbulb,      !- Humidity Condition Type
+         14,      !- Wetbulb at Maximum Dry-Bulb {C}
+           ,      !- Humidity Indicating Day Schedule Name
+           ,      !- Humidity Ratio at Maximum Dry-Bulb {kgWater/kgDryAir}
+           ,      !- Enthalpy at Maximum Dry-Bulb {J/kg}
+           ,      !- Daily Wet-Bulb Temperature Range {deltaC}
+    101259.,      !- Barometric Pressure {Pa}
+        2.9,      !- Wind Speed {m/s} design conditions vs. traditional 3.35 m/s (7mph)
+        250,      !- Wind Direction {Degrees; N=0, S=180}
+         No,      !- Rain {Yes/No}
+         No,      !- Snow on ground {Yes/No}
+         No,      !- Daylight Savings Time Indicator
+       ASHRAETau, !- Solar Model Indicator
+           ,      !- Beam Solar Day Schedule Name
+           ,      !- Diffuse Solar Day Schedule Name
+       0.59,      !- ASHRAE Clear Sky Optical Depth for Beam Irradiance (taub)
+      1.678;      !- ASHRAE Clear Sky Optical Depth for Diffuse Irradiance (taud)
+ 
+ ! Shanghai_Shanghai_CHN February (WB=>MCDB) .4%, DB=19.5C WB=15.9C taub=0.631 taud=1.625
+ SizingPeriod:DesignDay,
+  Shanghai February .4% Condns WB=>MCDB,     !- Name
+          2,      !- Month
+         21,      !- Day of Month
+  SummerDesignDay,!- Day Type
+       19.5,      !- Maximum Dry-Bulb Temperature {C}
+        5.4,      !- Daily Dry-Bulb Temperature Range {C}
+ DefaultMultipliers, !- Dry-Bulb Temperature Range Modifier Type
+           ,      !- Dry-Bulb Temperature Range Modifier Day Schedule Name
+    Wetbulb,      !- Humidity Condition Type
+       15.9,      !- Wetbulb at Maximum Dry-Bulb {C}
+           ,      !- Humidity Indicating Day Schedule Name
+           ,      !- Humidity Ratio at Maximum Dry-Bulb {kgWater/kgDryAir}
+           ,      !- Enthalpy at Maximum Dry-Bulb {J/kg}
+           ,      !- Daily Wet-Bulb Temperature Range {deltaC}
+    101259.,      !- Barometric Pressure {Pa}
+        3.1,      !- Wind Speed {m/s} design conditions vs. traditional 3.35 m/s (7mph)
+        250,      !- Wind Direction {Degrees; N=0, S=180}
+         No,      !- Rain {Yes/No}
+         No,      !- Snow on ground {Yes/No}
+         No,      !- Daylight Savings Time Indicator
+       ASHRAETau, !- Solar Model Indicator
+           ,      !- Beam Solar Day Schedule Name
+           ,      !- Diffuse Solar Day Schedule Name
+      0.631,      !- ASHRAE Clear Sky Optical Depth for Beam Irradiance (taub)
+      1.625;      !- ASHRAE Clear Sky Optical Depth for Diffuse Irradiance (taud)
+ 
+ ! Shanghai_Shanghai_CHN March (WB=>MCDB) .4%, DB=20.1C WB=16.8C taub=0.664 taud=1.588
+ SizingPeriod:DesignDay,
+  Shanghai March .4% Condns WB=>MCDB,     !- Name
+          3,      !- Month
+         21,      !- Day of Month
+  SummerDesignDay,!- Day Type
+       20.1,      !- Maximum Dry-Bulb Temperature {C}
+        6.3,      !- Daily Dry-Bulb Temperature Range {C}
+ DefaultMultipliers, !- Dry-Bulb Temperature Range Modifier Type
+           ,      !- Dry-Bulb Temperature Range Modifier Day Schedule Name
+    Wetbulb,      !- Humidity Condition Type
+       16.8,      !- Wetbulb at Maximum Dry-Bulb {C}
+           ,      !- Humidity Indicating Day Schedule Name
+           ,      !- Humidity Ratio at Maximum Dry-Bulb {kgWater/kgDryAir}
+           ,      !- Enthalpy at Maximum Dry-Bulb {J/kg}
+           ,      !- Daily Wet-Bulb Temperature Range {deltaC}
+    101259.,      !- Barometric Pressure {Pa}
+        3.2,      !- Wind Speed {m/s} design conditions vs. traditional 3.35 m/s (7mph)
+        250,      !- Wind Direction {Degrees; N=0, S=180}
+         No,      !- Rain {Yes/No}
+         No,      !- Snow on ground {Yes/No}
+         No,      !- Daylight Savings Time Indicator
+       ASHRAETau, !- Solar Model Indicator
+           ,      !- Beam Solar Day Schedule Name
+           ,      !- Diffuse Solar Day Schedule Name
+      0.664,      !- ASHRAE Clear Sky Optical Depth for Beam Irradiance (taub)
+      1.588;      !- ASHRAE Clear Sky Optical Depth for Diffuse Irradiance (taud)
+ 
+ ! Shanghai_Shanghai_CHN April (WB=>MCDB) .4%, DB=25.8C WB=21.9C taub=0.671 taud=1.629
+ SizingPeriod:DesignDay,
+  Shanghai April .4% Condns WB=>MCDB,     !- Name
+          4,      !- Month
+         21,      !- Day of Month
+  SummerDesignDay,!- Day Type
+       25.8,      !- Maximum Dry-Bulb Temperature {C}
+          7,      !- Daily Dry-Bulb Temperature Range {C}
+ DefaultMultipliers, !- Dry-Bulb Temperature Range Modifier Type
+           ,      !- Dry-Bulb Temperature Range Modifier Day Schedule Name
+    Wetbulb,      !- Humidity Condition Type
+       21.9,      !- Wetbulb at Maximum Dry-Bulb {C}
+           ,      !- Humidity Indicating Day Schedule Name
+           ,      !- Humidity Ratio at Maximum Dry-Bulb {kgWater/kgDryAir}
+           ,      !- Enthalpy at Maximum Dry-Bulb {J/kg}
+           ,      !- Daily Wet-Bulb Temperature Range {deltaC}
+    101259.,      !- Barometric Pressure {Pa}
+        3.2,      !- Wind Speed {m/s} design conditions vs. traditional 3.35 m/s (7mph)
+        250,      !- Wind Direction {Degrees; N=0, S=180}
+         No,      !- Rain {Yes/No}
+         No,      !- Snow on ground {Yes/No}
+         No,      !- Daylight Savings Time Indicator
+       ASHRAETau, !- Solar Model Indicator
+           ,      !- Beam Solar Day Schedule Name
+           ,      !- Diffuse Solar Day Schedule Name
+      0.671,      !- ASHRAE Clear Sky Optical Depth for Beam Irradiance (taub)
+      1.629;      !- ASHRAE Clear Sky Optical Depth for Diffuse Irradiance (taud)
+ 
+ ! Shanghai_Shanghai_CHN May (WB=>MCDB) .4%, DB=28.4C WB=24.1C taub=0.657 taud=1.695
+ SizingPeriod:DesignDay,
+  Shanghai May .4% Condns WB=>MCDB,     !- Name
+          5,      !- Month
+         21,      !- Day of Month
+  SummerDesignDay,!- Day Type
+       28.4,      !- Maximum Dry-Bulb Temperature {C}
+        6.7,      !- Daily Dry-Bulb Temperature Range {C}
+ DefaultMultipliers, !- Dry-Bulb Temperature Range Modifier Type
+           ,      !- Dry-Bulb Temperature Range Modifier Day Schedule Name
+    Wetbulb,      !- Humidity Condition Type
+       24.1,      !- Wetbulb at Maximum Dry-Bulb {C}
+           ,      !- Humidity Indicating Day Schedule Name
+           ,      !- Humidity Ratio at Maximum Dry-Bulb {kgWater/kgDryAir}
+           ,      !- Enthalpy at Maximum Dry-Bulb {J/kg}
+           ,      !- Daily Wet-Bulb Temperature Range {deltaC}
+    101259.,      !- Barometric Pressure {Pa}
+        3.2,      !- Wind Speed {m/s} design conditions vs. traditional 3.35 m/s (7mph)
+        250,      !- Wind Direction {Degrees; N=0, S=180}
+         No,      !- Rain {Yes/No}
+         No,      !- Snow on ground {Yes/No}
+         No,      !- Daylight Savings Time Indicator
+       ASHRAETau, !- Solar Model Indicator
+           ,      !- Beam Solar Day Schedule Name
+           ,      !- Diffuse Solar Day Schedule Name
+      0.657,      !- ASHRAE Clear Sky Optical Depth for Beam Irradiance (taub)
+      1.695;      !- ASHRAE Clear Sky Optical Depth for Diffuse Irradiance (taud)
+ 
+ ! Shanghai_Shanghai_CHN June (WB=>MCDB) .4%, DB=32.4C WB=27.2C taub=0.715 taud=1.627
+ SizingPeriod:DesignDay,
+  Shanghai June .4% Condns WB=>MCDB,     !- Name
+          6,      !- Month
+         21,      !- Day of Month
+  SummerDesignDay,!- Day Type
+       32.4,      !- Maximum Dry-Bulb Temperature {C}
+        5.2,      !- Daily Dry-Bulb Temperature Range {C}
+ DefaultMultipliers, !- Dry-Bulb Temperature Range Modifier Type
+           ,      !- Dry-Bulb Temperature Range Modifier Day Schedule Name
+    Wetbulb,      !- Humidity Condition Type
+       27.2,      !- Wetbulb at Maximum Dry-Bulb {C}
+           ,      !- Humidity Indicating Day Schedule Name
+           ,      !- Humidity Ratio at Maximum Dry-Bulb {kgWater/kgDryAir}
+           ,      !- Enthalpy at Maximum Dry-Bulb {J/kg}
+           ,      !- Daily Wet-Bulb Temperature Range {deltaC}
+    101259.,      !- Barometric Pressure {Pa}
+          3,      !- Wind Speed {m/s} design conditions vs. traditional 3.35 m/s (7mph)
+        250,      !- Wind Direction {Degrees; N=0, S=180}
+         No,      !- Rain {Yes/No}
+         No,      !- Snow on ground {Yes/No}
+         No,      !- Daylight Savings Time Indicator
+       ASHRAETau, !- Solar Model Indicator
+           ,      !- Beam Solar Day Schedule Name
+           ,      !- Diffuse Solar Day Schedule Name
+      0.715,      !- ASHRAE Clear Sky Optical Depth for Beam Irradiance (taub)
+      1.627;      !- ASHRAE Clear Sky Optical Depth for Diffuse Irradiance (taud)
+ 
+ ! Shanghai_Shanghai_CHN July (WB=>MCDB) .4%, DB=33.8C WB=28.7C taub=0.689 taud=1.714
+ SizingPeriod:DesignDay,
+  Shanghai July .4% Condns WB=>MCDB,     !- Name
+          7,      !- Month
+         21,      !- Day of Month
+  SummerDesignDay,!- Day Type
+       33.8,      !- Maximum Dry-Bulb Temperature {C}
+        5.7,      !- Daily Dry-Bulb Temperature Range {C}
+ DefaultMultipliers, !- Dry-Bulb Temperature Range Modifier Type
+           ,      !- Dry-Bulb Temperature Range Modifier Day Schedule Name
+    Wetbulb,      !- Humidity Condition Type
+       28.7,      !- Wetbulb at Maximum Dry-Bulb {C}
+           ,      !- Humidity Indicating Day Schedule Name
+           ,      !- Humidity Ratio at Maximum Dry-Bulb {kgWater/kgDryAir}
+           ,      !- Enthalpy at Maximum Dry-Bulb {J/kg}
+           ,      !- Daily Wet-Bulb Temperature Range {deltaC}
+    101259.,      !- Barometric Pressure {Pa}
+        3.2,      !- Wind Speed {m/s} design conditions vs. traditional 3.35 m/s (7mph)
+        250,      !- Wind Direction {Degrees; N=0, S=180}
+         No,      !- Rain {Yes/No}
+         No,      !- Snow on ground {Yes/No}
+         No,      !- Daylight Savings Time Indicator
+       ASHRAETau, !- Solar Model Indicator
+           ,      !- Beam Solar Day Schedule Name
+           ,      !- Diffuse Solar Day Schedule Name
+      0.689,      !- ASHRAE Clear Sky Optical Depth for Beam Irradiance (taub)
+      1.714;      !- ASHRAE Clear Sky Optical Depth for Diffuse Irradiance (taud)
+ 
+ ! Shanghai_Shanghai_CHN August (WB=>MCDB) .4%, DB=33.1C WB=28.3C taub=0.653 taud=1.77
+ SizingPeriod:DesignDay,
+  Shanghai August .4% Condns WB=>MCDB,     !- Name
+          8,      !- Month
+         21,      !- Day of Month
+  SummerDesignDay,!- Day Type
+       33.1,      !- Maximum Dry-Bulb Temperature {C}
+        4.9,      !- Daily Dry-Bulb Temperature Range {C}
+ DefaultMultipliers, !- Dry-Bulb Temperature Range Modifier Type
+           ,      !- Dry-Bulb Temperature Range Modifier Day Schedule Name
+    Wetbulb,      !- Humidity Condition Type
+       28.3,      !- Wetbulb at Maximum Dry-Bulb {C}
+           ,      !- Humidity Indicating Day Schedule Name
+           ,      !- Humidity Ratio at Maximum Dry-Bulb {kgWater/kgDryAir}
+           ,      !- Enthalpy at Maximum Dry-Bulb {J/kg}
+           ,      !- Daily Wet-Bulb Temperature Range {deltaC}
+    101259.,      !- Barometric Pressure {Pa}
+        3.4,      !- Wind Speed {m/s} design conditions vs. traditional 3.35 m/s (7mph)
+        250,      !- Wind Direction {Degrees; N=0, S=180}
+         No,      !- Rain {Yes/No}
+         No,      !- Snow on ground {Yes/No}
+         No,      !- Daylight Savings Time Indicator
+       ASHRAETau, !- Solar Model Indicator
+           ,      !- Beam Solar Day Schedule Name
+           ,      !- Diffuse Solar Day Schedule Name
+      0.653,      !- ASHRAE Clear Sky Optical Depth for Beam Irradiance (taub)
+       1.77;      !- ASHRAE Clear Sky Optical Depth for Diffuse Irradiance (taud)
+ 
+ ! Shanghai_Shanghai_CHN September (WB=>MCDB) .4%, DB=31.7C WB=27.7C taub=0.601 taud=1.847
+ SizingPeriod:DesignDay,
+  Shanghai September .4% Condns WB=>MCDB,     !- Name
+          9,      !- Month
+         21,      !- Day of Month
+  SummerDesignDay,!- Day Type
+       31.7,      !- Maximum Dry-Bulb Temperature {C}
+        4.7,      !- Daily Dry-Bulb Temperature Range {C}
+ DefaultMultipliers, !- Dry-Bulb Temperature Range Modifier Type
+           ,      !- Dry-Bulb Temperature Range Modifier Day Schedule Name
+    Wetbulb,      !- Humidity Condition Type
+       27.7,      !- Wetbulb at Maximum Dry-Bulb {C}
+           ,      !- Humidity Indicating Day Schedule Name
+           ,      !- Humidity Ratio at Maximum Dry-Bulb {kgWater/kgDryAir}
+           ,      !- Enthalpy at Maximum Dry-Bulb {J/kg}
+           ,      !- Daily Wet-Bulb Temperature Range {deltaC}
+    101259.,      !- Barometric Pressure {Pa}
+        3.3,      !- Wind Speed {m/s} design conditions vs. traditional 3.35 m/s (7mph)
+        250,      !- Wind Direction {Degrees; N=0, S=180}
+         No,      !- Rain {Yes/No}
+         No,      !- Snow on ground {Yes/No}
+         No,      !- Daylight Savings Time Indicator
+       ASHRAETau, !- Solar Model Indicator
+           ,      !- Beam Solar Day Schedule Name
+           ,      !- Diffuse Solar Day Schedule Name
+      0.601,      !- ASHRAE Clear Sky Optical Depth for Beam Irradiance (taub)
+      1.847;      !- ASHRAE Clear Sky Optical Depth for Diffuse Irradiance (taud)
+ 
+ ! Shanghai_Shanghai_CHN October (WB=>MCDB) .4%, DB=25.9C WB=23.6C taub=0.602 taud=1.76
+ SizingPeriod:DesignDay,
+  Shanghai October .4% Condns WB=>MCDB,     !- Name
+         10,      !- Month
+         21,      !- Day of Month
+  SummerDesignDay,!- Day Type
+       25.9,      !- Maximum Dry-Bulb Temperature {C}
+        5.4,      !- Daily Dry-Bulb Temperature Range {C}
+ DefaultMultipliers, !- Dry-Bulb Temperature Range Modifier Type
+           ,      !- Dry-Bulb Temperature Range Modifier Day Schedule Name
+    Wetbulb,      !- Humidity Condition Type
+       23.6,      !- Wetbulb at Maximum Dry-Bulb {C}
+           ,      !- Humidity Indicating Day Schedule Name
+           ,      !- Humidity Ratio at Maximum Dry-Bulb {kgWater/kgDryAir}
+           ,      !- Enthalpy at Maximum Dry-Bulb {J/kg}
+           ,      !- Daily Wet-Bulb Temperature Range {deltaC}
+    101259.,      !- Barometric Pressure {Pa}
+        2.9,      !- Wind Speed {m/s} design conditions vs. traditional 3.35 m/s (7mph)
+        250,      !- Wind Direction {Degrees; N=0, S=180}
+         No,      !- Rain {Yes/No}
+         No,      !- Snow on ground {Yes/No}
+         No,      !- Daylight Savings Time Indicator
+       ASHRAETau, !- Solar Model Indicator
+           ,      !- Beam Solar Day Schedule Name
+           ,      !- Diffuse Solar Day Schedule Name
+      0.602,      !- ASHRAE Clear Sky Optical Depth for Beam Irradiance (taub)
+       1.76;      !- ASHRAE Clear Sky Optical Depth for Diffuse Irradiance (taud)
+ 
+ ! Shanghai_Shanghai_CHN November (WB=>MCDB) .4%, DB=23.1C WB=21.1C taub=0.614 taud=1.689
+ SizingPeriod:DesignDay,
+  Shanghai November .4% Condns WB=>MCDB,     !- Name
+         11,      !- Month
+         21,      !- Day of Month
+  SummerDesignDay,!- Day Type
+       23.1,      !- Maximum Dry-Bulb Temperature {C}
+          6,      !- Daily Dry-Bulb Temperature Range {C}
+ DefaultMultipliers, !- Dry-Bulb Temperature Range Modifier Type
+           ,      !- Dry-Bulb Temperature Range Modifier Day Schedule Name
+    Wetbulb,      !- Humidity Condition Type
+       21.1,      !- Wetbulb at Maximum Dry-Bulb {C}
+           ,      !- Humidity Indicating Day Schedule Name
+           ,      !- Humidity Ratio at Maximum Dry-Bulb {kgWater/kgDryAir}
+           ,      !- Enthalpy at Maximum Dry-Bulb {J/kg}
+           ,      !- Daily Wet-Bulb Temperature Range {deltaC}
+    101259.,      !- Barometric Pressure {Pa}
+        2.8,      !- Wind Speed {m/s} design conditions vs. traditional 3.35 m/s (7mph)
+        250,      !- Wind Direction {Degrees; N=0, S=180}
+         No,      !- Rain {Yes/No}
+         No,      !- Snow on ground {Yes/No}
+         No,      !- Daylight Savings Time Indicator
+       ASHRAETau, !- Solar Model Indicator
+           ,      !- Beam Solar Day Schedule Name
+           ,      !- Diffuse Solar Day Schedule Name
+      0.614,      !- ASHRAE Clear Sky Optical Depth for Beam Irradiance (taub)
+      1.689;      !- ASHRAE Clear Sky Optical Depth for Diffuse Irradiance (taud)
+ 
+ ! Shanghai_Shanghai_CHN December (WB=>MCDB) .4%, DB=16.2C WB=15.3C taub=0.584 taud=1.703
+ SizingPeriod:DesignDay,
+  Shanghai December .4% Condns WB=>MCDB,     !- Name
+         12,      !- Month
+         21,      !- Day of Month
+  SummerDesignDay,!- Day Type
+       16.2,      !- Maximum Dry-Bulb Temperature {C}
+        5.8,      !- Daily Dry-Bulb Temperature Range {C}
+ DefaultMultipliers, !- Dry-Bulb Temperature Range Modifier Type
+           ,      !- Dry-Bulb Temperature Range Modifier Day Schedule Name
+    Wetbulb,      !- Humidity Condition Type
+       15.3,      !- Wetbulb at Maximum Dry-Bulb {C}
+           ,      !- Humidity Indicating Day Schedule Name
+           ,      !- Humidity Ratio at Maximum Dry-Bulb {kgWater/kgDryAir}
+           ,      !- Enthalpy at Maximum Dry-Bulb {J/kg}
+           ,      !- Daily Wet-Bulb Temperature Range {deltaC}
+    101259.,      !- Barometric Pressure {Pa}
+        2.9,      !- Wind Speed {m/s} design conditions vs. traditional 3.35 m/s (7mph)
+        250,      !- Wind Direction {Degrees; N=0, S=180}
+         No,      !- Rain {Yes/No}
+         No,      !- Snow on ground {Yes/No}
+         No,      !- Daylight Savings Time Indicator
+       ASHRAETau, !- Solar Model Indicator
+           ,      !- Beam Solar Day Schedule Name
+           ,      !- Diffuse Solar Day Schedule Name
+      0.584,      !- ASHRAE Clear Sky Optical Depth for Beam Irradiance (taub)
+      1.703;      !- ASHRAE Clear Sky Optical Depth for Diffuse Irradiance (taud)
+ 
+ ! Shanghai_Shanghai_CHN January (WB=>MCDB) 2%, MaxDB=12.2C MWB=10.9C taub=0.59 taud=1.678
+ SizingPeriod:DesignDay,
+  Shanghai January 2% Condns WB=>MCDB,     !- Name
+          1,      !- Month
+         21,      !- Day of Month
+  SummerDesignDay,!- Day Type
+       12.2,      !- Maximum Dry-Bulb Temperature {C}
+        5.4,      !- Daily Dry-Bulb Temperature Range {C}
+ DefaultMultipliers, !- Dry-Bulb Temperature Range Modifier Type
+           ,      !- Dry-Bulb Temperature Range Modifier Day Schedule Name
+    Wetbulb,      !- Humidity Condition Type
+       10.9,      !- Wetbulb at Maximum Dry-Bulb {C}
+           ,      !- Humidity Indicating Day Schedule Name
+           ,      !- Humidity Ratio at Maximum Dry-Bulb {kgWater/kgDryAir}
+           ,      !- Enthalpy at Maximum Dry-Bulb {J/kg}
+           ,      !- Daily Wet-Bulb Temperature Range {deltaC}
+    101259.,      !- Barometric Pressure {Pa}
+        2.9,      !- Wind Speed {m/s} design conditions vs. traditional 3.35 m/s (7mph)
+        250,      !- Wind Direction {Degrees; N=0, S=180}
+         No,      !- Rain {Yes/No}
+         No,      !- Snow on ground {Yes/No}
+         No,      !- Daylight Savings Time Indicator
+       ASHRAETau, !- Solar Model Indicator
+           ,      !- Beam Solar Day Schedule Name
+           ,      !- Diffuse Solar Day Schedule Name
+       0.59,      !- ASHRAE Clear Sky Optical Depth for Beam Irradiance (taub)
+      1.678;      !- ASHRAE Clear Sky Optical Depth for Diffuse Irradiance (taud)
+ 
+ ! Shanghai_Shanghai_CHN February (WB=>MCDB) 2%, MaxDB=15.7C MWB=12.9C taub=0.631 taud=1.625
+ SizingPeriod:DesignDay,
+  Shanghai February 2% Condns WB=>MCDB,     !- Name
+          2,      !- Month
+         21,      !- Day of Month
+  SummerDesignDay,!- Day Type
+       15.7,      !- Maximum Dry-Bulb Temperature {C}
+        5.4,      !- Daily Dry-Bulb Temperature Range {C}
+ DefaultMultipliers, !- Dry-Bulb Temperature Range Modifier Type
+           ,      !- Dry-Bulb Temperature Range Modifier Day Schedule Name
+    Wetbulb,      !- Humidity Condition Type
+       12.9,      !- Wetbulb at Maximum Dry-Bulb {C}
+           ,      !- Humidity Indicating Day Schedule Name
+           ,      !- Humidity Ratio at Maximum Dry-Bulb {kgWater/kgDryAir}
+           ,      !- Enthalpy at Maximum Dry-Bulb {J/kg}
+           ,      !- Daily Wet-Bulb Temperature Range {deltaC}
+    101259.,      !- Barometric Pressure {Pa}
+        3.1,      !- Wind Speed {m/s} design conditions vs. traditional 3.35 m/s (7mph)
+        250,      !- Wind Direction {Degrees; N=0, S=180}
+         No,      !- Rain {Yes/No}
+         No,      !- Snow on ground {Yes/No}
+         No,      !- Daylight Savings Time Indicator
+       ASHRAETau, !- Solar Model Indicator
+           ,      !- Beam Solar Day Schedule Name
+           ,      !- Diffuse Solar Day Schedule Name
+      0.631,      !- ASHRAE Clear Sky Optical Depth for Beam Irradiance (taub)
+      1.625;      !- ASHRAE Clear Sky Optical Depth for Diffuse Irradiance (taud)
+ 
+ ! Shanghai_Shanghai_CHN March (WB=>MCDB) 2%, MaxDB=18.8C MWB=15.3C taub=0.664 taud=1.588
+ SizingPeriod:DesignDay,
+  Shanghai March 2% Condns WB=>MCDB,     !- Name
+          3,      !- Month
+         21,      !- Day of Month
+  SummerDesignDay,!- Day Type
+       18.8,      !- Maximum Dry-Bulb Temperature {C}
+        6.3,      !- Daily Dry-Bulb Temperature Range {C}
+ DefaultMultipliers, !- Dry-Bulb Temperature Range Modifier Type
+           ,      !- Dry-Bulb Temperature Range Modifier Day Schedule Name
+    Wetbulb,      !- Humidity Condition Type
+       15.3,      !- Wetbulb at Maximum Dry-Bulb {C}
+           ,      !- Humidity Indicating Day Schedule Name
+           ,      !- Humidity Ratio at Maximum Dry-Bulb {kgWater/kgDryAir}
+           ,      !- Enthalpy at Maximum Dry-Bulb {J/kg}
+           ,      !- Daily Wet-Bulb Temperature Range {deltaC}
+    101259.,      !- Barometric Pressure {Pa}
+        3.2,      !- Wind Speed {m/s} design conditions vs. traditional 3.35 m/s (7mph)
+        250,      !- Wind Direction {Degrees; N=0, S=180}
+         No,      !- Rain {Yes/No}
+         No,      !- Snow on ground {Yes/No}
+         No,      !- Daylight Savings Time Indicator
+       ASHRAETau, !- Solar Model Indicator
+           ,      !- Beam Solar Day Schedule Name
+           ,      !- Diffuse Solar Day Schedule Name
+      0.664,      !- ASHRAE Clear Sky Optical Depth for Beam Irradiance (taub)
+      1.588;      !- ASHRAE Clear Sky Optical Depth for Diffuse Irradiance (taud)
+ 
+ ! Shanghai_Shanghai_CHN April (WB=>MCDB) 2%, MaxDB=24.1C MWB=20.2C taub=0.671 taud=1.629
+ SizingPeriod:DesignDay,
+  Shanghai April 2% Condns WB=>MCDB,     !- Name
+          4,      !- Month
+         21,      !- Day of Month
+  SummerDesignDay,!- Day Type
+       24.1,      !- Maximum Dry-Bulb Temperature {C}
+          7,      !- Daily Dry-Bulb Temperature Range {C}
+ DefaultMultipliers, !- Dry-Bulb Temperature Range Modifier Type
+           ,      !- Dry-Bulb Temperature Range Modifier Day Schedule Name
+    Wetbulb,      !- Humidity Condition Type
+       20.2,      !- Wetbulb at Maximum Dry-Bulb {C}
+           ,      !- Humidity Indicating Day Schedule Name
+           ,      !- Humidity Ratio at Maximum Dry-Bulb {kgWater/kgDryAir}
+           ,      !- Enthalpy at Maximum Dry-Bulb {J/kg}
+           ,      !- Daily Wet-Bulb Temperature Range {deltaC}
+    101259.,      !- Barometric Pressure {Pa}
+        3.2,      !- Wind Speed {m/s} design conditions vs. traditional 3.35 m/s (7mph)
+        250,      !- Wind Direction {Degrees; N=0, S=180}
+         No,      !- Rain {Yes/No}
+         No,      !- Snow on ground {Yes/No}
+         No,      !- Daylight Savings Time Indicator
+       ASHRAETau, !- Solar Model Indicator
+           ,      !- Beam Solar Day Schedule Name
+           ,      !- Diffuse Solar Day Schedule Name
+      0.671,      !- ASHRAE Clear Sky Optical Depth for Beam Irradiance (taub)
+      1.629;      !- ASHRAE Clear Sky Optical Depth for Diffuse Irradiance (taud)
+ 
+ ! Shanghai_Shanghai_CHN May (WB=>MCDB) 2%, MaxDB=26.1C MWB=22.8C taub=0.657 taud=1.695
+ SizingPeriod:DesignDay,
+  Shanghai May 2% Condns WB=>MCDB,     !- Name
+          5,      !- Month
+         21,      !- Day of Month
+  SummerDesignDay,!- Day Type
+       26.1,      !- Maximum Dry-Bulb Temperature {C}
+        6.7,      !- Daily Dry-Bulb Temperature Range {C}
+ DefaultMultipliers, !- Dry-Bulb Temperature Range Modifier Type
+           ,      !- Dry-Bulb Temperature Range Modifier Day Schedule Name
+    Wetbulb,      !- Humidity Condition Type
+       22.8,      !- Wetbulb at Maximum Dry-Bulb {C}
+           ,      !- Humidity Indicating Day Schedule Name
+           ,      !- Humidity Ratio at Maximum Dry-Bulb {kgWater/kgDryAir}
+           ,      !- Enthalpy at Maximum Dry-Bulb {J/kg}
+           ,      !- Daily Wet-Bulb Temperature Range {deltaC}
+    101259.,      !- Barometric Pressure {Pa}
+        3.2,      !- Wind Speed {m/s} design conditions vs. traditional 3.35 m/s (7mph)
+        250,      !- Wind Direction {Degrees; N=0, S=180}
+         No,      !- Rain {Yes/No}
+         No,      !- Snow on ground {Yes/No}
+         No,      !- Daylight Savings Time Indicator
+       ASHRAETau, !- Solar Model Indicator
+           ,      !- Beam Solar Day Schedule Name
+           ,      !- Diffuse Solar Day Schedule Name
+      0.657,      !- ASHRAE Clear Sky Optical Depth for Beam Irradiance (taub)
+      1.695;      !- ASHRAE Clear Sky Optical Depth for Diffuse Irradiance (taud)
+ 
+ ! Shanghai_Shanghai_CHN June (WB=>MCDB) 2%, MaxDB=30.9C MWB=26.3C taub=0.715 taud=1.627
+ SizingPeriod:DesignDay,
+  Shanghai June 2% Condns WB=>MCDB,     !- Name
+          6,      !- Month
+         21,      !- Day of Month
+  SummerDesignDay,!- Day Type
+       30.9,      !- Maximum Dry-Bulb Temperature {C}
+        5.2,      !- Daily Dry-Bulb Temperature Range {C}
+ DefaultMultipliers, !- Dry-Bulb Temperature Range Modifier Type
+           ,      !- Dry-Bulb Temperature Range Modifier Day Schedule Name
+    Wetbulb,      !- Humidity Condition Type
+       26.3,      !- Wetbulb at Maximum Dry-Bulb {C}
+           ,      !- Humidity Indicating Day Schedule Name
+           ,      !- Humidity Ratio at Maximum Dry-Bulb {kgWater/kgDryAir}
+           ,      !- Enthalpy at Maximum Dry-Bulb {J/kg}
+           ,      !- Daily Wet-Bulb Temperature Range {deltaC}
+    101259.,      !- Barometric Pressure {Pa}
+          3,      !- Wind Speed {m/s} design conditions vs. traditional 3.35 m/s (7mph)
+        250,      !- Wind Direction {Degrees; N=0, S=180}
+         No,      !- Rain {Yes/No}
+         No,      !- Snow on ground {Yes/No}
+         No,      !- Daylight Savings Time Indicator
+       ASHRAETau, !- Solar Model Indicator
+           ,      !- Beam Solar Day Schedule Name
+           ,      !- Diffuse Solar Day Schedule Name
+      0.715,      !- ASHRAE Clear Sky Optical Depth for Beam Irradiance (taub)
+      1.627;      !- ASHRAE Clear Sky Optical Depth for Diffuse Irradiance (taud)
+ 
+ ! Shanghai_Shanghai_CHN July (WB=>MCDB) 2%, MaxDB=32.7C MWB=28C taub=0.689 taud=1.714
+ SizingPeriod:DesignDay,
+  Shanghai July 2% Condns WB=>MCDB,     !- Name
+          7,      !- Month
+         21,      !- Day of Month
+  SummerDesignDay,!- Day Type
+       32.7,      !- Maximum Dry-Bulb Temperature {C}
+        5.7,      !- Daily Dry-Bulb Temperature Range {C}
+ DefaultMultipliers, !- Dry-Bulb Temperature Range Modifier Type
+           ,      !- Dry-Bulb Temperature Range Modifier Day Schedule Name
+    Wetbulb,      !- Humidity Condition Type
+         28,      !- Wetbulb at Maximum Dry-Bulb {C}
+           ,      !- Humidity Indicating Day Schedule Name
+           ,      !- Humidity Ratio at Maximum Dry-Bulb {kgWater/kgDryAir}
+           ,      !- Enthalpy at Maximum Dry-Bulb {J/kg}
+           ,      !- Daily Wet-Bulb Temperature Range {deltaC}
+    101259.,      !- Barometric Pressure {Pa}
+        3.2,      !- Wind Speed {m/s} design conditions vs. traditional 3.35 m/s (7mph)
+        250,      !- Wind Direction {Degrees; N=0, S=180}
+         No,      !- Rain {Yes/No}
+         No,      !- Snow on ground {Yes/No}
+         No,      !- Daylight Savings Time Indicator
+       ASHRAETau, !- Solar Model Indicator
+           ,      !- Beam Solar Day Schedule Name
+           ,      !- Diffuse Solar Day Schedule Name
+      0.689,      !- ASHRAE Clear Sky Optical Depth for Beam Irradiance (taub)
+      1.714;      !- ASHRAE Clear Sky Optical Depth for Diffuse Irradiance (taud)
+ 
+ ! Shanghai_Shanghai_CHN August (WB=>MCDB) 2%, MaxDB=32.1C MWB=27.7C taub=0.653 taud=1.77
+ SizingPeriod:DesignDay,
+  Shanghai August 2% Condns WB=>MCDB,     !- Name
+          8,      !- Month
+         21,      !- Day of Month
+  SummerDesignDay,!- Day Type
+       32.1,      !- Maximum Dry-Bulb Temperature {C}
+        4.9,      !- Daily Dry-Bulb Temperature Range {C}
+ DefaultMultipliers, !- Dry-Bulb Temperature Range Modifier Type
+           ,      !- Dry-Bulb Temperature Range Modifier Day Schedule Name
+    Wetbulb,      !- Humidity Condition Type
+       27.7,      !- Wetbulb at Maximum Dry-Bulb {C}
+           ,      !- Humidity Indicating Day Schedule Name
+           ,      !- Humidity Ratio at Maximum Dry-Bulb {kgWater/kgDryAir}
+           ,      !- Enthalpy at Maximum Dry-Bulb {J/kg}
+           ,      !- Daily Wet-Bulb Temperature Range {deltaC}
+    101259.,      !- Barometric Pressure {Pa}
+        3.4,      !- Wind Speed {m/s} design conditions vs. traditional 3.35 m/s (7mph)
+        250,      !- Wind Direction {Degrees; N=0, S=180}
+         No,      !- Rain {Yes/No}
+         No,      !- Snow on ground {Yes/No}
+         No,      !- Daylight Savings Time Indicator
+       ASHRAETau, !- Solar Model Indicator
+           ,      !- Beam Solar Day Schedule Name
+           ,      !- Diffuse Solar Day Schedule Name
+      0.653,      !- ASHRAE Clear Sky Optical Depth for Beam Irradiance (taub)
+       1.77;      !- ASHRAE Clear Sky Optical Depth for Diffuse Irradiance (taud)
+ 
+ ! Shanghai_Shanghai_CHN September (WB=>MCDB) 2%, MaxDB=29.9C MWB=26.6C taub=0.601 taud=1.847
+ SizingPeriod:DesignDay,
+  Shanghai September 2% Condns WB=>MCDB,     !- Name
+          9,      !- Month
+         21,      !- Day of Month
+  SummerDesignDay,!- Day Type
+       29.9,      !- Maximum Dry-Bulb Temperature {C}
+        4.7,      !- Daily Dry-Bulb Temperature Range {C}
+ DefaultMultipliers, !- Dry-Bulb Temperature Range Modifier Type
+           ,      !- Dry-Bulb Temperature Range Modifier Day Schedule Name
+    Wetbulb,      !- Humidity Condition Type
+       26.6,      !- Wetbulb at Maximum Dry-Bulb {C}
+           ,      !- Humidity Indicating Day Schedule Name
+           ,      !- Humidity Ratio at Maximum Dry-Bulb {kgWater/kgDryAir}
+           ,      !- Enthalpy at Maximum Dry-Bulb {J/kg}
+           ,      !- Daily Wet-Bulb Temperature Range {deltaC}
+    101259.,      !- Barometric Pressure {Pa}
+        3.3,      !- Wind Speed {m/s} design conditions vs. traditional 3.35 m/s (7mph)
+        250,      !- Wind Direction {Degrees; N=0, S=180}
+         No,      !- Rain {Yes/No}
+         No,      !- Snow on ground {Yes/No}
+         No,      !- Daylight Savings Time Indicator
+       ASHRAETau, !- Solar Model Indicator
+           ,      !- Beam Solar Day Schedule Name
+           ,      !- Diffuse Solar Day Schedule Name
+      0.601,      !- ASHRAE Clear Sky Optical Depth for Beam Irradiance (taub)
+      1.847;      !- ASHRAE Clear Sky Optical Depth for Diffuse Irradiance (taud)
+ 
+ ! Shanghai_Shanghai_CHN October (WB=>MCDB) 2%, MaxDB=24.4C MWB=22.3C taub=0.602 taud=1.76
+ SizingPeriod:DesignDay,
+  Shanghai October 2% Condns WB=>MCDB,     !- Name
+         10,      !- Month
+         21,      !- Day of Month
+  SummerDesignDay,!- Day Type
+       24.4,      !- Maximum Dry-Bulb Temperature {C}
+        5.4,      !- Daily Dry-Bulb Temperature Range {C}
+ DefaultMultipliers, !- Dry-Bulb Temperature Range Modifier Type
+           ,      !- Dry-Bulb Temperature Range Modifier Day Schedule Name
+    Wetbulb,      !- Humidity Condition Type
+       22.3,      !- Wetbulb at Maximum Dry-Bulb {C}
+           ,      !- Humidity Indicating Day Schedule Name
+           ,      !- Humidity Ratio at Maximum Dry-Bulb {kgWater/kgDryAir}
+           ,      !- Enthalpy at Maximum Dry-Bulb {J/kg}
+           ,      !- Daily Wet-Bulb Temperature Range {deltaC}
+    101259.,      !- Barometric Pressure {Pa}
+        2.9,      !- Wind Speed {m/s} design conditions vs. traditional 3.35 m/s (7mph)
+        250,      !- Wind Direction {Degrees; N=0, S=180}
+         No,      !- Rain {Yes/No}
+         No,      !- Snow on ground {Yes/No}
+         No,      !- Daylight Savings Time Indicator
+       ASHRAETau, !- Solar Model Indicator
+           ,      !- Beam Solar Day Schedule Name
+           ,      !- Diffuse Solar Day Schedule Name
+      0.602,      !- ASHRAE Clear Sky Optical Depth for Beam Irradiance (taub)
+       1.76;      !- ASHRAE Clear Sky Optical Depth for Diffuse Irradiance (taud)
+ 
+ ! Shanghai_Shanghai_CHN November (WB=>MCDB) 2%, MaxDB=21.1C MWB=19.4C taub=0.614 taud=1.689
+ SizingPeriod:DesignDay,
+  Shanghai November 2% Condns WB=>MCDB,     !- Name
+         11,      !- Month
+         21,      !- Day of Month
+  SummerDesignDay,!- Day Type
+       21.1,      !- Maximum Dry-Bulb Temperature {C}
+          6,      !- Daily Dry-Bulb Temperature Range {C}
+ DefaultMultipliers, !- Dry-Bulb Temperature Range Modifier Type
+           ,      !- Dry-Bulb Temperature Range Modifier Day Schedule Name
+    Wetbulb,      !- Humidity Condition Type
+       19.4,      !- Wetbulb at Maximum Dry-Bulb {C}
+           ,      !- Humidity Indicating Day Schedule Name
+           ,      !- Humidity Ratio at Maximum Dry-Bulb {kgWater/kgDryAir}
+           ,      !- Enthalpy at Maximum Dry-Bulb {J/kg}
+           ,      !- Daily Wet-Bulb Temperature Range {deltaC}
+    101259.,      !- Barometric Pressure {Pa}
+        2.8,      !- Wind Speed {m/s} design conditions vs. traditional 3.35 m/s (7mph)
+        250,      !- Wind Direction {Degrees; N=0, S=180}
+         No,      !- Rain {Yes/No}
+         No,      !- Snow on ground {Yes/No}
+         No,      !- Daylight Savings Time Indicator
+       ASHRAETau, !- Solar Model Indicator
+           ,      !- Beam Solar Day Schedule Name
+           ,      !- Diffuse Solar Day Schedule Name
+      0.614,      !- ASHRAE Clear Sky Optical Depth for Beam Irradiance (taub)
+      1.689;      !- ASHRAE Clear Sky Optical Depth for Diffuse Irradiance (taud)
+ 
+ ! Shanghai_Shanghai_CHN December (WB=>MCDB) 2%, MaxDB=15C MWB=13.3C taub=0.584 taud=1.703
+ SizingPeriod:DesignDay,
+  Shanghai December 2% Condns WB=>MCDB,     !- Name
+         12,      !- Month
+         21,      !- Day of Month
+  SummerDesignDay,!- Day Type
+         15,      !- Maximum Dry-Bulb Temperature {C}
+        5.8,      !- Daily Dry-Bulb Temperature Range {C}
+ DefaultMultipliers, !- Dry-Bulb Temperature Range Modifier Type
+           ,      !- Dry-Bulb Temperature Range Modifier Day Schedule Name
+    Wetbulb,      !- Humidity Condition Type
+       13.3,      !- Wetbulb at Maximum Dry-Bulb {C}
+           ,      !- Humidity Indicating Day Schedule Name
+           ,      !- Humidity Ratio at Maximum Dry-Bulb {kgWater/kgDryAir}
+           ,      !- Enthalpy at Maximum Dry-Bulb {J/kg}
+           ,      !- Daily Wet-Bulb Temperature Range {deltaC}
+    101259.,      !- Barometric Pressure {Pa}
+        2.9,      !- Wind Speed {m/s} design conditions vs. traditional 3.35 m/s (7mph)
+        250,      !- Wind Direction {Degrees; N=0, S=180}
+         No,      !- Rain {Yes/No}
+         No,      !- Snow on ground {Yes/No}
+         No,      !- Daylight Savings Time Indicator
+       ASHRAETau, !- Solar Model Indicator
+           ,      !- Beam Solar Day Schedule Name
+           ,      !- Diffuse Solar Day Schedule Name
+      0.584,      !- ASHRAE Clear Sky Optical Depth for Beam Irradiance (taub)
+      1.703;      !- ASHRAE Clear Sky Optical Depth for Diffuse Irradiance (taud)
+ 
+ ! Shanghai_Shanghai_CHN January (DB=>MCWB) 5%, MaxDB=11.1C MWB=8.6C taub=0.59 taud=1.678
+ SizingPeriod:DesignDay,
+  Shanghai January 5% Condns DB=>MCWB,     !- Name
+          1,      !- Month
+         21,      !- Day of Month
+  SummerDesignDay,!- Day Type
+       11.1,      !- Maximum Dry-Bulb Temperature {C}
+        8.5,      !- Daily Dry-Bulb Temperature Range {C}
+ DefaultMultipliers, !- Dry-Bulb Temperature Range Modifier Type
+           ,      !- Dry-Bulb Temperature Range Modifier Day Schedule Name
+    Wetbulb,      !- Humidity Condition Type
+        8.6,      !- Wetbulb at Maximum Dry-Bulb {C}
+           ,      !- Humidity Indicating Day Schedule Name
+           ,      !- Humidity Ratio at Maximum Dry-Bulb {kgWater/kgDryAir}
+           ,      !- Enthalpy at Maximum Dry-Bulb {J/kg}
+        5.4,      !- Daily Wet-Bulb Temperature Range {deltaC}
+    101259.,      !- Barometric Pressure {Pa}
+        2.9,      !- Wind Speed {m/s} design conditions vs. traditional 3.35 m/s (7mph)
+        250,      !- Wind Direction {Degrees; N=0, S=180}
+         No,      !- Rain {Yes/No}
+         No,      !- Snow on ground {Yes/No}
+         No,      !- Daylight Savings Time Indicator
+       ASHRAETau, !- Solar Model Indicator
+           ,      !- Beam Solar Day Schedule Name
+           ,      !- Diffuse Solar Day Schedule Name
+       0.59,      !- ASHRAE Clear Sky Optical Depth for Beam Irradiance (taub)
+      1.678;      !- ASHRAE Clear Sky Optical Depth for Diffuse Irradiance (taud)
+ 
+ ! Shanghai_Shanghai_CHN February (DB=>MCWB) 5%, MaxDB=13.6C MWB=10.1C taub=0.631 taud=1.625
+ SizingPeriod:DesignDay,
+  Shanghai February 5% Condns DB=>MCWB,     !- Name
+          2,      !- Month
+         21,      !- Day of Month
+  SummerDesignDay,!- Day Type
+       13.6,      !- Maximum Dry-Bulb Temperature {C}
+        9.7,      !- Daily Dry-Bulb Temperature Range {C}
+ DefaultMultipliers, !- Dry-Bulb Temperature Range Modifier Type
+           ,      !- Dry-Bulb Temperature Range Modifier Day Schedule Name
+    Wetbulb,      !- Humidity Condition Type
+       10.1,      !- Wetbulb at Maximum Dry-Bulb {C}
+           ,      !- Humidity Indicating Day Schedule Name
+           ,      !- Humidity Ratio at Maximum Dry-Bulb {kgWater/kgDryAir}
+           ,      !- Enthalpy at Maximum Dry-Bulb {J/kg}
+        5.8,      !- Daily Wet-Bulb Temperature Range {deltaC}
+    101259.,      !- Barometric Pressure {Pa}
+        3.1,      !- Wind Speed {m/s} design conditions vs. traditional 3.35 m/s (7mph)
+        250,      !- Wind Direction {Degrees; N=0, S=180}
+         No,      !- Rain {Yes/No}
+         No,      !- Snow on ground {Yes/No}
+         No,      !- Daylight Savings Time Indicator
+       ASHRAETau, !- Solar Model Indicator
+           ,      !- Beam Solar Day Schedule Name
+           ,      !- Diffuse Solar Day Schedule Name
+      0.631,      !- ASHRAE Clear Sky Optical Depth for Beam Irradiance (taub)
+      1.625;      !- ASHRAE Clear Sky Optical Depth for Diffuse Irradiance (taud)
+ 
+ ! Shanghai_Shanghai_CHN March (DB=>MCWB) 5%, MaxDB=18.2C MWB=13.1C taub=0.664 taud=1.588
+ SizingPeriod:DesignDay,
+  Shanghai March 5% Condns DB=>MCWB,     !- Name
+          3,      !- Month
+         21,      !- Day of Month
+  SummerDesignDay,!- Day Type
+       18.2,      !- Maximum Dry-Bulb Temperature {C}
+       10.7,      !- Daily Dry-Bulb Temperature Range {C}
+ DefaultMultipliers, !- Dry-Bulb Temperature Range Modifier Type
+           ,      !- Dry-Bulb Temperature Range Modifier Day Schedule Name
+    Wetbulb,      !- Humidity Condition Type
+       13.1,      !- Wetbulb at Maximum Dry-Bulb {C}
+           ,      !- Humidity Indicating Day Schedule Name
+           ,      !- Humidity Ratio at Maximum Dry-Bulb {kgWater/kgDryAir}
+           ,      !- Enthalpy at Maximum Dry-Bulb {J/kg}
+        5.6,      !- Daily Wet-Bulb Temperature Range {deltaC}
+    101259.,      !- Barometric Pressure {Pa}
+        3.2,      !- Wind Speed {m/s} design conditions vs. traditional 3.35 m/s (7mph)
+        250,      !- Wind Direction {Degrees; N=0, S=180}
+         No,      !- Rain {Yes/No}
+         No,      !- Snow on ground {Yes/No}
+         No,      !- Daylight Savings Time Indicator
+       ASHRAETau, !- Solar Model Indicator
+           ,      !- Beam Solar Day Schedule Name
+           ,      !- Diffuse Solar Day Schedule Name
+      0.664,      !- ASHRAE Clear Sky Optical Depth for Beam Irradiance (taub)
+      1.588;      !- ASHRAE Clear Sky Optical Depth for Diffuse Irradiance (taud)
+ 
+ ! Shanghai_Shanghai_CHN April (DB=>MCWB) 5%, MaxDB=23.5C MWB=17.4C taub=0.671 taud=1.629
+ SizingPeriod:DesignDay,
+  Shanghai April 5% Condns DB=>MCWB,     !- Name
+          4,      !- Month
+         21,      !- Day of Month
+  SummerDesignDay,!- Day Type
+       23.5,      !- Maximum Dry-Bulb Temperature {C}
+       10.9,      !- Daily Dry-Bulb Temperature Range {C}
+ DefaultMultipliers, !- Dry-Bulb Temperature Range Modifier Type
+           ,      !- Dry-Bulb Temperature Range Modifier Day Schedule Name
+    Wetbulb,      !- Humidity Condition Type
+       17.4,      !- Wetbulb at Maximum Dry-Bulb {C}
+           ,      !- Humidity Indicating Day Schedule Name
+           ,      !- Humidity Ratio at Maximum Dry-Bulb {kgWater/kgDryAir}
+           ,      !- Enthalpy at Maximum Dry-Bulb {J/kg}
+        5.7,      !- Daily Wet-Bulb Temperature Range {deltaC}
+    101259.,      !- Barometric Pressure {Pa}
+        3.2,      !- Wind Speed {m/s} design conditions vs. traditional 3.35 m/s (7mph)
+        250,      !- Wind Direction {Degrees; N=0, S=180}
+         No,      !- Rain {Yes/No}
+         No,      !- Snow on ground {Yes/No}
+         No,      !- Daylight Savings Time Indicator
+       ASHRAETau, !- Solar Model Indicator
+           ,      !- Beam Solar Day Schedule Name
+           ,      !- Diffuse Solar Day Schedule Name
+      0.671,      !- ASHRAE Clear Sky Optical Depth for Beam Irradiance (taub)
+      1.629;      !- ASHRAE Clear Sky Optical Depth for Diffuse Irradiance (taud)
+ 
+ ! Shanghai_Shanghai_CHN May (DB=>MCWB) 5%, MaxDB=27.7C MWB=19.9C taub=0.657 taud=1.695
+ SizingPeriod:DesignDay,
+  Shanghai May 5% Condns DB=>MCWB,     !- Name
+          5,      !- Month
+         21,      !- Day of Month
+  SummerDesignDay,!- Day Type
+       27.7,      !- Maximum Dry-Bulb Temperature {C}
+        9.9,      !- Daily Dry-Bulb Temperature Range {C}
+ DefaultMultipliers, !- Dry-Bulb Temperature Range Modifier Type
+           ,      !- Dry-Bulb Temperature Range Modifier Day Schedule Name
+    Wetbulb,      !- Humidity Condition Type
+       19.9,      !- Wetbulb at Maximum Dry-Bulb {C}
+           ,      !- Humidity Indicating Day Schedule Name
+           ,      !- Humidity Ratio at Maximum Dry-Bulb {kgWater/kgDryAir}
+           ,      !- Enthalpy at Maximum Dry-Bulb {J/kg}
+        4.1,      !- Daily Wet-Bulb Temperature Range {deltaC}
+    101259.,      !- Barometric Pressure {Pa}
+        3.2,      !- Wind Speed {m/s} design conditions vs. traditional 3.35 m/s (7mph)
+        250,      !- Wind Direction {Degrees; N=0, S=180}
+         No,      !- Rain {Yes/No}
+         No,      !- Snow on ground {Yes/No}
+         No,      !- Daylight Savings Time Indicator
+       ASHRAETau, !- Solar Model Indicator
+           ,      !- Beam Solar Day Schedule Name
+           ,      !- Diffuse Solar Day Schedule Name
+      0.657,      !- ASHRAE Clear Sky Optical Depth for Beam Irradiance (taub)
+      1.695;      !- ASHRAE Clear Sky Optical Depth for Diffuse Irradiance (taud)
+ 
+ ! Shanghai_Shanghai_CHN June (DB=>MCWB) 5%, MaxDB=30.7C MWB=24.5C taub=0.715 taud=1.627
+ SizingPeriod:DesignDay,
+  Shanghai June 5% Condns DB=>MCWB,     !- Name
+          6,      !- Month
+         21,      !- Day of Month
+  SummerDesignDay,!- Day Type
+       30.7,      !- Maximum Dry-Bulb Temperature {C}
+        8.3,      !- Daily Dry-Bulb Temperature Range {C}
+ DefaultMultipliers, !- Dry-Bulb Temperature Range Modifier Type
+           ,      !- Dry-Bulb Temperature Range Modifier Day Schedule Name
+    Wetbulb,      !- Humidity Condition Type
+       24.5,      !- Wetbulb at Maximum Dry-Bulb {C}
+           ,      !- Humidity Indicating Day Schedule Name
+           ,      !- Humidity Ratio at Maximum Dry-Bulb {kgWater/kgDryAir}
+           ,      !- Enthalpy at Maximum Dry-Bulb {J/kg}
+        2.9,      !- Daily Wet-Bulb Temperature Range {deltaC}
+    101259.,      !- Barometric Pressure {Pa}
+          3,      !- Wind Speed {m/s} design conditions vs. traditional 3.35 m/s (7mph)
+        250,      !- Wind Direction {Degrees; N=0, S=180}
+         No,      !- Rain {Yes/No}
+         No,      !- Snow on ground {Yes/No}
+         No,      !- Daylight Savings Time Indicator
+       ASHRAETau, !- Solar Model Indicator
+           ,      !- Beam Solar Day Schedule Name
+           ,      !- Diffuse Solar Day Schedule Name
+      0.715,      !- ASHRAE Clear Sky Optical Depth for Beam Irradiance (taub)
+      1.627;      !- ASHRAE Clear Sky Optical Depth for Diffuse Irradiance (taud)
+ 
+ ! Shanghai_Shanghai_CHN July (DB=>MCWB) 5%, MaxDB=34.5C MWB=26.7C taub=0.689 taud=1.714
+ SizingPeriod:DesignDay,
+  Shanghai July 5% Condns DB=>MCWB,     !- Name
+          7,      !- Month
+         21,      !- Day of Month
+  SummerDesignDay,!- Day Type
+       34.5,      !- Maximum Dry-Bulb Temperature {C}
+        7.6,      !- Daily Dry-Bulb Temperature Range {C}
+ DefaultMultipliers, !- Dry-Bulb Temperature Range Modifier Type
+           ,      !- Dry-Bulb Temperature Range Modifier Day Schedule Name
+    Wetbulb,      !- Humidity Condition Type
+       26.7,      !- Wetbulb at Maximum Dry-Bulb {C}
+           ,      !- Humidity Indicating Day Schedule Name
+           ,      !- Humidity Ratio at Maximum Dry-Bulb {kgWater/kgDryAir}
+           ,      !- Enthalpy at Maximum Dry-Bulb {J/kg}
+        2.4,      !- Daily Wet-Bulb Temperature Range {deltaC}
+    101259.,      !- Barometric Pressure {Pa}
+        3.2,      !- Wind Speed {m/s} design conditions vs. traditional 3.35 m/s (7mph)
+        250,      !- Wind Direction {Degrees; N=0, S=180}
+         No,      !- Rain {Yes/No}
+         No,      !- Snow on ground {Yes/No}
+         No,      !- Daylight Savings Time Indicator
+       ASHRAETau, !- Solar Model Indicator
+           ,      !- Beam Solar Day Schedule Name
+           ,      !- Diffuse Solar Day Schedule Name
+      0.689,      !- ASHRAE Clear Sky Optical Depth for Beam Irradiance (taub)
+      1.714;      !- ASHRAE Clear Sky Optical Depth for Diffuse Irradiance (taud)
+ 
+ ! Shanghai_Shanghai_CHN August (DB=>MCWB) 5%, MaxDB=33.5C MWB=26.4C taub=0.653 taud=1.77
+ SizingPeriod:DesignDay,
+  Shanghai August 5% Condns DB=>MCWB,     !- Name
+          8,      !- Month
+         21,      !- Day of Month
+  SummerDesignDay,!- Day Type
+       33.5,      !- Maximum Dry-Bulb Temperature {C}
+        6.9,      !- Daily Dry-Bulb Temperature Range {C}
+ DefaultMultipliers, !- Dry-Bulb Temperature Range Modifier Type
+           ,      !- Dry-Bulb Temperature Range Modifier Day Schedule Name
+    Wetbulb,      !- Humidity Condition Type
+       26.4,      !- Wetbulb at Maximum Dry-Bulb {C}
+           ,      !- Humidity Indicating Day Schedule Name
+           ,      !- Humidity Ratio at Maximum Dry-Bulb {kgWater/kgDryAir}
+           ,      !- Enthalpy at Maximum Dry-Bulb {J/kg}
+        2.3,      !- Daily Wet-Bulb Temperature Range {deltaC}
+    101259.,      !- Barometric Pressure {Pa}
+        3.4,      !- Wind Speed {m/s} design conditions vs. traditional 3.35 m/s (7mph)
+        250,      !- Wind Direction {Degrees; N=0, S=180}
+         No,      !- Rain {Yes/No}
+         No,      !- Snow on ground {Yes/No}
+         No,      !- Daylight Savings Time Indicator
+       ASHRAETau, !- Solar Model Indicator
+           ,      !- Beam Solar Day Schedule Name
+           ,      !- Diffuse Solar Day Schedule Name
+      0.653,      !- ASHRAE Clear Sky Optical Depth for Beam Irradiance (taub)
+       1.77;      !- ASHRAE Clear Sky Optical Depth for Diffuse Irradiance (taud)
+ 
+ ! Shanghai_Shanghai_CHN September (DB=>MCWB) 5%, MaxDB=29.8C MWB=25.2C taub=0.601 taud=1.847
+ SizingPeriod:DesignDay,
+  Shanghai September 5% Condns DB=>MCWB,     !- Name
+          9,      !- Month
+         21,      !- Day of Month
+  SummerDesignDay,!- Day Type
+       29.8,      !- Maximum Dry-Bulb Temperature {C}
+        5.9,      !- Daily Dry-Bulb Temperature Range {C}
+ DefaultMultipliers, !- Dry-Bulb Temperature Range Modifier Type
+           ,      !- Dry-Bulb Temperature Range Modifier Day Schedule Name
+    Wetbulb,      !- Humidity Condition Type
+       25.2,      !- Wetbulb at Maximum Dry-Bulb {C}
+           ,      !- Humidity Indicating Day Schedule Name
+           ,      !- Humidity Ratio at Maximum Dry-Bulb {kgWater/kgDryAir}
+           ,      !- Enthalpy at Maximum Dry-Bulb {J/kg}
+        2.4,      !- Daily Wet-Bulb Temperature Range {deltaC}
+    101259.,      !- Barometric Pressure {Pa}
+        3.3,      !- Wind Speed {m/s} design conditions vs. traditional 3.35 m/s (7mph)
+        250,      !- Wind Direction {Degrees; N=0, S=180}
+         No,      !- Rain {Yes/No}
+         No,      !- Snow on ground {Yes/No}
+         No,      !- Daylight Savings Time Indicator
+       ASHRAETau, !- Solar Model Indicator
+           ,      !- Beam Solar Day Schedule Name
+           ,      !- Diffuse Solar Day Schedule Name
+      0.601,      !- ASHRAE Clear Sky Optical Depth for Beam Irradiance (taub)
+      1.847;      !- ASHRAE Clear Sky Optical Depth for Diffuse Irradiance (taud)
+ 
+ ! Shanghai_Shanghai_CHN October (DB=>MCWB) 5%, MaxDB=24.7C MWB=19.7C taub=0.602 taud=1.76
+ SizingPeriod:DesignDay,
+  Shanghai October 5% Condns DB=>MCWB,     !- Name
+         10,      !- Month
+         21,      !- Day of Month
+  SummerDesignDay,!- Day Type
+       24.7,      !- Maximum Dry-Bulb Temperature {C}
+        6.6,      !- Daily Dry-Bulb Temperature Range {C}
+ DefaultMultipliers, !- Dry-Bulb Temperature Range Modifier Type
+           ,      !- Dry-Bulb Temperature Range Modifier Day Schedule Name
+    Wetbulb,      !- Humidity Condition Type
+       19.7,      !- Wetbulb at Maximum Dry-Bulb {C}
+           ,      !- Humidity Indicating Day Schedule Name
+           ,      !- Humidity Ratio at Maximum Dry-Bulb {kgWater/kgDryAir}
+           ,      !- Enthalpy at Maximum Dry-Bulb {J/kg}
+        2.9,      !- Daily Wet-Bulb Temperature Range {deltaC}
+    101259.,      !- Barometric Pressure {Pa}
+        2.9,      !- Wind Speed {m/s} design conditions vs. traditional 3.35 m/s (7mph)
+        250,      !- Wind Direction {Degrees; N=0, S=180}
+         No,      !- Rain {Yes/No}
+         No,      !- Snow on ground {Yes/No}
+         No,      !- Daylight Savings Time Indicator
+       ASHRAETau, !- Solar Model Indicator
+           ,      !- Beam Solar Day Schedule Name
+           ,      !- Diffuse Solar Day Schedule Name
+      0.602,      !- ASHRAE Clear Sky Optical Depth for Beam Irradiance (taub)
+       1.76;      !- ASHRAE Clear Sky Optical Depth for Diffuse Irradiance (taud)
+ 
+ ! Shanghai_Shanghai_CHN November (DB=>MCWB) 5%, MaxDB=20.5C MWB=17C taub=0.614 taud=1.689
+ SizingPeriod:DesignDay,
+  Shanghai November 5% Condns DB=>MCWB,     !- Name
+         11,      !- Month
+         21,      !- Day of Month
+  SummerDesignDay,!- Day Type
+       20.5,      !- Maximum Dry-Bulb Temperature {C}
+        7.4,      !- Daily Dry-Bulb Temperature Range {C}
+ DefaultMultipliers, !- Dry-Bulb Temperature Range Modifier Type
+           ,      !- Dry-Bulb Temperature Range Modifier Day Schedule Name
+    Wetbulb,      !- Humidity Condition Type
+         17,      !- Wetbulb at Maximum Dry-Bulb {C}
+           ,      !- Humidity Indicating Day Schedule Name
+           ,      !- Humidity Ratio at Maximum Dry-Bulb {kgWater/kgDryAir}
+           ,      !- Enthalpy at Maximum Dry-Bulb {J/kg}
+        3.9,      !- Daily Wet-Bulb Temperature Range {deltaC}
+    101259.,      !- Barometric Pressure {Pa}
+        2.8,      !- Wind Speed {m/s} design conditions vs. traditional 3.35 m/s (7mph)
+        250,      !- Wind Direction {Degrees; N=0, S=180}
+         No,      !- Rain {Yes/No}
+         No,      !- Snow on ground {Yes/No}
+         No,      !- Daylight Savings Time Indicator
+       ASHRAETau, !- Solar Model Indicator
+           ,      !- Beam Solar Day Schedule Name
+           ,      !- Diffuse Solar Day Schedule Name
+      0.614,      !- ASHRAE Clear Sky Optical Depth for Beam Irradiance (taub)
+      1.689;      !- ASHRAE Clear Sky Optical Depth for Diffuse Irradiance (taud)
+ 
+ ! Shanghai_Shanghai_CHN December (DB=>MCWB) 5%, MaxDB=14.1C MWB=11.3C taub=0.584 taud=1.703
+ SizingPeriod:DesignDay,
+  Shanghai December 5% Condns DB=>MCWB,     !- Name
+         12,      !- Month
+         21,      !- Day of Month
+  SummerDesignDay,!- Day Type
+       14.1,      !- Maximum Dry-Bulb Temperature {C}
+        7.6,      !- Daily Dry-Bulb Temperature Range {C}
+ DefaultMultipliers, !- Dry-Bulb Temperature Range Modifier Type
+           ,      !- Dry-Bulb Temperature Range Modifier Day Schedule Name
+    Wetbulb,      !- Humidity Condition Type
+       11.3,      !- Wetbulb at Maximum Dry-Bulb {C}
+           ,      !- Humidity Indicating Day Schedule Name
+           ,      !- Humidity Ratio at Maximum Dry-Bulb {kgWater/kgDryAir}
+           ,      !- Enthalpy at Maximum Dry-Bulb {J/kg}
+        4.9,      !- Daily Wet-Bulb Temperature Range {deltaC}
+    101259.,      !- Barometric Pressure {Pa}
+        2.9,      !- Wind Speed {m/s} design conditions vs. traditional 3.35 m/s (7mph)
+        250,      !- Wind Direction {Degrees; N=0, S=180}
+         No,      !- Rain {Yes/No}
+         No,      !- Snow on ground {Yes/No}
+         No,      !- Daylight Savings Time Indicator
+       ASHRAETau, !- Solar Model Indicator
+           ,      !- Beam Solar Day Schedule Name
+           ,      !- Diffuse Solar Day Schedule Name
+      0.584,      !- ASHRAE Clear Sky Optical Depth for Beam Irradiance (taub)
+      1.703;      !- ASHRAE Clear Sky Optical Depth for Diffuse Irradiance (taud)
+ 
