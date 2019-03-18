@@ -73,27 +73,29 @@ class Preprocessing():
 		except:
 			energyName='EUI'
 			isHEName='HEEB'
+		#dataDF=dataDF[dataDF[energyType]>0]
+		print('dataDF in preprocessing shape',dataDF.shape)
+		top3=dataDF[energyType].sort_values().iloc[int(0.03*dataDF.shape[0])]
+		top23=dataDF[energyType].sort_values().iloc[int(0.23*dataDF.shape[0])]
 		top10=dataDF[energyType].sort_values().iloc[int(0.10*dataDF.shape[0])]
 		top25=dataDF[energyType].sort_values().iloc[int(0.25*dataDF.shape[0])]
 		top75=dataDF[energyType].sort_values().iloc[int(0.75*dataDF.shape[0])]
 		top90=dataDF[energyType].sort_values().iloc[int(0.90*dataDF.shape[0])]
 		hpcsList=np.zeros((dataDF.shape[0]))
-		print('top10',top10,'top25',top25,'top75',top75,'top90',top90)
+		print('top3',top3,'top10',top10,'top23',top23,'top25',top25,'top75',top75,'top90',top90)
+		dataDF=dataDF.reindex(range(dataDF.shape[0]))
 		for i in range(dataDF.shape[0]):
-			if dataDF[energyType].iloc[i]<=top25 and dataDF[energyType].iloc[i]>top10:
-				#print('EUIHeating',dataDF[energyType].iloc[i],'value',1)
+			if dataDF[energyType].iloc[i]<=top23 and dataDF[energyType].iloc[i]>top3:
 				hpcsList[i]=1.0
 			elif dataDF[energyType].iloc[i]<=top75 and dataDF[energyType].iloc[i]>top25:
-				#print('EUIHeating',dataDF[energyType].iloc[i],'value',2)
 				hpcsList[i]=2.0
 			elif dataDF[energyType].iloc[i]<=top90 and dataDF[energyType].iloc[i]>top75:
-				#print('EUIHeating',dataDF[energyType].iloc[i],'value',3)
 				hpcsList[i]=0.0
-				#print(dataDF[energyType].iloc[i],3)
 			else:
 				hpcsList[i]=3.0
 		dataDF[isHEName]=pd.Series(hpcsList)
 		del hpcsList
+		return dataDF
 
 
 	def addweatherData(self,dataDF):
@@ -116,13 +118,18 @@ class PreprocessingCBECS(Preprocessing):
 		Args:
 			dataDF, the source data based on which the EUICooling is calculated.
 		'''
-		dataDF['EUICooling']=(dataDF['ELCLBTU']*3.167+dataDF['NGCLBTU']*1.084\
-								+dataDF['DHCLBTU']*3.613+dataDF['FKCLBTU']*1.05)/dataDF['buildingArea']
+		#dataDF['EUICooling']=(dataDF['ELCLBTU']*3.167+dataDF['NGCLBTU']*1.084\
+								#+dataDF['DHCLBTU']*3.613+dataDF['FKCLBTU']*1.05)/dataDF['buildingArea']
+
+		dataDF['EUICooling']=dataDF['MFCLBTU']/dataDF['buildingArea']
+
+
 	def getEUIHeating(self,dataDF):
 		'''
 		calculate sources energy usage intension for heating
 		'''
 		dataDF['EUIHeating']=dataDF['MFHTBTU']/dataDF['buildingArea']
+		return dataDF[dataDF['EUIHeating']>=0][dataDF['EUIHeating']<=1000]
 
 	def getHECS(self,dataDF):
 		'''
@@ -143,13 +150,14 @@ class PreprocessingCBECS(Preprocessing):
 		'''
 
 		'''
-		self.getHP(dataDF, energyType='EUIHeating')
+		return self.getHP(dataDF, energyType='EUIHeating')
 
 	def getEUI(self,dataDF):
 		'''
 		
 		'''
 		dataDF['EUI']=dataDF['EUIHeating']+dataDF['EUICooling']
+		return dataDF
 
 	def forHECSClf(self,dataDF):
 		'''
@@ -164,20 +172,20 @@ class PreprocessingCBECS(Preprocessing):
 		get the number of people per area
 		'''
 		numPeoplePerAreaSeries=dataDF['numEmployees']/dataDF['buildingArea']
-		dataDF['numPeoplePerAreaCate']=pd.qcut(numPeoplePerAreaSeries,5,labels=[1,2,3,4,5])
+		dataDF['numPeoplePerAreaCate']=pd.qcut(numPeoplePerAreaSeries,5,labels=[1,2,3,4,5]).astype('float64')
+		return dataDF
 		
 	def forHEHSClf(self,dataDF):
 		'''
 		preprocessing the CBECS 2012 database for predicting whether a building is energy efficient in heating.
 		'''
 		dataDF=dataDF.fillna(0)
-		dataDF['HDD65Category']=pd.qcut(dataDF['HDD65'],5,labels=[1,2,3,4,5]).astype('int64')
+		#dataDF=dataDF[dataDF['climateZone']==1]
+		dataDF['HDD65Category']=pd.cut(dataDF['HDD65'],5,labels=[1,2,3,4,5]).astype('float64')
 		dataDF=dataDF.convert_objects(convert_numeric=True)
-		self.getnumPeoplePerArea(dataDF)
-		self.getEUIHeating(dataDF)
-		#dataDF=dataDF[dataDF['EUIHeating']>0.0]
-		#print(dataDF.shape)
-		self.getHEHS(dataDF)
+		dataDF=self.getnumPeoplePerArea(dataDF)
+		dataDF=self.getEUIHeating(dataDF)
+		dataDF=self.getHEHS(dataDF)
 		return dataDF
 
 	def forHEEBClf(self,dataDF):
@@ -187,6 +195,18 @@ class PreprocessingCBECS(Preprocessing):
 		self.getEUI(dataDF)
 		self.getHEES(dataDF)
 		return dataDF[dataDF['HEEB']>=0.0]
+		
+	def forHECLClf(self,dataDF):
+		'''
+		for high performance cooling system classification
+
+		'''
+		dataDF=dataDF.fillna(0)
+		self.getEUICooling(dataDF)
+		dataDF=dataDF[dataDF['EUICooling']>0]
+		dataDF=self.getHP(dataDF, energyType='EUICooling')
+		return dataDF.dropna()
+		 
 
 class PreprocessingBEEMR(Preprocessing):
 	'''

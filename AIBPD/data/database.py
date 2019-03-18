@@ -97,14 +97,13 @@ if __name__ == '__main__':
 	database=Database()
 	CBECS_DF=database.select('CBECS2012')
 	Preproc=PreprocessingCBECS()
+	CBECS_DF=CBECS_DF[CBECS_DF['HDD65']>=3000]
+
 	CBECS_DF=Preproc.forHEHSClf(CBECS_DF)
-	print(CBECS_DF)
 	HP=CBECS_DF[CBECS_DF['HEHS']==1.0]
 	MP=CBECS_DF[CBECS_DF['HEHS']==2.0]
 	LP=CBECS_DF[CBECS_DF['HEHS']==3.0]
 	print(HP['EUIHeating'].mean(),HP['EUIHeating'].std())
 	print(MP['EUIHeating'].mean(),MP['EUIHeating'].std())
 	print(LP['EUIHeating'].mean(),LP['EUIHeating'].std())
-	HP[['HDD65Category']].hist(bins=100,density=False)
-	MP[['HDD65Category']].hist(bins=100,density=False)
-	LP[['HDD65Category']].hist(bins=100,density=False)
+#9WQWSFJ9

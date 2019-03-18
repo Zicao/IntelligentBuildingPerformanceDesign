@@ -4,6 +4,7 @@ import math
 import pandas as pd
 class BN4CL():
 	BN4CLfitted=None
+	BN4CL_Designer=None
 
 	def __init__(self):
 		pass
@@ -39,6 +40,36 @@ class BN4CL():
 		'''
 		probabilityofCLSystems=self.BN4CLfitted.probability(probabilityList)
 		print(probabilityofCLSystems)
+	def data_preprocess_BN(self,similarBldDF):
+		'''
+
+		'''
+		coolLoadList=[]
+		equalSizeBin2=[1,2]
+		equalSizeBin4=[1,2,3,4]
+		equalSizeBin5=[1,2,3,4,5]
+		similarBldDF['principleActivityN']=pd.qcut(similarBldDF['principleActivity'],5,labels=equalSizeBin5)
+		#similarBldDF['principleActivity']#np.where(similarBldDF['principleActivity']==1, 1, 0)
+		
+		similarBldDF['climateZoneN']=pd.cut(similarBldDF['climateZone'],[0,1,2,3,7],labels=[1,2,3,4])
+		similarBldDF['CDD65N']=pd.qcut(similarBldDF['CDD65'],5,labels=equalSizeBin5)
+		similarBldDF['COOLPN']=pd.cut(similarBldDF['COOLP'],[10,90,100],labels=equalSizeBin2)
+		similarBldDF['MAINCLN']=similarBldDF['MAINCL']
+		similarBldDF['MAINCLN'][np.abs(similarBldDF['MAINCLN'])<1]=0
+		similarBldDF['MAINCLN'][np.abs(similarBldDF['MAINCLN'])>3]=4
+		similarBldDF=similarBldDF.dropna()
+		for index, row in similarBldDF.iterrows():
+			if row['climateZone']==1:
+				coolLoadList.append(int(math.log(row['buildingArea']*0.8)))
+			elif row['climateZone']==2 or row['climateZone']==5 or row['climateZone']==7:
+				coolLoadList.append(int(math.log(row['buildingArea']*1.0)))
+			elif row['climateZone']==3:
+				coolLoadList.append(int(math.log(row['buildingArea']*1.2)))
+			else:
+				coolLoadList.append(int(math.log(row['buildingArea']*1.0)))
+		similarBldDF['COOLLOAD']=coolLoadList
+		del coolLoadList
+		return similarBldDF[['ID','climateZoneN','COOLLOAD','principleActivityN','MAINCLN','CDD65N','COOLPN','HECS']]
 
 
 	def attributeDistribution(self,similarBldDF):
@@ -48,34 +79,9 @@ class BN4CL():
 			similarBldDF, a pandas DataFrame object includes a group of building similar to the proposed 
 				building.
 		'''
+		similarBldDF=self.data_preprocess_BN(similarBldDF)
 		m,n=similarBldDF.shape
-		coolLoadList=[]
-
-		#mapping the principleActivityN into 2 category
-		similarBldDF['principleActivityN']=np.where(similarBldDF['principleActivity']==1, 1, 0)
-		equalSizeBin2=[0,1]
-		equalSizeBin4=[1,2,3,4]
-		equalSizeBin5=[1,2,3,4,5]
-		similarBldDF['climateZoneN']=pd.cut(similarBldDF['climateZone'],[-1,0,1,2,3,5,7],labels=[1,2,3,4,5,6])
-		similarBldDF['CDD65N']=pd.qcut(similarBldDF['CDD65'],5,labels=equalSizeBin5)
-		similarBldDF['COOLPN']=pd.cut(similarBldDF['COOLP'],[0,90,100],labels=equalSizeBin2)
-		similarBldDF['MAINCLN']=similarBldDF['MAINCL']
-		similarBldDF['MAINCLN'][np.abs(similarBldDF['MAINCLN'])<1]=0
-		similarBldDF['MAINCLN'][np.abs(similarBldDF['MAINCLN'])>3]=4
-
-		for i in range(m):
-			if similarBldDF['climateZone'].loc[i]==1:
-				coolingload=similarBldDF['buildingArea'].loc[i]*0.8
-				coolLoadList.append(int(math.log(coolingload)))
-			elif similarBldDF['climateZone'].loc[i]==2 or similarBldDF['climateZone'].loc[i]==5 or similarBldDF['climateZone'].loc[i]==7:
-				coolingload=similarBldDF['buildingArea'].loc[i]*1.0
-				coolLoadList.append(int(math.log(coolingload)))
-			elif similarBldDF['climateZone'].loc[i]==3:
-				coolingload=similarBldDF['buildingArea'].loc[i]*1.2
-				coolLoadList.append(int(math.log(coolingload)))
-		similarBldDF['COOLLOAD']=pd.Series(coolLoadList)
-
-		del coolLoadList
+		similarBldDF=similarBldDF.dropna()
 		
 		climateZoneNDict=similarBldDF.groupby('climateZoneN').count()['ID'].to_dict()
 		COOLPNDict=similarBldDF.groupby('COOLPN').count()['ID'].to_dict()
@@ -84,8 +90,8 @@ class BN4CL():
 		MAINCLDict=similarBldDF.groupby('MAINCLN').count()['ID'].to_dict()
 		principleActivityNDict=similarBldDF.groupby('principleActivityN').count()['ID'].to_dict()
 
-		MAINCLDist=similarBldDF.groupby('MAINCL').count()['ID'].to_dict()
-		MAINHTDist=similarBldDF.groupby('MAINHT').count()['ID'].to_dict()
+		#MAINCLDist=similarBldDF.groupby('MAINCL').count()['ID'].to_dict()
+		#MAINHTDist=similarBldDF.groupby('MAINHT').count()['ID'].to_dict()
 	    
 	    
 		climateZoneDictN=self.dictRatio(climateZoneNDict,m)
@@ -96,10 +102,10 @@ class BN4CL():
 		COOLLOADDictN=self.dictRatio(COOLLOADDict,m)
 		MAINCLDictN=self.dictRatio(MAINCLDict,m)
 		
-		MAINHTDistN=self.dictRatio(MAINHTDist,m)
-		MAINCLDistN=self.dictRatio(MAINCLDist,m)
 
-		#calculate the conditional probability table.
+		#MAINCLDistN=self.dictRatio(MAINCLDist,m)
+
+		#Form the conditional probability table.
 		MAINCLCPT=[]
 		for l in list(climateZoneDictN.keys()):#PUBLICIM
 			for j in list(COOLLOADDictN.keys()):#coolload
@@ -108,12 +114,19 @@ class BN4CL():
 						MAINCLCPT.append([int(l),int(j),int(k),int(i),0.0])
 
 		MAINCLCPTMat=np.mat(MAINCLCPT)
-		for j01 in range(m):
+		#
+		#similarBldDF['climateZone']=pd.to_numeric(similarBldDF['climateZone'], errors='coerce')
+		similarBldDF=similarBldDF.dropna()
+		
+		#similarBldDF['climateZone']=similarBldDF['climateZone'].astype(int)
+		#similarBldDF=similarBldDF[similarBldDF['climateZoneN']<=6][similarBldDF['climateZoneN']>=0]
+		similarBldDF=similarBldDF.reindex(range(similarBldDF.shape[0]))
+		for j01 in range(similarBldDF.shape[0]):
 			for j02 in range(len(MAINCLCPT)):
-				if MAINCLCPTMat[j02,0]==int(similarBldDF['climateZone'].loc[j01]) and \
-				MAINCLCPTMat[j02,1]==int(similarBldDF['COOLLOAD'].loc[j01]) and \
-				MAINCLCPTMat[j02,2]==int(similarBldDF['principleActivityN'].loc[j01]) and \
-				MAINCLCPTMat[j02,3]==int(similarBldDF['MAINCL'].loc[j01]):
+				if MAINCLCPTMat[j02,0]==similarBldDF['climateZoneN'].iloc[j01] and \
+				MAINCLCPTMat[j02,1]==int(similarBldDF['COOLLOAD'].iloc[j01]) and \
+				MAINCLCPTMat[j02,2]==int(similarBldDF['principleActivityN'].iloc[j01]) and \
+				MAINCLCPTMat[j02,3]==int(similarBldDF['MAINCLN'].iloc[j01]):
 					MAINCLCPTMat[j02,4]+=1
 	#MAINCLCPTList is used to calculate the conditional table
 		MAINCLCPTMat[:,4]=MAINCLCPTMat[:,4]/m
@@ -129,10 +142,11 @@ class BN4CL():
 							for l3 in [0,1]:#High efficient cooling system
 								HECSCPT.append([int(i),int(j),int(k),int(l),int(l2),int(l3),0.0])
 		HECSCPTMat=np.mat(HECSCPT)
-		for j11 in range(m):
+
+		for j11 in range(similarBldDF.shape[0]):
 			for j12 in range(len(HECSCPT)):
-				if HECSCPTMat[j12,0]==int(similarBldDF['climateZone'].loc[j11]) and \
-				HECSCPTMat[j12,1]==int(similarBldDF['MAINCL'].loc[j11]) and \
+				if HECSCPTMat[j12,0]==similarBldDF['climateZoneN'].loc[j11] and \
+				HECSCPTMat[j12,1]==int(similarBldDF['MAINCLN'].loc[j11]) and \
 				HECSCPTMat[j12,2]==int(similarBldDF['principleActivityN'].loc[j11]) and \
 				HECSCPTMat[j12,3]==int(similarBldDF['CDD65N'].loc[j11]) and \
 				HECSCPTMat[j12,4]==int(similarBldDF['COOLPN'].loc[j11]) and \
@@ -144,10 +158,9 @@ class BN4CL():
 	    
 		print("BN for Main cooling equipment","climateZoneDictN",climateZoneDictN,"COOLLOADDictN",COOLLOADDict,"principleActivityNDictN",principleActivityNDictN)
 		print("BN for High efficient building","MAINCLDictN",MAINCLDictN,"principleActivityNDictN",principleActivityNDictN,"CDD65NDictN",CDD65NDictN,"COOLPNDictN",COOLPNDictN)
-		print("Distribution of heating system",MAINHTDistN)
-		print("Distribution of cooling system",MAINCLDistN)
+		print("Distribution of cooling system",MAINCLDictN)
 		return climateZoneDictN,COOLLOADDictN,principleActivityNDictN,MAINCLCPTList,MAINCLDictN,CDD65NDictN,COOLPNDictN,HECSCPTList
-		
+	
 	def fit(self, similarBldDF):
 		'''
 		climate zone, Design cooling load and principle building activity are parents attributes of main cooling equipment.
@@ -199,6 +212,22 @@ class BN4CL():
 		modelMCE.add_edge(p2_COOLP,p_HECS)
 		modelMCE.bake()
 		self.BN4CLfitted=modelMCE
+
+	def predict_test(self,similarBldDF):
+		'''
+		mimic the traditional method of selecting HVAC methods
+		'''
+		similarBldDF=self.data_preprocess_BN(similarBldDF)
+		m=similarBldDF.shape[0]
+		test_X=similarBldDF.values
+		n=0
+		for i in range(m):
+			proposedBuildingList=list(test_X[i,1:7])
+			proposedBuildingList.append(None)
+			predictionResult=self.BN4CLfitted.predict([proposedBuildingList])
+			if predictionResult[7]==1.0:
+				n+=1
+		print('Precision of BN = ',n/m)
 
 	def dictRatio(self,dict1,m):
 		'''

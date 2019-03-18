@@ -12,15 +12,15 @@ class Similarity():
 	buildingAttr4BN4CL=['ID','principleActivity','climateZone','buildingArea',\
 							'yearOfConstruction','buildingShape',\
 							'CDD65','COOLP','MAINCL','MAINHT',\
-				             'wallConstruction', 'WWR','peoplePerArea',\
-				             'ELHTBTU','NGHTBTU','DHHTBTU','FKHTBTU',\
-				             'ELCLBTU','NGCLBTU','DHCLBTU','FKCLBTU','EUICooling','HECS']
+				             'wallConstruction', 'WWR',\
+				             'MFCLBTU','EUICooling','HECS']
+	buildingAttr4BN4CL_designer=['ID','climateZone','COOLP','principleActivity','MAINCL','HECS']		             
 	def __init__(self):
 		pass
 	def similarityEuclidian(self, proposedDict, sampleDict, weight={'climateZone':3,
-				'principleActivity':2,
+				'principleActivity':5,
 				'buildingArea': 2,
-				'yearOfConstruction':2,
+				'yearOfConstruction':8,
 				'buildingShape':2,
 				'wallConstruction': 2,
 				'WWR': 2,
@@ -88,12 +88,11 @@ class Similarity():
 		EuclidianDistance=[]
 		m,n=databaseDF.shape
 		keys=prpsedBlding4SmlarAnalysis.keys()
-		
-
-		for i in range(m):
+		databaseDF=databaseDF.reindex(range(databaseDF.shape[0]))
+		for index, row in databaseDF.iterrows():
 			sampleBlding={}
 			for key in keys:
-				sampleBlding[key]=databaseDF[key].loc[i]
+				sampleBlding[key]=row[key]
 			EuclidianDistance.append(self.similarityEuclidian(prpsedBlding4SmlarAnalysis,sampleBlding))
 
 		indices = np.lexsort(np.array([EuclidianDistance]))
@@ -104,10 +103,15 @@ class Similarity():
 		for i in self.buildingAttr4BN4CL:
 			similarBuildingsDict[i]=[]
 
-		for i in range(m):
-			if i in indices[0:K]:
-				for item in self.buildingAttr4BN4CL:
-					similarBuildingsDict[item].append(databaseDF[item].loc[i])
+		for i in indices[0:K]:
+			for item in self.buildingAttr4BN4CL:
+				similarBuildingsDict[item].append(databaseDF[item].loc[i])
 		similarBuildingsDF=pd.DataFrame(similarBuildingsDict)
 		return similarBuildingsDF
+	def subDF(self, databaseDF):
+		'''
+		return subset of databaseDF only for building a Bayesian Network model 
+		'''
+		return databaseDF[self.buildingAttr4BN4CL]
+
 			

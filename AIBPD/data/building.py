@@ -234,7 +234,7 @@ class Building():
 		bldingDict['buildingShape']=self.building['buildingShape']
 		bldingDict['wallConstruction']=self.building['wallConstruction']
 		bldingDict['WWR']=self.building['WWR']
-		bldingDict['peoplePerArea']=self.building['peoplePerArea']
+
 		return bldingDict
 
 
