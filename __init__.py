@@ -1,5 +1,12 @@
 # encoding: utf-8
 '''
+Artificial Intelligent Building Performance Design module for python.
+================================================
+
+AIBPD is a python module conducting various building performance analysis.
+At this stage, it aims to fulfill data-driven building performance design.
+
+Connect with Zhichao Tian (zhichao.tian@foxmail.com), if you have any questions or recommendations.
 '''
 import sys
 import os
