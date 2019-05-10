@@ -2,9 +2,9 @@
 import numpy as np
 import pandas as pd
 
-from AIBPD.DDBPD.data.building import Building
+from aibpd.data.building import Building
 from sklearn.preprocessing import Imputer
-from AIBPD.DDBPD.data.weather import Weather
+from aibpd.data.weather import Weather
 class Preprocessing():
 	'''
 	This class is used to pre-processing data for different goals, for example similarity analysis
@@ -123,15 +123,18 @@ class PreprocessingCBECS(Preprocessing):
 		#dataDF['EUICooling']=(dataDF['ELCLBTU']*3.167+dataDF['NGCLBTU']*1.084\
 								#+dataDF['DHCLBTU']*3.613+dataDF['FKCLBTU']*1.05)/dataDF['buildingArea']
 
-		dataDF['EUICooling']=dataDF['MFCLBTU']/dataDF['buildingArea']
+		if not 'EUICooling' in dataDF.columns:
+			dataDF['EUICooling']=dataDF['MFCLBTU']/dataDF['buildingArea']
+		return dataDF
 
 
 	def getEUIHeating(self,dataDF):
 		'''
 		calculate sources energy usage intension for heating
 		'''
-		dataDF['EUIHeating']=dataDF['MFHTBTU']/dataDF['buildingArea']
-		return dataDF[dataDF['EUIHeating']>=0][dataDF['EUIHeating']<=1000]
+		if not 'EUIHeating' in dataDF.columns:
+			dataDF['EUIHeating']=dataDF['MFHTBTU']/dataDF['buildingArea']
+		return dataDF
 
 	def getCoolingLevels(self,dataDF):
 		'''
@@ -150,16 +153,24 @@ class PreprocessingCBECS(Preprocessing):
 		self.getHP(dataDF, energyType='EUI')
 
 	def getHeatingLevels(self,dataDF):
-		'''
+		"""
 		
-		'''
-		return self.getHP(dataDF, energyType='EUIHeating')
+		"""
+		if not 'heatingLevel' in dataDF.columns:
+			print('heatingLevel exists, if you want to generate a new heatingLevel\
+				please delete exists ones')
+			return self.getHP(dataDF, energyType='EUIHeating')
+		else:
+			return dataDF
 
 	def getEUI(self,dataDF):
 		'''
 		
 		'''
-		dataDF['EUI']=dataDF['EUIHeating']+dataDF['EUICooling']
+		if not 'EUI' in dataDF.columns:
+			dataDF['EUI']=(dataDF['MFHTBTU']+dataDF['MFCLBTU']+dataDF['MFVNBTU']+\
+				dataDF['MFWTBTU']+dataDF['MFLTBTU']+dataDF['MFCKBTU']+\
+				dataDF['MFOFBTU']+dataDF['MFPCBTU']+dataDF['MFOTBTU'])/dataDF['buildingArea']
 		return dataDF
 
 	def forHeatingClf(self,dataDF):
@@ -200,13 +211,6 @@ class PreprocessingCBECS(Preprocessing):
 		dataDF=self.getHEHS(dataDF)
 		return dataDF
 
-	def forheatingLevelClf(self,dataDF):
-		'''
-
-		'''
-		self.getEUI(dataDF)
-		self.getHEES(dataDF)
-		return dataDF[dataDF['heatingLevel']>=0.0]
 		
 	def forHECLClf(self,dataDF):
 		'''
@@ -218,6 +222,18 @@ class PreprocessingCBECS(Preprocessing):
 		dataDF=dataDF[dataDF['EUICooling']>0]
 		dataDF=self.getHP(dataDF, energyType='EUICooling')
 		return dataDF.dropna()
+
+	def prep4EUIReg(self,dataDF):
+		"""proprocess dataDF for EUI regression
+		Parameters:
+		----------
+		Return:
+		----------
+		dataDF, a dataframe object that contains the dataset
+		"""
+		#get the EUI feature.
+		dataDF=self.getEUI(dataDF)
+		return dataDF
 		 
 
 class PreprocessingBEEMR(Preprocessing):

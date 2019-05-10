@@ -1,12 +1,12 @@
 '''
 Test the similarityEuclidian class
 '''
-from AIBPD.DDBPD.data.preprocessing import PreprocessingCBECS
-from AIBPD.DDBPD.data.database import Database
+from aibpd.data.preprocessing import PreprocessingCBECS
+from aibpd.data.database import Database
 import numpy as np
 import pandas as pd
-from AIBPD.DDBPD.data.building import Building
-from AIBPD.DDBPD.algorithms.similarity import SimilarityEuclidian
+from aibpd.data.building import Building
+from aibpd.algorithms.similarity import SimilarityEuclidian
 database=Database()
 CBECS_DF=database.select('CBECS2012')
 Preproc=PreprocessingCBECS()
@@ -23,5 +23,5 @@ proposedBuildingDict={'climateZone':5,   'principleActivity':3,
 					'WWR': 2,             'numPeople': 6,   'CDD65':2400}
 proposedBuilding.defineBuilding(proposedBuildingDict)
 similar=SimilarityEuclidian()
-similarbuildings=SimilarityEuclidian.get(proposedBuilding,CBECS_DF,k=50)
+similarbuildings=similar.get(proposedBuilding,CBECS_DF,K=50)
 print(similarbuildings)

@@ -1,7 +1,7 @@
 '''
 Zhichao Tian, AllRight Perserved. Email: tzchao123@qq.com
 '''
-from AIBPD.__init__ import currentUrl
+from aibpd.__init__ import currentUrl
 import os
 import re
 import numpy as np

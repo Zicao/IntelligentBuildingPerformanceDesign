@@ -5,15 +5,33 @@
 import numpy as np
 import pandas as pd
 import re
-from AIBPD.DDBPD.data.building import Building
+from aibpd.data.building import Building
 
 class BaseSimilarity():
 	'''
 	Base class for similarity classes
 	This class should not be used directly.	
 	'''
+	featureAndweightDict={'climateZone':3,
+				'principleActivity':5,
+				'buildingArea': 2,
+				'yearOfConstruction':8,
+				'buildingShape':2,
+				'wallConstruction': 2,
+				'WWR': 2}
+
 	def __init__(self):
 		pass
+
+	def setFeatures(self,featureAndweightDict=None):
+		'''
+		set which features should be used to calculate similarity.
+		'''
+		#set check mechanism to make sure these features coincide with feature in Buildings.
+		#it's better to set up a CONSTANT standard feature list.
+		self.featureAndweightDict=featureAndweightDict
+
+
 class SimilarityKmeans(BaseSimilarity):
 	'''
 	Find similar buildings using the k-means algorithm.
@@ -22,7 +40,7 @@ class SimilarityKmeans(BaseSimilarity):
 
 		pass
 
-class SimilarityEuclidian():
+class SimilarityEuclidian(BaseSimilarity):
 	'''
 	Find out buildings that are similar to the design building with Euclidian distance.
 	Args:
@@ -30,7 +48,7 @@ class SimilarityEuclidian():
 			the design building. Data type: Building;
 		databaseDF
 			the database based on which conduct the similar analysis. Data type: DataFrame.
-		featureList
+		featureAndweightDict
 			contains the features used to calculate the similarity and their weights. Data type: dict.
 		k:
 			number of buildings.
@@ -38,10 +56,10 @@ class SimilarityEuclidian():
 	
 	buildingAttr4BN4CL_designer=['ID','climateZone','COOLP','principleActivity','MAINCL','HECS']		             
 	
-	def __init__():
+	def __init__(self):
 		pass
 
-	def euclidianDistance(self, proposedDict, sampleDict, featureList):
+	def euclidianDistance(self, proposedDict, sampleDict):
 		'''
 		Euclidian Distance is employed to calculate the similarity
 		different features with different weight coefficient
@@ -54,38 +72,27 @@ class SimilarityEuclidian():
 				the proposed building.
 			sampleDict:
 				the sample building in the database.
-			similarityItems:
-				 the items that used to calculate the similarity
-			weight: 
-				the weight used to calculate similarity.
 
 		'''
-		itemDict=proposedDict.keys()
+		featureAndweightDict=self.featureAndweightDict
+		itemDict=featureAndweightDict.keys()
 		similarValue = 0.0
 		for i in itemDict:
 			#nomial variable (categorical variable)
 			if re.search(i,'climateZone principleActivity wallConstruction buildingShape',re.I):
 				if proposedDict[i]==sampleDict[i]:
-					similarValue+=weight[i]**2
+					similarValue+=featureAndweightDict[i]**2
 			#continue variable
 			if re.search(i,'buildingArea yearOfConstruction WWR peoplePerArea',re.I):
 				diffPercentage=abs(proposedDict[i]-sampleDict[i])/proposedDict[i]
-				similarValue+=self.calculateValue(diffPercentage,weight[i])**2
+				similarValue+=self.calculateValue(diffPercentage,featureAndweightDict[i])**2
 		return similarValue
 
 	def calculateValue(self, difPercentage, maxValue):
 		simValue = maxValue*(1-difPercentage)
 		return simValue
 
-	def get(self,designBld=None, databaseDF=None,featureList={'climateZone':3,
-				'principleActivity':5,
-				'buildingArea': 2,
-				'yearOfConstruction':8,
-				'buildingShape':2,
-				'wallConstruction': 2,
-				'WWR': 2,
-				'peoplePerArea': 3},
-				 K=300):
+	def get(self,designBld=None, databaseDF=None,K=300):
 		'''
 		return K most similar building
 		Args:
@@ -95,20 +102,22 @@ class SimilarityEuclidian():
 		Return:
 			similar buildings in the 
 		'''
-		prpsedBlding4SmlarAnalysis=designBld.blding4SimilarityAnalysis()
+		
+
+		featuresWithWeight=self.featureAndweightDict
 		EuclidianDistance=[]
 		m,n=databaseDF.shape
-		keys=prpsedBlding4SmlarAnalysis.keys()
-		databaseDF=databaseDF.reindex(range(databaseDF.shape[0]))
+		keys=featuresWithWeight.keys()
+
 		for index, row in databaseDF.iterrows():
 			sampleBlding={}
 			for key in keys:
 				sampleBlding[key]=row[key]
-			EuclidianDistance.append(self.euclidianDistance(prpsedBlding4SmlarAnalysis,sampleBlding))
+			EuclidianDistance.append(self.euclidianDistance(featuresWithWeight,sampleBlding))
 
 		indices = np.lexsort(np.array([EuclidianDistance]))
 		indices = indices.tolist()
-		return databaseDF[indices]
+		return databaseDF.iloc[indices]
 
 	def subDF(self, databaseDF):
 		'''

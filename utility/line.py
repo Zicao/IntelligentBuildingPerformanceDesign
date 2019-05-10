@@ -4,7 +4,7 @@ This class is used to transfer all kinds of ezdxf entity, such as lines and poly
 '''
 import math
 import numpy as np
-from IntelligentBuildingPerformanceDesign.utility.point import Point
+from aibpd.utility.point import Point
 
 class Line():
 	rho=0.0

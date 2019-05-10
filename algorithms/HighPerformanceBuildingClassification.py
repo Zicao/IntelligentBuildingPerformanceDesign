@@ -1,6 +1,6 @@
 #Predict whether a building is high performance or not using machine learning algorithms such as desicion tree and svm
-from AIBPD.DDBPD.data.preprocessing import PreprocessingCBECS
-from AIBPD.DDBPD.data.database import Database
+from aibpd.data.preprocessing import PreprocessingCBECS
+from aibpd.data.database import Database
 import numpy as np
 from sklearn import tree
 class HPBClf():

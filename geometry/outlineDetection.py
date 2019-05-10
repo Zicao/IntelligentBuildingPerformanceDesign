@@ -1,7 +1,7 @@
 import numpy as np
 import cv2
 
-from DDBPD.utility.line import Line
+from aibpd.utility.line import Line
 def drawHoughLines():
 	
 	rgb = cv2.cvtColor(im, cv2.COLOR_HSV2BGR)

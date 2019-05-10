@@ -11,7 +11,7 @@ import sys
 import os
 import re
 
-from DDBPD.utility.line import Line
+from aibpd.utility.line import Line
 class __RecognizeBaseclass():
 	'''
 	add functions to get the basic attributes of the dxf file, such as Area, Contour

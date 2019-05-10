@@ -5,7 +5,7 @@ import json
 import csv
 import idf # this module designed for parsing structured idf to csv file.
 import re
-from IntelligentBuildingPerformanceDesign.AIBPD.data.building import Building
+from aibpd.data.building import Building
 class convert(idfJsonFile);
 
 	def __init__(self,**kwargs):
