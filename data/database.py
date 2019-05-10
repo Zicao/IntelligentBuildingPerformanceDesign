@@ -40,11 +40,15 @@ class Database():
 		Parameters:
 			databaseName, database name
 		'''
+		filePathList=os.listdir(self.databasePath)
+		for filePath in filePathList:
+			if re.search(databaseName,filePath):
+				self._datasetDF=self.loadDatabaseCBECS(self.databasePath+filePath)
+				print(filePath,'has been loaded.')
+		'''
 		if re.search(databaseName,'CBECS2012'):
 			print("Load CBECS2012 successfully")
 			self._datasetDF=self.loadDatabaseCBECS(self.databasePath+'CBECS2012.csv')
-			if metadata:
-				self.metadataDF = pd.read_csv(self.databasePath+'CBECS2012_metadata.csv')
 		elif re.search(databaseName,'BEEMR'):
 			print("Load BEEMR successfully")
 			self._datasetDF=self.loadBEEM2DF(self.databasePath+'BEEMR.csv')
@@ -52,13 +56,13 @@ class Database():
 			self._datasetDF=self.loadNYC2DF(self.databasePath+'nyc_benchmarking_disclosure_data_reported_in_2017.csv')
 		else:
 			print("Error with find datbase.\n","Available databases include", self.databaseList)
-		
+		'''
 		if not metadata:
 			return self._datasetDF
 		else:
 			return self._datasetDF,self.metadataDF
 
-	def select(self):
+	def select(self,datasetFileName=None):
 		"""select a database with a dialog
 
 		Return:
@@ -71,14 +75,18 @@ class Database():
 			to the Database object using this code:
 			db1.datasetDF=datasetDF
 		"""
-		Tk().withdraw()
-		filePath=filedialog.askopenfilename()
-		#check whether it is a csv file.
-		if re.search('\.csv',filePath):
-			self._datasetDF=self.loadDatabaseCBECS(filePath)
+		if not datasetFileName:
+			Tk().withdraw()
+			filePath=filedialog.askopenfilename()
+			#check whether it is a csv file.
+			if re.search('\.csv',filePath):
+				self._datasetDF=self.loadDatabaseCBECS(filePath)
+				print('Dataset in',filePath,'has been loaded!')
+			else:
+				print('Please select a valid file. Accepted file format: csv')
+			return self._datasetDF
 		else:
-			print('Please select a valid file. Accepted file format: csv')
-		return self._datasetDF
+			self.select_with_name(databaseName=datasetFileName)
 
 	def loadNYC2DF(self,path):
 		'''
