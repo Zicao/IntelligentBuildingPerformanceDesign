@@ -71,21 +71,7 @@ m=CBECS_mat.shape[0]
 n=int(0.8*m)
 Y=Y.reshape(m,1)
 Y=Y.astype('int')
-'''
-from sklearn.ensemble import BaggingClassifier
-clf_bag=BaggingClassifier()
-clf_bag.fit(X[:n,indexList],Y[:n])
-error=1-clf_bag.score(X[n:m,indexList],Y[n:m])
 
-from sklearn.tree import DecisionTreeClassifier
-clf_dt=DecisionTreeClassifier()
-clf_dt.fit(X[:n,indexList],Y[:n])
-error=1-clf_dt.score(X[n:m,indexList],Y[n:m])
-
-clf = SVC(gamma='auto')
-clf.fit(X[:n,indexList],Y[:n]) 
-error=1-clf.score(X[n:m,indexList],Y[n:m])
-'''
 from sklearn.svm import SVC
 
 from sklearn.model_selection import KFold

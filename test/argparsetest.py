@@ -1,12 +1,16 @@
+from aibpd.data.database import Database
+from aibpd.data.preprocessing import PreprocessingCBECS
 import numpy as np
-x=np.array([0,1])
-y=np.array([0,1])
-A = np.vstack([x, np.ones(len(x))]).T
-m, c = np.linalg.lstsq(A, y)[0]
-print(m, c)
-
-import matplotlib.pyplot as plt
-plt.plot(x, y, 'o', label='Original data', markersize=10)
-plt.plot(x, m*x + c, 'r', label='Fitted line')
-plt.legend()
-plt.show()
+import pandas as pd
+import aibpd
+database=Database(file_path='CBECS2012.csv')
+Preproc=PreprocessingCBECS(database)
+building=database.find_building_by_ID(1)
+#print(building)
+#aibpd.summary(CBECS_DF,building)
+feature_weights={'climateZone':5,
+			'principleActivity':5,
+			'buildingAreaCategory': 10,
+			'yrConstructionCategory':8}
+similar_buildings_DB=aibpd.get_ksimilar(database,building,50,feature_weights)
+aibpd.summary(similar_buildings_DB,building)

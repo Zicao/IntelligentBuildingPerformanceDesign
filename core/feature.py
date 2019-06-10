@@ -2,6 +2,7 @@
 This class aims at raising determinant features with various methods, such as correlation coefficient, Chi-square test
 '''
 from sklearn.tree import DecisionTreeClassifier
+from sets import Set
 class BaseFeature():
 	"""
 
@@ -65,6 +66,49 @@ class FeatureRanking(BaseFeature):
     	rank features using SHAP methods.
     	"""
     	pass
+
+    def featureDistribution(self,database,YName='heatingLevel'):
+    	"""demonstrate the feature distribution in high and low performance building
+    	groups.
+
+    	Parameters:
+    	---------
+    	database, the Database object.
+    	YName, the target variable name.
+
+    	Return:
+    	--------
+    	
+    	"""
+    	#test the Y-value variable are 0 or 1
+    	datasetDF_HP=None
+    	datasetDF_LP=None
+    	datasetDF=database._datasetDF
+		if YName in datasetDF.columns:
+			observations = Set(list(datasetDF[YName].values))
+			if len(observations)<=5 and Set([0,1]).issubset(observations):
+				datasetDF_HP=datasetDF[datasetDF[YName]>0][datasetDF[YName]<=1]
+				datasetDF_LP=datasetDF[datasetDF[YName]>=0][datasetDF[YName]<1]
+				#print the P-value of all features for categorical data
+			else:
+				print('The target variable Y is not a categorical variable!')
+				return
+		else:
+			print(YName, 'is not a column of the dataset')
+			return
+
+		#Print all the P-value of the chi-square test for categical feature.
+		for featureName in database.categoricalFeatureList:
+			feature_high=dict(Counter(datasetDF_HP[featureName]))
+			feature_low=dict(Counter(datasetDF_LP[featureName]))
+			list1=[]
+			list2=[]
+			for i in feature_high.keys():
+				if i in feature_low.keys():
+					list1.append(feature_high[i])
+					list2.append(feature_low[i])
+			chisq,pvalue=chisquare(list1,list2)
+			print('Chi-square test, p-value',featureName,'=',pvalue)
 
 
     	

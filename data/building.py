@@ -1,7 +1,10 @@
 '''
 # Copyright (c) 2013-2018, Zhichao Tian <tzchao123@qq.com> 
 '''
-class Building():
+from pandas import Series
+class Building(Series):
+	"""Building is a pandas Series object.
+	"""
 
 	building={
 		'ID': 1,
@@ -62,7 +65,7 @@ class Building():
 			#'23' = 'Strip shopping mall','24' = 'Enclosed mall',
 			#'25' = 'Retail other than mall'
 			#'26' = 'Service','91' = 'Other'
-		'percentagePA1':50,
+		'PA1P':50,
 		'principleActivity2':2,
 		'percentagePA2':20,
 		'principleActivity3':3,

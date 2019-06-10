@@ -1,10 +1,15 @@
 
 import numpy as np
 import pandas as pd
-
+from tkinter import filedialog
+from tkinter import Tk
 from aibpd.data.building import Building
 from sklearn.preprocessing import Imputer
 from aibpd.data.weather import Weather
+from aibpd.data.database import Database
+from sklearn.preprocessing import MinMaxScaler
+
+
 class Preprocessing():
 	'''
 	This class is used to pre-processing data for different goals, for example similarity analysis
@@ -57,15 +62,15 @@ class Preprocessing():
 			energyType: different energy consumption items, such annual energy usage intensive(EUI).
 						0= 'EUI', => 'heatingLevel' marks the level of heating performance, 1 for high performance, 2 for medium, 
 							0 for low level, and 3 for others.
-						1='EUIHeating' => 'HEHS'= high efficient heating system
-						2='EUICooling' => 'heatingLevel' = high efficient cooling system
+						1='HEUI' => 'HEHS'= high efficient heating system
+						2='CEUI' => 'heatingLevel' = high efficient cooling system
 						3='designHeatingLoad' => 'HEE4H' = high efficient envelop system for heating.
 						4='designCoolingLoad' => 'HEE4C' = high efficient envelop system for cooling.
 		'''
 		
 		try:
-			#energyTypeDict={0:'EUI',1:'EUIHeating',2:'EUICooling',3:'designHeatingLoad',4:'designCoolingLoad'}
-			highEfficientType={'EUI': 'heatingLevel','EUIHeating': 'heatingLevel','EUICooling': 'coolingLevel','designHeatingLoad':'HEE4H',
+			#energyTypeDict={0:'EUI',1:'HEUI',2:'CEUI',3:'designHeatingLoad',4:'designCoolingLoad'}
+			highEfficientType={'EUI': 'heatingLevel','HEUI': 'heatingLevel','CEUI': 'coolingLevel','designHeatingLoad':'HEE4H',
 								'designCoolingLoad':'HEE4C',
 								'SourceEUI':'heatingLevel'}
 			isHEName=highEfficientType[energyType]
@@ -107,44 +112,95 @@ class Preprocessing():
 		Weather.addWeatherAttributesIntoDataDFByCity(dataDF)
 
 class PreprocessingCBECS(Preprocessing):
+	"""Preprocessing the CBECS data
+	"""
+	
+	
+	def __init__(self, data=None):
+		if isinstance(data, Database):
+			dataDF = data._dataDF
+		elif isinstance(data, pd.DataFrame):
+			dataDF = data
+		else:
+			dataDF = data._dataDF
+		self.get_EUI(dataDF)
+		self.get_HEUI(dataDF)
+		self.get_CEUI(dataDF)
+		self.get_WNEUI(dataDF)
+		self.get_TNEUI(dataDF)
 
-	def __init__(self):
-		#self.m,self.n = dataDF.shape
-		#self.fillValue(dataDF)
-		pass
 
+	def loadMetadata(self,):
+		"""load the metadata file which contains the description of the databse
+		"""
+	def numeric_transform(self,dataDF=None,feature_numeric=None):
+		"""
+		"""
+		data=dataDF['yearOfConstruction'].replace(995,1964)
+		dataDF['yearOfConstruction']=(data-1964)/66
 
-	def getEUICooling(self,dataDF):
+	def minmax_transform(self,dataDF=None,feature_numeric=None):
+		"""transform the data
+		"""
+		for feature in feature_numeric:
+			scaler = MinMaxScaler()
+			scaler.fit(dataDF[feature].values.reshape(1,-1))
+			data=scaler.fit_transform(dataDF[feature].values.reshape(1,-1))
+			dataDF[feature] = pd.Series(data[0])
+
+	def missing_impute(self, dataDF=None, main_features=None, other_features=None):
+		"""inpute missing data with different stategies.
+		"""
+	def impute_with_zero(self,dataDF=None,feature_list=None):
+		"""impute with zero
+		"""
+		
+		for feature in feature_list:
+			imp_constant = Imputer.SimpleImputer(missing_values=np.nan, 
+										strategy='constant',fill_value=0)
+			data=imp_constant.fit_transform(dataDF[feature].values.reshape(1,-1))
+			dataDF[feature]=pd.Series(data)
+		return dataDF
+
+		
+	def get_CEUI(self,dataDF):
 		'''
 		calculate source energy usage intension for cooling. 
 		Args:
-			dataDF, the source data based on which the EUICooling is calculated.
+			dataDF, the source data based on which the CEUI is calculated.
 		'''
-		#dataDF['EUICooling']=(dataDF['ELCLBTU']*3.167+dataDF['NGCLBTU']*1.084\
+		#dataDF['CEUI']=(dataDF['ELCLBTU']*3.167+dataDF['NGCLBTU']*1.084\
 								#+dataDF['DHCLBTU']*3.613+dataDF['FKCLBTU']*1.05)/dataDF['buildingArea']
 
-		if not 'EUICooling' in dataDF.columns:
-			dataDF['EUICooling']=dataDF['MFCLBTU']/dataDF['buildingArea']
+		if not 'CEUI' in dataDF.columns:
+			dataDF['CEUI']=dataDF['MFCLBTU']/dataDF['buildingArea']
 		return dataDF
 
 
-	def getEUIHeating(self,dataDF):
+	def get_HEUI(self,dataDF):
 		'''
 		calculate sources energy usage intension for heating
 		'''
-		if not 'EUIHeating' in dataDF.columns:
-			dataDF['EUIHeating']=dataDF['MFHTBTU']/dataDF['buildingArea']
+		if not 'HEUI' in dataDF.columns:
+			dataDF['HEUI']=dataDF['MFHTBTU']/dataDF['buildingArea']
+		return dataDF
+
+	def getWeatherNormalizedEUI(self,dataDF):
+		"""Calculate the weather normalized EUI.
+		"""
+		if not 'EUI' in dataDF.columns:
+			dataDF['WNEUI']=dataDF['EUI']/(dataDF['HDD65']+dataDF['CDD65'])
 		return dataDF
 
 	def getCoolingLevels(self,dataDF):
 		'''
-		Buildings with the least EUICooling are sorted out. To increase credility, top 3% low 
+		Buildings with the least CEUI are sorted out. To increase credility, top 3% low 
 		cooling energy buildings are abandoned. This low cooilng energy buildings are call High Efficient
 		Cooling System (coolingLevel).
 		Args:
-			dataDF, the source data based on which the EUIHeating is calculated.	
+			dataDF, the source data based on which the HEUI is calculated.	
 		'''
-		self.getHP(dataDF, energyType='EUICooling')
+		self.getHP(dataDF, energyType='CEUI')
 
 	def getHEES(self,dataDF):
 		'''
@@ -159,12 +215,12 @@ class PreprocessingCBECS(Preprocessing):
 		if not 'heatingLevel' in dataDF.columns:
 			print('heatingLevel exists, if you want to generate a new heatingLevel\
 				please delete exists ones')
-			return self.getHP(dataDF, energyType='EUIHeating')
+			return self.getHP(dataDF, energyType='HEUI')
 		else:
 			return dataDF
 
-	def getEUI(self,dataDF):
-		'''
+	def get_EUI(self,dataDF):
+		'''calculate the EUI of the buildings.
 		
 		'''
 		if not 'EUI' in dataDF.columns:
@@ -173,12 +229,46 @@ class PreprocessingCBECS(Preprocessing):
 				dataDF['MFOFBTU']+dataDF['MFPCBTU']+dataDF['MFOTBTU'])/dataDF['buildingArea']
 		return dataDF
 
+	def get_WNEUI(self,dataDF):
+		"""get the weather normalized EUI.
+		Parameters:
+		----------
+		dataDF, the DataFrame object that contains the data.
+
+		Return:
+		----------
+		dataDF, same as previous.
+		"""
+		try:
+			dataDF['WNEUI']=dataDF['EUI']/(dataDF['CDD65']+dataDF['HDD65'])
+		except ZeroDivisionError:
+			print('Cannot calculate the WNEUI, please check the CDD65 and HDD65')
+		return dataDF
+
+	def get_TNEUI(self,dataDF,method='week'):
+		"""get the time normalized EUI
+		Parameters:
+		----------
+		dataDF, a DataFrame object that contains the data.
+		method, set the method to define the normalized time.
+
+		Return:
+		----------
+		dataDF, a DataFrame object that contains the data.
+		"""
+		if 'WKHRS' in dataDF.columns:
+			dataDF['TNEUI']=dataDF['EUI']/dataDF['WKHRS']
+		else:
+			print('WKHRS (open hours per week) is not a feature of this data')
+		return dataDF
+
+
 	def forHeatingClf(self,dataDF):
 		'''
 		Perprocessing the CBECS 2012 database for heating performance classification.
 		'''
 		self.general(dataDF)
-		self.getEUIHeating(dataDF)
+		self.get_HEUI(dataDF)
 		self.getHeatingLevels(dataDF)
 		return dataDF[dataDF['heatingLevel']>=0.0]
 
@@ -187,7 +277,7 @@ class PreprocessingCBECS(Preprocessing):
 		Perprocessing the CBECS 2012 database for cooling performance classification.
 		'''
 		self.general(dataDF)
-		self.getEUICooling(dataDF)
+		self.get_CEUI(dataDF)
 		self.getCoolingLevels(dataDF)
 		return dataDF
 
@@ -204,10 +294,7 @@ class PreprocessingCBECS(Preprocessing):
 		preprocessing the CBECS 2012 database for predicting whether a building is energy efficient in heating.
 		'''
 		dataDF=dataDF.fillna(0)
-		#dataDF['HDD65Category']=pd.cut(dataDF['HDD65'],5,labels=[1,2,3,4,5]).astype('float64')
-		#dataDF=dataDF.convert_objects(convert_numeric=True)
-		#dataDF=self.getnumPeoplePerArea(dataDF)
-		dataDF=self.getEUIHeating(dataDF)
+		dataDF=self.get_HEUI(dataDF)
 		dataDF=self.getHEHS(dataDF)
 		return dataDF
 
@@ -218,9 +305,9 @@ class PreprocessingCBECS(Preprocessing):
 
 		'''
 		dataDF=dataDF.fillna(0)
-		self.getEUICooling(dataDF)
-		dataDF=dataDF[dataDF['EUICooling']>0]
-		dataDF=self.getHP(dataDF, energyType='EUICooling')
+		self.get_CEUI(dataDF)
+		dataDF=dataDF[dataDF['CEUI']>0]
+		dataDF=self.getHP(dataDF, energyType='CEUI')
 		return dataDF.dropna()
 
 	def prep4EUIReg(self,dataDF):
@@ -229,11 +316,12 @@ class PreprocessingCBECS(Preprocessing):
 		----------
 		Return:
 		----------
-		dataDF, a dataframe object that contains the dataset
+		dataDF, a dataframe object that contains the data
 		"""
 		#get the EUI feature.
-		dataDF=self.getEUI(dataDF)
+		dataDF=self.get_EUI(dataDF)
 		return dataDF
+	
 		 
 
 class PreprocessingBEEMR(Preprocessing):

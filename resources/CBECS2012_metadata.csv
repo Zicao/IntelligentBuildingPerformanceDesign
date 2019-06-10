@@ -1,11 +1,11 @@
 File order,"Variable
 name",Variable type,"Len-
-gth",Format,Label,Values/Format codes,
-1,PUBID,Char,5,,Building identifier,00001 - 06720,
+gth",Format,Label,Values/Format codes
+1,PUBID,Char,5,,Building identifier,00001 - 06720
 2,REGION,Char,1,$REGION.,Census region,"'1' = 'Northeast'
 '2' = 'Midwest'
 '3' = 'South'
-'4' = 'West'",
+'4' = 'West'"
 3,CENDIV,Char,1,$CENDIV.,Census division,"'1' = 'New England'
 '2' = 'Middle Atlantic'
 '3' = 'East North Central'
@@ -14,7 +14,7 @@ gth",Format,Label,Values/Format codes,
 '6' = 'East South Central'
 '7' = 'West South Central'
 '8' = 'Mountain'
-'9' = 'Pacific'",
+'9' = 'Pacific'"
 4,PBA,Char,2,$PBA.,Principal building activity,"'01' = 'Vacant'
 '02' = 'Office'
 '04' = 'Laboratory'
@@ -34,10 +34,10 @@ gth",Format,Label,Values/Format codes,
 '24' = 'Enclosed mall'
 '25' = 'Retail other than mall'
 '26' = 'Service'
-'91' = 'Other'",
+'91' = 'Other'"
 5,FREESTN,Char,1,$YES.,Freestanding building,"1' = 'Yes'
-Missing='No' ",
-6,SQFT,Num,8,COMMA10.,Square footage,"1,001 - 1,500,000",
+Missing='No' "
+6,SQFT,Num,8,COMMA10.,Square footage,"1,001 - 1,500,000"
 7,SQFTC,Char,2,$SQFTC.,Square footage category,"'01' = '1,000 square feet or less'
 '02' = '1,001 to 5,000 square feet'
 '03' = '5,001 to 10,000 square feet'
@@ -47,7 +47,7 @@ Missing='No' ",
 '07' = '100,001 to 200,000 square feet'
 '08' = '200,001 to 500,000 square feet'
 '09' = '500,001 to 1 million square feet'
-'10' = 'Over 1 million square feet'",
+'10' = 'Over 1 million square feet'"
 8,WLCNS,Char,2,$WLCNS.,Wall construction material,"'1' = 'Brick, stone, or stucco'
 '2' = 'Pre-cast concrete panels'
 '3' = 'Concrete block or poured concrete (above grade)'
@@ -56,7 +56,7 @@ Missing='No' ",
 '6' = 'Window or vision glass (glass that can be seen through)'
 '7' = 'Decorative or construction glass'
 '8' = 'No one major type'
-'9' = 'Other'",
+'9' = 'Other'"
 9,RFCNS,Char,2,$RFCNS.,Roof construction material,"'1' = 'Built-up (tar, felts, or fiberglass and a ballast, such as stone)'
 '2' = 'Slate or tile shingles'
 '3' = 'Wood shingles, shakes, or other wooden materials'
@@ -65,12 +65,12 @@ Missing='No' ",
 '6' = 'Plastic, rubber, or synthetic sheeting (single or multiple ply)'
 '7' = 'Concrete'
 '8' = 'No one major type'
-'9' = 'Other'",
+'9' = 'Other'"
 10,RFCOOL,Char,1,$YESNO.,Cool roof materials,"'1' = 'Yes'
-'2' = 'No'",
+'2' = 'No'"
 11,RFTILT,Char,1,$PITCH.,Roof tilt,"'1' = 'Flat'
 '2' = 'Shallow pitch'
-'3' = 'Steeper pitch'",
+'3' = 'Steeper pitch'"
 12,BLDSHP,Char,2,$SHAPE.,Building shape,"'01' = 'Square'
 '02' = 'Wide rectangle'
 '03' = 'Narrow rectangle'
@@ -82,42 +82,42 @@ Missing='No' ",
 '09' = '""L"" shaped'
 '10' = '""+"" or cross shaped'
 '11' = 'Other shape'
-Missing = Not applicable",
+Missing = Not applicable"
 13,GLSSPC,Char,1,$GLSPCT.,Percent exterior glass,"'1' = '1 percent or less'
 '2' = '2 to 10 percent'
 '3' = '11 to 25 percent'
 '4' = '26 to 50 percent'
 '5' = '51 to 75 percent'
 '6' = '76 to 100 percent'
-Missing = Not applicable",
+Missing = Not applicable"
 14,EQGLSS,Char,1,$YESNO.,Equal glass on all sides,"'1' = 'Yes'
 '2' = 'No'
-Missing = Not applicable",
+Missing = Not applicable"
 15,SUNGLS,Char,1,$GLSAREA.,Glass sides most sunlight,"'1' = 'More glass area'
 '2' = 'Less glass area'
 '3' = 'About the same amount'
-Missing = Not applicable",
+Missing = Not applicable"
 16,NFLOOR,Num,8,,Number of floors,"1 - 14
 994 = 15 to 25
-995 = More than 25",
+995 = More than 25"
 17,BASEMNT,Num,8,,Number of underground floors,"0 - 7
-Missing = Not applicable",
+Missing = Not applicable"
 18,FLCEILHT,Num,8,,Floor to ceiling height,"6 - 50
-995 = More than 50",
+995 = More than 50"
 19,ATTIC,Char,1,$YESNO.,Attic,"'1' = 'Yes'
-'2' = 'No'",
+'2' = 'No'"
 20,ELEVTR,Char,1,$YESNO.,Elevators,"'1' = 'Yes'
 '2' = 'No'
-Missing = Not applicable",
+Missing = Not applicable"
 21,NELVTR,Num,8,,Number of elevators,"1 - 50
-995 = More than 50",
+995 = More than 50"
 22,ESCLTR,Char,1,$YESNO.,Escalators,"'1' = 'Yes'
 '2' = 'No'
-Missing = Not applicable",
+Missing = Not applicable"
 23,NESLTR,Num,8,,Number of escalators,"1 - 20
-995 = More than 20",
+995 = More than 20"
 24,YRCON,Num,8,,Year of construction,"995 = Before 1946
-1946 - 2012",
+1946 - 2012"
 25,YRCONC,Char,2,$YRCONC.,Year of construction category,"'01' = 'Before 1920'
 '02' = '1920 to 1945'
 '03' = '1946 to 1959'
@@ -127,7 +127,7 @@ Missing = Not applicable",
 '07' = '1990 to 1999'
 '08' = '2000 to 2003'
 '09' = '2004 to 2007'
-'10' = '2008 to 2012'",
+'10' = '2008 to 2012'"
 26,MONCON,Char,2,$MONTH.,Month ready for occupancy,"'01' = 'January'
 '02' = 'February'
 '03' = 'March'
@@ -141,57 +141,57 @@ Missing = Not applicable",
 '11' = 'November'
 '12' = 'December'
 '97' = 'Undetermined'
-Missing = Not applicable",
+Missing = Not applicable"
 27,RENOV,Char,1,$YESNO.,Any renovations,"'1' = 'Yes'
 '2' = 'No'
-Missing = Not applicable",
+Missing = Not applicable"
 28,RENADD,Char,1,$YESNO.,Addition or annex,"'1' = 'Yes'
 '2' = 'No'
-Missing = Not applicable",
+Missing = Not applicable"
 29,RENRDC,Char,1,$YESNO.,Reduction of floorspace,"'1' = 'Yes'
 '2' = 'No'
-Missing = Not applicable",
+Missing = Not applicable"
 30,RENCOS,Char,1,$YESNO.,Cosmetic improvements,"'1' = 'Yes'
 '2' = 'No'
-Missing = Not applicable",
+Missing = Not applicable"
 31,RENINT,Char,1,$YESNO.,Interior wall re-configuration,"'1' = 'Yes'
 '2' = 'No'
-Missing = Not applicable",
+Missing = Not applicable"
 32,RENRFF,Char,1,$YESNO.,Roof replacement,"'1' = 'Yes'
 '2' = 'No'
-Missing = Not applicable",
+Missing = Not applicable"
 33,RENWLL,Char,1,$YESNO.,Exterior wall replacement,"'1' = 'Yes'
 '2' = 'No'
-Missing = Not applicable",
+Missing = Not applicable"
 34,RENWIN,Char,1,$YESNO.,Window replacement,"'1' = 'Yes'
 '2' = 'No'
-Missing = Not applicable",
+Missing = Not applicable"
 35,RENHVC,Char,1,$YESNO.,HVAC equipment upgrade,"'1' = 'Yes'
 '2' = 'No'
-Missing = Not applicable",
+Missing = Not applicable"
 36,RENLGT,Char,1,$YESNO.,Lighting upgrade,"'1' = 'Yes'
 '2' = 'No'
-Missing = Not applicable",
+Missing = Not applicable"
 37,RENPLB,Char,1,$YESNO.,Plumbing system upgrade,"'1' = 'Yes'
 '2' = 'No'
-Missing = Not applicable",
+Missing = Not applicable"
 38,RENELC,Char,1,$YESNO.,Electrical upgrade,"'1' = 'Yes'
 '2' = 'No'
-Missing = Not applicable",
+Missing = Not applicable"
 39,RENINS,Char,1,$YESNO.,Insulation upgrade,"'1' = 'Yes'
 '2' = 'No'
-Missing = Not applicable",
+Missing = Not applicable"
 40,RENSAF,Char,1,$YESNO.,"Fire, safety, or security upgrade","'1' = 'Yes'
 '2' = 'No'
-Missing = Not applicable",
+Missing = Not applicable"
 41,RENSTR,Char,1,$YESNO.,Structural upgrade,"'1' = 'Yes'
 '2' = 'No'
-Missing = Not applicable",
+Missing = Not applicable"
 42,RENOTH,Char,1,$YESNO.,Other renovation,"'1' = 'Yes'
 '2' = 'No'
-Missing = Not applicable",
+Missing = Not applicable"
 43,ONEACT,Char,1,$YESNO.,One activity in building,"'1' = 'Yes'
-'2' = 'No'",
+'2' = 'No'"
 44,ACT1,Char,2,$PBAX.,First activity in building,"'11' = 'Office/Professional'
 '12' = 'Data center/Computer ""server farm""'
 '13' = 'Warehouse/Storage'
@@ -210,7 +210,7 @@ Missing = Not applicable",
 '26' = 'Agricultural'
 '27' = 'Vacant'
 '28' = 'Other'
-Missing = Not applicable",
+Missing = Not applicable"
 45,ACT2,Char,2,$PBAX.,Second activity in building,"'11' = 'Office/Professional'
 '12' = 'Data center/Computer ""server farm""'
 '13' = 'Warehouse/Storage'
@@ -229,7 +229,7 @@ Missing = Not applicable",
 '26' = 'Agricultural'
 '27' = 'Vacant'
 '28' = 'Other'
-Missing = Not applicable",
+Missing = Not applicable"
 46,ACT3,Char,2,$PBAX.,Third activity in building,"'11' = 'Office/Professional'
 '12' = 'Data center/Computer ""server farm""'
 '13' = 'Warehouse/Storage'
@@ -248,13 +248,13 @@ Missing = Not applicable",
 '26' = 'Agricultural'
 '27' = 'Vacant'
 '28' = 'Other'
-Missing = Not applicable",
+Missing = Not applicable"
 47,ACT1PCT,Num,8,,Percent used for first activity,"1 - 100
-Missing = Not applicable",
+Missing = Not applicable"
 48,ACT2PCT,Num,8,,Percent used for second activity,"1 - 100
-Missing = Not applicable",
+Missing = Not applicable"
 49,ACT3PCT,Num,8,,Percent used for third activity,"1 - 100
-Missing = Not applicable",
+Missing = Not applicable"
 50,PBAPLUS,Char,2,$PBAPLUS.,More specific building activity,"'01' = 'Vacant'
 '02' = 'Administrative/professional office'
 '03' = 'Bank/other financial'
@@ -282,7 +282,7 @@ Missing = Not applicable",
 '25' = 'Social/meeting'
 '26' = 'Other public assembly'
 '27' = 'College/university'
-(continued in next cell)",
+(continued in next cell)"
 ,,,,,"More specific building activity, continued","'28' = 'Elementary/middle school'
 '29' = 'High school'
 '30' = 'Preschool/daycare'
@@ -308,51 +308,51 @@ Missing = Not applicable",
 '50' = 'Strip shopping mall'
 '51' = 'Enclosed mall'
 '52' = 'Courthouse/probation office'
-'53' = 'Bar/pub/lounge'",
+'53' = 'Bar/pub/lounge'"
 51,DRYCL,Char,1,$DRYCLN.,Dry cleaning onsite,"'1' = 'In this building'
 '2' = 'Off-site'
-Missing = Not applicable",
+Missing = Not applicable"
 52,VACANT,Char,1,$YESNO.,Completely vacant,"'1' = 'Yes'
 '2' = 'No'
-Missing = Not applicable",
+Missing = Not applicable"
 53,CUBE,Char,1,$YESNO.,Open plan office space,"'1' = 'Yes'
 '2' = 'No'
-Missing = Not applicable",
+Missing = Not applicable"
 54,CUBEC,Char,1,$CUBEC.,Percent open plan,"'1' = '1 to 20 percent'
 '2' = '21 to 50 percent'
 '3' = 'More than 50 percent'
-Missing = Not applicable",
+Missing = Not applicable"
 55,CUBELOC,Char,1,$CUBELC.,Location of open plan,"'1' = 'Near perimeter of building'
 '2' = 'In core of building'
 '3' = 'Entire building is open plan'
-Missing = Not applicable",
+Missing = Not applicable"
 56,RWSEAT,Num,8,COMMA6.,Religious worship seating capacity,"20 - 1,500
 99,995 = More than 15,000
-Missing = Not applicable",
+Missing = Not applicable"
 57,PBSEAT,Num,8,COMMA6.,Assembly seating capacity,"0 - 15,000
 999995 = More than 15,000
-Missing = Not applicable",
+Missing = Not applicable"
 58,EDSEAT,Num,8,COMMA6.,Number of classroom seats,"10 - 8,000
-Missing = Not applicable",
+Missing = Not applicable"
 59,FDSEAT,Num,8,COMMA6.,Food service seating capacity,"0 - 700
-Missing = Not applicable",
+Missing = Not applicable"
 60,HCBED,Num,8,COMMA6.,Licensed bed capacity,"25 - 250
 9,995 = More than 250
-Missing = Not applicable",
+Missing = Not applicable"
 61,NRSBED,Num,8,COMMA6.,Licensed bed capacity,"16 - 250
 9,995 = More than 250
-Missing = Not applicable",
+Missing = Not applicable"
 62,LODGRM,Num,8,COMMA6.,Number of guest rooms,"2 - 900
 99,995 = More than 900
-Missing = Not applicable",
+Missing = Not applicable"
 63,COURT,Char,1,$YESNO.,Food court,"'1' = 'Yes'
 '2' = 'No'
-Missing = Not applicable",
+Missing = Not applicable"
 64,FACIL,Char,1,$YESNO.,On a multibuilding complex,"'1' = 'Yes'
-'2' = 'No'",
+'2' = 'No'"
 65,FEDFAC,Char,1,$YESNO.,Federal complex,"'1' = 'Yes'
 '2' = 'No'
-Missing = Not applicable",
+Missing = Not applicable"
 66,FACACT,Char,2,$FACACT.,Type of complex,"'01' = 'College, university, or junior college'
 '02' = 'Primary or secondary school [grades K-12]'
 '03' = 'Other type of school'
@@ -368,35 +368,35 @@ Missing = Not applicable",
 '13' = 'Industrial complex'
 '14' = 'Transportation complex such as a terminal, depot, or airport'
 '15' = 'Other type of campus or complex'
-Missing = Not applicable",
+Missing = Not applicable"
 67,MANIND,Char,1,$YESNO.,Manufacturing industrial complex,"'1' = 'Yes'
 '2' = 'No'
-Missing = Not applicable",
+Missing = Not applicable"
 68,PLANT,Char,1,$YESNO.,Central physical plant on complex,"'1' = 'Yes'
 '2' = 'No'
-Missing = Not applicable",
+Missing = Not applicable"
 69,FACDST,Char,1,$YESNO.,Plant produces district steam,"'1' = 'Yes'
 '2' = 'No'
-Missing = Not applicable",
+Missing = Not applicable"
 70,FACDHW,Char,1,$YESNO.,Plant produces district hot water,"'1' = 'Yes'
 '2' = 'No'
-Missing = Not applicable",
+Missing = Not applicable"
 71,FACDCW,Char,1,$YESNO.,Plant produces district chilled water,"'1' = 'Yes'
 '2' = 'No'
-Missing = Not applicable",
+Missing = Not applicable"
 72,FACELC,Char,1,$YESNO.,Plant produces electricity,"'1' = 'Yes'
 '2' = 'No'
-Missing = Not applicable",
+Missing = Not applicable"
 73,BLDPLT,Char,1,$YESNO.,Central plant in building,"'1' = 'Yes'
 '2' = 'No'
-Missing = Not applicable",
+Missing = Not applicable"
 74,GOVOWN,Char,1,$YESNO.,Government owned,"'1' = 'Yes'
-'2' = 'No'",
+'2' = 'No'"
 75,GOVTYP,Char,1,$GOVTYP.,Type of government,"'1' = 'Federal'
 '2' = 'State'
 '3' = 'Local'
 '7' ='Withheld to protect confidentiality'
-Missing = Not applicable",
+Missing = Not applicable"
 76,OWNTYPE,Char,2,$OWNTYPE.,Building owner,"'01' = 'Real estate investment trust (REIT)'
 '02' = 'Other public or private corporation, partnership, LLC, or LLP'
 '03' = 'Individual owner(s)'
@@ -407,9 +407,9 @@ Missing = Not applicable",
 '08' = 'Federal government'
 '09' = 'State government'
 '10' = 'Local government'
-'97' = Withheld to protect confidentiality'",
+'97' = Withheld to protect confidentiality'"
 77,NOCC,Num,8,,Number of businesses,"0 - 200
-995 = More than 200",
+995 = More than 200"
 78,NOCCAT,Char,2,$NOCCAT.,Number of businesses category,"'01' = 'Zero'
 '02' = 'One'
 '03' = '2 to 5'
@@ -417,17 +417,17 @@ Missing = Not applicable",
 '05' = '11 to 20'
 '06' = '21 to 50'
 '07' = '51 to 100'
-'08' = 'More than 100'",
+'08' = 'More than 100'"
 79,OWNOCC,Char,1,$OWNOCC.,Owner occupied or leased to tenant(s),"'1' = 'Owner occupied'
 '2' = 'Leased to tenant(s)'
 '3' = 'Combination occupied and leased'
-Missing = Not applicable",
+Missing = Not applicable"
 80,OWNOPR,Char,1,$YESNO.,Owner responsible for operation and maintenance of energy systems,"'1' = 'Yes'
 '2' = 'No'
-Missing = Not applicable",
+Missing = Not applicable"
 81,OWNPPR,Char,1,$YESNO.,Owner has purchasing power for energy-related equipment,"'1' = 'Yes'
 '2' = 'No'
-Missing = Not applicable",
+Missing = Not applicable"
 82,NWNPPR,Char,1,$MGRTYP.,Nonowner with purchasing power for energy-related equipment,"'1' = 'Property management company or leasing agent'
 '2' = 'Business owner or tenant'
 '3' = 'Facilities personnel employed directly by the building owner'
@@ -435,7 +435,7 @@ Missing = Not applicable",
 '5' = 'Volunteer member of the organization'
 '6' = 'Manager with general supervisory duties'
 '7' = 'Other'
-Missing = Not applicable",
+Missing = Not applicable"
 83,NWNOPR,Char,1,$MGRTYP.,Nonowner responsible for operation and maintenance of energy systems,"'1' = 'Property management company or leasing agent'
 '2' = 'Business owner or tenant'
 '3' = 'Facilities personnel employed directly by the building owner'
@@ -443,33 +443,33 @@ Missing = Not applicable",
 '5' = 'Volunteer member of the organization'
 '6' = 'Manager with general supervisory duties'
 '7' = 'Other'
-Missing = Not applicable",
+Missing = Not applicable"
 84,WHOPPR,Char,1,$OPERTR.,Who has purchasing power,"'1' = 'Building owner'
 '2' = 'Party responsible for building operations'
 '3' = 'Both (either they have equal input, or are the same person)'
 '4' = 'Other'
-Missing = Not applicable",
-85,MONUSE,Num,8,,Months in use,0 - 12,
+Missing = Not applicable"
+85,MONUSE,Num,8,,Months in use,0 - 12
 86,OCCUPYP,Num,8,,Percent occupancy,"0 - 100
-Missing = Not applicable",
+Missing = Not applicable"
 87,LODOCCP,Num,8,,Lodging room percent occupancy,"0 - 100
-Missing = Not applicable",
+Missing = Not applicable"
 88,OPEN24,Char,1,$YESNO.,Open 24 hours a day,"'1' = 'Yes'
-'2' = 'No'",
+'2' = 'No'"
 89,OPNMF,Char,1,$DAYSOPN.,Open during week,"'1' = 'All five days'
 '2' = 'Some of these days'
-'3' = 'Not open at all Monday through Friday'",
+'3' = 'Not open at all Monday through Friday'"
 90,OPNWE,Char,1,$YESNO.,Open on weekend,"'1' = 'Yes'
-'2' = 'No'",
-91,WKHRS,Num,8,,Total hours open per week,0 - 168,
+'2' = 'No'"
+91,WKHRS,Num,8,,Total hours open per week,0 - 168
 92,WKHRSC,Char,1,$HRSCAT.,Weekly hours category,"'1' = 'No hours'
 '2' = '1 to 39'
 '3' = '40 to 48'
 '4' = '49 to 60'
 '5' = '61 to 84'
 '6' = '85 to 167'
-'7' = '168'",
-93,NWKER,Num,8,COMMA6.,Number of employees,"0 - 6,500",
+'7' = '168'"
+93,NWKER,Num,8,COMMA6.,Number of employees,"0 - 6,500"
 94,NWKERC,Char,2,$WORKCAT.,Number of employees category,"'01' = 'None'
 '02' = '1 to 4'
 '03' = '5 to 9'
@@ -481,31 +481,31 @@ Missing = Not applicable",
 '09' = '500 to 999'
 '10' = '1,000 to 2,499'
 '11' = '2,500 to 4,999'
-'12' = '5,000 or More'",
+'12' = '5,000 or More'"
 95,HT1,Char,1,$YESNO.,Energy used for main heating,"'1' = 'Yes'
-'2' = 'No'",
+'2' = 'No'"
 96,HT2,Char,1,$YESNO.,Energy used for secondary heating,"'1' = 'Yes'
-'2' = 'No'",
+'2' = 'No'"
 97,COOL,Char,1,$YESNO.,Energy used for cooling,"'1' = 'Yes'
-'2' = 'No'",
+'2' = 'No'"
 98,WATR,Char,1,$YESNO.,Energy used for water heating,"'1' = 'Yes'
-'2' = 'No'",
+'2' = 'No'"
 99,COOK,Char,1,$YESNO.,Energy used for cooking,"'1' = 'Yes'
-'2' = 'No'",
+'2' = 'No'"
 100,MANU,Char,1,$YESNO.,Energy used for manufacturing,"'1' = 'Yes'
-'2' = 'No'",
+'2' = 'No'"
 101,CAPGEN,Char,1,$YESNO.,Electricity generation capability,"'1' = 'Yes'
-'2' = 'No'",
+'2' = 'No'"
 102,GENR,Char,1,$YESNO.,Energy used for electricity generation,"'1' = 'Yes'
-'2' = 'No'",
+'2' = 'No'"
 103,ANYEGY,Char,1,$ANYEGY.,Any energy used,"1' = 'Yes, some energy was used in 2012'
-'2' = 'No, no energy was used'",
+'2' = 'No, no energy was used'"
 104,ELUSED,Char,1,$YESNO.,Electricity used,"'1' = 'Yes'
-'2' = 'No'",
+'2' = 'No'"
 105,NGUSED,Char,1,$YESNO.,Natural gas used,"'1' = 'Yes'
-'2' = 'No'",
+'2' = 'No'"
 106,FKUSED,Char,1,$YESNO.,Fuel oil/diesel/kerosene used,"'1' = 'Yes'
-'2' = 'No'",
+'2' = 'No'"
 107,FKTYPE,Char,1,$FKTYP.,"Specify fuel oil, diesel, or kerosene","'1' = 'Fuel oil'
 '2' = 'Diesel'
 '3' = 'Kerosene'
@@ -513,123 +513,123 @@ Missing = Not applicable",
 '5' = 'Fuel oil and kerosene'
 '6' = 'Diesel and kerosene'
 '7' = 'Fuel oil, diesel, and kerosene'
-'9' ='Don't know'",
+'9' ='Don't know'"
 108,PRUSED,Char,1,$YESNO.,Bottled gas/LPG/propane used,"'1' = 'Yes'
-'2' = 'No'",
+'2' = 'No'"
 109,STUSED,Char,1,$YESNO.,District steam used,"'1' = 'Yes'
-'2' = 'No'",
+'2' = 'No'"
 110,HWUSED,Char,1,$YESNO.,District hot water used,"'1' = 'Yes'
-'2' = 'No'",
+'2' = 'No'"
 111,CWUSED,Char,1,$YESNO.,District chilled water used,"'1' = 'Yes'
-'2' = 'No'",
+'2' = 'No'"
 112,WOUSED,Char,1,$YESNO.,Wood used,"'1' = 'Yes'
-'2' = 'No'",
+'2' = 'No'"
 113,COUSED,Char,1,$YESNO.,Coal used,"'1' = 'Yes'
-'2' = 'No'",
+'2' = 'No'"
 114,SOUSED,Char,1,$YESNO.,Solar used,"'1' = 'Yes'
-'2' = 'No'",
+'2' = 'No'"
 115,OTUSED,Char,1,$YESNO.,Other energy source used,"'1' = 'Yes'
-'2' = 'No'",
+'2' = 'No'"
 116,ELHT1,Char,1,$YESNO.,Electricity used for main heating,"'1' = 'Yes'
 '2' = 'No'
-Missing = Not applicable",
+Missing = Not applicable"
 117,NGHT1,Char,1,$YESNO.,Natural gas used for main heating,"'1' = 'Yes'
 '2' = 'No'
-Missing = Not applicable",
+Missing = Not applicable"
 118,FKHT1,Char,1,$YESNO.,Fuel oil used for main heating,"'1' = 'Yes'
 '2' = 'No'
-Missing = Not applicable",
+Missing = Not applicable"
 119,PRHT1,Char,1,$YESNO.,Propane used for main heating,"'1' = 'Yes'
 '2' = 'No'
-Missing = Not applicable",
+Missing = Not applicable"
 120,STHT1,Char,1,$YESNO.,District steam used for main heating,"'1' = 'Yes'
 '2' = 'No'
-Missing = Not applicable",
+Missing = Not applicable"
 121,HWHT1,Char,1,$YESNO.,District hot water used for main heating,"'1' = 'Yes'
 '2' = 'No'
-Missing = Not applicable",
+Missing = Not applicable"
 122,WOHT1,Char,1,$YESNO.,Wood used for main heating,"'1' = 'Yes'
 '2' = 'No'
-Missing = Not applicable",
+Missing = Not applicable"
 123,COHT1,Char,1,$YESNO.,Coal used for main heating,"'1' = 'Yes'
 '2' = 'No'
-Missing = Not applicable",
+Missing = Not applicable"
 124,SOHT1,Char,1,$YESNO.,Solar used for main heating,"'1' = 'Yes'
 '2' = 'No'
-Missing = Not applicable",
+Missing = Not applicable"
 125,OTHT1,Char,1,$YESNO.,Other source used for main heating,"'1' = 'Yes'
 '2' = 'No'
-Missing = Not applicable",
+Missing = Not applicable"
 126,ELHT2,Char,1,$YESNO.,Electricity used for secondary heating,"'1' = 'Yes'
 '2' = 'No'
-Missing = Not applicable",
+Missing = Not applicable"
 127,NGHT2,Char,1,$YESNO.,Natural gas used for secondary heating,"'1' = 'Yes'
 '2' = 'No'
-Missing = Not applicable",
+Missing = Not applicable"
 128,FKHT2,Char,1,$YESNO.,Fuel oil used for secondary heating,"'1' = 'Yes'
 '2' = 'No'
-Missing = Not applicable",
+Missing = Not applicable"
 129,PRHT2,Char,1,$YESNO.,Propane used for secondary heating,"'1' = 'Yes'
 '2' = 'No'
-Missing = Not applicable",
+Missing = Not applicable"
 130,STHT2,Char,1,$YESNO.,District steam used for secondary heating,"'1' = 'Yes'
 '2' = 'No'
-Missing = Not applicable",
+Missing = Not applicable"
 131,HWHT2,Char,1,$YESNO.,District hot water used for secondary heating,"'1' = 'Yes'
 '2' = 'No'
-Missing = Not applicable",
+Missing = Not applicable"
 132,WOHT2,Char,1,$YESNO.,Wood used for secondary heating,"'1' = 'Yes'
 '2' = 'No'
-Missing = Not applicable",
+Missing = Not applicable"
 133,COHT2,Char,1,$YESNO.,Coal used for secondary heating,"'1' = 'Yes'
 '2' = 'No'
-Missing = Not applicable",
+Missing = Not applicable"
 134,SOHT2,Char,1,$YESNO.,Solar used for secondary heating,"'1' = 'Yes'
 '2' = 'No'
-Missing = Not applicable",
+Missing = Not applicable"
 135,OTHT2,Char,1,$YESNO.,Other source used for secondary heating,"'1' = 'Yes'
 '2' = 'No'
-Missing = Not applicable",
+Missing = Not applicable"
 136,HEATP,Num,8,,Percent heated,"0 - 100
-Missing = Not applicable",
+Missing = Not applicable"
 137,HTLS50,Char,1,$YESNO.,Heated to less than 50 degrees,"'1' = 'Yes'
 '2' = 'No'
-Missing = Not applicable",
+Missing = Not applicable"
 138,FURNAC,Char,1,$YESNO.,Furnaces that heat air directly,"'1' = 'Yes'
 '2' = 'No'
-Missing = Not applicable",
+Missing = Not applicable"
 139,PKGHT,Char,1,$YESNO.,Packaged heating units,"'1' = 'Yes'
 '2' = 'No'
-Missing = Not applicable",
+Missing = Not applicable"
 140,BOILER,Char,1,$YESNO.,Boilers inside the building,"'1' = 'Yes'
 '2' = 'No'
-Missing = Not applicable",
+Missing = Not applicable"
 141,STHW,Char,1,$YESNO.,District steam or hot water piped in,"'1' = 'Yes'
 '2' = 'No'
-Missing = Not applicable",
+Missing = Not applicable"
 142,HTPMPH,Char,1,$YESNO.,Heat pumps for heating,"'1' = 'Yes'
 '2' = 'No'
-Missing = Not applicable",
+Missing = Not applicable"
 143,SLFCON,Char,1,$YESNO.,Individual space heaters,"'1' = 'Yes'
 '2' = 'No'
-Missing = Not applicable",
+Missing = Not applicable"
 144,OTHTEQ,Char,1,$YESNO.,Other heating equipment,"'1' = 'Yes'
 '2' = 'No'
-Missing = Not applicable",
+Missing = Not applicable"
 145,FURNP,Num,8,,Percent heated by furnace,"1 - 100
-Missing = Not applicable",
+Missing = Not applicable"
 146,PKGHP,Num,8,,Percent heated by packaged heating,"1 - 100
-Missing = Not applicable",
+Missing = Not applicable"
 147,BOILP,Num,8,,Percent heated by boiler,"1 - 100
-Missing = Not applicable",
+Missing = Not applicable"
 148,STHWP,Num,8,,Percent heated by dist steam/hot water,"1 - 100
-Missing = Not applicable",
+Missing = Not applicable"
 149,HTPHP,Num,8,,Percent heated by heat pumps,"1 - 100
-Missing = Not applicable",
+Missing = Not applicable"
 150,SLFCNP,Num,8,,Percent heated by individual space heaters,"1 - 100
-Missing = Not applicable",
+Missing = Not applicable"
 151,OTHTP,Num,8,,Percent heated by other heating equipment,"1 - 100
-Missing = Not applicable",
+Missing = Not applicable"
 152,MAINHT,Char,1,$HTEQP.,Main heating equipment,"'1' = 'Furnaces that heat air directly, without using steam or hot water'
 '2' = 'Packaged central unit (roof mounted)'
 '3' = 'Boilers inside (or adjacent to) the building that produce steam or hot water'
@@ -637,219 +637,219 @@ Missing = Not applicable",
 '5' = 'Heat pumps (other than components of a packaged unit)'
 '6' = 'Individual space heaters (other than heat pumps)'
 '7' = 'Other heating equipment'
-Missing = Not applicable",
+Missing = Not applicable"
 153,NWMNHT,Char,1,$YESNO.,Main heating replaced,"'1' = 'Yes'
 '2' = 'No'
-Missing = Not applicable",
+Missing = Not applicable"
 154,PKGHTTYP,Char,1,$PKGTYP.,Type of packaged heating,"'1' = 'Factory-assembled unitary packaged unit'
 '2' = 'Custom built-up packaged unit'
 '3' = 'Both factory-assembled and custom built-up packaged units'
-Missing = Not applicable",
+Missing = Not applicable"
 155,PKGFURN,Char,1,$YESNO.,Packaged heating component: Furnace,"'1' = 'Yes'
 '2' = 'No'
-Missing = Not applicable",
+Missing = Not applicable"
 156,PKGHTP,Char,1,$YESNO.,Packaged heating component: Heat pump,"'1' = 'Yes'
 '2' = 'No'
-Missing = Not applicable",
+Missing = Not applicable"
 157,PKGCOIL,Char,1,$YESNO.,Packaged heating component: Heating coil,"'1' = 'Yes'
 '2' = 'No'
-Missing = Not applicable",
+Missing = Not applicable"
 158,PKGPIU,Char,1,$YESNO.,Packaged heating component: Powered induction unit,"'1' = 'Yes'
 '2' = 'No'
-Missing = Not applicable",
+Missing = Not applicable"
 159,PKGDUCT,Char,1,$YESNO.,Packaged heating component: Duct reheat,"'1' = 'Yes'
 '2' = 'No'
-Missing = Not applicable",
+Missing = Not applicable"
 160,BLRRAD,Char,1,$YESNO.,Boiler system: Radiators,"'1' = 'Yes'
 '2' = 'No'
-Missing = Not applicable",
+Missing = Not applicable"
 161,BLRFNCL,Char,1,$YESNO.,Boiler system: Fan coil units in rooms,"'1' = 'Yes'
 '2' = 'No'
-Missing = Not applicable",
+Missing = Not applicable"
 162,BLRINDC,Char,1,$YESNO.,Boiler system: Induction units,"'1' = 'Yes'
 '2' = 'No'
-Missing = Not applicable",
+Missing = Not applicable"
 163,BLRLOOP,Char,1,$YESNO.,Boiler system: Water loop heat pump,"'1' = 'Yes'
 '2' = 'No'
-Missing = Not applicable",
+Missing = Not applicable"
 164,BLRAIR,Char,1,$YESNO.,Boiler system: Central air handler,"'1' = 'Yes'
 '2' = 'No'
-Missing = Not applicable",
+Missing = Not applicable"
 165,BLRPKG,Char,1,$YESNO.,Boiler system: Packaged unit,"'1' = 'Yes'
 '2' = 'No'
-Missing = Not applicable",
+Missing = Not applicable"
 166,BLRDUCT,Char,1,$YESNO.,Boiler system: Duct reheat,"'1' = 'Yes'
 '2' = 'No'
-Missing = Not applicable",
+Missing = Not applicable"
 167,DHRAD,Char,1,$YESNO.,District heat system: Radiators,"'1' = 'Yes'
 '2' = 'No'
-Missing = Not applicable",
+Missing = Not applicable"
 168,DHFNCL,Char,1,$YESNO.,District heat system: Fan coil units in rooms,"'1' = 'Yes'
 '2' = 'No'
-Missing = Not applicable",
+Missing = Not applicable"
 169,DHINDC,Char,1,$YESNO.,District heat system: Induction units,"'1' = 'Yes'
 '2' = 'No'
-Missing = Not applicable",
+Missing = Not applicable"
 170,DHLOOP,Char,1,$YESNO.,District heat system: Water loop heat pump,"'1' = 'Yes'
 '2' = 'No'
-Missing = Not applicable",
+Missing = Not applicable"
 171,DHAIR,Char,1,$YESNO.,District heat system: Central air handler,"'1' = 'Yes'
 '2' = 'No'
-Missing = Not applicable",
+Missing = Not applicable"
 172,DHPKG,Char,1,$YESNO.,District heat system: Packaged unit,"'1' = 'Yes'
 '2' = 'No'
-Missing = Not applicable",
+Missing = Not applicable"
 173,DHDUCT,Char,1,$YESNO.,District heat system: Duct reheat,"'1' = 'Yes'
 '2' = 'No'
-Missing = Not applicable",
+Missing = Not applicable"
 174,HPHPKG,Char,1,$YESNO.,Heat pump heating system: Packaged unit,"'1' = 'Yes'
 '2' = 'No'
-Missing = Not applicable",
+Missing = Not applicable"
 175,HPHSPLT,Char,1,$YESNO.,Heat pump heating system: Split system,"'1' = 'Yes'
 '2' = 'No'
-Missing = Not applicable",
+Missing = Not applicable"
 176,HPHROOM,Char,1,$YESNO.,Heat pump heating system: Individual room heat pump,"'1' = 'Yes'
 '2' = 'No'
-Missing = Not applicable",
+Missing = Not applicable"
 177,HPHMINI,Char,1,$YESNO.,Heat pump heating system: Ductless mini-split,"'1' = 'Yes'
 '2' = 'No'
-Missing = Not applicable",
+Missing = Not applicable"
 178,HPHVRF,Char,1,$YESNO.,Heat pump heating system: Variable refrigerant flow,"'1' = 'Yes'
 '2' = 'No'
-Missing = Not applicable",
+Missing = Not applicable"
 179,HPHAIR,Char,1,$YESNO.,Heat pump heating type: Air source,"'1' = 'Yes'
 '2' = 'No'
-Missing = Not applicable",
+Missing = Not applicable"
 180,HPHGRD,Char,1,$YESNO.,Heat pump heating type: Ground source,"'1' = 'Yes'
 '2' = 'No'
-Missing = Not applicable",
+Missing = Not applicable"
 181,HPHDUAL,Char,1,$YESNO.,Heat pump heating type: Dual source,"'1' = 'Yes'
 '2' = 'No'
-Missing = Not applicable",
+Missing = Not applicable"
 182,HPHWTR,Char,1,$YESNO.,Heat pump heating type: Water loop,"'1' = 'Yes'
 '2' = 'No'
-Missing = Not applicable",
+Missing = Not applicable"
 183,HPHBKUP,Char,1,$HPBKUP.,Heat pump backup energy source,"'1' = 'Electric resistance backup'
 '2' = 'Natural/bottled gas backup (dual fuel)'
 '3' = 'No backup source'
-Missing = Not applicable",
+Missing = Not applicable"
 184,SHRDNT,Char,1,$YESNO.,Individual heater: Infrared radiant,"'1' = 'Yes'
 '2' = 'No'
-Missing = Not applicable",
+Missing = Not applicable"
 185,SHBBRD,Char,1,$YESNO.,Individual heater: Baseboard,"'1' = 'Yes'
 '2' = 'No'
-Missing = Not applicable",
+Missing = Not applicable"
 186,SHPORT,Char,1,$YESNO.,Individual heater: Portable space heater,"'1' = 'Yes'
 '2' = 'No'
-Missing = Not applicable",
+Missing = Not applicable"
 187,SHWALL,Char,1,$YESNO.,Individual heater: Wall heater,"'1' = 'Yes'
 '2' = 'No'
-Missing = Not applicable",
+Missing = Not applicable"
 188,SHFURN,Char,1,$YESNO.,Individual heater: Individual furnace,"'1' = 'Yes'
 '2' = 'No'
-Missing = Not applicable",
+Missing = Not applicable"
 189,SHUNIT,Char,1,$YESNO.,Individual heater: Unit heater,"'1' = 'Yes'
 '2' = 'No'
-Missing = Not applicable",
+Missing = Not applicable"
 190,SHPTAC,Char,1,$YESNO.,Individual heater: Heating element in PTAC,"'1' = 'Yes'
 '2' = 'No'
-Missing = Not applicable",
+Missing = Not applicable"
 191,OTSTRP,Char,1,$YESNO.,Other heat component: Heating coil or heat strip,"'1' = 'Yes'
 '2' = 'No'
 '9' = Don't know'
-Missing = Not applicable",
+Missing = Not applicable"
 192,OTDUCT,Char,1,$YESNO.,Other heat component: Duct or electric reheat,"'1' = 'Yes'
 '2' = 'No'
 '9' = Don't know'
-Missing = Not applicable",
+Missing = Not applicable"
 193,OTPIU,Char,1,$YESNO.,Other heat component: Powered induction units,"'1' = 'Yes'
 '2' = 'No'
 '9' = Don't know'
-Missing = Not applicable",
+Missing = Not applicable"
 194,HTVCAV,Char,1,$YESNO.,Heating ventilation: Central air handling with CAV,"'1' = 'Yes'
 '2' = 'No'
-Missing = Not applicable",
+Missing = Not applicable"
 195,HTVVAV,Char,1,$YESNO.,Heating ventilation: Central air handling with VAV,"'1' = 'Yes'
 '2' = 'No'
-Missing = Not applicable",
+Missing = Not applicable"
 196,HTVFLR,Char,1,$YESNO.,Heating ventilation: Underfloor air distribution,"'1' = 'Yes'
 '2' = 'No'
-Missing = Not applicable",
+Missing = Not applicable"
 197,HTVOAS,Char,1,$YESNO.,Heating ventilation: Dedicated outside air system,"'1' = 'Yes'
 '2' = 'No'
-Missing = Not applicable",
+Missing = Not applicable"
 198,HTVDEM,Char,1,$YESNO.,Heating ventilation: Demand controlled ventilation,"'1' = 'Yes'
 '2' = 'No'
-Missing = Not applicable",
+Missing = Not applicable"
 199,HTVNON,Char,1,$YESNO.,Heating ventilation: None of these,"'1' = 'Yes'
 '2' = 'No'
-Missing = Not applicable",
+Missing = Not applicable"
 200,ELCOOL,Char,1,$YESNO.,Electricity used for cooling,"'1' = 'Yes'
 '2' = 'No'
-Missing = Not applicable",
+Missing = Not applicable"
 201,NGCOOL,Char,1,$YESNO.,Natural gas used for cooling,"'1' = 'Yes'
 '2' = 'No'
-Missing = Not applicable",
+Missing = Not applicable"
 202,FKCOOL,Char,1,$YESNO.,Fuel oil used for cooling,"'1' = 'Yes'
 '2' = 'No'
-Missing = Not applicable",
+Missing = Not applicable"
 203,PRCOOL,Char,1,$YESNO.,Propane used for cooling,"'1' = 'Yes'
 '2' = 'No'
-Missing = Not applicable",
+Missing = Not applicable"
 204,STCOOL,Char,1,$YESNO.,District steam  used for cooling,"'1' = 'Yes'
 '2' = 'No'
-Missing = Not applicable",
+Missing = Not applicable"
 205,HWCOOL,Char,1,$YESNO.,District hot water used for cooling,"'1' = 'Yes'
 '2' = 'No'
-Missing = Not applicable",
+Missing = Not applicable"
 206,CWCOOL,Char,1,$YESNO.,District chilled water used for cooling,"'1' = 'Yes'
 '2' = 'No'
-Missing = Not applicable",
+Missing = Not applicable"
 207,OTCOOL,Char,1,$YESNO.,Other source used for cooling,"'1' = 'Yes'
 '2' = 'No'
-Missing = Not applicable",
+Missing = Not applicable"
 208,COOLP,Num,8,,Percent cooled,"1 - 100
-Missing = Not applicable",
+Missing = Not applicable"
 209,RCAC,Char,1,$YESNO.,Residential type central A/C,"'1' = 'Yes'
 '2' = 'No'
-Missing = Not applicable",
+Missing = Not applicable"
 210,PKGCL,Char,1,$YESNO.,Packaged A/C units,"'1' = 'Yes'
 '2' = 'No'
-Missing = Not applicable",
+Missing = Not applicable"
 211,CHILLR,Char,1,$YESNO.,Central chillers inside the building,"'1' = 'Yes'
 '2' = 'No'
-Missing = Not applicable",
+Missing = Not applicable"
 212,CHWT,Char,1,$YESNO.,District chilled water piped in,"'1' = 'Yes'
 '2' = 'No'
-Missing = Not applicable",
+Missing = Not applicable"
 213,HTPMPC,Char,1,$YESNO.,Heat pumps for cooling,"'1' = 'Yes'
 '2' = 'No'
-Missing = Not applicable",
+Missing = Not applicable"
 214,ACWNWL,Char,1,$YESNO.,Individual room air conditioners,"'1' = 'Yes'
 '2' = 'No'
-Missing = Not applicable",
+Missing = Not applicable"
 215,EVAPCL,Char,1,$YESNO.,Evaporative or swamp coolers,"'1' = 'Yes'
 '2' = 'No'
-Missing = Not applicable",
+Missing = Not applicable"
 216,OTCLEQ,Char,1,$YESNO.,Other cooling equipment,"'1' = 'Yes'
 '2' = 'No'
-Missing = Not applicable",
+Missing = Not applicable"
 217,RCACP,Num,8,,Percent cooled by central A/C,"1 - 100
-Missing = Not applicable",
+Missing = Not applicable"
 218,PKGCP,Num,8,,Percent cooled by packaged A/C units,"1 - 100
-Missing = Not applicable",
+Missing = Not applicable"
 219,CHILP,Num,8,,Percent cooled by central chillers,"1 - 100
-Missing = Not applicable",
+Missing = Not applicable"
 220,CHWTP,Num,8,,Percent cooled by district chilled water,"1 - 100
-Missing = Not applicable",
+Missing = Not applicable"
 221,HTPCP,Num,8,,Percent cooled by heat pumps,"1 - 100
-Missing = Not applicable",
+Missing = Not applicable"
 222,ACWNWP,Num,8,,Percent cooled by individual room A/C,"1 - 100
-Missing = Not applicable",
+Missing = Not applicable"
 223,EVAPP,Num,8,,Percent cooled by swamp coolers,"1 - 100
-Missing = Not applicable",
+Missing = Not applicable"
 224,OTCLP,Num,8,,Percent cooled by other cooling equipment,"1 - 100
-Missing = Not applicable",
+Missing = Not applicable"
 225,MAINCL,Char,2,$CLEQP.,Main cooling equipment,"'1' = 'Residential-type central air conditioners (other than heat pumps) that cool air directly and circulate it without using chilled water'
 '2' = 'Packaged air conditioning units (other than heat pumps)'
 '3' = 'Central chillers inside (or adjacent to) the building that chill water for air conditioning'
@@ -858,510 +858,510 @@ Missing = Not applicable",
 '6' = 'Individual room air conditioners (other than heat pumps)'
 '7' = '""Swamp"" coolers or evaporative coolers'
 '8' = 'Other cooling equipment'
-Missing = Not applicable",
+Missing = Not applicable"
 226,NWMNCL,Char,1,$YESNO.,Main cooling replaced,"'1' = 'Yes'
 '2' = 'No'
-Missing = Not applicable",
+Missing = Not applicable"
 227,PKGCLTYP,Char,1,$PKGTYP.,Type of packaged cooling,"'1' = 'Factory-assembled unitary packaged unit'
 '2' = 'Custom built-up packaged unit'
 '3' = 'Both factory-assembled and custom built-up packaged units'
-Missing = Not applicable",
+Missing = Not applicable"
 228,CHLAIRCL,Char,1,$YESNO.,Chiller type: Air-cooled,"'1' = 'Yes'
 '2' = 'No'
-Missing = Not applicable",
+Missing = Not applicable"
 229,CHLWTRCL,Char,1,$YESNO.,Chiller type: Water cooled,"'1' = 'Yes'
 '2' = 'No'
-Missing = Not applicable",
+Missing = Not applicable"
 230,CHLABSRP,Char,1,$YESNO.,Chiller type: Absorption,"'1' = 'Yes'
 '2' = 'No'
-Missing = Not applicable",
+Missing = Not applicable"
 231,HTRCHLR,Char,1,$YESNO.,Heater chiller,"'1' = 'Yes'
 '2' = 'No'
-Missing = Not applicable",
+Missing = Not applicable"
 232,CHLAIR,Char,1,$YESNO.,Chiller system: Central air handler,"'1' = 'Yes'
 '2' = 'No'
-Missing = Not applicable",
+Missing = Not applicable"
 233,CHLFNCL,Char,1,$YESNO.,Chiller system: Fan coil units in rooms,"'1' = 'Yes'
 '2' = 'No'
-Missing = Not applicable",
+Missing = Not applicable"
 234,CHLINDC,Char,1,$YESNO.,Chiller system: Induction units,"'1' = 'Yes'
 '2' = 'No'
-Missing = Not applicable",
+Missing = Not applicable"
 235,CHLLOOP,Char,1,$YESNO.,Chiller system: Water loop heat pump,"'1' = 'Yes'
 '2' = 'No'
-Missing = Not applicable",
+Missing = Not applicable"
 236,CHLBEAM,Char,1,$YESNO.,Chiller system: Chilled beam,"'1' = 'Yes'
 '2' = 'No'
-Missing = Not applicable",
+Missing = Not applicable"
 237,CHLPKG,Char,1,$YESNO.,Chiller system: Packaged unit,"'1' = 'Yes'
 '2' = 'No'
-Missing = Not applicable",
+Missing = Not applicable"
 238,CHLDUCT,Char,1,$YESNO.,Chiller system: Duct reheat,"'1' = 'Yes'
 '2' = 'No'
-Missing = Not applicable",
+Missing = Not applicable"
 239,DCWAIR,Char,1,$YESNO.,District CW system: Central air handler,"'1' = 'Yes'
 '2' = 'No'
-Missing = Not applicable",
+Missing = Not applicable"
 240,DCWFNCL,Char,1,$YESNO.,District CW system: Fan coil units in rooms,"'1' = 'Yes'
 '2' = 'No'
-Missing = Not applicable",
+Missing = Not applicable"
 241,DCWINDC,Char,1,$YESNO.,District CW system: Induction units,"'1' = 'Yes'
 '2' = 'No'
-Missing = Not applicable",
+Missing = Not applicable"
 242,DCWLOOP,Char,1,$YESNO.,District CW system: Water loop heat pump,"'1' = 'Yes'
 '2' = 'No'
-Missing = Not applicable",
+Missing = Not applicable"
 243,DCWBEAM,Char,1,$YESNO.,District CW system: Chilled beam,"'1' = 'Yes'
 '2' = 'No'
-Missing = Not applicable",
+Missing = Not applicable"
 244,DCWPKG,Char,1,$YESNO.,District CW system: Packaged unit,"'1' = 'Yes'
 '2' = 'No'
-Missing = Not applicable",
+Missing = Not applicable"
 245,DCWDUCT,Char,1,$YESNO.,District CW system: Duct reheat,"'1' = 'Yes'
 '2' = 'No'
-Missing = Not applicable",
+Missing = Not applicable"
 246,HPCPKG,Char,1,$YESNO.,Heat pump cooling system: Packaged unit,"'1' = 'Yes'
 '2' = 'No'
-Missing = Not applicable",
+Missing = Not applicable"
 247,HPCSPLT,Char,1,$YESNO.,Heat pump cooling system: Split system,"'1' = 'Yes'
 '2' = 'No'
-Missing = Not applicable",
+Missing = Not applicable"
 248,HPCROOM,Char,1,$YESNO.,Heat pump cooling system: Individual room heat pump,"'1' = 'Yes'
 '2' = 'No'
-Missing = Not applicable",
+Missing = Not applicable"
 249,HPCMINI,Char,1,$YESNO.,Heat pump cooling system: Ductless mini-split,"'1' = 'Yes'
 '2' = 'No'
-Missing = Not applicable",
+Missing = Not applicable"
 250,HPCVRF,Char,1,$YESNO.,Heat pump cooling system: Variable refrigerant flow,"'1' = 'Yes'
 '2' = 'No'
-Missing = Not applicable",
+Missing = Not applicable"
 251,HPCAIR,Char,1,$YESNO.,Heat pump cooling type: Air source,"'1' = 'Yes'
 '2' = 'No'
-Missing = Not applicable",
+Missing = Not applicable"
 252,HPCGRD,Char,1,$YESNO.,Heat pump cooling type: Ground source,"'1' = 'Yes'
 '2' = 'No'
-Missing = Not applicable",
+Missing = Not applicable"
 253,HPCDUAL,Char,1,$YESNO.,Heat pump cooling type: Dual source,"'1' = 'Yes'
 '2' = 'No'
-Missing = Not applicable",
+Missing = Not applicable"
 254,HPCWTR,Char,1,$YESNO.,Heat pump cooling type: Water loop,"'1' = 'Yes'
 '2' = 'No'
-Missing = Not applicable",
+Missing = Not applicable"
 255,CLVCAV,Char,1,$YESNO.,Cooling ventilation: Central air-handling unit with CAV,"'1' = 'Yes'
 '2' = 'No'
-Missing = Not applicable",
+Missing = Not applicable"
 256,CLVVAV,Char,1,$YESNO.,Cooling ventilation: Central air-handling unit with VAV,"'1' = 'Yes'
 '2' = 'No'
-Missing = Not applicable",
+Missing = Not applicable"
 257,CLVFLR,Char,1,$YESNO.,Cooling ventilation: Underfloor air distribution,"'1' = 'Yes'
 '2' = 'No'
-Missing = Not applicable",
+Missing = Not applicable"
 258,CLVOAS,Char,1,$YESNO.,Cooling ventilation: Dedicated outside air system,"'1' = 'Yes'
 '2' = 'No'
-Missing = Not applicable",
+Missing = Not applicable"
 259,CLVDEM,Char,1,$YESNO.,Cooling ventilation: Demand controlled ventilation,"'1' = 'Yes'
 '2' = 'No'
-Missing = Not applicable",
+Missing = Not applicable"
 260,CLVNON,Char,1,$YESNO.,Cooling ventilation: None of these types,"'1' = 'Yes'
 '2' = 'No'
-Missing = Not applicable",
+Missing = Not applicable"
 261,EMCS,Char,1,$YESNO.,Building automation system,"'1' = 'Yes'
 '2' = 'No'
-Missing = Not applicable",
+Missing = Not applicable"
 262,RDHTNF,Char,1,$YESNO.,Heating reduced during 24 hour period,"'1' = 'Yes'
 '2' = 'No'
-Missing = Not applicable",
+Missing = Not applicable"
 263,HWRDHT,Char,1,$HOWRDC.,How reduce heating,"'1' = 'Part of the Building Automation System'
 '2' = 'Programmable thermostat'
 '3' = 'Manually change thermostat'
 '4' = 'Manually shut down equipment'
-Missing = Not applicable",
+Missing = Not applicable"
 264,RDCLNF,Char,1,$YESNO.,Cooling reduced during 24 hour period,"'1' = 'Yes'
 '2' = 'No'
-Missing = Not applicable",
+Missing = Not applicable"
 265,HWRDCL,Char,1,$HOWRDC.,How reduce cooling,"'1' = 'Part of the Building Automation System'
 '2' = 'Programmable thermostat'
 '3' = 'Manually change thermostat'
 '4' = 'Manually shut down equipment'
-Missing = Not applicable",
+Missing = Not applicable"
 266,ECN,Char,1,$YESNO.,Economizer cycle,"'1' = 'Yes'
 '2' = 'No'
-Missing = Not applicable",
+Missing = Not applicable"
 267,ECNTYPE,Char,1,$ECNTYP.,Type of economizer,"'1' = 'Air-side economizer'
 '2' = 'Water-side economizer'
-Missing = Not applicable",
+Missing = Not applicable"
 268,MAINT,Char,1,$YESNO.,Regular HVAC maintenance,"'1' = 'Yes'
 '2' = 'No'
-Missing = Not applicable",
+Missing = Not applicable"
 269,ELWATR,Char,1,$YESNO.,Electricity used for water heating,"'1' = 'Yes'
 '2' = 'No'
-Missing = Not applicable",
+Missing = Not applicable"
 270,NGWATR,Char,1,$YESNO.,Natural gas used for water heating,"'1' = 'Yes'
 '2' = 'No'
-Missing = Not applicable",
+Missing = Not applicable"
 271,FKWATR,Char,1,$YESNO.,Fuel oil used for water heating,"'1' = 'Yes'
 '2' = 'No'
-Missing = Not applicable",
+Missing = Not applicable"
 272,PRWATR,Char,1,$YESNO.,Propane used for water heating,"'1' = 'Yes'
 '2' = 'No'
-Missing = Not applicable",
+Missing = Not applicable"
 273,STWATR,Char,1,$YESNO.,District steam used for water heating,"'1' = 'Yes'
 '2' = 'No'
-Missing = Not applicable",
+Missing = Not applicable"
 274,HWWATR,Char,1,$YESNO.,District hot water used for water heating,"'1' = 'Yes'
 '2' = 'No'
-Missing = Not applicable",
+Missing = Not applicable"
 275,WOWATR,Char,1,$YESNO.,Wood used for water heating,"'1' = 'Yes'
 '2' = 'No'
-Missing = Not applicable",
+Missing = Not applicable"
 276,COWATR,Char,1,$YESNO.,Coal used for water heating,"'1' = 'Yes'
 '2' = 'No'
-Missing = Not applicable",
+Missing = Not applicable"
 277,SOWATR,Char,1,$YESNO.,Solar used for water heating,"'1' = 'Yes'
 '2' = 'No'
-Missing = Not applicable",
+Missing = Not applicable"
 278,OTWATR,Char,1,$YESNO.,Other source used for water heating,"'1' = 'Yes'
 '2' = 'No'
-Missing = Not applicable",
+Missing = Not applicable"
 279,WTHTEQ,Char,1,$WATREQP.,Water heating equipment,"'1' = 'One or more centralized water heaters'
 '2' = 'One or more ""point-of-use"" water heaters'
 '3' = 'Both types'
-Missing = Not applicable",
+Missing = Not applicable"
 280,BOOSTWT,Num,8,,Booster water heaters,"0 - 60
-Missing = Not applicable",
+Missing = Not applicable"
 281,INSTWT,Char,1,$YESNO.,Instant hot water,"'1' = 'Yes'
 '2' = 'No'
-Missing = Not applicable",
+Missing = Not applicable"
 282,ELCOOK,Char,1,$YESNO.,Electricity used for cooking,"'1' = 'Yes'
 '2' = 'No'
-Missing = Not applicable",
+Missing = Not applicable"
 283,NGCOOK,Char,1,$YESNO.,Natural gas used for cooking,"'1' = 'Yes'
 '2' = 'No'
-Missing = Not applicable",
+Missing = Not applicable"
 284,FKCOOK,Char,1,$YESNO.,Fuel oil used for cooking,"'1' = 'Yes'
 '2' = 'No'
-Missing = Not applicable",
+Missing = Not applicable"
 285,PRCOOK,Char,1,$YESNO.,Propane used for cooking,"'1' = 'Yes'
 '2' = 'No'
-Missing = Not applicable",
+Missing = Not applicable"
 286,STCOOK,Char,1,$YESNO.,District steam used for cooking,"'1' = 'Yes'
 '2' = 'No'
-Missing = Not applicable",
+Missing = Not applicable"
 287,HWCOOK,Char,1,$YESNO.,District hot water used for cooking,"'1' = 'Yes'
 '2' = 'No'
-Missing = Not applicable",
+Missing = Not applicable"
 288,WOCOOK,Char,1,$YESNO.,Wood used for cooking,"'1' = 'Yes'
 '2' = 'No'
-Missing = Not applicable",
+Missing = Not applicable"
 289,COCOOK,Char,1,$YESNO.,Coal used for cooking,"'1' = 'Yes'
 '2' = 'No'
-Missing = Not applicable",
+Missing = Not applicable"
 290,SOCOOK,Char,1,$YESNO.,Solar used for cooking,"'1' = 'Yes'
 '2' = 'No'
-Missing = Not applicable",
+Missing = Not applicable"
 291,OTCOOK,Char,1,$YESNO.,Other source used for cooking,"'1' = 'Yes'
 '2' = 'No'
-Missing = Not applicable",
+Missing = Not applicable"
 292,ELMANU,Char,1,$YESNO.,Electricity used for manufacturing,"'1' = 'Yes'
 '2' = 'No'
-Missing = Not applicable",
+Missing = Not applicable"
 293,NGMANU,Char,1,$YESNO.,Natural gas used for manufacturing,"'1' = 'Yes'
 '2' = 'No'
-Missing = Not applicable",
+Missing = Not applicable"
 294,FKMANU,Char,1,$YESNO.,Fuel oil used for manufacturing,"'1' = 'Yes'
 '2' = 'No'
-Missing = Not applicable",
+Missing = Not applicable"
 295,PRMANU,Char,1,$YESNO.,Propane used for manufacturing,"'1' = 'Yes'
 '2' = 'No'
-Missing = Not applicable",
+Missing = Not applicable"
 296,STMANU,Char,1,$YESNO.,District steam used for manufacturing,"'1' = 'Yes'
 '2' = 'No'
-Missing = Not applicable",
+Missing = Not applicable"
 297,HWMANU,Char,1,$YESNO.,District hot water used for manufacturing,"'1' = 'Yes'
 '2' = 'No'
-Missing = Not applicable",
+Missing = Not applicable"
 298,WOMANU,Char,1,$YESNO.,Wood used for manufacturing,"'1' = 'Yes'
 '2' = 'No'
-Missing = Not applicable",
+Missing = Not applicable"
 299,COMANU,Char,1,$YESNO.,Coal used for manufacturing,"'1' = 'Yes'
 '2' = 'No'
-Missing = Not applicable",
+Missing = Not applicable"
 300,SOMANU,Char,1,$YESNO.,Solar used for manufacturing,"'1' = 'Yes'
 '2' = 'No'
-Missing = Not applicable",
+Missing = Not applicable"
 301,OTMANU,Char,1,$YESNO.,Other source used for manufacturing,"'1' = 'Yes'
 '2' = 'No'
-Missing = Not applicable",
+Missing = Not applicable"
 302,NGGENR,Char,1,$YESNO.,Natural gas used for electricity generation,"'1' = 'Yes'
 '2' = 'No'
-Missing = Not applicable",
+Missing = Not applicable"
 303,FKGENR,Char,1,$YESNO.,Fuel oil used for electricity generation,"'1' = 'Yes'
 '2' = 'No'
-Missing = Not applicable",
+Missing = Not applicable"
 304,PRGENR,Char,1,$YESNO.,Propane used for electricity generation,"'1' = 'Yes'
 '2' = 'No'
-Missing = Not applicable",
+Missing = Not applicable"
 305,WOGENR,Char,1,$YESNO.,Wood used for electricity generation,"'1' = 'Yes'
 '2' = 'No'
-Missing = Not applicable",
+Missing = Not applicable"
 306,COGENR,Char,1,$YESNO.,Coal used for electricity generation,"'1' = 'Yes'
 '2' = 'No'
-Missing = Not applicable",
+Missing = Not applicable"
 307,SOGENR,Char,1,$YESNO.,Solar used for electricity generation,"'1' = 'Yes'
 '2' = 'No'
-Missing = Not applicable",
+Missing = Not applicable"
 308,OTGENR,Char,1,$YESNO.,Other source used for electricity generation,"'1' = 'Yes'
 '2' = 'No'
-Missing = Not applicable",
+Missing = Not applicable"
 309,PVC,Char,1,$YESNO.,Photovoltaic cells,"'1' = 'Yes'
 '2' = 'No'
-Missing = Not applicable",
+Missing = Not applicable"
 310,FUELCL,Char,1,$YESNO.,Fuel cells,"'1' = 'Yes'
 '2' = 'No'
-Missing = Not applicable",
+Missing = Not applicable"
 311,LRGTRB,Char,1,$YESNO.,Large turbines,"'1' = 'Yes'
 '2' = 'No'
-Missing = Not applicable",
+Missing = Not applicable"
 312,MCROTB,Char,1,$YESNO.,Microturbines,"'1' = 'Yes'
 '2' = 'No'
-Missing = Not applicable",
+Missing = Not applicable"
 313,ENGINE,Char,1,$YESNO.,Reciprocating engines,"'1' = 'Yes'
 '2' = 'No'
-Missing = Not applicable",
+Missing = Not applicable"
 314,GENUSE,Char,1,$GENUSE.,Use of generated electricity,"'1' = 'Primarily for emergency back-up or testing'
 '2' = 'During periods of high electricity demand'
 '3' = 'Whenever electricity was used'
-Missing = Not applicable",
+Missing = Not applicable"
 315,COGEN,Char,1,$YESNO.,Cogeneration system,"'1' = 'Yes'
 '2' = 'No'
-Missing = Not applicable",
+Missing = Not applicable"
 316,TOGRID,Char,1,$YESNO.,Deliver electricity to grid,"'1' = 'Yes'
 '2' = 'No'
-Missing = Not applicable",
+Missing = Not applicable"
 317,NGOTH,Char,1,$YESNO.,Natural gas for some other use,"'1' = 'Yes'
 '2' = 'No'
-Missing = Not applicable",
+Missing = Not applicable"
 318,FKOTH,Char,1,$YESNO.,Fuel oil for some other use,"'1' = 'Yes'
 '2' = 'No'
-Missing = Not applicable",
+Missing = Not applicable"
 319,PROTH,Char,1,$YESNO.,Propane for some other use,"'1' = 'Yes'
 '2' = 'No'
-Missing = Not applicable",
+Missing = Not applicable"
 320,STOTH,Char,1,$YESNO.,District steam for some other use,"'1' = 'Yes'
 '2' = 'No'
-Missing = Not applicable",
+Missing = Not applicable"
 321,HWOTH,Char,1,$YESNO.,District hot water for some other use,"'1' = 'Yes'
 '2' = 'No'
-Missing = Not applicable",
+Missing = Not applicable"
 322,CWOTH,Char,1,$YESNO.,District chilled water for some other use,"'1' = 'Yes'
 '2' = 'No'
-Missing = Not applicable",
+Missing = Not applicable"
 323,WOOTH,Char,1,$YESNO.,Wood for some other use,"'1' = 'Yes'
 '2' = 'No'
-Missing = Not applicable",
+Missing = Not applicable"
 324,COOTH,Char,1,$YESNO.,Coal for some other use,"'1' = 'Yes'
 '2' = 'No'
-Missing = Not applicable",
+Missing = Not applicable"
 325,SOOTH,Char,1,$YESNO.,Solar for some other use,"'1' = 'Yes'
 '2' = 'No'
-Missing = Not applicable",
+Missing = Not applicable"
 326,OTOTH,Char,1,$YESNO.,Other source for some other use,"'1' = 'Yes'
 '2' = 'No'
-Missing = Not applicable",
+Missing = Not applicable"
 327,ELLOCUT,Char,1,$YESNO.,Electricity from local utility,"'1' = 'Yes'
 '2' = 'No'
 '8' = 'Refused'
 '9' = 'Don't know'
-Missing = Not applicable",
+Missing = Not applicable"
 328,ELNONLU,Char,1,$YESNO.,Electricity from IPP/non-local utility,"'1' = 'Yes'
 '2' = 'No'
 '8' = 'Refused'
 '9' = 'Don't know'
-Missing = Not applicable",
+Missing = Not applicable"
 329,ELOTSRC,Char,1,$YESNO.,Electricity from some other source,"'1' = 'Yes'
 '2' = 'No'
 '8' = 'Refused'
 '9' = 'Don't know'
-Missing = Not applicable",
+Missing = Not applicable"
 330,ELCPLT,Char,1,$YESNO.,Electricity from central plant,"'1' = 'Yes'
 '2' = 'No'
-Missing = Not applicable",
+Missing = Not applicable"
 331,ELLUPCT,Num,8,,Percent of elec from local utility,"1 - 100
 999 = Don't know
-Missing = Not applicable",
+Missing = Not applicable"
 332,NGSRC,Char,1,$NGSRC.,How purchase natural gas,"'1' = 'Bought from the local utility'
 '2' = 'Bought from someone else, such as a non-utility or a broker' 
 '3'  ='Bought both ways'
-Missing = Not applicable",
+Missing = Not applicable"
 333,PRAMTC,Char,1,$PRAMT.,Bottled gas amount,"1' = 'Less than 100'
 '2' = '100 to 499'
 '3' = '500 to 999'
 '4' = '1,000 or more'
-'9' ='Don't know'",
+'9' ='Don't know'"
 334,PRUNIT,Char,1,$PRUNIT.,Bottled gas units,"1' = 'Gallons'
 '2' = 'Pounds'
-'9' ='Don't know'",
+'9' ='Don't know'"
 335,WOAMT,Char,1,$WOAMT.,Amount wood burned,"'1' = 'Less than 1 cord'
 '2' = '1 to 9 cords'
 '3' = '10 to 20 cords'
 '4' = 'More than 20 cords'
-Missing = Not applicable",
+Missing = Not applicable"
 336,WOSRC,Char,1,$WOSRC.,How obtain wood,"'1' = 'Purchased all the wood'
 '2' = 'Obtained it all free of charge'
 '3' = 'Some purchased and some free'
-Missing = Not applicable",
+Missing = Not applicable"
 337,WOEXP,Num,8,COMMA6.,Expenditures for wood,"2 - 16,000
 999,999 = Don't know
-Missing = Not applicable",
+Missing = Not applicable"
 338,WOEXPC,Char,1,$WODOLS.,Wood expenditures category,"'1' = '$1 to $100'
 '2' = '$101 to $500'
 '3' = '$501 to $1,000'
 '4' = '$1,001 to $2,000'
 '5' = 'Over $2,000'
-Missing = Not applicable",
+Missing = Not applicable"
 339,AMIMETER,Char,1,$YESNO.,AMI smart metering,"'1' = 'Yes'
 '2' = 'No'
 '7' = 'Undetermined'
 '8' = 'Refused'
 '9' = 'Don't know'
-Missing = Not applicable",
+Missing = Not applicable"
 340,ENRGYPLN,Char,1,$YESNO.,Energy management plan,"'1' = 'Yes'
 '2' = 'No'
-Missing = Not applicable",
+Missing = Not applicable"
 341,SNACK,Char,1,$YESNO.,Snack bar or concession stand,"'1' = 'Yes'
 '2' = 'No'
-Missing = Not applicable",
+Missing = Not applicable"
 342,FASTFD,Char,1,$YESNO.,Fast food or small restaurant,"'1' = 'Yes'
 '2' = 'No'
-Missing = Not applicable",
+Missing = Not applicable"
 343,CAF,Char,1,$YESNO.,Cafeteria or large restaurant,"'1' = 'Yes'
 '2' = 'No'
-Missing = Not applicable",
+Missing = Not applicable"
 344,FDPREP,Char,1,$YESNO.,Commercial or large kitchen,"'1' = 'Yes'
 '2' = 'No'
-Missing = Not applicable",
+Missing = Not applicable"
 345,KITCHN,Char,1,$YESNO.,Small kitchen area,"'1' = 'Yes'
 '2' = 'No'
-Missing = Not applicable",
+Missing = Not applicable"
 346,BREAKRM,Char,1,$YESNO.,"Employee lounge, breakroom, or pantry","'1' = 'Yes'
 '2' = 'No'
-Missing = Not applicable",
+Missing = Not applicable"
 347,OTFDRM,Char,1,$YESNO.,Other food prep or serving area,"'1' = 'Yes'
 '2' = 'No'
-Missing = Not applicable",
+Missing = Not applicable"
 348,HWTRM,Char,1,$YESNO.,Large amounts of hot water,"'1' = 'Yes'
 '2' = 'No'
-Missing = Not applicable",
+Missing = Not applicable"
 349,LAUNDR,Char,1,$LAUND.,Laundry onsite,"'1' = 'In this building'
 '2' = 'In another building on-site'
 '3' = 'By an off-site laundry service'
-Missing = Not applicable",
+Missing = Not applicable"
 350,CONFSP,Char,1,$YESNO.,Conference or event space,"'1' = 'Yes'
 '2' = 'No'
-Missing = Not applicable",
+Missing = Not applicable"
 351,CONFSPP,Num,8,,Percent conference or event space,"1 - 50
-Missing = Not applicable",
+Missing = Not applicable"
 352,MEDEQP,Char,1,$YESNO.,Medical equipment,"'1' = 'Yes'
 '2' = 'No'
-Missing = Not applicable",
+Missing = Not applicable"
 353,XRAYN,Num,8,,Number of X-ray machines,"0 - 20
 995 = More than 20
-Missing = Not applicable",
+Missing = Not applicable"
 354,CTSCAN,Char,1,$YESNO.,CT scan machines,"'1' = 'Yes'
 '2' = 'No'
-Missing = Not applicable",
+Missing = Not applicable"
 355,MRI,Char,1,$YESNO.,MRI machines,"'1' = 'Yes'
 '2' = 'No'
-Missing = Not applicable",
+Missing = Not applicable"
 356,LINACC,Char,1,$YESNO.,Linear accelerators,"'1' = 'Yes'
 '2' = 'No'
-Missing = Not applicable",
+Missing = Not applicable"
 357,OUTSURG,Char,1,$YESNO.,Operating rooms for outpatient surgery,"'1' = 'Yes'
 '2' = 'No'
-Missing = Not applicable",
+Missing = Not applicable"
 358,LABEQP,Char,1,$YESNO.,Laboratory equipment,"'1' = 'Yes'
 '2' = 'No'
-Missing = Not applicable",
+Missing = Not applicable"
 359,MCHEQP,Char,1,$YESNO.,Machine equipment,"'1' = 'Yes'
 '2' = 'No'
-Missing = Not applicable",
+Missing = Not applicable"
 360,POOL,Char,1,$YESNO.,Indoor swimming pool,"'1' = 'Yes'
 '2' = 'No'
-Missing = Not applicable",
+Missing = Not applicable"
 361,HTPOOL,Char,1,$YESNO.,Heated indoor swimming pool,"'1' = 'Yes'
 '2' = 'No'
-Missing = Not applicable",
+Missing = Not applicable"
 362,POOLSRC,Char,1,$POOLSRC.,Pool energy source,"'1' = 'Electricity'
 '2' = 'Natural gas'
 '3' = 'Fuel oil/Diesel/Kerosene'
 '4' = 'Bottled gas/LPG/Propane'
 '5' = 'Solar'
 '6' = 'Some other energy source'
-Missing = Not applicable",
+Missing = Not applicable"
 363,STRLZR,Char,1,$YESNO.,Sterilizers or autoclaves,"'1' = 'Yes'
 '2' = 'No'
-Missing = Not applicable",
+Missing = Not applicable"
 364,RFGEQP,Char,1,$YESNO.,Refrigeration,"'1' = 'Yes'
 '2' = 'No'
-Missing = Not applicable",
+Missing = Not applicable"
 365,RFGRES,Char,1,$YESNO.,Full-size residential-type refrigerator,"'1' = 'Yes'
 '2' = 'No'
-Missing = Not applicable",
+Missing = Not applicable"
 366,RFGCOMP,Char,1,$YESNO.,Half-size or compact refrigerators,"'1' = 'Yes'
 '2' = 'No'
-Missing = Not applicable",
+Missing = Not applicable"
 367,RFGWI,Char,1,$YESNO.,Walk-in refrigeration units,"'1' = 'Yes'
 '2' = 'No'
-Missing = Not applicable",
+Missing = Not applicable"
 368,RFGOP,Char,1,$YESNO.,Open case refrigeration units,"'1' = 'Yes'
 '2' = 'No'
-Missing = Not applicable",
+Missing = Not applicable"
 369,RFGCL,Char,1,$YESNO.,Closed case refrigeration units,"'1' = 'Yes'
 '2' = 'No'
-Missing = Not applicable",
+Missing = Not applicable"
 370,RFGVEN,Char,1,$YESNO.,Refrigerated vending machines,"'1' = 'Yes'
 '2' = 'No'
-Missing = Not applicable",
+Missing = Not applicable"
 371,RFGICE,Char,1,$YESNO.,Commercial ice makers,"'1' = 'Yes'
 '2' = 'No'
-Missing = Not applicable",
+Missing = Not applicable"
 372,RFGSTO,Char,1,$YESNO.,Large cold storage areas,"'1' = 'Yes'
 '2' = 'No'
-Missing = Not applicable",
+Missing = Not applicable"
 373,RFGRSN,Num,8,COMMA5.,Number of residential refrigerators,"1 - 1,000
-Missing = Not applicable",
+Missing = Not applicable"
 374,RFGCOMPN,Num,8,COMMA5.,Number of compact refrigerators,"1 - 1,000
 99995 = More than 1,000
-Missing = Not applicable",
+Missing = Not applicable"
 375,RFGWIN,Num,8,,Number of walk-in units,"1 - 350
-Missing = Not applicable",
+Missing = Not applicable"
 376,RFGOPN,Num,8,,Number of open case refrigeration units,"1 - 300
-Missing = Not applicable",
+Missing = Not applicable"
 377,RFGCLN,Num,8,,Number of closed case refrigeration units,"1 - 500
-Missing = Not applicable",
+Missing = Not applicable"
 378,RFGVNN,Num,8,,Number of refrigerated vending machines,"1 - 300
-Missing = Not applicable",
+Missing = Not applicable"
 379,RFGICN,Num,8,,Number of ice makers,"1 - 500
-Missing = Not applicable",
+Missing = Not applicable"
 380,RFGSTP,Num,8,,Percent cold storage,"1 - 100
-Missing = Not applicable",
+Missing = Not applicable"
 381,WHRECOV,Char,1,$YESNO.,Waste heat recovery,"'1' = 'Yes'
 '2' = 'No'
-Missing = Not applicable",
+Missing = Not applicable"
 382,WHHT2,Char,1,$YESNO.,Waste heat used for secondary heating,"'1' = 'Yes'
 '2' = 'No'
-Missing = Not applicable",
+Missing = Not applicable"
 383,WHWT,Char,1,$YESNO.,Waste heat used for water heating,"'1' = 'Yes'
 '2' = 'No'
-Missing = Not applicable",
+Missing = Not applicable"
 384,WHOT,Char,1,$YESNO.,Waste heat used for some other use,"'1' = 'Yes'
 '2' = 'No'
-Missing = Not applicable",
+Missing = Not applicable"
 385,PCTERM,Char,1,$YESNO.,Computers used,"'1' = 'Yes'
 '2' = 'No'
-Missing = Not applicable",
+Missing = Not applicable"
 386,PCTERMN,Num,8,COMMA8.,Number of computers,"0 - 4,195
-Missing = Not applicable",
+Missing = Not applicable"
 387,PCTRMC,Char,2,$PCTRMC.,Number of computers category,"'00' = 'Zero'
 '01' = '1 to 4'
 '02' = '5 to 9'
@@ -1373,23 +1373,23 @@ Missing = Not applicable",
 '08' = '500 to 999'
 '09' = '1,000 to 2,499'
 '10' = '2,500 or more'
-Missing = Not applicable",
+Missing = Not applicable"
 388,MLTMON,Char,1,$YESNO.,Multiple monitors,"'1' = 'Yes'
 '2' = 'No'
-Missing = Not applicable",
+Missing = Not applicable"
 389,MLTMNC,Char,1,$ALLFEW.,Multiple monitor category,"'1' = 'All'
 '2' = 'Most'
 '3' = 'Some'
 '4' = 'A few'
-Missing = Not applicable",
+Missing = Not applicable"
 390,FLATC,Char,1,$FLATC.,Flat screen category,"'1' = 'All'
 '2' = 'Most'
 '3' = 'Some'
 '4' = 'A few'
 '5' = 'None'
-Missing = Not applicable",
+Missing = Not applicable"
 391,LAPTPN,Num,8,COMMA8.,Number of laptops,"0 - 1,420
-Missing = Not applicable",
+Missing = Not applicable"
 392,LAPTPC,Char,2,$LAPTPC.,Number of laptops category,"'00' = 'Zero'
 '01' = '1 to 4'
 '02' = '5 to 9'
@@ -1400,20 +1400,20 @@ Missing = Not applicable",
 '07' = '250 to 499'
 '08' = '500 to 999'
 '09' = '1,000 or more'
-Missing = Not applicable",
+Missing = Not applicable"
 393,PRNTRN,Num,8,COMMA8.,Number of printers,"0 - 5,000
-Missing = Not applicable",
+Missing = Not applicable"
 394,PRNTYP,Char,1,$PRNTR.,Type of printers,"'1' = 'Inkjet'
 '2' = 'Laser'
 '3' = 'Some other type'
 '4' = 'Half inkjet, half laser'
-Missing = Not applicable",
+Missing = Not applicable"
 395,SERVER,Char,1,$YESNO.,Dedicated servers,"'1' = 'Yes'
 '2' = 'No'
-Missing = Not applicable",
+Missing = Not applicable"
 396,SERVERN,Num,8,COMMA8.,Number of servers,"0 - 499
 9,995 = 500 or more
-Missing = Not applicable",
+Missing = Not applicable"
 397,SERVERC,Char,2,$SERVERC.,Number of servers category,"'00' = 'Zero'
 '01' = '1 to 4'
 '02' = '5 to 9'
@@ -1423,2504 +1423,2504 @@ Missing = Not applicable",
 '06' = '100 to 249'
 '07' = '250 to 499'
 '08' = '500 or more'
-Missing = Not applicable",
+Missing = Not applicable"
 398,DATACNTR,Char,1,$YESNO.,Data center or server farm,"'1' = 'Yes'
 '2' = 'No'
-Missing = Not applicable",
+Missing = Not applicable"
 399,DCNTRSFC,Char,1,$DCNTRSF.,Data center or server farm sqft category,"'1' ='500 square feet or less'
 '2' ='501 to 1,500 square feet'
 '3' ='1,501 to 3,000 square feet'
 '4' ='3,001 to 10,000 square feet'
 '5' ='Over 10,000 square feet'
-Missing = Not applicable",
+Missing = Not applicable"
 400,TRNGRM,Char,1,$YESNO.,Computer-based training room,"'1' = 'Yes'
 '2' = 'No'
-Missing = Not applicable",
+Missing = Not applicable"
 401,STDNRM,Char,1,$YESNO.,Student or public computer center,"'1' = 'Yes'
 '2' = 'No'
-Missing = Not applicable",
+Missing = Not applicable"
 402,WBOARDS,Char,1,$YESNO.,Interactive whiteboards,"'1' = 'Yes'
 '2' = 'No'
-Missing = Not applicable",
+Missing = Not applicable"
 403,TVVIDEO,Char,1,$YESNO.,TV or video displays,"'1' = 'Yes'
 '2' = 'No'
-Missing = Not applicable",
+Missing = Not applicable"
 404,TVVIDEON,Num,8,COMMA5.,Number of TV or video displays,"1 - 200
 995 = More than 200
-Missing = Not applicable",
+Missing = Not applicable"
 405,RGSTR,Char,1,$YESNO.,Cash registers,"'1' = 'Yes'
 '2' = 'No'
-Missing = Not applicable",
+Missing = Not applicable"
 406,RGSTRN,Num,8,COMMA5.,Number of cash registers,"1 - 500
-Missing = Not applicable",
+Missing = Not applicable"
 407,COPIER,Char,1,$YESNO.,Photocopiers,"'1' = 'Yes'
 '2' = 'No'
-Missing = Not applicable",
+Missing = Not applicable"
 408,COPIERN,Num,8,COMMA5.,Number of photocopiers,"1 - 1,500
-Missing = Not applicable",
+Missing = Not applicable"
 409,FAX,Char,1,$YESNO.,FAX machines,"'1' = 'Yes'
 '2' = 'No'
-Missing = Not applicable",
+Missing = Not applicable"
 410,LTOHRP,Num,8,,Percent lit when open,"0 - 100
-Missing = Not applicable",
+Missing = Not applicable"
 411,LOHRPC,Char,1,$LIT1CAT.,Lit when open category,"'1' = '1 to 25 percent'
 '2' = '26 to 50 percent'
 '3' = '51 to 75 percent'
 '4' = '76 to 100 percent'
 '5' = 'Not lit at all when it is normally open'
-Missing = Not applicable",
+Missing = Not applicable"
 412,LTNR24,Char,1,$YESNO.,Lights off during 24 hours,"'1' = 'Yes'
 '2' = 'No'
-Missing = Not applicable",
+Missing = Not applicable"
 413,LTNHRP,Num,8,,Percent lit off hours,"0 - 100
-Missing = Not applicable",
+Missing = Not applicable"
 414,LNHRPC,Char,1,$LIT2CAT.,Lit off hours category,"'1' = '1 to 25 percent'
 '2' = '26 to 50 percent'
 '3' = '51 to 75 percent'
 '4' = '76 to 100 percent'
 '5' = 'Not lit at all during off hours'
-Missing = Not applicable",
+Missing = Not applicable"
 415,RDLTNF,Char,1,$YESNO.,Lighting reduced during off hours,"'1' = 'Yes'
 '2' = 'No'
-Missing = Not applicable",
+Missing = Not applicable"
 416,FLUOR,Char,1,$YESNO.,Fluorescent bulbs,"'1' = 'Yes'
 '2' = 'No'
-Missing = Not applicable",
+Missing = Not applicable"
 417,CFLR,Char,1,$YESNO.,Compact fluorescent bulbs,"'1' = 'Yes'
 '2' = 'No'
-Missing = Not applicable",
+Missing = Not applicable"
 418,BULB,Char,1,$YESNO.,Incandescent bulbs,"'1' = 'Yes'
 '2' = 'No'
-Missing = Not applicable",
+Missing = Not applicable"
 419,HALO,Char,1,$YESNO.,Halogen bulbs,"'1' = 'Yes'
 '2' = 'No'
-Missing = Not applicable",
+Missing = Not applicable"
 420,HID,Char,1,$YESNO.,High intensity discharge (HID) bulbs,"'1' = 'Yes'
 '2' = 'No'
-Missing = Not applicable",
+Missing = Not applicable"
 421,LED,Char,1,$YESNO.,Light-emitting diode (LED) bulbs,"'1' = 'Yes'
 '2' = 'No'
-Missing = Not applicable",
+Missing = Not applicable"
 422,OTLT,Char,1,$YESNO.,Other type of bulbs,"'1' = 'Yes'
 '2' = 'No'
-Missing = Not applicable",
+Missing = Not applicable"
 423,FLUORP,Num,8,,Percent lit by fluorescent,"0 - 100
-Missing = Not applicable",
+Missing = Not applicable"
 424,CFLRP,Num,8,,Percent lit by compact fluorescent,"0 - 100
-Missing = Not applicable",
+Missing = Not applicable"
 425,BULBP,Num,8,,Percent lit by incandescent,"0 - 100
-Missing = Not applicable",
+Missing = Not applicable"
 426,HALOP,Num,8,,Percent lit by halogen,"0 - 100
-Missing = Not applicable",
+Missing = Not applicable"
 427,HIDP,Num,8,,Percent lit by HID,"0 - 100
-Missing = Not applicable",
+Missing = Not applicable"
 428,LEDP,Num,8,,Percent lit by LED,"0 - 100
-Missing = Not applicable",
+Missing = Not applicable"
 429,OTLTP,Num,8,,Percent lit by other lighting,"0 - 100
-Missing = Not applicable",
+Missing = Not applicable"
 430,EMCSLT,Char,1,$YESNO.,BAS controls lighting,"'1' = 'Yes'
 '2' = 'No'
-Missing = Not applicable",
+Missing = Not applicable"
 431,SCHED,Char,1,$YESNO.,Light scheduling,"'1' = 'Yes'
 '2' = 'No'
-Missing = Not applicable",
+Missing = Not applicable"
 432,OCSN,Char,1,$YESNO.,Occupancy sensors,"'1' = 'Yes'
 '2' = 'No'
-Missing = Not applicable",
+Missing = Not applicable"
 433,DIM,Char,1,$YESNO.,Multi-level lighting or dimming,"'1' = 'Yes'
 '2' = 'No'
-Missing = Not applicable",
+Missing = Not applicable"
 434,DAYHARV,Char,1,$YESNO.,Daylight harvesting,"'1' = 'Yes'
 '2' = 'No'
-Missing = Not applicable",
+Missing = Not applicable"
 435,TRIM,Char,1,$YESNO.,High-end trimming or light-level tuning,"'1' = 'Yes'
 '2' = 'No'
-Missing = Not applicable",
+Missing = Not applicable"
 436,PLGCTRL,Char,1,$YESNO.,Plug load control,"'1' = 'Yes'
 '2' = 'No'
-Missing = Not applicable",
+Missing = Not applicable"
 437,DRLGHT,Char,1,$YESNO.,Demand responsive lighting,"'1' = 'Yes'
 '2' = 'No'
-Missing = Not applicable",
+Missing = Not applicable"
 438,LTEXPC,Char,1,$LTEXPC.,Percent of exterior lighted,"'1' = 'Less than 10 percent'
 '2' = '10 to 25 percent'
 '3' = '25 to 50 percent'
 '4' = 'More than 50 percent'
-Missing = Not applicable",
+Missing = Not applicable"
 439,PKLT,Char,1,$YESNO.,Lighted parking area,"'1' = 'Yes'
 '2' = 'No'
-Missing = Not applicable",
+Missing = Not applicable"
 440,WINTYP,Char,1,$WINTYP.,Window glass type,"'1' = 'Single layer glass'
 '2' = 'Multi-layer glass'
 '3' = 'Combination of both'
-'4' = 'No windows'",
+'4' = 'No windows'"
 441,TINT,Char,1,$YESNO.,Tinted window glass,"'1' = 'Yes'
 '2' = 'No'
-Missing = Not applicable",
+Missing = Not applicable"
 442,REFL,Char,1,$YESNO.,Reflective window glass,"'1' = 'Yes'
 '2' = 'No'
-Missing = Not applicable",
+Missing = Not applicable"
 443,AWN,Char,1,$YESNO.,External overhangs or awnings,"'1' = 'Yes'
 '2' = 'No'
-Missing = Not applicable",
+Missing = Not applicable"
 444,SKYLT,Char,1,$YESNO.,Skylights or atriums,"'1' = 'Yes'
 '2' = 'No'
-Missing = Not applicable",
+Missing = Not applicable"
 445,DAYLTP,Num,8,,Percent daylight,"0 - 100
-Missing = Not applicable",
+Missing = Not applicable"
 446,ZSQFT,Char,1,$ZVAR.,Imputed square footage,"'0' = 'Reported'
 '1' = 'Imputed'
 '2' = 'Estimated'
 '8' = 'Missing'
-'9' = 'Inapplicable'",
+'9' = 'Inapplicable'"
 447,ZSQFTC,Char,1,$ZVAR.,Imputed square footage category,"'0' = 'Reported'
 '1' = 'Imputed'
 '2' = 'Estimated'
 '8' = 'Missing'
-'9' = 'Inapplicable'",
+'9' = 'Inapplicable'"
 448,ZWLCNS,Char,1,$ZVAR.,Imputed wall construction material,"'0' = 'Reported'
 '1' = 'Imputed'
 '2' = 'Estimated'
 '8' = 'Missing'
-'9' = 'Inapplicable'",
+'9' = 'Inapplicable'"
 449,ZRFCNS,Char,1,$ZVAR.,Imputed roof construction material,"'0' = 'Reported'
 '1' = 'Imputed'
 '2' = 'Estimated'
 '8' = 'Missing'
-'9' = 'Inapplicable'",
+'9' = 'Inapplicable'"
 450,ZRFCOOL,Char,1,$ZVAR.,Imputed cool roof materials,"'0' = 'Reported'
 '1' = 'Imputed'
 '2' = 'Estimated'
 '8' = 'Missing'
-'9' = 'Inapplicable'",
+'9' = 'Inapplicable'"
 451,ZRFTILT,Char,1,$ZVAR.,Imputed roof tilt,"'0' = 'Reported'
 '1' = 'Imputed'
 '2' = 'Estimated'
 '8' = 'Missing'
-'9' = 'Inapplicable'",
+'9' = 'Inapplicable'"
 452,ZBLDSHP,Char,1,$ZVAR.,Imputed building shape,"'0' = 'Reported'
 '1' = 'Imputed'
 '2' = 'Estimated'
 '8' = 'Missing'
-'9' = 'Inapplicable'",
+'9' = 'Inapplicable'"
 453,ZGLSSPC,Char,1,$ZVAR.,Imputed percent exterior glass,"'0' = 'Reported'
 '1' = 'Imputed'
 '2' = 'Estimated'
 '8' = 'Missing'
-'9' = 'Inapplicable'",
+'9' = 'Inapplicable'"
 454,ZEQGLSS,Char,1,$ZVAR.,Imputed equal glass on all sides,"'0' = 'Reported'
 '1' = 'Imputed'
 '2' = 'Estimated'
 '8' = 'Missing'
-'9' = 'Inapplicable'",
+'9' = 'Inapplicable'"
 455,ZSUNGLS,Char,1,$ZVAR.,Imputed glass sides most sunlight,"'0' = 'Reported'
 '1' = 'Imputed'
 '2' = 'Estimated'
 '8' = 'Missing'
-'9' = 'Inapplicable'",
+'9' = 'Inapplicable'"
 456,ZNFLOOR,Char,1,$ZVAR.,Imputed number of floors,"'0' = 'Reported'
 '1' = 'Imputed'
 '2' = 'Estimated'
 '8' = 'Missing'
-'9' = 'Inapplicable'",
+'9' = 'Inapplicable'"
 457,ZBASEMNT,Char,1,$ZVAR.,Imputed number of underground floors,"'0' = 'Reported'
 '1' = 'Imputed'
 '2' = 'Estimated'
 '8' = 'Missing'
-'9' = 'Inapplicable'",
+'9' = 'Inapplicable'"
 458,ZFLCEILHT,Char,1,$ZVAR.,Imputed floor to ceiling height,"'0' = 'Reported'
 '1' = 'Imputed'
 '2' = 'Estimated'
 '8' = 'Missing'
-'9' = 'Inapplicable'",
+'9' = 'Inapplicable'"
 459,ZATTIC,Char,1,$ZVAR.,Imputed attic,"'0' = 'Reported'
 '1' = 'Imputed'
 '2' = 'Estimated'
 '8' = 'Missing'
-'9' = 'Inapplicable'",
+'9' = 'Inapplicable'"
 460,ZELEVTR,Char,1,$ZVAR.,Imputed elevators,"'0' = 'Reported'
 '1' = 'Imputed'
 '2' = 'Estimated'
 '8' = 'Missing'
-'9' = 'Inapplicable'",
+'9' = 'Inapplicable'"
 461,ZNELVTR,Char,1,$ZVAR.,Imputed number of elevators,"'0' = 'Reported'
 '1' = 'Imputed'
 '2' = 'Estimated'
 '8' = 'Missing'
-'9' = 'Inapplicable'",
+'9' = 'Inapplicable'"
 462,ZESCLTR,Char,1,$ZVAR.,Imputed escalators,"'0' = 'Reported'
 '1' = 'Imputed'
 '2' = 'Estimated'
 '8' = 'Missing'
-'9' = 'Inapplicable'",
+'9' = 'Inapplicable'"
 463,ZNESLTR,Char,1,$ZVAR.,Imputed number of escalators,"'0' = 'Reported'
 '1' = 'Imputed'
 '2' = 'Estimated'
 '8' = 'Missing'
-'9' = 'Inapplicable'",
+'9' = 'Inapplicable'"
 464,ZYRCON,Char,1,$ZVAR.,Imputed year of construction,"'0' = 'Reported'
 '1' = 'Imputed'
 '2' = 'Estimated'
 '8' = 'Missing'
-'9' = 'Inapplicable'",
+'9' = 'Inapplicable'"
 465,ZYRCONC,Char,1,$ZVAR.,Imputed year of construction category,"'0' = 'Reported'
 '1' = 'Imputed'
 '2' = 'Estimated'
 '8' = 'Missing'
-'9' = 'Inapplicable'",
+'9' = 'Inapplicable'"
 466,ZRENOV,Char,1,$ZVAR.,Imputed any renovations,"'0' = 'Reported'
 '1' = 'Imputed'
 '2' = 'Estimated'
 '8' = 'Missing'
-'9' = 'Inapplicable'",
+'9' = 'Inapplicable'"
 467,ZRENADD,Char,1,$ZVAR.,Imputed addition or annex,"'0' = 'Reported'
 '1' = 'Imputed'
 '2' = 'Estimated'
 '8' = 'Missing'
-'9' = 'Inapplicable'",
+'9' = 'Inapplicable'"
 468,ZRENRDC,Char,1,$ZVAR.,Imputed reduction of floorspace,"'0' = 'Reported'
 '1' = 'Imputed'
 '2' = 'Estimated'
 '8' = 'Missing'
-'9' = 'Inapplicable'",
+'9' = 'Inapplicable'"
 469,ZRENCOS,Char,1,$ZVAR.,Imputed cosmetic improvements,"'0' = 'Reported'
 '1' = 'Imputed'
 '2' = 'Estimated'
 '8' = 'Missing'
-'9' = 'Inapplicable'",
+'9' = 'Inapplicable'"
 470,ZRENINT,Char,1,$ZVAR.,Imputed interior wall re-configuration,"'0' = 'Reported'
 '1' = 'Imputed'
 '2' = 'Estimated'
 '8' = 'Missing'
-'9' = 'Inapplicable'",
+'9' = 'Inapplicable'"
 471,ZRENRFF,Char,1,$ZVAR.,Imputed roof replacement,"'0' = 'Reported'
 '1' = 'Imputed'
 '2' = 'Estimated'
 '8' = 'Missing'
-'9' = 'Inapplicable'",
+'9' = 'Inapplicable'"
 472,ZRENWLL,Char,1,$ZVAR.,Imputed exterior wall replacement,"'0' = 'Reported'
 '1' = 'Imputed'
 '2' = 'Estimated'
 '8' = 'Missing'
-'9' = 'Inapplicable'",
+'9' = 'Inapplicable'"
 473,ZRENWIN,Char,1,$ZVAR.,Imputed window replacement,"'0' = 'Reported'
 '1' = 'Imputed'
 '2' = 'Estimated'
 '8' = 'Missing'
-'9' = 'Inapplicable'",
+'9' = 'Inapplicable'"
 474,ZRENHVC,Char,1,$ZVAR.,Imputed HVAC equipment upgrade,"'0' = 'Reported'
 '1' = 'Imputed'
 '2' = 'Estimated'
 '8' = 'Missing'
-'9' = 'Inapplicable'",
+'9' = 'Inapplicable'"
 475,ZRENLGT,Char,1,$ZVAR.,Imputed lighting upgrade,"'0' = 'Reported'
 '1' = 'Imputed'
 '2' = 'Estimated'
 '8' = 'Missing'
-'9' = 'Inapplicable'",
+'9' = 'Inapplicable'"
 476,ZRENPLB,Char,1,$ZVAR.,Imputed plumbing system upgrade,"'0' = 'Reported'
 '1' = 'Imputed'
 '2' = 'Estimated'
 '8' = 'Missing'
-'9' = 'Inapplicable'",
+'9' = 'Inapplicable'"
 477,ZRENELC,Char,1,$ZVAR.,Imputed electrical upgrade,"'0' = 'Reported'
 '1' = 'Imputed'
 '2' = 'Estimated'
 '8' = 'Missing'
-'9' = 'Inapplicable'",
+'9' = 'Inapplicable'"
 478,ZRENINS,Char,1,$ZVAR.,Imputed insulation upgrade,"'0' = 'Reported'
 '1' = 'Imputed'
 '2' = 'Estimated'
 '8' = 'Missing'
-'9' = 'Inapplicable'",
+'9' = 'Inapplicable'"
 479,ZRENSAF,Char,1,$ZVAR.,"Imputed fire, safety, or security upgrade","'0' = 'Reported'
 '1' = 'Imputed'
 '2' = 'Estimated'
 '8' = 'Missing'
-'9' = 'Inapplicable'",
+'9' = 'Inapplicable'"
 480,ZRENSTR,Char,1,$ZVAR.,Imputed structural upgrade,"'0' = 'Reported'
 '1' = 'Imputed'
 '2' = 'Estimated'
 '8' = 'Missing'
-'9' = 'Inapplicable'",
+'9' = 'Inapplicable'"
 481,ZRENOTH,Char,1,$ZVAR.,Imputed other renovation,"'0' = 'Reported'
 '1' = 'Imputed'
 '2' = 'Estimated'
 '8' = 'Missing'
-'9' = 'Inapplicable'",
+'9' = 'Inapplicable'"
 482,ZDRYCL,Char,1,$ZVAR.,Imputed dry cleaning onsite,"'0' = 'Reported'
 '1' = 'Imputed'
 '2' = 'Estimated'
 '8' = 'Missing'
-'9' = 'Inapplicable'",
+'9' = 'Inapplicable'"
 483,ZCUBE,Char,1,$ZVAR.,Imputed open plan office space,"'0' = 'Reported'
 '1' = 'Imputed'
 '2' = 'Estimated'
 '8' = 'Missing'
-'9' = 'Inapplicable'",
+'9' = 'Inapplicable'"
 484,ZCUBEC,Char,1,$ZVAR.,Imputed percent open plan,"'0' = 'Reported'
 '1' = 'Imputed'
 '2' = 'Estimated'
 '8' = 'Missing'
-'9' = 'Inapplicable'",
+'9' = 'Inapplicable'"
 485,ZCUBELOC,Char,1,$ZVAR.,Imputed location of open plan,"'0' = 'Reported'
 '1' = 'Imputed'
 '2' = 'Estimated'
 '8' = 'Missing'
-'9' = 'Inapplicable'",
+'9' = 'Inapplicable'"
 486,ZRWSEAT,Char,1,$ZVAR.,Imputed religious worship seating capacity,"'0' = 'Reported'
 '1' = 'Imputed'
 '2' = 'Estimated'
 '8' = 'Missing'
-'9' = 'Inapplicable'",
+'9' = 'Inapplicable'"
 487,ZPBSEAT,Char,1,$ZVAR.,Imputed assembly seating capacity,"'0' = 'Reported'
 '1' = 'Imputed'
 '2' = 'Estimated'
 '8' = 'Missing'
-'9' = 'Inapplicable'",
+'9' = 'Inapplicable'"
 488,ZEDSEAT,Char,1,$ZVAR.,Imputed number of classroom seats,"'0' = 'Reported'
 '1' = 'Imputed'
 '2' = 'Estimated'
 '8' = 'Missing'
-'9' = 'Inapplicable'",
+'9' = 'Inapplicable'"
 489,ZFDSEAT,Char,1,$ZVAR.,Imputed food service seating capacity,"'0' = 'Reported'
 '1' = 'Imputed'
 '2' = 'Estimated'
 '8' = 'Missing'
-'9' = 'Inapplicable'",
+'9' = 'Inapplicable'"
 490,ZHCBED,Char,1,$ZVAR.,Imputed licensed bed capacity,"'0' = 'Reported'
 '1' = 'Imputed'
 '2' = 'Estimated'
 '8' = 'Missing'
-'9' = 'Inapplicable'",
+'9' = 'Inapplicable'"
 491,ZNRSBED,Char,1,$ZVAR.,Imputed licensed bed capacity,"'0' = 'Reported'
 '1' = 'Imputed'
 '2' = 'Estimated'
 '8' = 'Missing'
-'9' = 'Inapplicable'",
+'9' = 'Inapplicable'"
 492,ZLODGRM,Char,1,$ZVAR.,Imputed number of guest rooms,"'0' = 'Reported'
 '1' = 'Imputed'
 '2' = 'Estimated'
 '8' = 'Missing'
-'9' = 'Inapplicable'",
+'9' = 'Inapplicable'"
 493,ZFACIL,Char,1,$ZVAR.,Imputed on a multibuilding complex,"'0' = 'Reported'
 '1' = 'Imputed'
 '2' = 'Estimated'
 '8' = 'Missing'
-'9' = 'Inapplicable'",
+'9' = 'Inapplicable'"
 494,ZFEDFAC,Char,1,$ZVAR.,Imputed federal complex,"'0' = 'Reported'
 '1' = 'Imputed'
 '2' = 'Estimated'
 '8' = 'Missing'
-'9' = 'Inapplicable'",
+'9' = 'Inapplicable'"
 495,ZFACACT,Char,1,$ZVAR.,Imputed type of complex,"'0' = 'Reported'
 '1' = 'Imputed'
 '2' = 'Estimated'
 '8' = 'Missing'
-'9' = 'Inapplicable'",
+'9' = 'Inapplicable'"
 496,ZPLANT,Char,1,$ZVAR.,Imputed central physical plant on complex,"'0' = 'Reported'
 '1' = 'Imputed'
 '2' = 'Estimated'
 '8' = 'Missing'
-'9' = 'Inapplicable'",
+'9' = 'Inapplicable'"
 497,ZFACDST,Char,1,$ZVAR.,Imputed plant produces district steam,"'0' = 'Reported'
 '1' = 'Imputed'
 '2' = 'Estimated'
 '8' = 'Missing'
-'9' = 'Inapplicable'",
+'9' = 'Inapplicable'"
 498,ZFACDHW,Char,1,$ZVAR.,Imputed plant produces district hot water,"'0' = 'Reported'
 '1' = 'Imputed'
 '2' = 'Estimated'
 '8' = 'Missing'
-'9' = 'Inapplicable'",
+'9' = 'Inapplicable'"
 499,ZFACDCW,Char,1,$ZVAR.,Imputed plant produces district chilled water,"'0' = 'Reported'
 '1' = 'Imputed'
 '2' = 'Estimated'
 '8' = 'Missing'
-'9' = 'Inapplicable'",
+'9' = 'Inapplicable'"
 500,ZFACELC,Char,1,$ZVAR.,Imputed plant produces electricity,"'0' = 'Reported'
 '1' = 'Imputed'
 '2' = 'Estimated'
 '8' = 'Missing'
-'9' = 'Inapplicable'",
+'9' = 'Inapplicable'"
 501,ZBLDPLT,Char,1,$ZVAR.,Imputed central plant in building,"'0' = 'Reported'
 '1' = 'Imputed'
 '2' = 'Estimated'
 '8' = 'Missing'
-'9' = 'Inapplicable'",
+'9' = 'Inapplicable'"
 502,ZGOVOWN,Char,1,$ZVAR.,Imputed government owned,"'0' = 'Reported'
 '1' = 'Imputed'
 '2' = 'Estimated'
 '8' = 'Missing'
-'9' = 'Inapplicable'",
+'9' = 'Inapplicable'"
 503,ZGOVTYP,Char,1,$ZVAR.,Imputed type of government,"'0' = 'Reported'
 '1' = 'Imputed'
 '2' = 'Estimated'
 '8' = 'Missing'
-'9' = 'Inapplicable'",
+'9' = 'Inapplicable'"
 504,ZOWNTYPE,Char,1,$ZVAR.,Imputed building owner,"'0' = 'Reported'
 '1' = 'Imputed'
 '2' = 'Estimated'
 '8' = 'Missing'
-'9' = 'Inapplicable'",
+'9' = 'Inapplicable'"
 505,ZNOCC,Char,1,$ZVAR.,Imputed number of businesses,"'0' = 'Reported'
 '1' = 'Imputed'
 '2' = 'Estimated'
 '8' = 'Missing'
-'9' = 'Inapplicable'",
+'9' = 'Inapplicable'"
 506,ZNOCCAT,Char,1,$ZVAR.,Imputed number of businesses category,"'0' = 'Reported'
 '1' = 'Imputed'
 '2' = 'Estimated'
 '8' = 'Missing'
-'9' = 'Inapplicable'",
+'9' = 'Inapplicable'"
 507,ZOWNOCC,Char,1,$ZVAR.,Imputed owner occupied or leased to tenant(s),"'0' = 'Reported'
 '1' = 'Imputed'
 '2' = 'Estimated'
 '8' = 'Missing'
-'9' = 'Inapplicable'",
+'9' = 'Inapplicable'"
 508,ZOWNOPR,Char,1,$ZVAR.,Imputed owner responsible for operation and maintenance of energy systems,"'0' = 'Reported'
 '1' = 'Imputed'
 '2' = 'Estimated'
 '8' = 'Missing'
-'9' = 'Inapplicable'",
+'9' = 'Inapplicable'"
 509,ZOWNPPR,Char,1,$ZVAR.,Imputed owner has purchasing power for energy-related equipment,"'0' = 'Reported'
 '1' = 'Imputed'
 '2' = 'Estimated'
 '8' = 'Missing'
-'9' = 'Inapplicable'",
+'9' = 'Inapplicable'"
 510,ZNWNPPR,Char,1,$ZVAR.,Imputed nonowner with purchasing power for energy-related equipment,"'0' = 'Reported'
 '1' = 'Imputed'
 '2' = 'Estimated'
 '8' = 'Missing'
-'9' = 'Inapplicable'",
+'9' = 'Inapplicable'"
 511,ZNWNOPR,Char,1,$ZVAR.,Imputed nonowner responsible for operation and maintenance of energy systems,"'0' = 'Reported'
 '1' = 'Imputed'
 '2' = 'Estimated'
 '8' = 'Missing'
-'9' = 'Inapplicable'",
+'9' = 'Inapplicable'"
 512,ZWHOPPR,Char,1,$ZVAR.,Imputed who has purchasing power,"'0' = 'Reported'
 '1' = 'Imputed'
 '2' = 'Estimated'
 '8' = 'Missing'
-'9' = 'Inapplicable'",
+'9' = 'Inapplicable'"
 513,ZMONUSE,Char,1,$ZVAR.,Imputed months in use,"'0' = 'Reported'
 '1' = 'Imputed'
 '2' = 'Estimated'
 '8' = 'Missing'
-'9' = 'Inapplicable'",
+'9' = 'Inapplicable'"
 514,ZOCCUPYP,Char,1,$ZVAR.,Imputed percent occupancy,"'0' = 'Reported'
 '1' = 'Imputed'
 '2' = 'Estimated'
 '8' = 'Missing'
-'9' = 'Inapplicable'",
+'9' = 'Inapplicable'"
 515,ZLODOCCP,Char,1,$ZVAR.,Imputed lodging room percent occupancy,"'0' = 'Reported'
 '1' = 'Imputed'
 '2' = 'Estimated'
 '8' = 'Missing'
-'9' = 'Inapplicable'",
+'9' = 'Inapplicable'"
 516,ZOPEN24,Char,1,$ZVAR.,Imputed open 24 hours a day,"'0' = 'Reported'
 '1' = 'Imputed'
 '2' = 'Estimated'
 '8' = 'Missing'
-'9' = 'Inapplicable'",
+'9' = 'Inapplicable'"
 517,ZOPNMF,Char,1,$ZVAR.,Imputed open during week,"'0' = 'Reported'
 '1' = 'Imputed'
 '2' = 'Estimated'
 '8' = 'Missing'
-'9' = 'Inapplicable'",
+'9' = 'Inapplicable'"
 518,ZOPNWE,Char,1,$ZVAR.,Imputed open on weekend,"'0' = 'Reported'
 '1' = 'Imputed'
 '2' = 'Estimated'
 '8' = 'Missing'
-'9' = 'Inapplicable'",
+'9' = 'Inapplicable'"
 519,ZWKHRS,Char,1,$ZVAR.,Imputed total hours open per week,"'0' = 'Reported'
 '1' = 'Imputed'
 '2' = 'Estimated'
 '8' = 'Missing'
-'9' = 'Inapplicable'",
+'9' = 'Inapplicable'"
 520,ZWKHRSC,Char,1,$ZVAR.,Imputed weekly hours category,"'0' = 'Reported'
 '1' = 'Imputed'
 '2' = 'Estimated'
 '8' = 'Missing'
-'9' = 'Inapplicable'",
+'9' = 'Inapplicable'"
 521,ZNWKER,Char,1,$ZVAR.,Imputed number of employees,"'0' = 'Reported'
 '1' = 'Imputed'
 '2' = 'Estimated'
 '8' = 'Missing'
-'9' = 'Inapplicable'",
+'9' = 'Inapplicable'"
 522,ZNWKERC,Char,1,$ZVAR.,Imputed number of employees category,"'0' = 'Reported'
 '1' = 'Imputed'
 '2' = 'Estimated'
 '8' = 'Missing'
-'9' = 'Inapplicable'",
+'9' = 'Inapplicable'"
 523,ZHT1,Char,1,$ZVAR.,Imputed energy used for main heating,"'0' = 'Reported'
 '1' = 'Imputed'
 '2' = 'Estimated'
 '8' = 'Missing'
-'9' = 'Inapplicable'",
+'9' = 'Inapplicable'"
 524,ZHT2,Char,1,$ZVAR.,Imputed energy used for secondary heating,"'0' = 'Reported'
 '1' = 'Imputed'
 '2' = 'Estimated'
 '8' = 'Missing'
-'9' = 'Inapplicable'",
+'9' = 'Inapplicable'"
 525,ZCOOL,Char,1,$ZVAR.,Imputed energy used for cooling,"'0' = 'Reported'
 '1' = 'Imputed'
 '2' = 'Estimated'
 '8' = 'Missing'
-'9' = 'Inapplicable'",
+'9' = 'Inapplicable'"
 526,ZWATR,Char,1,$ZVAR.,Imputed energy used for water heating,"'0' = 'Reported'
 '1' = 'Imputed'
 '2' = 'Estimated'
 '8' = 'Missing'
-'9' = 'Inapplicable'",
+'9' = 'Inapplicable'"
 527,ZCOOK,Char,1,$ZVAR.,Imputed energy used for cooking,"'0' = 'Reported'
 '1' = 'Imputed'
 '2' = 'Estimated'
 '8' = 'Missing'
-'9' = 'Inapplicable'",
+'9' = 'Inapplicable'"
 528,ZMANU,Char,1,$ZVAR.,Imputed energy used for manufacturing,"'0' = 'Reported'
 '1' = 'Imputed'
 '2' = 'Estimated'
 '8' = 'Missing'
-'9' = 'Inapplicable'",
+'9' = 'Inapplicable'"
 529,ZCAPGEN,Char,1,$ZVAR.,Imputed electricity generation capability,"'0' = 'Reported'
 '1' = 'Imputed'
 '2' = 'Estimated'
 '8' = 'Missing'
-'9' = 'Inapplicable'",
+'9' = 'Inapplicable'"
 530,ZGENR,Char,1,$ZVAR.,Imputed energy used for electricity generation,"'0' = 'Reported'
 '1' = 'Imputed'
 '2' = 'Estimated'
 '8' = 'Missing'
-'9' = 'Inapplicable'",
+'9' = 'Inapplicable'"
 531,ZELUSED,Char,1,$ZVAR.,Imputed electricity used,"'0' = 'Reported'
 '1' = 'Imputed'
 '2' = 'Estimated'
 '8' = 'Missing'
-'9' = 'Inapplicable'",
+'9' = 'Inapplicable'"
 532,ZNGUSED,Char,1,$ZVAR.,Imputed natural gas used,"'0' = 'Reported'
 '1' = 'Imputed'
 '2' = 'Estimated'
 '8' = 'Missing'
-'9' = 'Inapplicable'",
+'9' = 'Inapplicable'"
 533,ZFKUSED,Char,1,$ZVAR.,Imputed fuel oil/diesel/kerosene used,"'0' = 'Reported'
 '1' = 'Imputed'
 '2' = 'Estimated'
 '8' = 'Missing'
-'9' = 'Inapplicable'",
+'9' = 'Inapplicable'"
 534,ZPRUSED,Char,1,$ZVAR.,Imputed bottled gas/LPG/propane used,"'0' = 'Reported'
 '1' = 'Imputed'
 '2' = 'Estimated'
 '8' = 'Missing'
-'9' = 'Inapplicable'",
+'9' = 'Inapplicable'"
 535,ZSTUSED,Char,1,$ZVAR.,Imputed district steam used,"'0' = 'Reported'
 '1' = 'Imputed'
 '2' = 'Estimated'
 '8' = 'Missing'
-'9' = 'Inapplicable'",
+'9' = 'Inapplicable'"
 536,ZHWUSED,Char,1,$ZVAR.,Imputed district hot water used,"'0' = 'Reported'
 '1' = 'Imputed'
 '2' = 'Estimated'
 '8' = 'Missing'
-'9' = 'Inapplicable'",
+'9' = 'Inapplicable'"
 537,ZCWUSED,Char,1,$ZVAR.,Imputed district chilled water used,"'0' = 'Reported'
 '1' = 'Imputed'
 '2' = 'Estimated'
 '8' = 'Missing'
-'9' = 'Inapplicable'",
+'9' = 'Inapplicable'"
 538,ZWOUSED,Char,1,$ZVAR.,Imputed wood used,"'0' = 'Reported'
 '1' = 'Imputed'
 '2' = 'Estimated'
 '8' = 'Missing'
-'9' = 'Inapplicable'",
+'9' = 'Inapplicable'"
 539,ZCOUSED,Char,1,$ZVAR.,Imputed coal used,"'0' = 'Reported'
 '1' = 'Imputed'
 '2' = 'Estimated'
 '8' = 'Missing'
-'9' = 'Inapplicable'",
+'9' = 'Inapplicable'"
 540,ZSOUSED,Char,1,$ZVAR.,Imputed solar used,"'0' = 'Reported'
 '1' = 'Imputed'
 '2' = 'Estimated'
 '8' = 'Missing'
-'9' = 'Inapplicable'",
+'9' = 'Inapplicable'"
 541,ZOTUSED,Char,1,$ZVAR.,Imputed other energy source used,"'0' = 'Reported'
 '1' = 'Imputed'
 '2' = 'Estimated'
 '8' = 'Missing'
-'9' = 'Inapplicable'",
+'9' = 'Inapplicable'"
 542,ZELHT1,Char,1,$ZVAR.,Imputed electricity used for main heating,"'0' = 'Reported'
 '1' = 'Imputed'
 '2' = 'Estimated'
 '8' = 'Missing'
-'9' = 'Inapplicable'",
+'9' = 'Inapplicable'"
 543,ZNGHT1,Char,1,$ZVAR.,Imputed natural gas used for main heating,"'0' = 'Reported'
 '1' = 'Imputed'
 '2' = 'Estimated'
 '8' = 'Missing'
-'9' = 'Inapplicable'",
+'9' = 'Inapplicable'"
 544,ZFKHT1,Char,1,$ZVAR.,Imputed fuel oil used for main heating,"'0' = 'Reported'
 '1' = 'Imputed'
 '2' = 'Estimated'
 '8' = 'Missing'
-'9' = 'Inapplicable'",
+'9' = 'Inapplicable'"
 545,ZPRHT1,Char,1,$ZVAR.,Imputed propane used for main heating,"'0' = 'Reported'
 '1' = 'Imputed'
 '2' = 'Estimated'
 '8' = 'Missing'
-'9' = 'Inapplicable'",
+'9' = 'Inapplicable'"
 546,ZSTHT1,Char,1,$ZVAR.,Imputed district steam used for main heating,"'0' = 'Reported'
 '1' = 'Imputed'
 '2' = 'Estimated'
 '8' = 'Missing'
-'9' = 'Inapplicable'",
+'9' = 'Inapplicable'"
 547,ZHWHT1,Char,1,$ZVAR.,Imputed district hot water used for main heating,"'0' = 'Reported'
 '1' = 'Imputed'
 '2' = 'Estimated'
 '8' = 'Missing'
-'9' = 'Inapplicable'",
+'9' = 'Inapplicable'"
 548,ZWOHT1,Char,1,$ZVAR.,Imputed wood used for main heating,"'0' = 'Reported'
 '1' = 'Imputed'
 '2' = 'Estimated'
 '8' = 'Missing'
-'9' = 'Inapplicable'",
+'9' = 'Inapplicable'"
 549,ZCOHT1,Char,1,$ZVAR.,Imputed coal used for main heating,"'0' = 'Reported'
 '1' = 'Imputed'
 '2' = 'Estimated'
 '8' = 'Missing'
-'9' = 'Inapplicable'",
+'9' = 'Inapplicable'"
 550,ZSOHT1,Char,1,$ZVAR.,Imputed solar used for main heating,"'0' = 'Reported'
 '1' = 'Imputed'
 '2' = 'Estimated'
 '8' = 'Missing'
-'9' = 'Inapplicable'",
+'9' = 'Inapplicable'"
 551,ZOTHT1,Char,1,$ZVAR.,Imputed other source used for main heating,"'0' = 'Reported'
 '1' = 'Imputed'
 '2' = 'Estimated'
 '8' = 'Missing'
-'9' = 'Inapplicable'",
+'9' = 'Inapplicable'"
 552,ZELHT2,Char,1,$ZVAR.,Imputed electricity used for secondary heating,"'0' = 'Reported'
 '1' = 'Imputed'
 '2' = 'Estimated'
 '8' = 'Missing'
-'9' = 'Inapplicable'",
+'9' = 'Inapplicable'"
 553,ZNGHT2,Char,1,$ZVAR.,Imputed natural gas used for secondary heating,"'0' = 'Reported'
 '1' = 'Imputed'
 '2' = 'Estimated'
 '8' = 'Missing'
-'9' = 'Inapplicable'",
+'9' = 'Inapplicable'"
 554,ZFKHT2,Char,1,$ZVAR.,Imputed fuel oil used for secondary heating,"'0' = 'Reported'
 '1' = 'Imputed'
 '2' = 'Estimated'
 '8' = 'Missing'
-'9' = 'Inapplicable'",
+'9' = 'Inapplicable'"
 555,ZPRHT2,Char,1,$ZVAR.,Imputed propane used for secondary heating,"'0' = 'Reported'
 '1' = 'Imputed'
 '2' = 'Estimated'
 '8' = 'Missing'
-'9' = 'Inapplicable'",
+'9' = 'Inapplicable'"
 556,ZSTHT2,Char,1,$ZVAR.,Imputed district steam used for secondary heating,"'0' = 'Reported'
 '1' = 'Imputed'
 '2' = 'Estimated'
 '8' = 'Missing'
-'9' = 'Inapplicable'",
+'9' = 'Inapplicable'"
 557,ZHWHT2,Char,1,$ZVAR.,Imputed district hot water used for secondary heating,"'0' = 'Reported'
 '1' = 'Imputed'
 '2' = 'Estimated'
 '8' = 'Missing'
-'9' = 'Inapplicable'",
+'9' = 'Inapplicable'"
 558,ZWOHT2,Char,1,$ZVAR.,Imputed wood used for secondary heating,"'0' = 'Reported'
 '1' = 'Imputed'
 '2' = 'Estimated'
 '8' = 'Missing'
-'9' = 'Inapplicable'",
+'9' = 'Inapplicable'"
 559,ZCOHT2,Char,1,$ZVAR.,Imputed coal used for secondary heating,"'0' = 'Reported'
 '1' = 'Imputed'
 '2' = 'Estimated'
 '8' = 'Missing'
-'9' = 'Inapplicable'",
+'9' = 'Inapplicable'"
 560,ZSOHT2,Char,1,$ZVAR.,Imputed solar used for secondary heating,"'0' = 'Reported'
 '1' = 'Imputed'
 '2' = 'Estimated'
 '8' = 'Missing'
-'9' = 'Inapplicable'",
+'9' = 'Inapplicable'"
 561,ZOTHT2,Char,1,$ZVAR.,Imputed other source used for secondary heating,"'0' = 'Reported'
 '1' = 'Imputed'
 '2' = 'Estimated'
 '8' = 'Missing'
-'9' = 'Inapplicable'",
+'9' = 'Inapplicable'"
 562,ZHEATP,Char,1,$ZVAR.,Imputed percent heated,"'0' = 'Reported'
 '1' = 'Imputed'
 '2' = 'Estimated'
 '8' = 'Missing'
-'9' = 'Inapplicable'",
+'9' = 'Inapplicable'"
 563,ZHTLS50,Char,1,$ZVAR.,Imputed heated to less than 50 degrees,"'0' = 'Reported'
 '1' = 'Imputed'
 '2' = 'Estimated'
 '8' = 'Missing'
-'9' = 'Inapplicable'",
+'9' = 'Inapplicable'"
 564,ZFURNAC,Char,1,$ZVAR.,Imputed furnaces that heat air directly,"'0' = 'Reported'
 '1' = 'Imputed'
 '2' = 'Estimated'
 '8' = 'Missing'
-'9' = 'Inapplicable'",
+'9' = 'Inapplicable'"
 565,ZPKGHT,Char,1,$ZVAR.,Imputed packaged heating units,"'0' = 'Reported'
 '1' = 'Imputed'
 '2' = 'Estimated'
 '8' = 'Missing'
-'9' = 'Inapplicable'",
+'9' = 'Inapplicable'"
 566,ZBOILER,Char,1,$ZVAR.,Imputed boilers inside the building,"'0' = 'Reported'
 '1' = 'Imputed'
 '2' = 'Estimated'
 '8' = 'Missing'
-'9' = 'Inapplicable'",
+'9' = 'Inapplicable'"
 567,ZSTHW,Char,1,$ZVAR.,Imputed district steam or hot water piped in,"'0' = 'Reported'
 '1' = 'Imputed'
 '2' = 'Estimated'
 '8' = 'Missing'
-'9' = 'Inapplicable'",
+'9' = 'Inapplicable'"
 568,ZHTPMPH,Char,1,$ZVAR.,Imputed heat pumps for heating,"'0' = 'Reported'
 '1' = 'Imputed'
 '2' = 'Estimated'
 '8' = 'Missing'
-'9' = 'Inapplicable'",
+'9' = 'Inapplicable'"
 569,ZSLFCON,Char,1,$ZVAR.,Imputed individual space heaters,"'0' = 'Reported'
 '1' = 'Imputed'
 '2' = 'Estimated'
 '8' = 'Missing'
-'9' = 'Inapplicable'",
+'9' = 'Inapplicable'"
 570,ZOTHTEQ,Char,1,$ZVAR.,Imputed other heating equipment,"'0' = 'Reported'
 '1' = 'Imputed'
 '2' = 'Estimated'
 '8' = 'Missing'
-'9' = 'Inapplicable'",
+'9' = 'Inapplicable'"
 571,ZFURNP,Char,1,$ZVAR.,Imputed percent heated by furnace,"'0' = 'Reported'
 '1' = 'Imputed'
 '2' = 'Estimated'
 '8' = 'Missing'
-'9' = 'Inapplicable'",
+'9' = 'Inapplicable'"
 572,ZPKGHP,Char,1,$ZVAR.,Imputed percent heated by packaged heating,"'0' = 'Reported'
 '1' = 'Imputed'
 '2' = 'Estimated'
 '8' = 'Missing'
-'9' = 'Inapplicable'",
+'9' = 'Inapplicable'"
 573,ZBOILP,Char,1,$ZVAR.,Imputed percent heated by boiler,"'0' = 'Reported'
 '1' = 'Imputed'
 '2' = 'Estimated'
 '8' = 'Missing'
-'9' = 'Inapplicable'",
+'9' = 'Inapplicable'"
 574,ZSTHWP,Char,1,$ZVAR.,Imputed percent heated by dist steam/hot water,"'0' = 'Reported'
 '1' = 'Imputed'
 '2' = 'Estimated'
 '8' = 'Missing'
-'9' = 'Inapplicable'",
+'9' = 'Inapplicable'"
 575,ZHTPHP,Char,1,$ZVAR.,Imputed percent heated by heat pumps,"'0' = 'Reported'
 '1' = 'Imputed'
 '2' = 'Estimated'
 '8' = 'Missing'
-'9' = 'Inapplicable'",
+'9' = 'Inapplicable'"
 576,ZSLFCNP,Char,1,$ZVAR.,Imputed percent heated by individual space heaters,"'0' = 'Reported'
 '1' = 'Imputed'
 '2' = 'Estimated'
 '8' = 'Missing'
-'9' = 'Inapplicable'",
+'9' = 'Inapplicable'"
 577,ZOTHTP,Char,1,$ZVAR.,Imputed percent heated by other heating equipment,"'0' = 'Reported'
 '1' = 'Imputed'
 '2' = 'Estimated'
 '8' = 'Missing'
-'9' = 'Inapplicable'",
+'9' = 'Inapplicable'"
 578,ZMAINHT,Char,1,$ZVAR.,Imputed main heating equipment,"'0' = 'Reported'
 '1' = 'Imputed'
 '2' = 'Estimated'
 '8' = 'Missing'
-'9' = 'Inapplicable'",
+'9' = 'Inapplicable'"
 579,ZNWMNHT,Char,1,$ZVAR.,Imputed main heating replaced,"'0' = 'Reported'
 '1' = 'Imputed'
 '2' = 'Estimated'
 '8' = 'Missing'
-'9' = 'Inapplicable'",
+'9' = 'Inapplicable'"
 580,ZPKGHTTYP,Char,1,$ZVAR.,Imputed type of packaged heating,"'0' = 'Reported'
 '1' = 'Imputed'
 '2' = 'Estimated'
 '8' = 'Missing'
-'9' = 'Inapplicable'",
+'9' = 'Inapplicable'"
 581,ZPKGFURN,Char,1,$ZVAR.,Imputed packaged heating component: Furnace,"'0' = 'Reported'
 '1' = 'Imputed'
 '2' = 'Estimated'
 '8' = 'Missing'
-'9' = 'Inapplicable'",
+'9' = 'Inapplicable'"
 582,ZPKGHTP,Char,1,$ZVAR.,Imputed packaged heating component: Heat pump,"'0' = 'Reported'
 '1' = 'Imputed'
 '2' = 'Estimated'
 '8' = 'Missing'
-'9' = 'Inapplicable'",
+'9' = 'Inapplicable'"
 583,ZPKGCOIL,Char,1,$ZVAR.,Imputed packaged heating component: Heating coil,"'0' = 'Reported'
 '1' = 'Imputed'
 '2' = 'Estimated'
 '8' = 'Missing'
-'9' = 'Inapplicable'",
+'9' = 'Inapplicable'"
 584,ZPKGPIU,Char,1,$ZVAR.,Imputed packaged heating component: Powered induction unit,"'0' = 'Reported'
 '1' = 'Imputed'
 '2' = 'Estimated'
 '8' = 'Missing'
-'9' = 'Inapplicable'",
+'9' = 'Inapplicable'"
 585,ZPKGDUCT,Char,1,$ZVAR.,Imputed packaged heating component: Duct reheat,"'0' = 'Reported'
 '1' = 'Imputed'
 '2' = 'Estimated'
 '8' = 'Missing'
-'9' = 'Inapplicable'",
+'9' = 'Inapplicable'"
 586,ZBLRRAD,Char,1,$ZVAR.,Imputed boiler system: Radiators,"'0' = 'Reported'
 '1' = 'Imputed'
 '2' = 'Estimated'
 '8' = 'Missing'
-'9' = 'Inapplicable'",
+'9' = 'Inapplicable'"
 587,ZBLRFNCL,Char,1,$ZVAR.,Imputed boiler system: Fan coil units in rooms,"'0' = 'Reported'
 '1' = 'Imputed'
 '2' = 'Estimated'
 '8' = 'Missing'
-'9' = 'Inapplicable'",
+'9' = 'Inapplicable'"
 588,ZBLRINDC,Char,1,$ZVAR.,Imputed boiler system: Induction units,"'0' = 'Reported'
 '1' = 'Imputed'
 '2' = 'Estimated'
 '8' = 'Missing'
-'9' = 'Inapplicable'",
+'9' = 'Inapplicable'"
 589,ZBLRLOOP,Char,1,$ZVAR.,Imputed boiler system: Water loop heat pump,"'0' = 'Reported'
 '1' = 'Imputed'
 '2' = 'Estimated'
 '8' = 'Missing'
-'9' = 'Inapplicable'",
+'9' = 'Inapplicable'"
 590,ZBLRAIR,Char,1,$ZVAR.,Imputed boiler system: Central air handler,"'0' = 'Reported'
 '1' = 'Imputed'
 '2' = 'Estimated'
 '8' = 'Missing'
-'9' = 'Inapplicable'",
+'9' = 'Inapplicable'"
 591,ZBLRPKG,Char,1,$ZVAR.,Imputed boiler system: Packaged unit,"'0' = 'Reported'
 '1' = 'Imputed'
 '2' = 'Estimated'
 '8' = 'Missing'
-'9' = 'Inapplicable'",
+'9' = 'Inapplicable'"
 592,ZBLRDUCT,Char,1,$ZVAR.,Imputed boiler system: Duct reheat,"'0' = 'Reported'
 '1' = 'Imputed'
 '2' = 'Estimated'
 '8' = 'Missing'
-'9' = 'Inapplicable'",
+'9' = 'Inapplicable'"
 593,ZDHRAD,Char,1,$ZVAR.,Imputed district heat system: Radiators,"'0' = 'Reported'
 '1' = 'Imputed'
 '2' = 'Estimated'
 '8' = 'Missing'
-'9' = 'Inapplicable'",
+'9' = 'Inapplicable'"
 594,ZDHFNCL,Char,1,$ZVAR.,Imputed district heat system: Fan coil units in rooms,"'0' = 'Reported'
 '1' = 'Imputed'
 '2' = 'Estimated'
 '8' = 'Missing'
-'9' = 'Inapplicable'",
+'9' = 'Inapplicable'"
 595,ZDHINDC,Char,1,$ZVAR.,Imputed district heat system: Induction units,"'0' = 'Reported'
 '1' = 'Imputed'
 '2' = 'Estimated'
 '8' = 'Missing'
-'9' = 'Inapplicable'",
+'9' = 'Inapplicable'"
 596,ZDHLOOP,Char,1,$ZVAR.,Imputed district heat system: Water loop heat pump,"'0' = 'Reported'
 '1' = 'Imputed'
 '2' = 'Estimated'
 '8' = 'Missing'
-'9' = 'Inapplicable'",
+'9' = 'Inapplicable'"
 597,ZDHAIR,Char,1,$ZVAR.,Imputed district heat system: Central air handler,"'0' = 'Reported'
 '1' = 'Imputed'
 '2' = 'Estimated'
 '8' = 'Missing'
-'9' = 'Inapplicable'",
+'9' = 'Inapplicable'"
 598,ZDHPKG,Char,1,$ZVAR.,Imputed district heat system: Packaged unit,"'0' = 'Reported'
 '1' = 'Imputed'
 '2' = 'Estimated'
 '8' = 'Missing'
-'9' = 'Inapplicable'",
+'9' = 'Inapplicable'"
 599,ZDHDUCT,Char,1,$ZVAR.,Imputed district heat system: Duct reheat,"'0' = 'Reported'
 '1' = 'Imputed'
 '2' = 'Estimated'
 '8' = 'Missing'
-'9' = 'Inapplicable'",
+'9' = 'Inapplicable'"
 600,ZHPHPKG,Char,1,$ZVAR.,Imputed heat pump heating system: Packaged unit,"'0' = 'Reported'
 '1' = 'Imputed'
 '2' = 'Estimated'
 '8' = 'Missing'
-'9' = 'Inapplicable'",
+'9' = 'Inapplicable'"
 601,ZHPHSPLT,Char,1,$ZVAR.,Imputed heat pump heating system: Split system,"'0' = 'Reported'
 '1' = 'Imputed'
 '2' = 'Estimated'
 '8' = 'Missing'
-'9' = 'Inapplicable'",
+'9' = 'Inapplicable'"
 602,ZHPHROOM,Char,1,$ZVAR.,Imputed heat pump heating system: Individual room heat pump,"'0' = 'Reported'
 '1' = 'Imputed'
 '2' = 'Estimated'
 '8' = 'Missing'
-'9' = 'Inapplicable'",
+'9' = 'Inapplicable'"
 603,ZHPHMINI,Char,1,$ZVAR.,Imputed heat pump heating system: Ductless mini-split,"'0' = 'Reported'
 '1' = 'Imputed'
 '2' = 'Estimated'
 '8' = 'Missing'
-'9' = 'Inapplicable'",
+'9' = 'Inapplicable'"
 604,ZHPHVRF,Char,1,$ZVAR.,Imputed heat pump heating system: Variable refrigerant flow,"'0' = 'Reported'
 '1' = 'Imputed'
 '2' = 'Estimated'
 '8' = 'Missing'
-'9' = 'Inapplicable'",
+'9' = 'Inapplicable'"
 605,ZHPHAIR,Char,1,$ZVAR.,Imputed heat pump heating type: Air source,"'0' = 'Reported'
 '1' = 'Imputed'
 '2' = 'Estimated'
 '8' = 'Missing'
-'9' = 'Inapplicable'",
+'9' = 'Inapplicable'"
 606,ZHPHGRD,Char,1,$ZVAR.,Imputed heat pump heating type: Ground source,"'0' = 'Reported'
 '1' = 'Imputed'
 '2' = 'Estimated'
 '8' = 'Missing'
-'9' = 'Inapplicable'",
+'9' = 'Inapplicable'"
 607,ZHPHDUAL,Char,1,$ZVAR.,Imputed heat pump heating type: Dual source,"'0' = 'Reported'
 '1' = 'Imputed'
 '2' = 'Estimated'
 '8' = 'Missing'
-'9' = 'Inapplicable'",
+'9' = 'Inapplicable'"
 608,ZHPHWTR,Char,1,$ZVAR.,Imputed heat pump heating type: Water loop,"'0' = 'Reported'
 '1' = 'Imputed'
 '2' = 'Estimated'
 '8' = 'Missing'
-'9' = 'Inapplicable'",
+'9' = 'Inapplicable'"
 609,ZHPHBKUP,Char,1,$ZVAR.,Imputed heat pump backup energy source,"'0' = 'Reported'
 '1' = 'Imputed'
 '2' = 'Estimated'
 '8' = 'Missing'
-'9' = 'Inapplicable'",
+'9' = 'Inapplicable'"
 610,ZSHRDNT,Char,1,$ZVAR.,Imputed individual heater: Infrared radiant,"'0' = 'Reported'
 '1' = 'Imputed'
 '2' = 'Estimated'
 '8' = 'Missing'
-'9' = 'Inapplicable'",
+'9' = 'Inapplicable'"
 611,ZSHBBRD,Char,1,$ZVAR.,Imputed individual heater: Baseboard,"'0' = 'Reported'
 '1' = 'Imputed'
 '2' = 'Estimated'
 '8' = 'Missing'
-'9' = 'Inapplicable'",
+'9' = 'Inapplicable'"
 612,ZSHPORT,Char,1,$ZVAR.,Imputed individual heater: Portable space heater,"'0' = 'Reported'
 '1' = 'Imputed'
 '2' = 'Estimated'
 '8' = 'Missing'
-'9' = 'Inapplicable'",
+'9' = 'Inapplicable'"
 613,ZSHWALL,Char,1,$ZVAR.,Imputed individual heater: Wall heater,"'0' = 'Reported'
 '1' = 'Imputed'
 '2' = 'Estimated'
 '8' = 'Missing'
-'9' = 'Inapplicable'",
+'9' = 'Inapplicable'"
 614,ZSHFURN,Char,1,$ZVAR.,Imputed individual heater: Individual furnace,"'0' = 'Reported'
 '1' = 'Imputed'
 '2' = 'Estimated'
 '8' = 'Missing'
-'9' = 'Inapplicable'",
+'9' = 'Inapplicable'"
 615,ZSHUNIT,Char,1,$ZVAR.,Imputed individual heater: Unit heater,"'0' = 'Reported'
 '1' = 'Imputed'
 '2' = 'Estimated'
 '8' = 'Missing'
-'9' = 'Inapplicable'",
+'9' = 'Inapplicable'"
 616,ZSHPTAC,Char,1,$ZVAR.,Imputed individual heater: Heating element in PTAC,"'0' = 'Reported'
 '1' = 'Imputed'
 '2' = 'Estimated'
 '8' = 'Missing'
-'9' = 'Inapplicable'",
+'9' = 'Inapplicable'"
 617,ZHTVCAV,Char,1,$ZVAR.,Imputed heating ventilation: Central air handling with CAV,"'0' = 'Reported'
 '1' = 'Imputed'
 '2' = 'Estimated'
 '8' = 'Missing'
-'9' = 'Inapplicable'",
+'9' = 'Inapplicable'"
 618,ZHTVVAV,Char,1,$ZVAR.,Imputed heating ventilation: Central air handling with VAV,"'0' = 'Reported'
 '1' = 'Imputed'
 '2' = 'Estimated'
 '8' = 'Missing'
-'9' = 'Inapplicable'",
+'9' = 'Inapplicable'"
 619,ZHTVFLR,Char,1,$ZVAR.,Imputed heating ventilation: Underfloor air distribution,"'0' = 'Reported'
 '1' = 'Imputed'
 '2' = 'Estimated'
 '8' = 'Missing'
-'9' = 'Inapplicable'",
+'9' = 'Inapplicable'"
 620,ZHTVOAS,Char,1,$ZVAR.,Imputed heating ventilation: Dedicated outside air system,"'0' = 'Reported'
 '1' = 'Imputed'
 '2' = 'Estimated'
 '8' = 'Missing'
-'9' = 'Inapplicable'",
+'9' = 'Inapplicable'"
 621,ZHTVDEM,Char,1,$ZVAR.,Imputed heating ventilation: Demand controlled ventilation,"'0' = 'Reported'
 '1' = 'Imputed'
 '2' = 'Estimated'
 '8' = 'Missing'
-'9' = 'Inapplicable'",
+'9' = 'Inapplicable'"
 622,ZHTVNON,Char,1,$ZVAR.,Imputed heating ventilation: None of these,"'0' = 'Reported'
 '1' = 'Imputed'
 '2' = 'Estimated'
 '8' = 'Missing'
-'9' = 'Inapplicable'",
+'9' = 'Inapplicable'"
 623,ZELCOOL,Char,1,$ZVAR.,Imputed electricity used for cooling,"'0' = 'Reported'
 '1' = 'Imputed'
 '2' = 'Estimated'
 '8' = 'Missing'
-'9' = 'Inapplicable'",
+'9' = 'Inapplicable'"
 624,ZNGCOOL,Char,1,$ZVAR.,Imputed natural gas used for cooling,"'0' = 'Reported'
 '1' = 'Imputed'
 '2' = 'Estimated'
 '8' = 'Missing'
-'9' = 'Inapplicable'",
+'9' = 'Inapplicable'"
 625,ZFKCOOL,Char,1,$ZVAR.,Imputed fuel oil used for cooling,"'0' = 'Reported'
 '1' = 'Imputed'
 '2' = 'Estimated'
 '8' = 'Missing'
-'9' = 'Inapplicable'",
+'9' = 'Inapplicable'"
 626,ZPRCOOL,Char,1,$ZVAR.,Imputed propane used for cooling,"'0' = 'Reported'
 '1' = 'Imputed'
 '2' = 'Estimated'
 '8' = 'Missing'
-'9' = 'Inapplicable'",
+'9' = 'Inapplicable'"
 627,ZSTCOOL,Char,1,$ZVAR.,Imputed district steam  used for cooling,"'0' = 'Reported'
 '1' = 'Imputed'
 '2' = 'Estimated'
 '8' = 'Missing'
-'9' = 'Inapplicable'",
+'9' = 'Inapplicable'"
 628,ZHWCOOL,Char,1,$ZVAR.,Imputed district hot water used for cooling,"'0' = 'Reported'
 '1' = 'Imputed'
 '2' = 'Estimated'
 '8' = 'Missing'
-'9' = 'Inapplicable'",
+'9' = 'Inapplicable'"
 629,ZCWCOOL,Char,1,$ZVAR.,Imputed district chilled water used for cooling,"'0' = 'Reported'
 '1' = 'Imputed'
 '2' = 'Estimated'
 '8' = 'Missing'
-'9' = 'Inapplicable'",
+'9' = 'Inapplicable'"
 630,ZOTCOOL,Char,1,$ZVAR.,Imputed other source used for cooling,"'0' = 'Reported'
 '1' = 'Imputed'
 '2' = 'Estimated'
 '8' = 'Missing'
-'9' = 'Inapplicable'",
+'9' = 'Inapplicable'"
 631,ZCOOLP,Char,1,$ZVAR.,Imputed percent cooled,"'0' = 'Reported'
 '1' = 'Imputed'
 '2' = 'Estimated'
 '8' = 'Missing'
-'9' = 'Inapplicable'",
+'9' = 'Inapplicable'"
 632,ZRCAC,Char,1,$ZVAR.,Imputed residential type central A/C,"'0' = 'Reported'
 '1' = 'Imputed'
 '2' = 'Estimated'
 '8' = 'Missing'
-'9' = 'Inapplicable'",
+'9' = 'Inapplicable'"
 633,ZPKGCL,Char,1,$ZVAR.,Imputed packaged A/C units,"'0' = 'Reported'
 '1' = 'Imputed'
 '2' = 'Estimated'
 '8' = 'Missing'
-'9' = 'Inapplicable'",
+'9' = 'Inapplicable'"
 634,ZCHILLR,Char,1,$ZVAR.,Imputed central chillers inside the building,"'0' = 'Reported'
 '1' = 'Imputed'
 '2' = 'Estimated'
 '8' = 'Missing'
-'9' = 'Inapplicable'",
+'9' = 'Inapplicable'"
 635,ZCHWT,Char,1,$ZVAR.,Imputed district chilled water piped in,"'0' = 'Reported'
 '1' = 'Imputed'
 '2' = 'Estimated'
 '8' = 'Missing'
-'9' = 'Inapplicable'",
+'9' = 'Inapplicable'"
 636,ZHTPMPC,Char,1,$ZVAR.,Imputed heat pumps for cooling,"'0' = 'Reported'
 '1' = 'Imputed'
 '2' = 'Estimated'
 '8' = 'Missing'
-'9' = 'Inapplicable'",
+'9' = 'Inapplicable'"
 637,ZACWNWL,Char,1,$ZVAR.,Imputed individual room air conditioners,"'0' = 'Reported'
 '1' = 'Imputed'
 '2' = 'Estimated'
 '8' = 'Missing'
-'9' = 'Inapplicable'",
+'9' = 'Inapplicable'"
 638,ZEVAPCL,Char,1,$ZVAR.,Imputed evaporative or swamp coolers,"'0' = 'Reported'
 '1' = 'Imputed'
 '2' = 'Estimated'
 '8' = 'Missing'
-'9' = 'Inapplicable'",
+'9' = 'Inapplicable'"
 639,ZOTCLEQ,Char,1,$ZVAR.,Imputed other cooling equipment,"'0' = 'Reported'
 '1' = 'Imputed'
 '2' = 'Estimated'
 '8' = 'Missing'
-'9' = 'Inapplicable'",
+'9' = 'Inapplicable'"
 640,ZRCACP,Char,1,$ZVAR.,Imputed percent cooled by central A/C,"'0' = 'Reported'
 '1' = 'Imputed'
 '2' = 'Estimated'
 '8' = 'Missing'
-'9' = 'Inapplicable'",
+'9' = 'Inapplicable'"
 641,ZPKGCP,Char,1,$ZVAR.,Imputed percent cooled by packaged A/C units,"'0' = 'Reported'
 '1' = 'Imputed'
 '2' = 'Estimated'
 '8' = 'Missing'
-'9' = 'Inapplicable'",
+'9' = 'Inapplicable'"
 642,ZCHILP,Char,1,$ZVAR.,Imputed percent cooled by central chillers,"'0' = 'Reported'
 '1' = 'Imputed'
 '2' = 'Estimated'
 '8' = 'Missing'
-'9' = 'Inapplicable'",
+'9' = 'Inapplicable'"
 643,ZCHWTP,Char,1,$ZVAR.,Imputed percent cooled by district chilled water,"'0' = 'Reported'
 '1' = 'Imputed'
 '2' = 'Estimated'
 '8' = 'Missing'
-'9' = 'Inapplicable'",
+'9' = 'Inapplicable'"
 644,ZHTPCP,Char,1,$ZVAR.,Imputed percent cooled by heat pumps,"'0' = 'Reported'
 '1' = 'Imputed'
 '2' = 'Estimated'
 '8' = 'Missing'
-'9' = 'Inapplicable'",
+'9' = 'Inapplicable'"
 645,ZACWNWP,Char,1,$ZVAR.,Imputed percent cooled by individual room A/C,"'0' = 'Reported'
 '1' = 'Imputed'
 '2' = 'Estimated'
 '8' = 'Missing'
-'9' = 'Inapplicable'",
+'9' = 'Inapplicable'"
 646,ZEVAPP,Char,1,$ZVAR.,Imputed percent cooled by swamp coolers,"'0' = 'Reported'
 '1' = 'Imputed'
 '2' = 'Estimated'
 '8' = 'Missing'
-'9' = 'Inapplicable'",
+'9' = 'Inapplicable'"
 647,ZOTCLP,Char,1,$ZVAR.,Imputed percent cooled by other cooling equipment,"'0' = 'Reported'
 '1' = 'Imputed'
 '2' = 'Estimated'
 '8' = 'Missing'
-'9' = 'Inapplicable'",
+'9' = 'Inapplicable'"
 648,ZMAINCL,Char,1,$ZVAR.,Imputed main cooling equipment,"'0' = 'Reported'
 '1' = 'Imputed'
 '2' = 'Estimated'
 '8' = 'Missing'
-'9' = 'Inapplicable'",
+'9' = 'Inapplicable'"
 649,ZNWMNCL,Char,1,$ZVAR.,Imputed main cooling replaced,"'0' = 'Reported'
 '1' = 'Imputed'
 '2' = 'Estimated'
 '8' = 'Missing'
-'9' = 'Inapplicable'",
+'9' = 'Inapplicable'"
 650,ZPKGCLTYP,Char,1,$ZVAR.,Imputed type of packaged cooling,"'0' = 'Reported'
 '1' = 'Imputed'
 '2' = 'Estimated'
 '8' = 'Missing'
-'9' = 'Inapplicable'",
+'9' = 'Inapplicable'"
 651,ZCHLAIRCL,Char,1,$ZVAR.,Imputed chiller type: Air-cooled,"'0' = 'Reported'
 '1' = 'Imputed'
 '2' = 'Estimated'
 '8' = 'Missing'
-'9' = 'Inapplicable'",
+'9' = 'Inapplicable'"
 652,ZCHLWTRCL,Char,1,$ZVAR.,Imputed chiller type: Water cooled,"'0' = 'Reported'
 '1' = 'Imputed'
 '2' = 'Estimated'
 '8' = 'Missing'
-'9' = 'Inapplicable'",
+'9' = 'Inapplicable'"
 653,ZCHLABSRP,Char,1,$ZVAR.,Imputed chiller type: Absorption,"'0' = 'Reported'
 '1' = 'Imputed'
 '2' = 'Estimated'
 '8' = 'Missing'
-'9' = 'Inapplicable'",
+'9' = 'Inapplicable'"
 654,ZHTRCHLR,Char,1,$ZVAR.,Imputed heater chiller,"'0' = 'Reported'
 '1' = 'Imputed'
 '2' = 'Estimated'
 '8' = 'Missing'
-'9' = 'Inapplicable'",
+'9' = 'Inapplicable'"
 655,ZCHLAIR,Char,1,$ZVAR.,Imputed chiller system: Central air handler,"'0' = 'Reported'
 '1' = 'Imputed'
 '2' = 'Estimated'
 '8' = 'Missing'
-'9' = 'Inapplicable'",
+'9' = 'Inapplicable'"
 656,ZCHLFNCL,Char,1,$ZVAR.,Imputed chiller system: Fan coil units in rooms,"'0' = 'Reported'
 '1' = 'Imputed'
 '2' = 'Estimated'
 '8' = 'Missing'
-'9' = 'Inapplicable'",
+'9' = 'Inapplicable'"
 657,ZCHLINDC,Char,1,$ZVAR.,Imputed chiller system: Induction units,"'0' = 'Reported'
 '1' = 'Imputed'
 '2' = 'Estimated'
 '8' = 'Missing'
-'9' = 'Inapplicable'",
+'9' = 'Inapplicable'"
 658,ZCHLLOOP,Char,1,$ZVAR.,Imputed chiller system: Water loop heat pump,"'0' = 'Reported'
 '1' = 'Imputed'
 '2' = 'Estimated'
 '8' = 'Missing'
-'9' = 'Inapplicable'",
+'9' = 'Inapplicable'"
 659,ZCHLBEAM,Char,1,$ZVAR.,Imputed chiller system: Chilled beam,"'0' = 'Reported'
 '1' = 'Imputed'
 '2' = 'Estimated'
 '8' = 'Missing'
-'9' = 'Inapplicable'",
+'9' = 'Inapplicable'"
 660,ZCHLPKG,Char,1,$ZVAR.,Imputed chiller system: Packaged unit,"'0' = 'Reported'
 '1' = 'Imputed'
 '2' = 'Estimated'
 '8' = 'Missing'
-'9' = 'Inapplicable'",
+'9' = 'Inapplicable'"
 661,ZCHLDUCT,Char,1,$ZVAR.,Imputed chiller system: Duct reheat,"'0' = 'Reported'
 '1' = 'Imputed'
 '2' = 'Estimated'
 '8' = 'Missing'
-'9' = 'Inapplicable'",
+'9' = 'Inapplicable'"
 662,ZDCWAIR,Char,1,$ZVAR.,Imputed district CW system: Central air handler,"'0' = 'Reported'
 '1' = 'Imputed'
 '2' = 'Estimated'
 '8' = 'Missing'
-'9' = 'Inapplicable'",
+'9' = 'Inapplicable'"
 663,ZDCWFNCL,Char,1,$ZVAR.,Imputed district CW system: Fan coil units in rooms,"'0' = 'Reported'
 '1' = 'Imputed'
 '2' = 'Estimated'
 '8' = 'Missing'
-'9' = 'Inapplicable'",
+'9' = 'Inapplicable'"
 664,ZDCWINDC,Char,1,$ZVAR.,Imputed district CW system: Induction units,"'0' = 'Reported'
 '1' = 'Imputed'
 '2' = 'Estimated'
 '8' = 'Missing'
-'9' = 'Inapplicable'",
+'9' = 'Inapplicable'"
 665,ZDCWLOOP,Char,1,$ZVAR.,Imputed district CW system: Water loop heat pump,"'0' = 'Reported'
 '1' = 'Imputed'
 '2' = 'Estimated'
 '8' = 'Missing'
-'9' = 'Inapplicable'",
+'9' = 'Inapplicable'"
 666,ZDCWBEAM,Char,1,$ZVAR.,Imputed district CW system: Chilled beam,"'0' = 'Reported'
 '1' = 'Imputed'
 '2' = 'Estimated'
 '8' = 'Missing'
-'9' = 'Inapplicable'",
+'9' = 'Inapplicable'"
 667,ZDCWPKG,Char,1,$ZVAR.,Imputed district CW system: Packaged unit,"'0' = 'Reported'
 '1' = 'Imputed'
 '2' = 'Estimated'
 '8' = 'Missing'
-'9' = 'Inapplicable'",
+'9' = 'Inapplicable'"
 668,ZDCWDUCT,Char,1,$ZVAR.,Imputed district CW system: Duct reheat,"'0' = 'Reported'
 '1' = 'Imputed'
 '2' = 'Estimated'
 '8' = 'Missing'
-'9' = 'Inapplicable'",
+'9' = 'Inapplicable'"
 669,ZHPCPKG,Char,1,$ZVAR.,Imputed heat pump cooling system: Packaged unit,"'0' = 'Reported'
 '1' = 'Imputed'
 '2' = 'Estimated'
 '8' = 'Missing'
-'9' = 'Inapplicable'",
+'9' = 'Inapplicable'"
 670,ZHPCSPLT,Char,1,$ZVAR.,Imputed heat pump cooling system: Split system,"'0' = 'Reported'
 '1' = 'Imputed'
 '2' = 'Estimated'
 '8' = 'Missing'
-'9' = 'Inapplicable'",
+'9' = 'Inapplicable'"
 671,ZHPCROOM,Char,1,$ZVAR.,Imputed heat pump cooling system: Individual room heat pump,"'0' = 'Reported'
 '1' = 'Imputed'
 '2' = 'Estimated'
 '8' = 'Missing'
-'9' = 'Inapplicable'",
+'9' = 'Inapplicable'"
 672,ZHPCMINI,Char,1,$ZVAR.,Imputed heat pump cooling system: Ductless mini-split,"'0' = 'Reported'
 '1' = 'Imputed'
 '2' = 'Estimated'
 '8' = 'Missing'
-'9' = 'Inapplicable'",
+'9' = 'Inapplicable'"
 673,ZHPCVRF,Char,1,$ZVAR.,Imputed heat pump cooling system: Variable refrigerant flow,"'0' = 'Reported'
 '1' = 'Imputed'
 '2' = 'Estimated'
 '8' = 'Missing'
-'9' = 'Inapplicable'",
+'9' = 'Inapplicable'"
 674,ZHPCAIR,Char,1,$ZVAR.,Imputed heat pump cooling type: Air source,"'0' = 'Reported'
 '1' = 'Imputed'
 '2' = 'Estimated'
 '8' = 'Missing'
-'9' = 'Inapplicable'",
+'9' = 'Inapplicable'"
 675,ZHPCGRD,Char,1,$ZVAR.,Imputed heat pump cooling type: Ground source,"'0' = 'Reported'
 '1' = 'Imputed'
 '2' = 'Estimated'
 '8' = 'Missing'
-'9' = 'Inapplicable'",
+'9' = 'Inapplicable'"
 676,ZHPCDUAL,Char,1,$ZVAR.,Imputed heat pump cooling type: Dual source,"'0' = 'Reported'
 '1' = 'Imputed'
 '2' = 'Estimated'
 '8' = 'Missing'
-'9' = 'Inapplicable'",
+'9' = 'Inapplicable'"
 677,ZHPCWTR,Char,1,$ZVAR.,Imputed heat pump cooling type: Water loop,"'0' = 'Reported'
 '1' = 'Imputed'
 '2' = 'Estimated'
 '8' = 'Missing'
-'9' = 'Inapplicable'",
+'9' = 'Inapplicable'"
 678,ZCLVCAV,Char,1,$ZVAR.,Imputed cooling ventilation: Central air-handling unit with CAV,"'0' = 'Reported'
 '1' = 'Imputed'
 '2' = 'Estimated'
 '8' = 'Missing'
-'9' = 'Inapplicable'",
+'9' = 'Inapplicable'"
 679,ZCLVVAV,Char,1,$ZVAR.,Imputed cooling ventilation: Central air-handling unit with VAV,"'0' = 'Reported'
 '1' = 'Imputed'
 '2' = 'Estimated'
 '8' = 'Missing'
-'9' = 'Inapplicable'",
+'9' = 'Inapplicable'"
 680,ZCLVFLR,Char,1,$ZVAR.,Imputed cooling ventilation: Underfloor air distribution,"'0' = 'Reported'
 '1' = 'Imputed'
 '2' = 'Estimated'
 '8' = 'Missing'
-'9' = 'Inapplicable'",
+'9' = 'Inapplicable'"
 681,ZCLVOAS,Char,1,$ZVAR.,Imputed cooling ventilation: Dedicated outside air system,"'0' = 'Reported'
 '1' = 'Imputed'
 '2' = 'Estimated'
 '8' = 'Missing'
-'9' = 'Inapplicable'",
+'9' = 'Inapplicable'"
 682,ZCLVDEM,Char,1,$ZVAR.,Imputed cooling ventilation: Demand controlled ventilation,"'0' = 'Reported'
 '1' = 'Imputed'
 '2' = 'Estimated'
 '8' = 'Missing'
-'9' = 'Inapplicable'",
+'9' = 'Inapplicable'"
 683,ZCLVNON,Char,1,$ZVAR.,Imputed cooling ventilation: None of these types,"'0' = 'Reported'
 '1' = 'Imputed'
 '2' = 'Estimated'
 '8' = 'Missing'
-'9' = 'Inapplicable'",
+'9' = 'Inapplicable'"
 684,ZEMCS,Char,1,$ZVAR.,Imputed building automation system (BAS),"'0' = 'Reported'
 '1' = 'Imputed'
 '2' = 'Estimated'
 '8' = 'Missing'
-'9' = 'Inapplicable'",
+'9' = 'Inapplicable'"
 685,ZRDHTNF,Char,1,$ZVAR.,Imputed heating reduced during 24 hour period,"'0' = 'Reported'
 '1' = 'Imputed'
 '2' = 'Estimated'
 '8' = 'Missing'
-'9' = 'Inapplicable'",
+'9' = 'Inapplicable'"
 686,ZHWRDHT,Char,1,$ZVAR.,Imputed how reduce heating,"'0' = 'Reported'
 '1' = 'Imputed'
 '2' = 'Estimated'
 '8' = 'Missing'
-'9' = 'Inapplicable'",
+'9' = 'Inapplicable'"
 687,ZRDCLNF,Char,1,$ZVAR.,Imputed cooling reduced during 24 hour period,"'0' = 'Reported'
 '1' = 'Imputed'
 '2' = 'Estimated'
 '8' = 'Missing'
-'9' = 'Inapplicable'",
+'9' = 'Inapplicable'"
 688,ZHWRDCL,Char,1,$ZVAR.,Imputed how reduce cooling,"'0' = 'Reported'
 '1' = 'Imputed'
 '2' = 'Estimated'
 '8' = 'Missing'
-'9' = 'Inapplicable'",
+'9' = 'Inapplicable'"
 689,ZECN,Char,1,$ZVAR.,Imputed economizer cycle,"'0' = 'Reported'
 '1' = 'Imputed'
 '2' = 'Estimated'
 '8' = 'Missing'
-'9' = 'Inapplicable'",
+'9' = 'Inapplicable'"
 690,ZECNTYPE,Char,1,$ZVAR.,Imputed type of economizer,"'0' = 'Reported'
 '1' = 'Imputed'
 '2' = 'Estimated'
 '8' = 'Missing'
-'9' = 'Inapplicable'",
+'9' = 'Inapplicable'"
 691,ZMAINT,Char,1,$ZVAR.,Imputed regular HVAC maintenance,"'0' = 'Reported'
 '1' = 'Imputed'
 '2' = 'Estimated'
 '8' = 'Missing'
-'9' = 'Inapplicable'",
+'9' = 'Inapplicable'"
 692,ZELWATR,Char,1,$ZVAR.,Imputed electricity used for water heating,"'0' = 'Reported'
 '1' = 'Imputed'
 '2' = 'Estimated'
 '8' = 'Missing'
-'9' = 'Inapplicable'",
+'9' = 'Inapplicable'"
 693,ZNGWATR,Char,1,$ZVAR.,Imputed natural gas used for water heating,"'0' = 'Reported'
 '1' = 'Imputed'
 '2' = 'Estimated'
 '8' = 'Missing'
-'9' = 'Inapplicable'",
+'9' = 'Inapplicable'"
 694,ZFKWATR,Char,1,$ZVAR.,Imputed fuel oil used for water heating,"'0' = 'Reported'
 '1' = 'Imputed'
 '2' = 'Estimated'
 '8' = 'Missing'
-'9' = 'Inapplicable'",
+'9' = 'Inapplicable'"
 695,ZPRWATR,Char,1,$ZVAR.,Imputed propane used for water heating,"'0' = 'Reported'
 '1' = 'Imputed'
 '2' = 'Estimated'
 '8' = 'Missing'
-'9' = 'Inapplicable'",
+'9' = 'Inapplicable'"
 696,ZSTWATR,Char,1,$ZVAR.,Imputed district steam used for water heating,"'0' = 'Reported'
 '1' = 'Imputed'
 '2' = 'Estimated'
 '8' = 'Missing'
-'9' = 'Inapplicable'",
+'9' = 'Inapplicable'"
 697,ZHWWATR,Char,1,$ZVAR.,Imputed district hot water used for water heating,"'0' = 'Reported'
 '1' = 'Imputed'
 '2' = 'Estimated'
 '8' = 'Missing'
-'9' = 'Inapplicable'",
+'9' = 'Inapplicable'"
 698,ZWOWATR,Char,1,$ZVAR.,Imputed wood used for water heating,"'0' = 'Reported'
 '1' = 'Imputed'
 '2' = 'Estimated'
 '8' = 'Missing'
-'9' = 'Inapplicable'",
+'9' = 'Inapplicable'"
 699,ZCOWATR,Char,1,$ZVAR.,Imputed coal used for water heating,"'0' = 'Reported'
 '1' = 'Imputed'
 '2' = 'Estimated'
 '8' = 'Missing'
-'9' = 'Inapplicable'",
+'9' = 'Inapplicable'"
 700,ZSOWATR,Char,1,$ZVAR.,Imputed solar used for water heating,"'0' = 'Reported'
 '1' = 'Imputed'
 '2' = 'Estimated'
 '8' = 'Missing'
-'9' = 'Inapplicable'",
+'9' = 'Inapplicable'"
 701,ZOTWATR,Char,1,$ZVAR.,Imputed other source used for water heating,"'0' = 'Reported'
 '1' = 'Imputed'
 '2' = 'Estimated'
 '8' = 'Missing'
-'9' = 'Inapplicable'",
+'9' = 'Inapplicable'"
 702,ZWTHTEQ,Char,1,$ZVAR.,Imputed water heating equipment,"'0' = 'Reported'
 '1' = 'Imputed'
 '2' = 'Estimated'
 '8' = 'Missing'
-'9' = 'Inapplicable'",
+'9' = 'Inapplicable'"
 703,ZBOOSTWT,Char,1,$ZVAR.,Imputed booster water heaters,"'0' = 'Reported'
 '1' = 'Imputed'
 '2' = 'Estimated'
 '8' = 'Missing'
-'9' = 'Inapplicable'",
+'9' = 'Inapplicable'"
 704,ZINSTWT,Char,1,$ZVAR.,Imputed instant hot water,"'0' = 'Reported'
 '1' = 'Imputed'
 '2' = 'Estimated'
 '8' = 'Missing'
-'9' = 'Inapplicable'",
+'9' = 'Inapplicable'"
 705,ZELCOOK,Char,1,$ZVAR.,Imputed electricity used for cooking,"'0' = 'Reported'
 '1' = 'Imputed'
 '2' = 'Estimated'
 '8' = 'Missing'
-'9' = 'Inapplicable'",
+'9' = 'Inapplicable'"
 706,ZNGCOOK,Char,1,$ZVAR.,Imputed natural gas used for cooking,"'0' = 'Reported'
 '1' = 'Imputed'
 '2' = 'Estimated'
 '8' = 'Missing'
-'9' = 'Inapplicable'",
+'9' = 'Inapplicable'"
 707,ZFKCOOK,Char,1,$ZVAR.,Imputed fuel oil used for cooking,"'0' = 'Reported'
 '1' = 'Imputed'
 '2' = 'Estimated'
 '8' = 'Missing'
-'9' = 'Inapplicable'",
+'9' = 'Inapplicable'"
 708,ZPRCOOK,Char,1,$ZVAR.,Imputed propane used for cooking,"'0' = 'Reported'
 '1' = 'Imputed'
 '2' = 'Estimated'
 '8' = 'Missing'
-'9' = 'Inapplicable'",
+'9' = 'Inapplicable'"
 709,ZSTCOOK,Char,1,$ZVAR.,Imputed district steam used for cooking,"'0' = 'Reported'
 '1' = 'Imputed'
 '2' = 'Estimated'
 '8' = 'Missing'
-'9' = 'Inapplicable'",
+'9' = 'Inapplicable'"
 710,ZHWCOOK,Char,1,$ZVAR.,Imputed district hot water used for cooking,"'0' = 'Reported'
 '1' = 'Imputed'
 '2' = 'Estimated'
 '8' = 'Missing'
-'9' = 'Inapplicable'",
+'9' = 'Inapplicable'"
 711,ZWOCOOK,Char,1,$ZVAR.,Imputed wood used for cooking,"'0' = 'Reported'
 '1' = 'Imputed'
 '2' = 'Estimated'
 '8' = 'Missing'
-'9' = 'Inapplicable'",
+'9' = 'Inapplicable'"
 712,ZCOCOOK,Char,1,$ZVAR.,Imputed coal used for cooking,"'0' = 'Reported'
 '1' = 'Imputed'
 '2' = 'Estimated'
 '8' = 'Missing'
-'9' = 'Inapplicable'",
+'9' = 'Inapplicable'"
 713,ZSOCOOK,Char,1,$ZVAR.,Imputed solar used for cooking,"'0' = 'Reported'
 '1' = 'Imputed'
 '2' = 'Estimated'
 '8' = 'Missing'
-'9' = 'Inapplicable'",
+'9' = 'Inapplicable'"
 714,ZOTCOOK,Char,1,$ZVAR.,Imputed other source used for cooking,"'0' = 'Reported'
 '1' = 'Imputed'
 '2' = 'Estimated'
 '8' = 'Missing'
-'9' = 'Inapplicable'",
+'9' = 'Inapplicable'"
 715,ZELMANU,Char,1,$ZVAR.,Imputed electricity used for manufacturing,"'0' = 'Reported'
 '1' = 'Imputed'
 '2' = 'Estimated'
 '8' = 'Missing'
-'9' = 'Inapplicable'",
+'9' = 'Inapplicable'"
 716,ZNGMANU,Char,1,$ZVAR.,Imputed natural gas used for manufacturing,"'0' = 'Reported'
 '1' = 'Imputed'
 '2' = 'Estimated'
 '8' = 'Missing'
-'9' = 'Inapplicable'",
+'9' = 'Inapplicable'"
 717,ZFKMANU,Char,1,$ZVAR.,Imputed fuel oil used for manufacturing,"'0' = 'Reported'
 '1' = 'Imputed'
 '2' = 'Estimated'
 '8' = 'Missing'
-'9' = 'Inapplicable'",
+'9' = 'Inapplicable'"
 718,ZPRMANU,Char,1,$ZVAR.,Imputed propane used for manufacturing,"'0' = 'Reported'
 '1' = 'Imputed'
 '2' = 'Estimated'
 '8' = 'Missing'
-'9' = 'Inapplicable'",
+'9' = 'Inapplicable'"
 719,ZSTMANU,Char,1,$ZVAR.,Imputed district steam used for manufacturing,"'0' = 'Reported'
 '1' = 'Imputed'
 '2' = 'Estimated'
 '8' = 'Missing'
-'9' = 'Inapplicable'",
+'9' = 'Inapplicable'"
 720,ZHWMANU,Char,1,$ZVAR.,Imputed district hot water used for manufacturing,"'0' = 'Reported'
 '1' = 'Imputed'
 '2' = 'Estimated'
 '8' = 'Missing'
-'9' = 'Inapplicable'",
+'9' = 'Inapplicable'"
 721,ZWOMANU,Char,1,$ZVAR.,Imputed wood used for manufacturing,"'0' = 'Reported'
 '1' = 'Imputed'
 '2' = 'Estimated'
 '8' = 'Missing'
-'9' = 'Inapplicable'",
+'9' = 'Inapplicable'"
 722,ZCOMANU,Char,1,$ZVAR.,Imputed coal used for manufacturing,"'0' = 'Reported'
 '1' = 'Imputed'
 '2' = 'Estimated'
 '8' = 'Missing'
-'9' = 'Inapplicable'",
+'9' = 'Inapplicable'"
 723,ZSOMANU,Char,1,$ZVAR.,Imputed solar used for manufacturing,"'0' = 'Reported'
 '1' = 'Imputed'
 '2' = 'Estimated'
 '8' = 'Missing'
-'9' = 'Inapplicable'",
+'9' = 'Inapplicable'"
 724,ZOTMANU,Char,1,$ZVAR.,Imputed other source used for manufacturing,"'0' = 'Reported'
 '1' = 'Imputed'
 '2' = 'Estimated'
 '8' = 'Missing'
-'9' = 'Inapplicable'",
+'9' = 'Inapplicable'"
 725,ZNGGENR,Char,1,$ZVAR.,Imputed natural gas used for electricity generation,"'0' = 'Reported'
 '1' = 'Imputed'
 '2' = 'Estimated'
 '8' = 'Missing'
-'9' = 'Inapplicable'",
+'9' = 'Inapplicable'"
 726,ZFKGENR,Char,1,$ZVAR.,Imputed fuel oil used for electricity generation,"'0' = 'Reported'
 '1' = 'Imputed'
 '2' = 'Estimated'
 '8' = 'Missing'
-'9' = 'Inapplicable'",
+'9' = 'Inapplicable'"
 727,ZPRGENR,Char,1,$ZVAR.,Imputed propane used for electricity generation,"'0' = 'Reported'
 '1' = 'Imputed'
 '2' = 'Estimated'
 '8' = 'Missing'
-'9' = 'Inapplicable'",
+'9' = 'Inapplicable'"
 728,ZWOGENR,Char,1,$ZVAR.,Imputed wood used for electricity generation,"'0' = 'Reported'
 '1' = 'Imputed'
 '2' = 'Estimated'
 '8' = 'Missing'
-'9' = 'Inapplicable'",
+'9' = 'Inapplicable'"
 729,ZCOGENR,Char,1,$ZVAR.,Imputed coal used for electricity generation,"'0' = 'Reported'
 '1' = 'Imputed'
 '2' = 'Estimated'
 '8' = 'Missing'
-'9' = 'Inapplicable'",
+'9' = 'Inapplicable'"
 730,ZSOGENR,Char,1,$ZVAR.,Imputed solar used for electricity generation,"'0' = 'Reported'
 '1' = 'Imputed'
 '2' = 'Estimated'
 '8' = 'Missing'
-'9' = 'Inapplicable'",
+'9' = 'Inapplicable'"
 731,ZOTGENR,Char,1,$ZVAR.,Imputed other source used for electricity generation,"'0' = 'Reported'
 '1' = 'Imputed'
 '2' = 'Estimated'
 '8' = 'Missing'
-'9' = 'Inapplicable'",
+'9' = 'Inapplicable'"
 732,ZPVC,Char,1,$ZVAR.,Imputed photovoltaic cells,"'0' = 'Reported'
 '1' = 'Imputed'
 '2' = 'Estimated'
 '8' = 'Missing'
-'9' = 'Inapplicable'",
+'9' = 'Inapplicable'"
 733,ZFUELCL,Char,1,$ZVAR.,Imputed fuel cells,"'0' = 'Reported'
 '1' = 'Imputed'
 '2' = 'Estimated'
 '8' = 'Missing'
-'9' = 'Inapplicable'",
+'9' = 'Inapplicable'"
 734,ZLRGTRB,Char,1,$ZVAR.,Imputed large turbines,"'0' = 'Reported'
 '1' = 'Imputed'
 '2' = 'Estimated'
 '8' = 'Missing'
-'9' = 'Inapplicable'",
+'9' = 'Inapplicable'"
 735,ZMCROTB,Char,1,$ZVAR.,Imputed microturbines,"'0' = 'Reported'
 '1' = 'Imputed'
 '2' = 'Estimated'
 '8' = 'Missing'
-'9' = 'Inapplicable'",
+'9' = 'Inapplicable'"
 736,ZENGINE,Char,1,$ZVAR.,Imputed reciprocating engines,"'0' = 'Reported'
 '1' = 'Imputed'
 '2' = 'Estimated'
 '8' = 'Missing'
-'9' = 'Inapplicable'",
+'9' = 'Inapplicable'"
 737,ZGENUSE,Char,1,$ZVAR.,Imputed use of generated electricity,"'0' = 'Reported'
 '1' = 'Imputed'
 '2' = 'Estimated'
 '8' = 'Missing'
-'9' = 'Inapplicable'",
+'9' = 'Inapplicable'"
 738,ZCOGEN,Char,1,$ZVAR.,Imputed cogeneration system,"'0' = 'Reported'
 '1' = 'Imputed'
 '2' = 'Estimated'
 '8' = 'Missing'
-'9' = 'Inapplicable'",
+'9' = 'Inapplicable'"
 739,ZTOGRID,Char,1,$ZVAR.,Imputed deliver electricity to grid,"'0' = 'Reported'
 '1' = 'Imputed'
 '2' = 'Estimated'
 '8' = 'Missing'
-'9' = 'Inapplicable'",
+'9' = 'Inapplicable'"
 740,ZPRAMTC,Char,1,$ZVAR.,Imputed bottled gas amount,"'0' = 'Reported'
 '1' = 'Imputed'
 '2' = 'Estimated'
 '8' = 'Missing'
-'9' = 'Inapplicable'",
+'9' = 'Inapplicable'"
 741,ZWOAMT,Char,1,$ZVAR.,Imputed amount wood burned,"'0' = 'Reported'
 '1' = 'Imputed'
 '2' = 'Estimated'
 '8' = 'Missing'
-'9' = 'Inapplicable'",
+'9' = 'Inapplicable'"
 742,ZWOSRC,Char,1,$ZVAR.,Imputed how obtain wood,"'0' = 'Reported'
 '1' = 'Imputed'
 '2' = 'Estimated'
 '8' = 'Missing'
-'9' = 'Inapplicable'",
+'9' = 'Inapplicable'"
 743,ZWOEXP,Char,1,$ZVAR.,Imputed expenditures for wood,"'0' = 'Reported'
 '1' = 'Imputed'
 '2' = 'Estimated'
 '8' = 'Missing'
-'9' = 'Inapplicable'",
+'9' = 'Inapplicable'"
 744,ZWOEXPC,Char,1,$ZVAR.,Imputed wood expenditures category,"'0' = 'Reported'
 '1' = 'Imputed'
 '2' = 'Estimated'
 '8' = 'Missing'
-'9' = 'Inapplicable'",
+'9' = 'Inapplicable'"
 745,ZENRGYPLN,Char,1,$ZVAR.,Imputed energy management plan,"'0' = 'Reported'
 '1' = 'Imputed'
 '2' = 'Estimated'
 '8' = 'Missing'
-'9' = 'Inapplicable'",
+'9' = 'Inapplicable'"
 746,ZSNACK,Char,1,$ZVAR.,Imputed snack bar or concession stand,"'0' = 'Reported'
 '1' = 'Imputed'
 '2' = 'Estimated'
 '8' = 'Missing'
-'9' = 'Inapplicable'",
+'9' = 'Inapplicable'"
 747,ZFASTFD,Char,1,$ZVAR.,Imputed fast food or small restaurant,"'0' = 'Reported'
 '1' = 'Imputed'
 '2' = 'Estimated'
 '8' = 'Missing'
-'9' = 'Inapplicable'",
+'9' = 'Inapplicable'"
 748,ZCAF,Char,1,$ZVAR.,Imputed cafeteria or large restaurant,"'0' = 'Reported'
 '1' = 'Imputed'
 '2' = 'Estimated'
 '8' = 'Missing'
-'9' = 'Inapplicable'",
+'9' = 'Inapplicable'"
 749,ZFDPREP,Char,1,$ZVAR.,Imputed commercial or large kitchen,"'0' = 'Reported'
 '1' = 'Imputed'
 '2' = 'Estimated'
 '8' = 'Missing'
-'9' = 'Inapplicable'",
+'9' = 'Inapplicable'"
 750,ZKITCHN,Char,1,$ZVAR.,Imputed small kitchen area,"'0' = 'Reported'
 '1' = 'Imputed'
 '2' = 'Estimated'
 '8' = 'Missing'
-'9' = 'Inapplicable'",
+'9' = 'Inapplicable'"
 751,ZBREAKRM,Char,1,$ZVAR.,"Imputed employee lounge, breakroom, or pantry","'0' = 'Reported'
 '1' = 'Imputed'
 '2' = 'Estimated'
 '8' = 'Missing'
-'9' = 'Inapplicable'",
+'9' = 'Inapplicable'"
 752,ZOTFDRM,Char,1,$ZVAR.,Imputed other food prep or serving area,"'0' = 'Reported'
 '1' = 'Imputed'
 '2' = 'Estimated'
 '8' = 'Missing'
-'9' = 'Inapplicable'",
+'9' = 'Inapplicable'"
 753,ZHWTRM,Char,1,$ZVAR.,Imputed large amounts of hot water,"'0' = 'Reported'
 '1' = 'Imputed'
 '2' = 'Estimated'
 '8' = 'Missing'
-'9' = 'Inapplicable'",
+'9' = 'Inapplicable'"
 754,ZLAUNDR,Char,1,$ZVAR.,Imputed laundry onsite,"'0' = 'Reported'
 '1' = 'Imputed'
 '2' = 'Estimated'
 '8' = 'Missing'
-'9' = 'Inapplicable'",
+'9' = 'Inapplicable'"
 755,ZCONFSP,Char,1,$ZVAR.,Imputed conference or event space,"'0' = 'Reported'
 '1' = 'Imputed'
 '2' = 'Estimated'
 '8' = 'Missing'
-'9' = 'Inapplicable'",
+'9' = 'Inapplicable'"
 756,ZCONFSPP,Char,1,$ZVAR.,Imputed percent conference or event space,"'0' = 'Reported'
 '1' = 'Imputed'
 '2' = 'Estimated'
 '8' = 'Missing'
-'9' = 'Inapplicable'",
+'9' = 'Inapplicable'"
 757,ZMEDEQP,Char,1,$ZVAR.,Imputed medical equipment,"'0' = 'Reported'
 '1' = 'Imputed'
 '2' = 'Estimated'
 '8' = 'Missing'
-'9' = 'Inapplicable'",
+'9' = 'Inapplicable'"
 758,ZXRAYN,Char,1,$ZVAR.,Imputed number of X-ray machines,"'0' = 'Reported'
 '1' = 'Imputed'
 '2' = 'Estimated'
 '8' = 'Missing'
-'9' = 'Inapplicable'",
+'9' = 'Inapplicable'"
 759,ZCTSCAN,Char,1,$ZVAR.,Imputed CT scan machines,"'0' = 'Reported'
 '1' = 'Imputed'
 '2' = 'Estimated'
 '8' = 'Missing'
-'9' = 'Inapplicable'",
+'9' = 'Inapplicable'"
 760,ZMRI,Char,2,$ZVAR.,Imputed MRI machines,"'0' = 'Reported'
 '1' = 'Imputed'
 '2' = 'Estimated'
 '8' = 'Missing'
-'9' = 'Inapplicable'",
+'9' = 'Inapplicable'"
 761,ZLINACC,Char,1,$ZVAR.,Imputed linear accelerators,"'0' = 'Reported'
 '1' = 'Imputed'
 '2' = 'Estimated'
 '8' = 'Missing'
-'9' = 'Inapplicable'",
+'9' = 'Inapplicable'"
 762,ZOUTSURG,Char,1,$ZVAR.,Imputed operating rooms for outpatient surgery,"'0' = 'Reported'
 '1' = 'Imputed'
 '2' = 'Estimated'
 '8' = 'Missing'
-'9' = 'Inapplicable'",
+'9' = 'Inapplicable'"
 763,ZLABEQP,Char,1,$ZVAR.,Imputed laboratory equipment,"'0' = 'Reported'
 '1' = 'Imputed'
 '2' = 'Estimated'
 '8' = 'Missing'
-'9' = 'Inapplicable'",
+'9' = 'Inapplicable'"
 764,ZMCHEQP,Char,1,$ZVAR.,Imputed machine equipment,"'0' = 'Reported'
 '1' = 'Imputed'
 '2' = 'Estimated'
 '8' = 'Missing'
-'9' = 'Inapplicable'",
+'9' = 'Inapplicable'"
 765,ZPOOL,Char,1,$ZVAR.,Imputed indoor swimming pool,"'0' = 'Reported'
 '1' = 'Imputed'
 '2' = 'Estimated'
 '8' = 'Missing'
-'9' = 'Inapplicable'",
+'9' = 'Inapplicable'"
 766,ZHTPOOL,Char,1,$ZVAR.,Imputed heated indoor swimming pool,"'0' = 'Reported'
 '1' = 'Imputed'
 '2' = 'Estimated'
 '8' = 'Missing'
-'9' = 'Inapplicable'",
+'9' = 'Inapplicable'"
 767,ZPOOLSRC,Char,1,$ZVAR.,Imputed pool energy source,"'0' = 'Reported'
 '1' = 'Imputed'
 '2' = 'Estimated'
 '8' = 'Missing'
-'9' = 'Inapplicable'",
+'9' = 'Inapplicable'"
 768,ZSTRLZR,Char,1,$ZVAR.,Imputed sterilizers or autoclaves,"'0' = 'Reported'
 '1' = 'Imputed'
 '2' = 'Estimated'
 '8' = 'Missing'
-'9' = 'Inapplicable'",
+'9' = 'Inapplicable'"
 769,ZRFGEQP,Char,1,$ZVAR.,Imputed refrigeration,"'0' = 'Reported'
 '1' = 'Imputed'
 '2' = 'Estimated'
 '8' = 'Missing'
-'9' = 'Inapplicable'",
+'9' = 'Inapplicable'"
 770,ZRFGRES,Char,1,$ZVAR.,Imputed full-size residential-type refrigerator,"'0' = 'Reported'
 '1' = 'Imputed'
 '2' = 'Estimated'
 '8' = 'Missing'
-'9' = 'Inapplicable'",
+'9' = 'Inapplicable'"
 771,ZRFGCOMP,Char,1,$ZVAR.,Imputed half-size or compact refrigerators,"'0' = 'Reported'
 '1' = 'Imputed'
 '2' = 'Estimated'
 '8' = 'Missing'
-'9' = 'Inapplicable'",
+'9' = 'Inapplicable'"
 772,ZRFGWI,Char,1,$ZVAR.,Imputed walk-in refrigeration units,"'0' = 'Reported'
 '1' = 'Imputed'
 '2' = 'Estimated'
 '8' = 'Missing'
-'9' = 'Inapplicable'",
+'9' = 'Inapplicable'"
 773,ZRFGOP,Char,1,$ZVAR.,Imputed open case refrigeration units,"'0' = 'Reported'
 '1' = 'Imputed'
 '2' = 'Estimated'
 '8' = 'Missing'
-'9' = 'Inapplicable'",
+'9' = 'Inapplicable'"
 774,ZRFGCL,Char,1,$ZVAR.,Imputed closed case refrigeration units,"'0' = 'Reported'
 '1' = 'Imputed'
 '2' = 'Estimated'
 '8' = 'Missing'
-'9' = 'Inapplicable'",
+'9' = 'Inapplicable'"
 775,ZRFGVEN,Char,1,$ZVAR.,Imputed refrigerated vending machines,"'0' = 'Reported'
 '1' = 'Imputed'
 '2' = 'Estimated'
 '8' = 'Missing'
-'9' = 'Inapplicable'",
+'9' = 'Inapplicable'"
 776,ZRFGICE,Char,1,$ZVAR.,Imputed commercial ice makers,"'0' = 'Reported'
 '1' = 'Imputed'
 '2' = 'Estimated'
 '8' = 'Missing'
-'9' = 'Inapplicable'",
+'9' = 'Inapplicable'"
 777,ZRFGSTO,Char,1,$ZVAR.,Imputed large cold storage areas,"'0' = 'Reported'
 '1' = 'Imputed'
 '2' = 'Estimated'
 '8' = 'Missing'
-'9' = 'Inapplicable'",
+'9' = 'Inapplicable'"
 778,ZRFGRSN,Char,1,$ZVAR.,Imputed number of residential refrigerators,"'0' = 'Reported'
 '1' = 'Imputed'
 '2' = 'Estimated'
 '8' = 'Missing'
-'9' = 'Inapplicable'",
+'9' = 'Inapplicable'"
 779,ZRFGCOMPN,Char,1,$ZVAR.,Imputed number of compact refrigerators,"'0' = 'Reported'
 '1' = 'Imputed'
 '2' = 'Estimated'
 '8' = 'Missing'
-'9' = 'Inapplicable'",
+'9' = 'Inapplicable'"
 780,ZRFGWIN,Char,1,$ZVAR.,Imputed number of walk-in units,"'0' = 'Reported'
 '1' = 'Imputed'
 '2' = 'Estimated'
 '8' = 'Missing'
-'9' = 'Inapplicable'",
+'9' = 'Inapplicable'"
 781,ZRFGOPN,Char,1,$ZVAR.,Imputed number of open case refrigeration units,"'0' = 'Reported'
 '1' = 'Imputed'
 '2' = 'Estimated'
 '8' = 'Missing'
-'9' = 'Inapplicable'",
+'9' = 'Inapplicable'"
 782,ZRFGCLN,Char,1,$ZVAR.,Imputed number of closed case refrigeration units,"'0' = 'Reported'
 '1' = 'Imputed'
 '2' = 'Estimated'
 '8' = 'Missing'
-'9' = 'Inapplicable'",
+'9' = 'Inapplicable'"
 783,ZRFGVNN,Char,1,$ZVAR.,Imputed number of refrigerated vending machines,"'0' = 'Reported'
 '1' = 'Imputed'
 '2' = 'Estimated'
 '8' = 'Missing'
-'9' = 'Inapplicable'",
+'9' = 'Inapplicable'"
 784,ZRFGICN,Char,1,$ZVAR.,Imputed number of ice makers,"'0' = 'Reported'
 '1' = 'Imputed'
 '2' = 'Estimated'
 '8' = 'Missing'
-'9' = 'Inapplicable'",
+'9' = 'Inapplicable'"
 785,ZRFGSTP,Char,1,$ZVAR.,Imputed percent cold storage,"'0' = 'Reported'
 '1' = 'Imputed'
 '2' = 'Estimated'
 '8' = 'Missing'
-'9' = 'Inapplicable'",
+'9' = 'Inapplicable'"
 786,ZWHRECOV,Char,1,$ZVAR.,Imputed waste heat recovery,"'0' = 'Reported'
 '1' = 'Imputed'
 '2' = 'Estimated'
 '8' = 'Missing'
-'9' = 'Inapplicable'",
+'9' = 'Inapplicable'"
 787,ZWHHT2,Char,1,$ZVAR.,Imputed waste heat used for secondary heating,"'0' = 'Reported'
 '1' = 'Imputed'
 '2' = 'Estimated'
 '8' = 'Missing'
-'9' = 'Inapplicable'",
+'9' = 'Inapplicable'"
 788,ZWHWT,Char,1,$ZVAR.,Imputed waste heat used for water heating,"'0' = 'Reported'
 '1' = 'Imputed'
 '2' = 'Estimated'
 '8' = 'Missing'
-'9' = 'Inapplicable'",
+'9' = 'Inapplicable'"
 789,ZWHOT,Char,1,$ZVAR.,Imputed waste heat used for some other use,"'0' = 'Reported'
 '1' = 'Imputed'
 '2' = 'Estimated'
 '8' = 'Missing'
-'9' = 'Inapplicable'",
+'9' = 'Inapplicable'"
 790,ZPCTERM,Char,1,$ZVAR.,Imputed computers used,"'0' = 'Reported'
 '1' = 'Imputed'
 '2' = 'Estimated'
 '8' = 'Missing'
-'9' = 'Inapplicable'",
+'9' = 'Inapplicable'"
 791,ZPCTERMN,Char,1,$ZVAR.,Imputed number of computers,"'0' = 'Reported'
 '1' = 'Imputed'
 '2' = 'Estimated'
 '8' = 'Missing'
-'9' = 'Inapplicable'",
+'9' = 'Inapplicable'"
 792,ZPCTRMC,Char,1,$ZVAR.,Imputed number of computers category,"'0' = 'Reported'
 '1' = 'Imputed'
 '2' = 'Estimated'
 '8' = 'Missing'
-'9' = 'Inapplicable'",
+'9' = 'Inapplicable'"
 793,ZMLTMON,Char,1,$ZVAR.,Imputed multiple monitors,"'0' = 'Reported'
 '1' = 'Imputed'
 '2' = 'Estimated'
 '8' = 'Missing'
-'9' = 'Inapplicable'",
+'9' = 'Inapplicable'"
 794,ZMLTMNC,Char,1,$ZVAR.,Imputed multiple monitor category,"'0' = 'Reported'
 '1' = 'Imputed'
 '2' = 'Estimated'
 '8' = 'Missing'
-'9' = 'Inapplicable'",
+'9' = 'Inapplicable'"
 795,ZFLATC,Char,1,$ZVAR.,Imputed flat screen category,"'0' = 'Reported'
 '1' = 'Imputed'
 '2' = 'Estimated'
 '8' = 'Missing'
-'9' = 'Inapplicable'",
+'9' = 'Inapplicable'"
 796,ZLAPTPN,Char,1,$ZVAR.,Imputed number of laptops,"'0' = 'Reported'
 '1' = 'Imputed'
 '2' = 'Estimated'
 '8' = 'Missing'
-'9' = 'Inapplicable'",
+'9' = 'Inapplicable'"
 797,ZLAPTPC,Char,1,$ZVAR.,Imputed number of laptops category,"'0' = 'Reported'
 '1' = 'Imputed'
 '2' = 'Estimated'
 '8' = 'Missing'
-'9' = 'Inapplicable'",
+'9' = 'Inapplicable'"
 798,ZPRNTRN,Char,1,$ZVAR.,Imputed number of printers,"'0' = 'Reported'
 '1' = 'Imputed'
 '2' = 'Estimated'
 '8' = 'Missing'
-'9' = 'Inapplicable'",
+'9' = 'Inapplicable'"
 799,ZPRNTYP,Char,1,$ZVAR.,Imputed type of printers,"'0' = 'Reported'
 '1' = 'Imputed'
 '2' = 'Estimated'
 '8' = 'Missing'
-'9' = 'Inapplicable'",
+'9' = 'Inapplicable'"
 800,ZSERVER,Char,1,$ZVAR.,Imputed dedicated servers,"'0' = 'Reported'
 '1' = 'Imputed'
 '2' = 'Estimated'
 '8' = 'Missing'
-'9' = 'Inapplicable'",
+'9' = 'Inapplicable'"
 801,ZSERVERN,Char,1,$ZVAR.,Imputed number of servers,"'0' = 'Reported'
 '1' = 'Imputed'
 '2' = 'Estimated'
 '8' = 'Missing'
-'9' = 'Inapplicable'",
+'9' = 'Inapplicable'"
 802,ZSERVERC,Char,1,$ZVAR.,Imputed number of servers category,"'0' = 'Reported'
 '1' = 'Imputed'
 '2' = 'Estimated'
 '8' = 'Missing'
-'9' = 'Inapplicable'",
+'9' = 'Inapplicable'"
 803,ZDATACNTR,Char,1,$ZVAR.,Imputed data center or server farm,"'0' = 'Reported'
 '1' = 'Imputed'
 '2' = 'Estimated'
 '8' = 'Missing'
-'9' = 'Inapplicable'",
+'9' = 'Inapplicable'"
 804,ZDCNTRSFC,Char,1,$ZVAR.,Imputed data center or server farm sqft category,"'0' = 'Reported'
 '1' = 'Imputed'
 '2' = 'Estimated'
 '8' = 'Missing'
-'9' = 'Inapplicable'",
+'9' = 'Inapplicable'"
 805,ZTRNGRM,Char,1,$ZVAR.,Imputed computer-based training room,"'0' = 'Reported'
 '1' = 'Imputed'
 '2' = 'Estimated'
 '8' = 'Missing'
-'9' = 'Inapplicable'",
+'9' = 'Inapplicable'"
 806,ZSTDNRM,Char,1,$ZVAR.,Imputed student or public computer center,"'0' = 'Reported'
 '1' = 'Imputed'
 '2' = 'Estimated'
 '8' = 'Missing'
-'9' = 'Inapplicable'",
+'9' = 'Inapplicable'"
 807,ZWBOARDS,Char,1,$ZVAR.,Imputed interactive whiteboards,"'0' = 'Reported'
 '1' = 'Imputed'
 '2' = 'Estimated'
 '8' = 'Missing'
-'9' = 'Inapplicable'",
+'9' = 'Inapplicable'"
 808,ZTVVIDEO,Char,1,$ZVAR.,Imputed TV or video displays,"'0' = 'Reported'
 '1' = 'Imputed'
 '2' = 'Estimated'
 '8' = 'Missing'
-'9' = 'Inapplicable'",
+'9' = 'Inapplicable'"
 809,ZTVVIDEON,Char,1,$ZVAR.,Imputed number of TV or video displays,"'0' = 'Reported'
 '1' = 'Imputed'
 '2' = 'Estimated'
 '8' = 'Missing'
-'9' = 'Inapplicable'",
+'9' = 'Inapplicable'"
 810,ZRGSTR,Char,1,$ZVAR.,Imputed cash registers,"'0' = 'Reported'
 '1' = 'Imputed'
 '2' = 'Estimated'
 '8' = 'Missing'
-'9' = 'Inapplicable'",
+'9' = 'Inapplicable'"
 811,ZRGSTRN,Char,1,$ZVAR.,Imputed number of cash registers,"'0' = 'Reported'
 '1' = 'Imputed'
 '2' = 'Estimated'
 '8' = 'Missing'
-'9' = 'Inapplicable'",
+'9' = 'Inapplicable'"
 812,ZCOPIER,Char,1,$ZVAR.,Imputed photocopiers,"'0' = 'Reported'
 '1' = 'Imputed'
 '2' = 'Estimated'
 '8' = 'Missing'
-'9' = 'Inapplicable'",
+'9' = 'Inapplicable'"
 813,ZCOPIERN,Char,1,$ZVAR.,Imputed number of photocopiers,"'0' = 'Reported'
 '1' = 'Imputed'
 '2' = 'Estimated'
 '8' = 'Missing'
-'9' = 'Inapplicable'",
+'9' = 'Inapplicable'"
 814,ZFAX,Char,1,$ZVAR.,Imputed FAX machines,"'0' = 'Reported'
 '1' = 'Imputed'
 '2' = 'Estimated'
 '8' = 'Missing'
-'9' = 'Inapplicable'",
+'9' = 'Inapplicable'"
 815,ZLTOHRP,Char,1,$ZVAR.,Imputed percent lit when open,"'0' = 'Reported'
 '1' = 'Imputed'
 '2' = 'Estimated'
 '8' = 'Missing'
-'9' = 'Inapplicable'",
+'9' = 'Inapplicable'"
 816,ZLOHRPC,Char,1,$ZVAR.,Imputed lit when open category,"'0' = 'Reported'
 '1' = 'Imputed'
 '2' = 'Estimated'
 '8' = 'Missing'
-'9' = 'Inapplicable'",
+'9' = 'Inapplicable'"
 817,ZLTNR24,Char,1,$ZVAR.,Imputed lights off during 24 hours,"'0' = 'Reported'
 '1' = 'Imputed'
 '2' = 'Estimated'
 '8' = 'Missing'
-'9' = 'Inapplicable'",
+'9' = 'Inapplicable'"
 818,ZLTNHRP,Char,1,$ZVAR.,Imputed percent lit off hours,"'0' = 'Reported'
 '1' = 'Imputed'
 '2' = 'Estimated'
 '8' = 'Missing'
-'9' = 'Inapplicable'",
+'9' = 'Inapplicable'"
 819,ZLNHRPC,Char,1,$ZVAR.,Imputed lit off hours category,"'0' = 'Reported'
 '1' = 'Imputed'
 '2' = 'Estimated'
 '8' = 'Missing'
-'9' = 'Inapplicable'",
+'9' = 'Inapplicable'"
 820,ZRDLTNF,Char,1,$ZVAR.,Imputed lighting reduced during off hours,"'0' = 'Reported'
 '1' = 'Imputed'
 '2' = 'Estimated'
 '8' = 'Missing'
-'9' = 'Inapplicable'",
+'9' = 'Inapplicable'"
 821,ZFLUOR,Char,1,$ZVAR.,Imputed fluorescent bulbs,"'0' = 'Reported'
 '1' = 'Imputed'
 '2' = 'Estimated'
 '8' = 'Missing'
-'9' = 'Inapplicable'",
+'9' = 'Inapplicable'"
 822,ZCFLR,Char,1,$ZVAR.,Imputed compact fluorescent bulbs,"'0' = 'Reported'
 '1' = 'Imputed'
 '2' = 'Estimated'
 '8' = 'Missing'
-'9' = 'Inapplicable'",
+'9' = 'Inapplicable'"
 823,ZBULB,Char,1,$ZVAR.,Imputed incandescent bulbs,"'0' = 'Reported'
 '1' = 'Imputed'
 '2' = 'Estimated'
 '8' = 'Missing'
-'9' = 'Inapplicable'",
+'9' = 'Inapplicable'"
 824,ZHALO,Char,1,$ZVAR.,Imputed halogen bulbs,"'0' = 'Reported'
 '1' = 'Imputed'
 '2' = 'Estimated'
 '8' = 'Missing'
-'9' = 'Inapplicable'",
+'9' = 'Inapplicable'"
 825,ZHID,Char,1,$ZVAR.,Imputed high intensity discharge (HID) bulbs,"'0' = 'Reported'
 '1' = 'Imputed'
 '2' = 'Estimated'
 '8' = 'Missing'
-'9' = 'Inapplicable'",
+'9' = 'Inapplicable'"
 826,ZLED,Char,1,$ZVAR.,Imputed light-emitting diode (LED) bulbs,"'0' = 'Reported'
 '1' = 'Imputed'
 '2' = 'Estimated'
 '8' = 'Missing'
-'9' = 'Inapplicable'",
+'9' = 'Inapplicable'"
 827,ZOTLT,Char,1,$ZVAR.,Imputed other type of bulbs,"'0' = 'Reported'
 '1' = 'Imputed'
 '2' = 'Estimated'
 '8' = 'Missing'
-'9' = 'Inapplicable'",
+'9' = 'Inapplicable'"
 828,ZFLUORP,Char,1,$ZVAR.,Imputed percent lit by fluorescent,"'0' = 'Reported'
 '1' = 'Imputed'
 '2' = 'Estimated'
 '8' = 'Missing'
-'9' = 'Inapplicable'",
+'9' = 'Inapplicable'"
 829,ZCFLRP,Char,1,$ZVAR.,Imputed percent lit by compact fluorescent,"'0' = 'Reported'
 '1' = 'Imputed'
 '2' = 'Estimated'
 '8' = 'Missing'
-'9' = 'Inapplicable'",
+'9' = 'Inapplicable'"
 830,ZBULBP,Char,1,$ZVAR.,Imputed percent lit by incandescent,"'0' = 'Reported'
 '1' = 'Imputed'
 '2' = 'Estimated'
 '8' = 'Missing'
-'9' = 'Inapplicable'",
+'9' = 'Inapplicable'"
 831,ZHALOP,Char,1,$ZVAR.,Imputed percent lit by halogen,"'0' = 'Reported'
 '1' = 'Imputed'
 '2' = 'Estimated'
 '8' = 'Missing'
-'9' = 'Inapplicable'",
+'9' = 'Inapplicable'"
 832,ZHIDP,Char,1,$ZVAR.,Imputed percent lit by HID,"'0' = 'Reported'
 '1' = 'Imputed'
 '2' = 'Estimated'
 '8' = 'Missing'
-'9' = 'Inapplicable'",
+'9' = 'Inapplicable'"
 833,ZLEDP,Char,1,$ZVAR.,Imputed percent lit by LED,"'0' = 'Reported'
 '1' = 'Imputed'
 '2' = 'Estimated'
 '8' = 'Missing'
-'9' = 'Inapplicable'",
+'9' = 'Inapplicable'"
 834,ZOTLTP,Char,1,$ZVAR.,Imputed percent lit by other lighting,"'0' = 'Reported'
 '1' = 'Imputed'
 '2' = 'Estimated'
 '8' = 'Missing'
-'9' = 'Inapplicable'",
+'9' = 'Inapplicable'"
 835,ZEMCSLT,Char,1,$ZVAR.,Imputed BAS controls lighting,"'0' = 'Reported'
 '1' = 'Imputed'
 '2' = 'Estimated'
 '8' = 'Missing'
-'9' = 'Inapplicable'",
+'9' = 'Inapplicable'"
 836,ZSCHED,Char,1,$ZVAR.,Imputed light scheduling,"'0' = 'Reported'
 '1' = 'Imputed'
 '2' = 'Estimated'
 '8' = 'Missing'
-'9' = 'Inapplicable'",
+'9' = 'Inapplicable'"
 837,ZOCSN,Char,1,$ZVAR.,Imputed occupancy sensors,"'0' = 'Reported'
 '1' = 'Imputed'
 '2' = 'Estimated'
 '8' = 'Missing'
-'9' = 'Inapplicable'",
+'9' = 'Inapplicable'"
 838,ZDIM,Char,1,$ZVAR.,Imputed multi-level lighting or dimming,"'0' = 'Reported'
 '1' = 'Imputed'
 '2' = 'Estimated'
 '8' = 'Missing'
-'9' = 'Inapplicable'",
+'9' = 'Inapplicable'"
 839,ZDAYHARV,Char,1,$ZVAR.,Imputed daylight harvesting,"'0' = 'Reported'
 '1' = 'Imputed'
 '2' = 'Estimated'
 '8' = 'Missing'
-'9' = 'Inapplicable'",
+'9' = 'Inapplicable'"
 840,ZTRIM,Char,1,$ZVAR.,Imputed high-end trimming or light-level tuning,"'0' = 'Reported'
 '1' = 'Imputed'
 '2' = 'Estimated'
 '8' = 'Missing'
-'9' = 'Inapplicable'",
+'9' = 'Inapplicable'"
 841,ZPLGCTRL,Char,1,$ZVAR.,Imputed plug load control,"'0' = 'Reported'
 '1' = 'Imputed'
 '2' = 'Estimated'
 '8' = 'Missing'
-'9' = 'Inapplicable'",
+'9' = 'Inapplicable'"
 842,ZDRLGHT,Char,1,$ZVAR.,Imputed demand responsive lighting,"'0' = 'Reported'
 '1' = 'Imputed'
 '2' = 'Estimated'
 '8' = 'Missing'
-'9' = 'Inapplicable'",
+'9' = 'Inapplicable'"
 843,ZLTEXPC,Char,1,$ZVAR.,Imputed percent of exterior lighted,"'0' = 'Reported'
 '1' = 'Imputed'
 '2' = 'Estimated'
 '8' = 'Missing'
-'9' = 'Inapplicable'",
+'9' = 'Inapplicable'"
 844,ZPKLT,Char,1,$ZVAR.,Imputed lighted parking area,"'0' = 'Reported'
 '1' = 'Imputed'
 '2' = 'Estimated'
 '8' = 'Missing'
-'9' = 'Inapplicable'",
+'9' = 'Inapplicable'"
 845,ZWINTYP,Char,1,$ZVAR.,Imputed window glass type,"'0' = 'Reported'
 '1' = 'Imputed'
 '2' = 'Estimated'
 '8' = 'Missing'
-'9' = 'Inapplicable'",
+'9' = 'Inapplicable'"
 846,ZTINT,Char,1,$ZVAR.,Imputed tinted window glass,"'0' = 'Reported'
 '1' = 'Imputed'
 '2' = 'Estimated'
 '8' = 'Missing'
-'9' = 'Inapplicable'",
+'9' = 'Inapplicable'"
 847,ZREFL,Char,1,$ZVAR.,Imputed reflective window glass,"'0' = 'Reported'
 '1' = 'Imputed'
 '2' = 'Estimated'
 '8' = 'Missing'
-'9' = 'Inapplicable'",
+'9' = 'Inapplicable'"
 848,ZAWN,Char,1,$ZVAR.,Imputed external overhangs or awnings,"'0' = 'Reported'
 '1' = 'Imputed'
 '2' = 'Estimated'
 '8' = 'Missing'
-'9' = 'Inapplicable'",
+'9' = 'Inapplicable'"
 849,ZSKYLT,Char,1,$ZVAR.,Imputed skylights or atriums,"'0' = 'Reported'
 '1' = 'Imputed'
 '2' = 'Estimated'
 '8' = 'Missing'
-'9' = 'Inapplicable'",
+'9' = 'Inapplicable'"
 850,ZDAYLTP,Char,1,$ZVAR.,Imputed percent daylight,"'0' = 'Reported'
 '1' = 'Imputed'
 '2' = 'Estimated'
 '8' = 'Missing'
-'9' = 'Inapplicable'",
-851,FINALWT,Num,8,,Final full sample building weight,,
-852,FINALWT1,Num,8,,Final replicate weight 1,,
-853,FINALWT2,Num,8,,Final replicate weight 2,,
-854,FINALWT3,Num,8,,Final replicate weight 3,,
-855,FINALWT4,Num,8,,Final replicate weight 4,,
-856,FINALWT5,Num,8,,Final replicate weight 5,,
-857,FINALWT6,Num,8,,Final replicate weight 6,,
-858,FINALWT7,Num,8,,Final replicate weight 7,,
-859,FINALWT8,Num,8,,Final replicate weight 8,,
-860,FINALWT9,Num,8,,Final replicate weight 9,,
-861,FINALWT10,Num,8,,Final replicate weight 10,,
-862,FINALWT11,Num,8,,Final replicate weight 11,,
-863,FINALWT12,Num,8,,Final replicate weight 12,,
-864,FINALWT13,Num,8,,Final replicate weight 13,,
-865,FINALWT14,Num,8,,Final replicate weight 14,,
-866,FINALWT15,Num,8,,Final replicate weight 15,,
-867,FINALWT16,Num,8,,Final replicate weight 16,,
-868,FINALWT17,Num,8,,Final replicate weight 17,,
-869,FINALWT18,Num,8,,Final replicate weight 18,,
-870,FINALWT19,Num,8,,Final replicate weight 19,,
-871,FINALWT20,Num,8,,Final replicate weight 20,,
-872,FINALWT21,Num,8,,Final replicate weight 21,,
-873,FINALWT22,Num,8,,Final replicate weight 22,,
-874,FINALWT23,Num,8,,Final replicate weight 23,,
-875,FINALWT24,Num,8,,Final replicate weight 24,,
-876,FINALWT25,Num,8,,Final replicate weight 25,,
-877,FINALWT26,Num,8,,Final replicate weight 26,,
-878,FINALWT27,Num,8,,Final replicate weight 27,,
-879,FINALWT28,Num,8,,Final replicate weight 28,,
-880,FINALWT29,Num,8,,Final replicate weight 29,,
-881,FINALWT30,Num,8,,Final replicate weight 30,,
-882,FINALWT31,Num,8,,Final replicate weight 31,,
-883,FINALWT32,Num,8,,Final replicate weight 32,,
-884,FINALWT33,Num,8,,Final replicate weight 33,,
-885,FINALWT34,Num,8,,Final replicate weight 34,,
-886,FINALWT35,Num,8,,Final replicate weight 35,,
-887,FINALWT36,Num,8,,Final replicate weight 36,,
-888,FINALWT37,Num,8,,Final replicate weight 37,,
-889,FINALWT38,Num,8,,Final replicate weight 38,,
-890,FINALWT39,Num,8,,Final replicate weight 39,,
-891,FINALWT40,Num,8,,Final replicate weight 40,,
-892,FINALWT41,Num,8,,Final replicate weight 41,,
-893,FINALWT42,Num,8,,Final replicate weight 42,,
-894,FINALWT43,Num,8,,Final replicate weight 43,,
-895,FINALWT44,Num,8,,Final replicate weight 44,,
-896,FINALWT45,Num,8,,Final replicate weight 45,,
-897,FINALWT46,Num,8,,Final replicate weight 46,,
-898,FINALWT47,Num,8,,Final replicate weight 47,,
-899,FINALWT48,Num,8,,Final replicate weight 48,,
-900,FINALWT49,Num,8,,Final replicate weight 49,,
-901,FINALWT50,Num,8,,Final replicate weight 50,,
-902,FINALWT51,Num,8,,Final replicate weight 51,,
-903,FINALWT52,Num,8,,Final replicate weight 52,,
-904,FINALWT53,Num,8,,Final replicate weight 53,,
-905,FINALWT54,Num,8,,Final replicate weight 54,,
-906,FINALWT55,Num,8,,Final replicate weight 55,,
-907,FINALWT56,Num,8,,Final replicate weight 56,,
-908,FINALWT57,Num,8,,Final replicate weight 57,,
-909,FINALWT58,Num,8,,Final replicate weight 58,,
-910,FINALWT59,Num,8,,Final replicate weight 59,,
-911,FINALWT60,Num,8,,Final replicate weight 60,,
-912,FINALWT61,Num,8,,Final replicate weight 61,,
-913,FINALWT62,Num,8,,Final replicate weight 62,,
-914,FINALWT63,Num,8,,Final replicate weight 63,,
-915,FINALWT64,Num,8,,Final replicate weight 64,,
-916,FINALWT65,Num,8,,Final replicate weight 65,,
-917,FINALWT66,Num,8,,Final replicate weight 66,,
-918,FINALWT67,Num,8,,Final replicate weight 67,,
-919,FINALWT68,Num,8,,Final replicate weight 68,,
-920,FINALWT69,Num,8,,Final replicate weight 69,,
-921,FINALWT70,Num,8,,Final replicate weight 70,,
-922,FINALWT71,Num,8,,Final replicate weight 71,,
-923,FINALWT72,Num,8,,Final replicate weight 72,,
-924,FINALWT73,Num,8,,Final replicate weight 73,,
-925,FINALWT74,Num,8,,Final replicate weight 74,,
-926,FINALWT75,Num,8,,Final replicate weight 75,,
-927,FINALWT76,Num,8,,Final replicate weight 76,,
-928,FINALWT77,Num,8,,Final replicate weight 77,,
-929,FINALWT78,Num,8,,Final replicate weight 78,,
-930,FINALWT79,Num,8,,Final replicate weight 79,,
-931,FINALWT80,Num,8,,Final replicate weight 80,,
-932,FINALWT81,Num,8,,Final replicate weight 81,,
-933,FINALWT82,Num,8,,Final replicate weight 82,,
-934,FINALWT83,Num,8,,Final replicate weight 83,,
-935,FINALWT84,Num,8,,Final replicate weight 84,,
-936,FINALWT85,Num,8,,Final replicate weight 85,,
-937,FINALWT86,Num,8,,Final replicate weight 86,,
-938,FINALWT87,Num,8,,Final replicate weight 87,,
-939,FINALWT88,Num,8,,Final replicate weight 88,,
-940,FINALWT89,Num,8,,Final replicate weight 89,,
-941,FINALWT90,Num,8,,Final replicate weight 90,,
-942,FINALWT91,Num,8,,Final replicate weight 91,,
-943,FINALWT92,Num,8,,Final replicate weight 92,,
-944,FINALWT93,Num,8,,Final replicate weight 93,,
-945,FINALWT94,Num,8,,Final replicate weight 94,,
-946,FINALWT95,Num,8,,Final replicate weight 95,,
-947,FINALWT96,Num,8,,Final replicate weight 96,,
-948,FINALWT97,Num,8,,Final replicate weight 97,,
-949,FINALWT98,Num,8,,Final replicate weight 98,,
-950,FINALWT99,Num,8,,Final replicate weight 99,,
-951,FINALWT100,Num,8,,Final replicate weight 100,,
-952,FINALWT101,Num,8,,Final replicate weight 101,,
-953,FINALWT102,Num,8,,Final replicate weight 102,,
-954,FINALWT103,Num,8,,Final replicate weight 103,,
-955,FINALWT104,Num,8,,Final replicate weight 104,,
-956,FINALWT105,Num,8,,Final replicate weight 105,,
-957,FINALWT106,Num,8,,Final replicate weight 106,,
-958,FINALWT107,Num,8,,Final replicate weight 107,,
-959,FINALWT108,Num,8,,Final replicate weight 108,,
-960,FINALWT109,Num,8,,Final replicate weight 109,,
-961,FINALWT110,Num,8,,Final replicate weight 110,,
-962,FINALWT111,Num,8,,Final replicate weight 111,,
-963,FINALWT112,Num,8,,Final replicate weight 112,,
-964,FINALWT113,Num,8,,Final replicate weight 113,,
-965,FINALWT114,Num,8,,Final replicate weight 114,,
-966,FINALWT115,Num,8,,Final replicate weight 115,,
-967,FINALWT116,Num,8,,Final replicate weight 116,,
-968,FINALWT117,Num,8,,Final replicate weight 117,,
-969,FINALWT118,Num,8,,Final replicate weight 118,,
-970,FINALWT119,Num,8,,Final replicate weight 119,,
-971,FINALWT120,Num,8,,Final replicate weight 120,,
-972,FINALWT121,Num,8,,Final replicate weight 121,,
-973,FINALWT122,Num,8,,Final replicate weight 122,,
-974,FINALWT123,Num,8,,Final replicate weight 123,,
-975,FINALWT124,Num,8,,Final replicate weight 124,,
-976,FINALWT125,Num,8,,Final replicate weight 125,,
-977,FINALWT126,Num,8,,Final replicate weight 126,,
-978,FINALWT127,Num,8,,Final replicate weight 127,,
-979,FINALWT128,Num,8,,Final replicate weight 128,,
-980,FINALWT129,Num,8,,Final replicate weight 129,,
-981,FINALWT130,Num,8,,Final replicate weight 130,,
-982,FINALWT131,Num,8,,Final replicate weight 131,,
-983,FINALWT132,Num,8,,Final replicate weight 132,,
-984,FINALWT133,Num,8,,Final replicate weight 133,,
-985,FINALWT134,Num,8,,Final replicate weight 134,,
-986,FINALWT135,Num,8,,Final replicate weight 135,,
-987,FINALWT136,Num,8,,Final replicate weight 136,,
-988,FINALWT137,Num,8,,Final replicate weight 137,,
-989,FINALWT138,Num,8,,Final replicate weight 138,,
-990,FINALWT139,Num,8,,Final replicate weight 139,,
-991,FINALWT140,Num,8,,Final replicate weight 140,,
-992,FINALWT141,Num,8,,Final replicate weight 141,,
-993,FINALWT142,Num,8,,Final replicate weight 142,,
-994,FINALWT143,Num,8,,Final replicate weight 143,,
-995,FINALWT144,Num,8,,Final replicate weight 144,,
-996,FINALWT145,Num,8,,Final replicate weight 145,,
-997,FINALWT146,Num,8,,Final replicate weight 146,,
-998,FINALWT147,Num,8,,Final replicate weight 147,,
-999,FINALWT148,Num,8,,Final replicate weight 148,,
-1000,FINALWT149,Num,8,,Final replicate weight 149,,
-1001,FINALWT150,Num,8,,Final replicate weight 150,,
-1002,FINALWT151,Num,8,,Final replicate weight 151,,
-1003,FINALWT152,Num,8,,Final replicate weight 152,,
-1004,FINALWT153,Num,8,,Final replicate weight 153,,
-1005,FINALWT154,Num,8,,Final replicate weight 154,,
-1006,FINALWT155,Num,8,,Final replicate weight 155,,
-1007,FINALWT156,Num,8,,Final replicate weight 156,,
-1008,FINALWT157,Num,8,,Final replicate weight 157,,
-1009,FINALWT158,Num,8,,Final replicate weight 158,,
-1010,FINALWT159,Num,8,,Final replicate weight 159,,
-1011,FINALWT160,Num,8,,Final replicate weight 160,,
-1012,FINALWT161,Num,8,,Final replicate weight 161,,
-1013,FINALWT162,Num,8,,Final replicate weight 162,,
-1014,FINALWT163,Num,8,,Final replicate weight 163,,
-1015,FINALWT164,Num,8,,Final replicate weight 164,,
-1016,FINALWT165,Num,8,,Final replicate weight 165,,
-1017,FINALWT166,Num,8,,Final replicate weight 166,,
-1018,FINALWT167,Num,8,,Final replicate weight 167,,
-1019,FINALWT168,Num,8,,Final replicate weight 168,,
-1020,FINALWT169,Num,8,,Final replicate weight 169,,
-1021,FINALWT170,Num,8,,Final replicate weight 170,,
-1022,FINALWT171,Num,8,,Final replicate weight 171,,
-1023,FINALWT172,Num,8,,Final replicate weight 172,,
-1024,FINALWT173,Num,8,,Final replicate weight 173,,
-1025,FINALWT174,Num,8,,Final replicate weight 174,,
-1026,FINALWT175,Num,8,,Final replicate weight 175,,
-1027,FINALWT176,Num,8,,Final replicate weight 176,,
-1028,FINALWT177,Num,8,,Final replicate weight 177,,
-1029,FINALWT178,Num,8,,Final replicate weight 178,,
-1030,FINALWT179,Num,8,,Final replicate weight 179,,
-1031,FINALWT180,Num,8,,Final replicate weight 180,,
-1032,FINALWT181,Num,8,,Final replicate weight 181,,
-1033,FINALWT182,Num,8,,Final replicate weight 182,,
-1034,FINALWT183,Num,8,,Final replicate weight 183,,
-1035,FINALWT184,Num,8,,Final replicate weight 184,,
-1036,FINALWT185,Num,8,,Final replicate weight 185,,
-1037,FINALWT186,Num,8,,Final replicate weight 186,,
-1038,FINALWT187,Num,8,,Final replicate weight 187,,
-1039,FINALWT188,Num,8,,Final replicate weight 188,,
-1040,FINALWT189,Num,8,,Final replicate weight 189,,
-1041,FINALWT190,Num,8,,Final replicate weight 190,,
-1042,FINALWT191,Num,8,,Final replicate weight 191,,
-1043,FINALWT192,Num,8,,Final replicate weight 192,,
-1044,FINALWT193,Num,8,,Final replicate weight 193,,
-1045,FINALWT194,Num,8,,Final replicate weight 194,,
-1046,FINALWT195,Num,8,,Final replicate weight 195,,
-1047,FINALWT196,Num,8,,Final replicate weight 196,,
-1048,FINALWT197,Num,8,,Final replicate weight 197,,
-1049,HDD65,Num,8,,Heating degree days (base 65),,
-1050,CDD65,Num,8,,Cooling degree days (base 65),,
+'9' = 'Inapplicable'"
+851,FINALWT,Num,8,,Final full sample building weight,
+852,FINALWT1,Num,8,,Final replicate weight 1,
+853,FINALWT2,Num,8,,Final replicate weight 2,
+854,FINALWT3,Num,8,,Final replicate weight 3,
+855,FINALWT4,Num,8,,Final replicate weight 4,
+856,FINALWT5,Num,8,,Final replicate weight 5,
+857,FINALWT6,Num,8,,Final replicate weight 6,
+858,FINALWT7,Num,8,,Final replicate weight 7,
+859,FINALWT8,Num,8,,Final replicate weight 8,
+860,FINALWT9,Num,8,,Final replicate weight 9,
+861,FINALWT10,Num,8,,Final replicate weight 10,
+862,FINALWT11,Num,8,,Final replicate weight 11,
+863,FINALWT12,Num,8,,Final replicate weight 12,
+864,FINALWT13,Num,8,,Final replicate weight 13,
+865,FINALWT14,Num,8,,Final replicate weight 14,
+866,FINALWT15,Num,8,,Final replicate weight 15,
+867,FINALWT16,Num,8,,Final replicate weight 16,
+868,FINALWT17,Num,8,,Final replicate weight 17,
+869,FINALWT18,Num,8,,Final replicate weight 18,
+870,FINALWT19,Num,8,,Final replicate weight 19,
+871,FINALWT20,Num,8,,Final replicate weight 20,
+872,FINALWT21,Num,8,,Final replicate weight 21,
+873,FINALWT22,Num,8,,Final replicate weight 22,
+874,FINALWT23,Num,8,,Final replicate weight 23,
+875,FINALWT24,Num,8,,Final replicate weight 24,
+876,FINALWT25,Num,8,,Final replicate weight 25,
+877,FINALWT26,Num,8,,Final replicate weight 26,
+878,FINALWT27,Num,8,,Final replicate weight 27,
+879,FINALWT28,Num,8,,Final replicate weight 28,
+880,FINALWT29,Num,8,,Final replicate weight 29,
+881,FINALWT30,Num,8,,Final replicate weight 30,
+882,FINALWT31,Num,8,,Final replicate weight 31,
+883,FINALWT32,Num,8,,Final replicate weight 32,
+884,FINALWT33,Num,8,,Final replicate weight 33,
+885,FINALWT34,Num,8,,Final replicate weight 34,
+886,FINALWT35,Num,8,,Final replicate weight 35,
+887,FINALWT36,Num,8,,Final replicate weight 36,
+888,FINALWT37,Num,8,,Final replicate weight 37,
+889,FINALWT38,Num,8,,Final replicate weight 38,
+890,FINALWT39,Num,8,,Final replicate weight 39,
+891,FINALWT40,Num,8,,Final replicate weight 40,
+892,FINALWT41,Num,8,,Final replicate weight 41,
+893,FINALWT42,Num,8,,Final replicate weight 42,
+894,FINALWT43,Num,8,,Final replicate weight 43,
+895,FINALWT44,Num,8,,Final replicate weight 44,
+896,FINALWT45,Num,8,,Final replicate weight 45,
+897,FINALWT46,Num,8,,Final replicate weight 46,
+898,FINALWT47,Num,8,,Final replicate weight 47,
+899,FINALWT48,Num,8,,Final replicate weight 48,
+900,FINALWT49,Num,8,,Final replicate weight 49,
+901,FINALWT50,Num,8,,Final replicate weight 50,
+902,FINALWT51,Num,8,,Final replicate weight 51,
+903,FINALWT52,Num,8,,Final replicate weight 52,
+904,FINALWT53,Num,8,,Final replicate weight 53,
+905,FINALWT54,Num,8,,Final replicate weight 54,
+906,FINALWT55,Num,8,,Final replicate weight 55,
+907,FINALWT56,Num,8,,Final replicate weight 56,
+908,FINALWT57,Num,8,,Final replicate weight 57,
+909,FINALWT58,Num,8,,Final replicate weight 58,
+910,FINALWT59,Num,8,,Final replicate weight 59,
+911,FINALWT60,Num,8,,Final replicate weight 60,
+912,FINALWT61,Num,8,,Final replicate weight 61,
+913,FINALWT62,Num,8,,Final replicate weight 62,
+914,FINALWT63,Num,8,,Final replicate weight 63,
+915,FINALWT64,Num,8,,Final replicate weight 64,
+916,FINALWT65,Num,8,,Final replicate weight 65,
+917,FINALWT66,Num,8,,Final replicate weight 66,
+918,FINALWT67,Num,8,,Final replicate weight 67,
+919,FINALWT68,Num,8,,Final replicate weight 68,
+920,FINALWT69,Num,8,,Final replicate weight 69,
+921,FINALWT70,Num,8,,Final replicate weight 70,
+922,FINALWT71,Num,8,,Final replicate weight 71,
+923,FINALWT72,Num,8,,Final replicate weight 72,
+924,FINALWT73,Num,8,,Final replicate weight 73,
+925,FINALWT74,Num,8,,Final replicate weight 74,
+926,FINALWT75,Num,8,,Final replicate weight 75,
+927,FINALWT76,Num,8,,Final replicate weight 76,
+928,FINALWT77,Num,8,,Final replicate weight 77,
+929,FINALWT78,Num,8,,Final replicate weight 78,
+930,FINALWT79,Num,8,,Final replicate weight 79,
+931,FINALWT80,Num,8,,Final replicate weight 80,
+932,FINALWT81,Num,8,,Final replicate weight 81,
+933,FINALWT82,Num,8,,Final replicate weight 82,
+934,FINALWT83,Num,8,,Final replicate weight 83,
+935,FINALWT84,Num,8,,Final replicate weight 84,
+936,FINALWT85,Num,8,,Final replicate weight 85,
+937,FINALWT86,Num,8,,Final replicate weight 86,
+938,FINALWT87,Num,8,,Final replicate weight 87,
+939,FINALWT88,Num,8,,Final replicate weight 88,
+940,FINALWT89,Num,8,,Final replicate weight 89,
+941,FINALWT90,Num,8,,Final replicate weight 90,
+942,FINALWT91,Num,8,,Final replicate weight 91,
+943,FINALWT92,Num,8,,Final replicate weight 92,
+944,FINALWT93,Num,8,,Final replicate weight 93,
+945,FINALWT94,Num,8,,Final replicate weight 94,
+946,FINALWT95,Num,8,,Final replicate weight 95,
+947,FINALWT96,Num,8,,Final replicate weight 96,
+948,FINALWT97,Num,8,,Final replicate weight 97,
+949,FINALWT98,Num,8,,Final replicate weight 98,
+950,FINALWT99,Num,8,,Final replicate weight 99,
+951,FINALWT100,Num,8,,Final replicate weight 100,
+952,FINALWT101,Num,8,,Final replicate weight 101,
+953,FINALWT102,Num,8,,Final replicate weight 102,
+954,FINALWT103,Num,8,,Final replicate weight 103,
+955,FINALWT104,Num,8,,Final replicate weight 104,
+956,FINALWT105,Num,8,,Final replicate weight 105,
+957,FINALWT106,Num,8,,Final replicate weight 106,
+958,FINALWT107,Num,8,,Final replicate weight 107,
+959,FINALWT108,Num,8,,Final replicate weight 108,
+960,FINALWT109,Num,8,,Final replicate weight 109,
+961,FINALWT110,Num,8,,Final replicate weight 110,
+962,FINALWT111,Num,8,,Final replicate weight 111,
+963,FINALWT112,Num,8,,Final replicate weight 112,
+964,FINALWT113,Num,8,,Final replicate weight 113,
+965,FINALWT114,Num,8,,Final replicate weight 114,
+966,FINALWT115,Num,8,,Final replicate weight 115,
+967,FINALWT116,Num,8,,Final replicate weight 116,
+968,FINALWT117,Num,8,,Final replicate weight 117,
+969,FINALWT118,Num,8,,Final replicate weight 118,
+970,FINALWT119,Num,8,,Final replicate weight 119,
+971,FINALWT120,Num,8,,Final replicate weight 120,
+972,FINALWT121,Num,8,,Final replicate weight 121,
+973,FINALWT122,Num,8,,Final replicate weight 122,
+974,FINALWT123,Num,8,,Final replicate weight 123,
+975,FINALWT124,Num,8,,Final replicate weight 124,
+976,FINALWT125,Num,8,,Final replicate weight 125,
+977,FINALWT126,Num,8,,Final replicate weight 126,
+978,FINALWT127,Num,8,,Final replicate weight 127,
+979,FINALWT128,Num,8,,Final replicate weight 128,
+980,FINALWT129,Num,8,,Final replicate weight 129,
+981,FINALWT130,Num,8,,Final replicate weight 130,
+982,FINALWT131,Num,8,,Final replicate weight 131,
+983,FINALWT132,Num,8,,Final replicate weight 132,
+984,FINALWT133,Num,8,,Final replicate weight 133,
+985,FINALWT134,Num,8,,Final replicate weight 134,
+986,FINALWT135,Num,8,,Final replicate weight 135,
+987,FINALWT136,Num,8,,Final replicate weight 136,
+988,FINALWT137,Num,8,,Final replicate weight 137,
+989,FINALWT138,Num,8,,Final replicate weight 138,
+990,FINALWT139,Num,8,,Final replicate weight 139,
+991,FINALWT140,Num,8,,Final replicate weight 140,
+992,FINALWT141,Num,8,,Final replicate weight 141,
+993,FINALWT142,Num,8,,Final replicate weight 142,
+994,FINALWT143,Num,8,,Final replicate weight 143,
+995,FINALWT144,Num,8,,Final replicate weight 144,
+996,FINALWT145,Num,8,,Final replicate weight 145,
+997,FINALWT146,Num,8,,Final replicate weight 146,
+998,FINALWT147,Num,8,,Final replicate weight 147,
+999,FINALWT148,Num,8,,Final replicate weight 148,
+1000,FINALWT149,Num,8,,Final replicate weight 149,
+1001,FINALWT150,Num,8,,Final replicate weight 150,
+1002,FINALWT151,Num,8,,Final replicate weight 151,
+1003,FINALWT152,Num,8,,Final replicate weight 152,
+1004,FINALWT153,Num,8,,Final replicate weight 153,
+1005,FINALWT154,Num,8,,Final replicate weight 154,
+1006,FINALWT155,Num,8,,Final replicate weight 155,
+1007,FINALWT156,Num,8,,Final replicate weight 156,
+1008,FINALWT157,Num,8,,Final replicate weight 157,
+1009,FINALWT158,Num,8,,Final replicate weight 158,
+1010,FINALWT159,Num,8,,Final replicate weight 159,
+1011,FINALWT160,Num,8,,Final replicate weight 160,
+1012,FINALWT161,Num,8,,Final replicate weight 161,
+1013,FINALWT162,Num,8,,Final replicate weight 162,
+1014,FINALWT163,Num,8,,Final replicate weight 163,
+1015,FINALWT164,Num,8,,Final replicate weight 164,
+1016,FINALWT165,Num,8,,Final replicate weight 165,
+1017,FINALWT166,Num,8,,Final replicate weight 166,
+1018,FINALWT167,Num,8,,Final replicate weight 167,
+1019,FINALWT168,Num,8,,Final replicate weight 168,
+1020,FINALWT169,Num,8,,Final replicate weight 169,
+1021,FINALWT170,Num,8,,Final replicate weight 170,
+1022,FINALWT171,Num,8,,Final replicate weight 171,
+1023,FINALWT172,Num,8,,Final replicate weight 172,
+1024,FINALWT173,Num,8,,Final replicate weight 173,
+1025,FINALWT174,Num,8,,Final replicate weight 174,
+1026,FINALWT175,Num,8,,Final replicate weight 175,
+1027,FINALWT176,Num,8,,Final replicate weight 176,
+1028,FINALWT177,Num,8,,Final replicate weight 177,
+1029,FINALWT178,Num,8,,Final replicate weight 178,
+1030,FINALWT179,Num,8,,Final replicate weight 179,
+1031,FINALWT180,Num,8,,Final replicate weight 180,
+1032,FINALWT181,Num,8,,Final replicate weight 181,
+1033,FINALWT182,Num,8,,Final replicate weight 182,
+1034,FINALWT183,Num,8,,Final replicate weight 183,
+1035,FINALWT184,Num,8,,Final replicate weight 184,
+1036,FINALWT185,Num,8,,Final replicate weight 185,
+1037,FINALWT186,Num,8,,Final replicate weight 186,
+1038,FINALWT187,Num,8,,Final replicate weight 187,
+1039,FINALWT188,Num,8,,Final replicate weight 188,
+1040,FINALWT189,Num,8,,Final replicate weight 189,
+1041,FINALWT190,Num,8,,Final replicate weight 190,
+1042,FINALWT191,Num,8,,Final replicate weight 191,
+1043,FINALWT192,Num,8,,Final replicate weight 192,
+1044,FINALWT193,Num,8,,Final replicate weight 193,
+1045,FINALWT194,Num,8,,Final replicate weight 194,
+1046,FINALWT195,Num,8,,Final replicate weight 195,
+1047,FINALWT196,Num,8,,Final replicate weight 196,
+1048,FINALWT197,Num,8,,Final replicate weight 197,
+1049,HDD65,Num,8,,Heating degree days (base 65),
+1050,CDD65,Num,8,,Cooling degree days (base 65),
 1051,MFUSED,Char,1,$YESNO.,Any major fuel used,"'1' = 'Yes'
 '2' = 'No'
-Missing = Not applicable",
-1052,MFBTU,Num,8,,Annual major fuel consumption (thous Btu),,
-1053,MFEXP,Num,8,,Annual major fuel expenditures ($),,
-1054,ELCNS,Num,8,,Annual electricity consumption (kWh),,
-1055,ELBTU,Num,8,,Annual electricity consumption (thous Btu),,
-1056,ELEXP,Num,8,,Annual electricity expenditures ($),,
-1057,NGCNS,Num,8,,Annual natural gas consumption (ccf),,
-1058,NGBTU,Num,8,,Annual natural gas consumption (thous Btu),,
-1059,NGEXP,Num,8,,Annual natural gas expenditures ($),,
-1060,FKCNS,Num,8,,Annual fuel oil consumption (gallons),,
-1061,FKBTU,Num,8,,Annual fuel oil consumption (thous Btu),,
-1062,FKEXP,Num,8,,Annual fuel oil expenditures ($),,
+Missing = Not applicable"
+1052,MFBTU,Num,8,,Annual major fuel consumption (thous Btu),
+1053,MFEXP,Num,8,,Annual major fuel expenditures ($),
+1054,ELCNS,Num,8,,Annual electricity consumption (kWh),
+1055,ELBTU,Num,8,,Annual electricity consumption (thous Btu),
+1056,ELEXP,Num,8,,Annual electricity expenditures ($),
+1057,NGCNS,Num,8,,Annual natural gas consumption (ccf),
+1058,NGBTU,Num,8,,Annual natural gas consumption (thous Btu),
+1059,NGEXP,Num,8,,Annual natural gas expenditures ($),
+1060,FKCNS,Num,8,,Annual fuel oil consumption (gallons),
+1061,FKBTU,Num,8,,Annual fuel oil consumption (thous Btu),
+1062,FKEXP,Num,8,,Annual fuel oil expenditures ($),
 1063,DHUSED,Char,1,$YESNO.,District heat (steam or hot water) used,"'1' = 'Yes'
 '2' = 'No'
-Missing = Not applicable",
+Missing = Not applicable"
 1064,DHHT1,Char,1,$YESNO.,District heat used for main heating,"'1' = 'Yes'
 '2' = 'No'
-Missing = Not applicable",
+Missing = Not applicable"
 1065,DHHT2,Char,1,$YESNO.,District heat used for secondary heating,"'1' = 'Yes'
 '2' = 'No'
-Missing = Not applicable",
+Missing = Not applicable"
 1066,DHCOOL,Char,1,$YESNO.,District heat used for cooling,"'1' = 'Yes'
 '2' = 'No'
-Missing = Not applicable",
+Missing = Not applicable"
 1067,DHCOOK,Char,1,$YESNO.,District heat used for cooking,"'1' = 'Yes'
 '2' = 'No'
-Missing = Not applicable",
+Missing = Not applicable"
 1068,DHWATR,Char,1,$YESNO.,District heat used for water heating,"'1' = 'Yes'
 '2' = 'No'
-Missing = Not applicable",
+Missing = Not applicable"
 1069,DHMANU,Char,1,$YESNO.,District heat used for manufacturing,"'1' = 'Yes'
 '2' = 'No'
-Missing = Not applicable",
+Missing = Not applicable"
 1070,DHOTH,Char,1,$YESNO.,District heat used for some other use,"'1' = 'Yes'
 '2' = 'No'
-Missing = Not applicable",
-1071,DHCNS,Num,8,,Annual district heat consumption (thous lbs),,
-1072,DHBTU,Num,8,,Annual district heat consumption (thous Btu),,
-1073,DHEXP,Num,8,,Annual district heat expenditures ($),,
+Missing = Not applicable"
+1071,DHCNS,Num,8,,Annual district heat consumption (thous lbs),
+1072,DHBTU,Num,8,,Annual district heat consumption (thous Btu),
+1073,DHEXP,Num,8,,Annual district heat expenditures ($),
 1074,ZMFBTU,Char,1,$ZVARCE.,Imputed major fuels consumption,"'0' = 'Reported'
 '1' = 'Estimated for strip center'
 '2' = 'Imputed'
 '3' = 'Estimated using price'
-'9' = 'Inapplicable'",
+'9' = 'Inapplicable'"
 1075,ZMFEXP,Char,1,$ZVARCE.,Imputed major fuels expenditures,"'0' = 'Reported'
 '1' = 'Estimated for strip center'
 '2' = 'Imputed'
 '3' = 'Estimated using price'
-'9' = 'Inapplicable'",
+'9' = 'Inapplicable'"
 1076,ZELCNS,Char,1,$ZVARCE.,Imputed electricity consumption,"'0' = 'Reported'
 '1' = 'Estimated for strip center'
 '2' = 'Imputed'
 '3' = 'Estimated using price'
-'9' = 'Inapplicable'",
+'9' = 'Inapplicable'"
 1077,ZELEXP,Char,1,$ZVARCE.,Imputed electricity expenditures,"'0' = 'Reported'
 '1' = 'Estimated for strip center'
 '2' = 'Imputed'
 '3' = 'Estimated using price'
-'9' = 'Inapplicable'",
+'9' = 'Inapplicable'"
 1078,ZNGCNS,Char,1,$ZVARCE.,Imputed natural gas consumption,"'0' = 'Reported'
 '1' = 'Estimated for strip center'
 '2' = 'Imputed'
 '3' = 'Estimated using price'
-'9' = 'Inapplicable'",
+'9' = 'Inapplicable'"
 1079,ZNGEXP,Char,1,$ZVARCE.,Imputed natural gas expenditures,"'0' = 'Reported'
 '1' = 'Estimated for strip center'
 '2' = 'Imputed'
 '3' = 'Estimated using price'
-'9' = 'Inapplicable'",
+'9' = 'Inapplicable'"
 1080,ZFKCNS,Char,1,$ZVARCE.,Imputed fuel oil consumption,"'0' = 'Reported'
 '1' = 'Estimated for strip center'
 '2' = 'Imputed'
 '3' = 'Estimated using price'
-'9' = 'Inapplicable'",
+'9' = 'Inapplicable'"
 1081,ZFKEXP,Char,1,$ZVARCE.,Imputed fuel oil expenditures,"'0' = 'Reported'
 '1' = 'Estimated for strip center'
 '2' = 'Imputed'
 '3' = 'Estimated using price'
-'9' = 'Inapplicable'",
+'9' = 'Inapplicable'"
 1082,ZDHCNS,Char,1,$ZVARCE.,Imputed district heat consumption,"'0' = 'Reported'
 '1' = 'Estimated for strip center'
 '2' = 'Imputed'
 '3' = 'Estimated using price'
-'9' = 'Inapplicable'",
+'9' = 'Inapplicable'"
 1083,ZDHEXP,Char,1,$ZVARCE.,Imputed district heat expenditures,"'0' = 'Reported'
 '1' = 'Estimated for strip center'
 '2' = 'Imputed'
 '3' = 'Estimated using price'
-'9' = 'Inapplicable'",
-1084,MFHTBTU,Num,8,,Major fuel heating use (thous Btu),,
-1085,MFCLBTU,Num,8,,Major fuel cooling use (thous Btu),,
-1086,MFVNBTU,Num,8,,Major fuel ventilation use (thous Btu),,
-1087,MFWTBTU,Num,8,,Major fuel water heating use (thous Btu),,
-1088,MFLTBTU,Num,8,,Major fuel lighting use (thous Btu),,
-1089,MFCKBTU,Num,8,,Major fuel cooking use (thous Btu),,
-1090,MFRFBTU,Num,8,,Major fuel refrigeration use (thous Btu),,
-1091,MFOFBTU,Num,8,,Major fuel office equipment use (thous Btu),,
-1092,MFPCBTU,Num,8,,Major fuel computing use (thous Btu),,
-1093,MFOTBTU,Num,8,,Major fuel miscellaneous use (thous Btu),,
-1094,ELHTBTU,Num,8,,Electricity heating use (thous Btu),,
-1095,ELCLBTU,Num,8,,Electricity cooling use (thous Btu),,
-1096,ELVNBTU,Num,8,,Electricity ventilation use (thous Btu),,
-1097,ELWTBTU,Num,8,,Electricity water heating use (thous Btu),,
-1098,ELLTBTU,Num,8,,Electricity lighting use (thous Btu),,
-1099,ELCKBTU,Num,8,,Electricity cooking use (thous Btu),,
-1100,ELRFBTU,Num,8,,Electricity refrigeration use (thous Btu),,
-1101,ELOFBTU,Num,8,,Electricity office equipment use (thous Btu),,
-1102,ELPCBTU,Num,8,,Electricity computing use (thous Btu),,
-1103,ELOTBTU,Num,8,,Electricity miscellaneous use (thous Btu),,
-1104,NGHTBTU,Num,8,,Natural gas heating use (thous Btu),,
-1105,NGCLBTU,Num,8,,Natural gas cooling use (thous Btu),,
-1106,NGWTBTU,Num,8,,Natural gas water heating use (thous Btu),,
-1107,NGCKBTU,Num,8,,Natural gas cooking use (thous Btu),,
-1108,NGOTBTU,Num,8,,Natural gas miscellaneous use (thous Btu),,
-1109,FKHTBTU,Num,8,,Fuel oil heating use (thous Btu),,
-1110,FKCLBTU,Num,8,,Fuel oil cooling use (thous Btu),,
-1111,FKWTBTU,Num,8,,Fuel oil water heating use (thous Btu),,
-1112,FKCKBTU,Num,8,,Fuel oil cooking use (thous Btu),,
-1113,FKOTBTU,Num,8,,Fuel oil miscellaneous use (thous Btu),,
-1114,DHHTBTU,Num,8,,District heat heating use (thous Btu),,
-1115,DHCLBTU,Num,8,,District heat cooling use (thous Btu),,
-1116,DHWTBTU,Num,8,,District heat water heating use (thous Btu),,
-1117,DHCKBTU,Num,8,,District heat cooking use (thous Btu),,
-1118,DHOTBTU,Num,8,,District heat miscellaneous use (thous Btu),,
+'9' = 'Inapplicable'"
+1084,MFHTBTU,Num,8,,Major fuel heating use (thous Btu),
+1085,MFCLBTU,Num,8,,Major fuel cooling use (thous Btu),
+1086,MFVNBTU,Num,8,,Major fuel ventilation use (thous Btu),
+1087,MFWTBTU,Num,8,,Major fuel water heating use (thous Btu),
+1088,MFLTBTU,Num,8,,Major fuel lighting use (thous Btu),
+1089,MFCKBTU,Num,8,,Major fuel cooking use (thous Btu),
+1090,MFRFBTU,Num,8,,Major fuel refrigeration use (thous Btu),
+1091,MFOFBTU,Num,8,,Major fuel office equipment use (thous Btu),
+1092,MFPCBTU,Num,8,,Major fuel computing use (thous Btu),
+1093,MFOTBTU,Num,8,,Major fuel miscellaneous use (thous Btu),
+1094,ELHTBTU,Num,8,,Electricity heating use (thous Btu),
+1095,ELCLBTU,Num,8,,Electricity cooling use (thous Btu),
+1096,ELVNBTU,Num,8,,Electricity ventilation use (thous Btu),
+1097,ELWTBTU,Num,8,,Electricity water heating use (thous Btu),
+1098,ELLTBTU,Num,8,,Electricity lighting use (thous Btu),
+1099,ELCKBTU,Num,8,,Electricity cooking use (thous Btu),
+1100,ELRFBTU,Num,8,,Electricity refrigeration use (thous Btu),
+1101,ELOFBTU,Num,8,,Electricity office equipment use (thous Btu),
+1102,ELPCBTU,Num,8,,Electricity computing use (thous Btu),
+1103,ELOTBTU,Num,8,,Electricity miscellaneous use (thous Btu),
+1104,NGHTBTU,Num,8,,Natural gas heating use (thous Btu),
+1105,NGCLBTU,Num,8,,Natural gas cooling use (thous Btu),
+1106,NGWTBTU,Num,8,,Natural gas water heating use (thous Btu),
+1107,NGCKBTU,Num,8,,Natural gas cooking use (thous Btu),
+1108,NGOTBTU,Num,8,,Natural gas miscellaneous use (thous Btu),
+1109,FKHTBTU,Num,8,,Fuel oil heating use (thous Btu),
+1110,FKCLBTU,Num,8,,Fuel oil cooling use (thous Btu),
+1111,FKWTBTU,Num,8,,Fuel oil water heating use (thous Btu),
+1112,FKCKBTU,Num,8,,Fuel oil cooking use (thous Btu),
+1113,FKOTBTU,Num,8,,Fuel oil miscellaneous use (thous Btu),
+1114,DHHTBTU,Num,8,,District heat heating use (thous Btu),
+1115,DHCLBTU,Num,8,,District heat cooling use (thous Btu),
+1116,DHWTBTU,Num,8,,District heat water heating use (thous Btu),
+1117,DHCKBTU,Num,8,,District heat cooking use (thous Btu),
+1118,DHOTBTU,Num,8,,District heat miscellaneous use (thous Btu),
 1119,PUBCLIM,Char,1,$PUBCLIM.,Building America climate region,"1' = 'Very cold/Cold'
 '2 '= 'Mixed-humid'
 '3' = 'Hot-dry/Mixed-dry/Hot-humid'
 '5' = 'Marine'
-'7' = 'Withheld to protect confidentiality'",
+'7' = 'Withheld to protect confidentiality'"

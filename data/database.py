@@ -6,31 +6,96 @@ import numpy as np
 import csv
 import re
 import os
-from aibpd.data.preprocessing import PreprocessingCBECS, PreprocessingBEEMR, PreprocessingNYC
 from aibpd.__init__ import currentUrl
 from tkinter import filedialog
 from tkinter import Tk
+from aibpd.core.summary import raw_summary
 
 
 class Database():
 	"""docstring for Database"""
 	databaseList=['CBECS2012','BEEMR']
 	databasePath=currentUrl+'\\resources\\'
-	_datasetDF=None
-	#datasetDF=None
-	metadataDF=None
+	_dataDF=pd.DataFrame()
 
-	def __init__(self):
+	#a metadataDF contains the various description of the variables.
+	#categoricalFeaturelist
+	main_features=['buildingAreaCategory','buildingShape','censusRegion',
+				'climateZone','HDD65','HVACUpgrade','insulationUpgrade',
+				'MAINCL','MAINHT','numEmployeesCategory','numFloors',
+				'OWNTYPE', 'region','RENWLL','lightingUpgrade',
+				'roofConstruction','STUSED','OPEN24','wallConstruction' ,
+				'WINTYP','WKHRSC','WWR','yrConstructionCategory']
+	main_features_simpleimpute=['HVACUpgrade','insulationUpgrade','RENWLL',
+				'lightingUpgrade']
+	main_features_remove=['MAINCL','MAINHT']
+
+	main_feature_categorical=['buildingAreaCategory', 'buildingShape', 'censusRegion',
+				 'climateZone', 'HVACUpgrade', 'insulationUpgrade', 'MAINCL', 'MAINHT', 
+				 'numEmployeesCategory', 'openWeekend', 'OWNTYPE', 
+				 'region', 'RENWLL', 'lightingUpgrade', 'roofConstruction', 
+				 'STUSED', 'OPEN24', 'wallConstruction', 'WINTYP', 
+				 'WKHRSC', 'roofTilt', 'windowTilt', 'EQGLSS', 'reflectiveWindow', 
+				 'skylights', 'windowUpgrade', 'OWNOCC', 'energyPlan', 'oneActivity', 
+				 'FACIL', 'FKUSED', 'PRUSED', 'NGHT1', 'CLVCAV', 'CLVVAV', 'EMCS', 
+				 'HWRDHT', 'HWRDCL', 'ECN', 'ELWATR', 'FLUOR', 'CFLR', 'BULB', 
+				 'HALO', 'HID', 'LED', 'SCHED', 'OCSN', 'NOCC','LTOHRP', 'LTNHRP',
+				 'DAYLTP','principleActivity','yrConstructionCategory']
+
+	main_feature_numeric=['buildingArea','HDD65', 'HEATP', 'MONUSE', 'numFloors', 'WWR','yearOfConstruction']
+	'''
+	main_featuresCBECS_Categorical1=['CENDIV','WLCNS','RFCNS','RFCOOL','RFTILT',
+				'WINTYP','TINT','GLSSPC','EQGLSS','REFL','SKYLT','ATTIC',
+				'AWN','BLDSHP','RENWIN','RENRFF','RENWLL','RENHVC','RENELC',
+				'RENINS','OPEN24','OPENWE','OWNTYPE','OWNOCC','OWNOPR','ENRGYPLN',
+				'ONEACT','FACIL','FKUSED','PRUSED','STUSED','ELHT1','NGHT1','MAINHT',
+				'HTVCAV','HTVVAV','ELCOOL','NGCOOL','MAINCL','CLVCAV','CLVVAV',
+				'EMCS','HWRDHT','HWRDCL','ECN','MAINT','ELWATR','FLUOR','CFLR',
+				'BULB','HALO','HID','LED','SCHED','OCSN','RENLGT']
+	main_featuresCBECS_numeric1=['SQFT','NFLOOR','FLCEILHT','YRCON','NOCC','OCCUPYP',
+				'WKHRS','WKER','HEATP','COOLP','HDD65','CDD65','NPCTERM','NPCTERM',
+				'NLAPTP','NPRNTR','NCOPIER','LTOHRP','LTNHRP','DAYLTP']
+	main_featuresCBECS_Categorical=['buildingAreaCategory', 'buildingShape', 'censusRegion',
+				 'climateZone', 'HVACUpgrade', 'insulationUpgrade', 'MAINCL', 'MAINHT', 
+				 'numEmployeesCategory', 'openWeekend', 'OWNTYPE', 
+				 'region', 'RENWLL', 'lightingUpgrade', 'roofConstruction', 
+				 'STUSED', 'OPEN24', 'wallConstruction', 'WHOPPR', 'WINTYP', 
+				 'WKHRSC', 'roofTilt', 'windowTilt', 'EQGLSS', 'reflectiveWindow', 
+				 'skylights', 'windowUpgrade', 'OWNOCC', 'energyPlan', 'oneActivity', 
+				 'FACIL', 'FKUSED', 'PRUSED', 'NGHT1', 'CLVCAV', 'CLVVAV', 'EMCS', 
+				 'HWRDHT', 'HWRDCL', 'ECN', 'ELWATR', 'FLUOR', 'CFLR', 'BULB', 
+				 'HALO', 'HID', 'LED', 'SCHED', 'OCSN', 'NOCC','LTOHRP', 'LTNHRP', 'DAYLTP']
+	main_featuresCBECS_numeric=['HDD65', 'HEATP', 'MONUSE', 'numFloors', 'WWR',
+				'yearOfConstruction']
+	'''
+	
+	_matedataDF=None
+	def __init__(self,file_path=None, dataDF=pd.DataFrame()):
 		super(Database, self).__init__()
-		if not self._datasetDF:
+		if self._dataDF.empty:
 			print('Please select a database to continue the analysis')
-	@property
-	def datasetDF(self):
-		return self._datasetDF
+		if file_path:
+			self._dataDF=self.select(file_path)
+		if not dataDF.empty:
+			self._dataDF=dataDF
+		if not self._dataDF.empty:
+			raw_summary(self._dataDF,feature_list=self.main_features)
 
-	@datasetDF.setter
-	def datasetDF(self,value):
-		self._datasetDF=value
+	@property
+	def dataDF(self):
+		return self._dataDF
+
+	@dataDF.setter
+	def dataDF(self,value):
+		self._dataDF=value
+
+	@property
+	def metadataDF(self):
+		return self._matedataDF
+	@metadataDF.setter
+	def metadataDF(self,value):
+		self._matedataDF=value
+	
 
 	
 	def select_with_name(self,databaseName=None,metadata=False):
@@ -40,53 +105,56 @@ class Database():
 		Parameters:
 			databaseName, database name
 		'''
-		filePathList=os.listdir(self.databasePath)
-		for filePath in filePathList:
-			if re.search(databaseName,filePath):
-				self._datasetDF=self.loadDatabaseCBECS(self.databasePath+filePath)
-				print(filePath,'has been loaded.')
-		'''
-		if re.search(databaseName,'CBECS2012'):
-			print("Load CBECS2012 successfully")
-			self._datasetDF=self.loadDatabaseCBECS(self.databasePath+'CBECS2012.csv')
-		elif re.search(databaseName,'BEEMR'):
-			print("Load BEEMR successfully")
-			self._datasetDF=self.loadBEEM2DF(self.databasePath+'BEEMR.csv')
-		elif re.search(databaseName,'nyc_benchmarking_disclosure_data_reported_in_2017'):
-			self._datasetDF=self.loadNYC2DF(self.databasePath+'nyc_benchmarking_disclosure_data_reported_in_2017.csv')
-		else:
-			print("Error with find datbase.\n","Available databases include", self.databaseList)
-		'''
+		file_pathList=os.listdir(self.databasePath)
+		for file_path in file_pathList:
+			if re.search(databaseName,file_path):
+				self._dataDF=self.loadDatabaseCBECS(self.databasePath+file_path)
+				print(file_path,'has been loaded.')
 		if not metadata:
-			return self._datasetDF
+			return self._dataDF
 		else:
-			return self._datasetDF,self.metadataDF
+			return self._dataDF,self.metadataDF
 
-	def select(self,datasetFileName=None):
+	def select(self, fileName=None, metadata=None):
 		"""select a database with a dialog
-
+		
+		Parameters:
+		----------
+		fileName, a file that contains the data.
+		metadata, whether to select a metadata file.
 		Return:
 		----------
-		datasetDF, a DataFrame object.
 
 		Example:
 		----------
-		After processing the datasetDF, you can also feedback this datasetDF 
+		After processing the dataDF, you can also feedback this dataDF 
 			to the Database object using this code:
-			db1.datasetDF=datasetDF
+			db1.dataDF=dataDF
 		"""
-		if not datasetFileName:
+		if not fileName:
 			Tk().withdraw()
-			filePath=filedialog.askopenfilename()
+			file_path=filedialog.askopenfilename()
 			#check whether it is a csv file.
-			if re.search('\.csv',filePath):
-				self._datasetDF=self.loadDatabaseCBECS(filePath)
-				print('Dataset in',filePath,'has been loaded!')
+			if re.search('\.csv',file_path):
+				self._dataDF=self.loadDatabaseCBECS(file_path)
+				print('Dataset in',file_path,'has been loaded!')
 			else:
 				print('Please select a valid file. Accepted file format: csv')
-			return self._datasetDF
 		else:
-			self.select_with_name(databaseName=datasetFileName)
+			self.select_with_name(databaseName=fileName)
+
+		if metadata:
+			Tk().withdraw()
+			metaFilePath=filedialog.askopenfilename()
+			if re.search('\.csv'.metaFilePath):
+				self._matedataDF = pd.read_csv(metaFilePath)
+				print('The metadata file have been loaded in', metaFilePath)
+			else:
+				print('Please select a valid file.')
+		return self._dataDF
+
+
+
 
 	def loadNYC2DF(self,path):
 		'''
@@ -118,10 +186,10 @@ class Database():
 		'''
 		dataDF=None
 		try:
-			dataDF=pd.read_csv(databaseName,header=0)
+			dataDF=pd.read_csv(databaseName,header=0,encoding = "ISO-8859-1")
 		except Exception as e:
-			raise e
-		dataDF=dataDF.fillna(0)
+			print(e)	
+		
 		return dataDF
 
 	def loadBEEMR2DF(self):
@@ -164,7 +232,7 @@ class Database():
 		'''
 		pass
 	def save(self,name='MyDatabase', format='csv'):
-		"""save the datasetDF into a new database in various format (default csv)
+		"""save the dataDF into a new database in various format (default csv)
 
 		Parameters:
 		----------
@@ -174,15 +242,15 @@ class Database():
 		Return:
 		----------
 		"""
-		filePath=filedialog.askdirectory()
-		filePath+='/'
-		filePath+=name
-		filePath+='.csv'
-		if not self._datasetDF.empty:
-			self._datasetDF.to_csv(path_or_buf=filePath)
-			print('datasetDF has been saved to',filePath)
+		file_path=filedialog.askdirectory()
+		file_path+='/'
+		file_path+=name
+		file_path+='.csv'
+		if not self._dataDF.empty:
+			self._dataDF.to_csv(path_or_buf=file_path)
+			print('dataDF has been saved to',file_path)
 		else:
-			print('The datasetDF is empty!')
+			print('The dataDF is empty!')
 		
 
 
@@ -200,25 +268,29 @@ class Database():
 		----------
 		Return:
 		----------
-		dataDF, a dataframe object that contains the dataset
+		dataDF, a dataframe object that contains the data
 		"""
 		#get the EUI feature.
 		if dataDF:
-			self._datasetDF=dataDF
-		self.getEUI(self._datasetDF)
-		return self._datasetDF
+			self._dataDF=dataDF
+		self.getEUI(self._dataDF)
+		return self._dataDF
+	def find_building_by_ID(self,ID=None):
+		"""find a building in a database
+		Parameter
+		----------
+		ID, the ID of the building.
+		Return
+		----------
+		building, a Building Object.
+		"""
+		buildings=self.dataDF[self.dataDF['ID']>=ID][self.dataDF['ID']<=ID]
+		if buildings.shape[0]>1:
+			print('Multi-buildings are found. The first one is returned')
+		building_series=buildings.iloc[buildings.index[0]]
+		return building_series
 
 		
 if __name__ == '__main__':
 	database=Database()
-	CBECS_DF=database.select('CBECS2012')
-	Preproc=PreprocessingCBECS()
-	CBECS_DF=CBECS_DF[CBECS_DF['HDD65']>=3000]
-
-	CBECS_DF=Preproc.forHEHSClf(CBECS_DF)
-	HP=CBECS_DF[CBECS_DF['HEHS']==1.0]
-	MP=CBECS_DF[CBECS_DF['HEHS']==2.0]
-	LP=CBECS_DF[CBECS_DF['HEHS']==3.0]
-	print(HP['EUIHeating'].mean(),HP['EUIHeating'].std())
-	print(MP['EUIHeating'].mean(),MP['EUIHeating'].std())
-	print(LP['EUIHeating'].mean(),LP['EUIHeating'].std())
+	CBECS_DF=database.select('CBECS2012.csv')

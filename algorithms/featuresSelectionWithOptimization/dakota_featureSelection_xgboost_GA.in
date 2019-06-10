@@ -1,0 +1,38 @@
+environment
+    graphics
+	tabular_graphics_data
+	tabular_graphics_file = 'optienergy_xgb.dat'
+method,
+	soga
+	fitness_type merit_function
+	replacement_type favor_feasible
+	convergence_type best_fitness_tracker
+	max_iterations = 1500
+	max_function_evaluations = 1500
+	crossover_type shuffle_random
+	mutation_type offset_uniform
+	mutation_scale 0.15
+
+variables,
+	discrete_design_set
+	real 19
+	descriptors          'X0'  'X1' 'X2'  'X3' 'X4' 'X5' 'X6' 'X7' 'X8' 'X9'  'X10' 'X11' 'X12' 'X13' 'X14' 'X15' 'X16'  'X17' 'X18'
+	elements_per_variable 2 2 2 2 2  2 2 2 1 2  2 2 2 2 2  2 2 2 2
+	elements  0 1 0 1 0 1 0 1 0 1  0 1 0 1 0 1 1 0 1  0 1 0 1 0 1 0 1 0 1  0 1 0 1 0 1 0 1
+	initial_point 1 1 1 1 1  1 1 1 1 1  1 1 1 1 1  1 1 1 1
+                   
+
+
+interface,
+	fork							
+    analysis_drivers = 'python.exe runXGboost.py'
+	parameters_file = 'params.in'
+	results_file = 'results.out'
+	#file_tag
+	#file_save
+	aprepro
+	
+responses,
+	objective_functions = 1
+	no_gradients
+	no_hessians

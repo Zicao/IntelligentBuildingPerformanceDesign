@@ -26,4 +26,5 @@ logger = logging.getLogger(__name__)
 logger.addHandler(logging.StreamHandler())
 logger.setLevel(logging.INFO)
 from aibpd.core.summary import *
+from aibpd.core.similarity import *
 __all__=[]
