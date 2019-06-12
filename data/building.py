@@ -2,10 +2,10 @@
 # Copyright (c) 2013-2018, Zhichao Tian <tzchao123@qq.com> 
 '''
 from pandas import Series
-class Building(Series):
+class Building():
 	"""Building is a pandas Series object.
 	"""
-
+	_data=Series()
 	building={
 		'ID': 1,
 		'name':'zhongdaHall',
@@ -194,8 +194,18 @@ class Building(Series):
 		
 		}
 	#
-	def __init__(self):
-		pass
+	def __init__(self,data=Series()):
+		if not data.empty:
+			self._data=data
+
+	@property
+	def data(self):
+		return self._data
+
+	@data.setter
+	def data(self,value):
+		self._data=value
+
 	
 	def tran2FitDatabase(self,dict):
 		'''

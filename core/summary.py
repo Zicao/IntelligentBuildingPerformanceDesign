@@ -2,7 +2,8 @@ import numpy as np
 import matplotlib.pyplot as plt
 #import aibpd.data.database as db
 import pandas as pd
-__all__=['raw_summary','summary','standard_report','highlowReport','dataset_summary']
+from aibpd.core.drawing import radar_plot
+__all__=['raw_summary','summary','standard_report','highlowReport','database_summary']
 
 def raw_summary(dataDF,feature_list=None):
 	"""summarize the dataDF before it has been preprocessing
@@ -11,18 +12,18 @@ def raw_summary(dataDF,feature_list=None):
 	print(missing_status)
 	return missing_status
 
-def summary(database, building=pd.Series()):
+def summary(database, building=None):
 	"""summary the dataDF or the building
 	"""
 	dataDF=database.dataDF
-	if building.empty:
-		dataset_summary(dataDF)
+	if not building:
+		database_summary(dataDF)
 	else:
-		standard_report(dataDF,building)
+		standard_report(dataDF, building.data)
 		
 
-def dataset_summary(dataDF,contents=None):
-	"""produce a standard summary report for the dataset.
+def database_summary(dataDF,contents=None):
+	"""produce a standard summary report for the database.
 	Parameters:
 	----------
 	
@@ -66,7 +67,7 @@ def standard_report(dataDF,building,contents='all'):
 			EUI_dist(dataDF_EUI,label=EUI_label,building_EUI=building[EUI_label])
 			percentage_EUI=EUI_rank(dataDF_EUI,label=EUI_label,building_EUI=building[EUI_label])
 			EUI_rank_dict[EUI_label]=percentage_EUI
-	print('EUI_rank_dict',EUI_rank_dict)
+	radar_plot(EUI_rank_dict,'EUI_ranks')
 	plt.show()
 	
 	#the position of end uses including heating, cooling, lighting, equipment and others.
@@ -148,7 +149,7 @@ def EUI_rank(dataDF,label='EUI', building_EUI=None):
 	m=dataDF.shape[0]
 	n=np.searchsorted(np.sort(dataDF[label].values), building_EUI)
 	percentage_EUI=n/m
-	return percentage_EUI
+	return round(percentage_EUI,3)
 
 
 
@@ -158,7 +159,7 @@ def missing_values_table(dataDF,feature_list=None):
 		This function comes from Will Koehrsen(at https://towardsdatascience.com/a-complete-machine-learning-walk-through-in-python-part-one-c62152f39420)
 	Parameters:
 	----------
-	df, the dataset.
+	df, the database.
 
 	Return:
 	----------
@@ -192,4 +193,3 @@ def missing_values_table(dataDF,feature_list=None):
 
 	# Return the dataframe with missing information
 	return mis_val_table_ren_columns
-

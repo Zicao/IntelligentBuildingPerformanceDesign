@@ -30,7 +30,7 @@ def get_ksimilar(database=None, building = None, K=300, feature_weights=None, me
 	'''
 	
 	if method=='Euc':
-		return get_ksimilar_Euclidian(database._dataDF, building, K, feature_weights)
+		return get_ksimilar_Euclidian(database._dataDF, building._data, K, feature_weights)
 	else:
 		return None
 

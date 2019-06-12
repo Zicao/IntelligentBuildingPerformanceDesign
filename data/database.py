@@ -10,6 +10,7 @@ from aibpd.__init__ import currentUrl
 from tkinter import filedialog
 from tkinter import Tk
 from aibpd.core.summary import raw_summary
+from aibpd.data.building import Building
 
 
 class Database():
@@ -43,6 +44,7 @@ class Database():
 				 'DAYLTP','principleActivity','yrConstructionCategory']
 
 	main_feature_numeric=['buildingArea','HDD65', 'HEATP', 'MONUSE', 'numFloors', 'WWR','yearOfConstruction']
+	feature_impute_constant=['HVACUpgrade','insulationUpgrade','RENWLL','lightingUpgrade']
 	'''
 	main_featuresCBECS_Categorical1=['CENDIV','WLCNS','RFCNS','RFCOOL','RFTILT',
 				'WINTYP','TINT','GLSSPC','EQGLSS','REFL','SKYLT','ATTIC',
@@ -158,7 +160,6 @@ class Database():
 
 	def loadNYC2DF(self,path):
 		'''
-
 		'''
 		dataDF=pd.read_csv(path,header=0)
 		preprocessDF=PreprocessingNYC(dataDF)
@@ -276,10 +277,11 @@ class Database():
 		self.getEUI(self._dataDF)
 		return self._dataDF
 	def find_building_by_ID(self,ID=None):
-		"""find a building in a database
+		"""find a building in a database.
 		Parameter
 		----------
 		ID, the ID of the building.
+
 		Return
 		----------
 		building, a Building Object.
@@ -287,8 +289,8 @@ class Database():
 		buildings=self.dataDF[self.dataDF['ID']>=ID][self.dataDF['ID']<=ID]
 		if buildings.shape[0]>1:
 			print('Multi-buildings are found. The first one is returned')
-		building_series=buildings.iloc[buildings.index[0]]
-		return building_series
+		building_series=buildings.iloc[0]
+		return Building(building_series)
 
 		
 if __name__ == '__main__':

@@ -8,7 +8,9 @@ from sklearn.preprocessing import Imputer
 from aibpd.data.weather import Weather
 from aibpd.data.database import Database
 from sklearn.preprocessing import MinMaxScaler
-
+from sklearn.tree import DecisionTreeClassifier
+from sklearn.svm import SVC
+#from sklearn.impute import IterativeImputer
 
 class Preprocessing():
 	'''
@@ -25,13 +27,6 @@ class Preprocessing():
 		general preprocesses such as fill NaN with 0
 		'''
 		dataDF.fillna(0)
-
-	def cleaning(self,dataDF):
-		
-		pass;
-	def mapping(self,dataDF):
-		
-		pass;
 
 	def deleteDuplicated(self,dataDF):
 		'''
@@ -60,23 +55,24 @@ class Preprocessing():
 		Args:
 			dataDF:
 			energyType: different energy consumption items, such annual energy usage intensive(EUI).
-						0= 'EUI', => 'heatingLevel' marks the level of heating performance, 1 for high performance, 2 for medium, 
+						0= 'EUI', => 'HPLV' marks the level of heating performance, 1 for high performance, 2 for medium, 
 							0 for low level, and 3 for others.
 						1='HEUI' => 'HEHS'= high efficient heating system
-						2='CEUI' => 'heatingLevel' = high efficient cooling system
+						2='CEUI' => 'HPLV' = high efficient cooling system
 						3='designHeatingLoad' => 'HEE4H' = high efficient envelop system for heating.
 						4='designCoolingLoad' => 'HEE4C' = high efficient envelop system for cooling.
 		'''
 		
 		try:
 			#energyTypeDict={0:'EUI',1:'HEUI',2:'CEUI',3:'designHeatingLoad',4:'designCoolingLoad'}
-			highEfficientType={'EUI': 'heatingLevel','HEUI': 'heatingLevel','CEUI': 'coolingLevel','designHeatingLoad':'HEE4H',
+			highEfficientType={'EUI': 'PLV','HEUI': 'HPLV','CEUI': 'CPLV','designHeatingLoad':'HEE4H',
 								'designCoolingLoad':'HEE4C',
-								'SourceEUI':'heatingLevel'}
+								'WNEUI':'WNLV','TNEUI':'WNLV','TNLV':'TNLV'}
 			isHEName=highEfficientType[energyType]
+			
 		except:
 			energyName='EUI'
-			isHEName='heatingLevel'
+			isHEName='HPLV'
 		#dataDF=dataDF[dataDF[energyType]>0]
 		print('dataDF in preprocessing shape',dataDF.shape,'level',isHEName)
 		top3=dataDF[energyType].sort_values().iloc[int(0.03*dataDF.shape[0])]
@@ -129,38 +125,96 @@ class PreprocessingCBECS(Preprocessing):
 		self.get_WNEUI(dataDF)
 		self.get_TNEUI(dataDF)
 
+		self.get_HPLV(dataDF) #get the heating performance level.
+		self.get_CPLV(dataDF) #get the cooling performance level.
+		self.get_PLV(dataDF) # get the EUI performance level for classification
+		self.get_TNLV(dataDF) #get 
+		self.get_WNLV(dataDF) #get
+		X_feature_list_MAINHT=['buildingAreaCategory','censusRegion','OWNTYPE','WKHRSC','WWR']
+		X_feature_list_MAINCL=['buildingAreaCategory','roofConstruction','OWNTYPE','WKHRSC','WWR']
+		self.impute_svm(dataDF,feature_list=['MAINHT'],X_feature_list=X_feature_list_MAINHT)
+		self.impute_svm(dataDF,feature_list=['MAINCL'],X_feature_list=X_feature_list_MAINCL)
+		self.impute_with_constant(dataDF,feature_list=Database.feature_impute_constant) #impute
+		dataDF.fillna(0)
+		
+		if isinstance(data, Database):
+			data.dataDF = dataDF
+		elif isinstance(data, pd.DataFrame):
+			data =dataDF
+		else:
+			data.dataDF = dataDF
+		
 
-	def loadMetadata(self,):
-		"""load the metadata file which contains the description of the databse
-		"""
-	def numeric_transform(self,dataDF=None,feature_numeric=None):
-		"""
-		"""
-		data=dataDF['yearOfConstruction'].replace(995,1964)
-		dataDF['yearOfConstruction']=(data-1964)/66
 
-	def minmax_transform(self,dataDF=None,feature_numeric=None):
-		"""transform the data
+
+	def numeric_transform(self, dataDF=None, feature_list=None):
 		"""
-		for feature in feature_numeric:
+		"""
+		if 'yearOfConstruction' in feature_list:
+			data=dataDF['yearOfConstruction'].replace(995,1964)
+			dataDF['yearOfConstruction']=(data-1964)/66
+		return dataDF
+
+	def minmax_transform(self,dataDF=None,feature_list=None):
+		"""transform the data.
+		"""
+		for feature in feature_list:
 			scaler = MinMaxScaler()
 			scaler.fit(dataDF[feature].values.reshape(1,-1))
 			data=scaler.fit_transform(dataDF[feature].values.reshape(1,-1))
 			dataDF[feature] = pd.Series(data[0])
+		return dataDF
 
-	def missing_impute(self, dataDF=None, main_features=None, other_features=None):
-		"""inpute missing data with different stategies.
-		"""
-	def impute_with_zero(self,dataDF=None,feature_list=None):
+
+	def impute_with_constant(self,dataDF=None,feature_list=None,value=0):
 		"""impute with zero
 		"""
-		
 		for feature in feature_list:
-			imp_constant = Imputer.SimpleImputer(missing_values=np.nan, 
-										strategy='constant',fill_value=0)
-			data=imp_constant.fit_transform(dataDF[feature].values.reshape(1,-1))
-			dataDF[feature]=pd.Series(data)
+			data=dataDF[feature].fillna(value)
+			dataDF[feature]=data
 		return dataDF
+
+	def IterativeImputer_decisiontree(self, dataDF=None, feature_list=None, X_feature_list= None, **kwds):
+		"""impute the missing data with sklearn iterative imputer
+		parameters:
+		----------
+		dataDF,
+		feature_list,
+		X_feature_list,
+
+		Return:
+		----------
+		dataDF:
+
+		"""
+		for feature in feature_list:
+			fullDF=dataDF[dataDF[feature]<1000]
+			X_full=fullDF[X_feature_list]
+			y_full=fullDF[feature]
+			X_missing=dataDF[dataDF[feature]>1000][X_feature_list]
+			dt_clf = DecisionTreeClassifier(random_state=0)
+			#imp=IterativeImputer(random_state=0, estimator=dt_clf)
+			dt_clf.fit(X_full.values,y_full.values)
+			Y_missing=dt_clf.predict(X_missing.values)
+		return dataDF
+
+	def impute_svm(self, dataDF=None,feature_list=None, X_feature_list= None, **kwds):
+		"""
+		"""
+		for feature in feature_list:
+			data=dataDF[feature].isnull()
+			missing_index=data[data==True].index
+			full_index=data[data==False].index
+			X_full=dataDF.iloc[full_index][X_feature_list].fillna(0)
+			y_full=dataDF.iloc[full_index][feature]
+			X_missing=dataDF.iloc[missing_index][X_feature_list].fillna(0)
+			svm_clf = SVC(gamma='auto')
+			svm_clf.fit(X_full.values,y_full.values)
+			y_pred=svm_clf.predict(X_missing.values)
+			for i in range(missing_index.shape[0]):
+				dataDF[feature][missing_index[i]]=y_pred[i]
+		return dataDF
+
 
 		
 	def get_CEUI(self,dataDF):
@@ -184,40 +238,6 @@ class PreprocessingCBECS(Preprocessing):
 		if not 'HEUI' in dataDF.columns:
 			dataDF['HEUI']=dataDF['MFHTBTU']/dataDF['buildingArea']
 		return dataDF
-
-	def getWeatherNormalizedEUI(self,dataDF):
-		"""Calculate the weather normalized EUI.
-		"""
-		if not 'EUI' in dataDF.columns:
-			dataDF['WNEUI']=dataDF['EUI']/(dataDF['HDD65']+dataDF['CDD65'])
-		return dataDF
-
-	def getCoolingLevels(self,dataDF):
-		'''
-		Buildings with the least CEUI are sorted out. To increase credility, top 3% low 
-		cooling energy buildings are abandoned. This low cooilng energy buildings are call High Efficient
-		Cooling System (coolingLevel).
-		Args:
-			dataDF, the source data based on which the HEUI is calculated.	
-		'''
-		self.getHP(dataDF, energyType='CEUI')
-
-	def getHEES(self,dataDF):
-		'''
-
-		'''
-		self.getHP(dataDF, energyType='EUI')
-
-	def getHeatingLevels(self,dataDF):
-		"""
-		
-		"""
-		if not 'heatingLevel' in dataDF.columns:
-			print('heatingLevel exists, if you want to generate a new heatingLevel\
-				please delete exists ones')
-			return self.getHP(dataDF, energyType='HEUI')
-		else:
-			return dataDF
 
 	def get_EUI(self,dataDF):
 		'''calculate the EUI of the buildings.
@@ -262,23 +282,60 @@ class PreprocessingCBECS(Preprocessing):
 			print('WKHRS (open hours per week) is not a feature of this data')
 		return dataDF
 
+	def get_PLV(self,dataDF):
+		'''
 
-	def forHeatingClf(self,dataDF):
+		'''
+		self.getHP(dataDF, energyType='EUI')
+
+	def get_CPLV(self,dataDF):
+		'''
+		Buildings with the least CEUI are sorted out. To increase credility, top 3% low 
+		cooling energy buildings are abandoned. This low cooilng energy buildings are call High Efficient
+		Cooling System (coolingLevel).
+		Args:
+			dataDF, the source data based on which the HEUI is calculated.	
+		'''
+		self.getHP(dataDF, energyType='CEUI')
+
+
+	def get_HPLV(self,dataDF):
+		"""
+		
+		"""
+		if not 'HPLV' in dataDF.columns:
+			print('HPLV exists, if you want to generate a new HPLV\
+				please delete exists ones')
+			return self.getHP(dataDF, energyType='HEUI')
+		else:
+			return dataDF
+
+	def get_WNLV(self,dataDF):
+		"""
+		"""
+		pass
+
+	def get_TNLV(self,dataDF):
+		"""
+		"""
+		pass
+
+	def for_HPLV_clf(self,dataDF):
 		'''
 		Perprocessing the CBECS 2012 database for heating performance classification.
 		'''
 		self.general(dataDF)
 		self.get_HEUI(dataDF)
-		self.getHeatingLevels(dataDF)
-		return dataDF[dataDF['heatingLevel']>=0.0]
+		self.get_HPLV(dataDF)
+		return dataDF[dataDF['HPLV']>=0.0]
 
-	def forCoolingClf(self,dataDF):
+	def for_CPLV_clf(self,dataDF):
 		'''
 		Perprocessing the CBECS 2012 database for cooling performance classification.
 		'''
 		self.general(dataDF)
 		self.get_CEUI(dataDF)
-		self.getCoolingLevels(dataDF)
+		self.get_CPLV(dataDF)
 		return dataDF
 
 	def getnumPeoplePerArea(self,dataDF):
